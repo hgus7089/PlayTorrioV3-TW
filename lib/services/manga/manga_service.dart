@@ -273,7 +273,7 @@ class MangaService {
 
     // Robust year resolution
     String year = '';
-    final possibleYearKeys = ['Released', 'Release Year', 'Year', 'Published', 'Date', 'Release'];
+    final possibleYearKeys = ['Released', '上映年份', 'Year', 'Published', 'Date', 'Release'];
     for (final key in possibleYearKeys) {
       if (details.containsKey(key) && details[key]!.isNotEmpty) {
         final rawVal = details[key]!.first;

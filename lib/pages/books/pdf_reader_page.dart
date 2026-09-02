@@ -188,7 +188,7 @@ class _PdfReaderPageState extends State<PdfReaderPage> {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 20),
-                          tooltip: 'Back to Library',
+                          tooltip: '返回書庫',
                           onPressed: () => Navigator.of(context).pop(),
                         ),
                         const SizedBox(width: 12),
@@ -283,7 +283,7 @@ class _PdfReaderPageState extends State<PdfReaderPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Page $_currentPage of $_pageCount',
+                                    '第 $_currentPage / $_pageCount 頁',
                                     style: const TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 12,

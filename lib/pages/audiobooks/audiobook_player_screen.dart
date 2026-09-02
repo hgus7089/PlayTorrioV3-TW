@@ -428,7 +428,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
 
                   const SizedBox(height: 14),
 
-                  const Text('Play / Pause Button Style', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
+                  const Text('播放／暫停按鈕樣式', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
                   const SizedBox(height: 8),
                   ValueListenableBuilder<AudiobookPlayButtonStyle>(
                     valueListenable: AudiobookSettings.customPlayButtonStyle,
@@ -1331,7 +1331,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
           icon: Icons.skip_previous_rounded,
           size: isNarrow ? 24 : 28,
           palette: palette,
-          tooltip: 'Previous Chapter',
+          tooltip: '上一章',
           onTap: _currentChapterIndex > 0 ? () => _initChapter(_currentChapterIndex - 1) : null,
         );
 
@@ -1360,7 +1360,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
           icon: Icons.skip_next_rounded,
           size: isNarrow ? 24 : 28,
           palette: palette,
-          tooltip: 'Next Chapter',
+          tooltip: '下一章',
           onTap: _currentChapterIndex < widget.chapters.length - 1
               ? () => _initChapter(_currentChapterIndex + 1)
               : null,

@@ -24,7 +24,7 @@ class _VideoSettingsPageState extends State<VideoSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Video & Upscaling',
+          '影片與升頻',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -72,7 +72,7 @@ class _VideoSettingsPageState extends State<VideoSettingsPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Anime4K Neural Upscaling',
+                            'Anime4K 神經升頻',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w800,
@@ -81,7 +81,7 @@ class _VideoSettingsPageState extends State<VideoSettingsPage> {
                           ),
                           const SizedBox(height: 3),
                           Text(
-                            'Real-time GLSL anime upscaling and line reconstruction running directly on libmpv GPU shaders.',
+                            '透過 libmpv GPU 著色器即時進行動漫升頻與線條重建。',
                             style: TextStyle(
                               fontSize: 12.5,
                               color: Colors.white.withValues(alpha: 0.6),
@@ -99,7 +99,7 @@ class _VideoSettingsPageState extends State<VideoSettingsPage> {
 
               // ── Section: Presets ──
               Text(
-                'UPSCALING PRESETS',
+                '升頻預設',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -182,7 +182,7 @@ class _VideoSettingsPageState extends State<VideoSettingsPage> {
 
               // ── Section: Details & Performance Note ──
               Text(
-                'PIPELINE & COMPATIBILITY',
+                '管線與相容性',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,

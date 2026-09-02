@@ -36,7 +36,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Appearance & Interface',
+          '外觀與介面',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -50,7 +50,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  'Fine-tune the visual atmosphere, custom wallpaper background, color palettes, and interface layouts.',
+                  '微調視覺氛圍、自訂桌布背景、色彩調色盤與介面版面。',
                   style: TextStyle(
                     fontSize: 13.5,
                     color: Colors.white.withValues(alpha: 0.5),
@@ -69,7 +69,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.wallpaper_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: 'Custom Background & Wallpaper',
+                        title: '自訂背景與桌布',
                         subtitle: 'Upload custom photos, choose curated dark wallpapers, and blend theme ambient lighting',
                         badgeText: customBg.hasCustomBackground ? 'Custom Active' : 'Default Theme',
                         badgeColor: customBg.hasCustomBackground ? currentPalette.primaryColor : Colors.white38,
@@ -100,7 +100,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.blur_on_rounded,
                         iconColor: const Color(0xFF7C5CFF),
-                        title: 'Liquid Glass Setup',
+                        title: 'Liquid Glass 設定',
                         subtitle: 'Adjust hover impact, wobble spring physics, lens refraction, and chromatic aberration',
                         badgeText: glassEnabled ? preset.label : 'Disabled',
                         badgeColor: glassEnabled ? const Color(0xFF7C5CFF) : Colors.white38,
@@ -155,7 +155,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                   return _buildSectionButton(
                     icon: Icons.palette_rounded,
                     iconColor: currentPalette.primaryColor,
-                    title: 'Home Page UI & Themes',
+                    title: '首頁介面與主題',
                     subtitle: 'Color schemes, "Because you have on your list" smart slider, hero spotlight, and card density',
                     badgeText: currentPalette.name,
                     badgeColor: currentPalette.primaryColor,
@@ -184,7 +184,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.live_tv_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: 'Live TV & Sports UI',
+                        title: '直播電視與體育介面',
                         subtitle: 'Broadcast hero spotlight, channel card density, category ordering, and live badge styling',
                         badgeText: spotlightEnabled ? 'Spotlight ON' : 'Compact',
                         badgeColor: currentPalette.primaryColor,
@@ -215,7 +215,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.menu_book_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: 'Manga UI & Reader Atmosphere',
+                        title: '漫畫介面與閱讀氛圍',
                         subtitle: 'Ambient moving lighting, card density, reading layout widths, webtoon/horizontal modes, and page deck preview',
                         badgeText: readingMode == MangaReadingMode.webtoon ? 'Webtoon' : 'Horizontal',
                         badgeColor: currentPalette.primaryColor,
@@ -246,7 +246,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.headphones_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: 'Audiobook UI & Player Studio',
+                        title: '有聲書介面與播放器工作室',
                         subtitle: 'Hero spotlight, 5 distinct player designs, drag & drop modular studio, waveform canvas scrubber, and custom controls',
                         badgeText: playerPreset.label.split(' ').first,
                         badgeColor: currentPalette.primaryColor,
@@ -300,7 +300,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
 
               // Visual Overview Notes
               Text(
-                'LIVE CUSTOMIZATION SCOPE',
+                '即時自訂範圍',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,

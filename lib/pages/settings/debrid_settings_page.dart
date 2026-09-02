@@ -103,7 +103,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
         username = res?['username'] as String?;
       } else if (provider == 'Premiumize') {
         final res = await _debrid.premiumize.verifyKey(cleaned);
-        username = res != null ? 'Connected' : null;
+        username = res != null ? '已連線' : null;
       } else if (provider == 'Debrid-Link') {
         final res = await _debrid.debridLink.verifyKey(cleaned);
         username = res?['username'] as String?;
@@ -155,7 +155,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
         verifiedUser = user?['username'] as String?;
       } else if (provider == 'Premiumize') {
         final user = await _debrid.premiumize.verifyKey(key);
-        verifiedUser = user != null ? 'Connected' : null;
+        verifiedUser = user != null ? '已連線' : null;
       } else if (provider == 'Debrid-Link') {
         final user = await _debrid.debridLink.verifyKey(key);
         verifiedUser = user?['username'] as String?;
@@ -259,7 +259,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Debrid & Cloud Streaming',
+          'Debrid 與雲端串流',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -699,7 +699,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                             icon: const Icon(Icons.clear_rounded, color: Colors.white38, size: 16),
                             padding: const EdgeInsets.all(4),
                             constraints: const BoxConstraints(),
-                            tooltip: 'Clear',
+                            tooltip: '清除',
                             onPressed: () {
                               controller.clear();
                               setState(() {});
@@ -724,7 +724,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                           icon: const Icon(Icons.content_paste_rounded, color: Color(0xFF00E5FF), size: 16),
                           padding: const EdgeInsets.all(4),
                           constraints: const BoxConstraints(),
-                          tooltip: 'Paste from Clipboard',
+                          tooltip: '從剪貼簿貼上',
                           onPressed: () => _pasteToController(controller),
                         ),
                         const SizedBox(width: 4),

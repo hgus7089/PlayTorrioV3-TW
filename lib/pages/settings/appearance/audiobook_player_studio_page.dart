@@ -119,7 +119,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
         actions: [
           if (screenW < 520)
             IconButton(
-              tooltip: 'Apply As Active Player',
+              tooltip: '套用為目前播放器',
               onPressed: () {
                 AudiobookSettings.setSelectedPlayerPreset(AudiobookPlayerPreset.customStudio);
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -145,7 +145,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                 );
               },
               icon: const Icon(Icons.check_circle_rounded, color: Colors.white, size: 18),
-              label: const Text('Apply As Active Player', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12.5)),
+              label: const Text('套用為目前播放器', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12.5)),
               style: TextButton.styleFrom(
                 backgroundColor: palette.primaryColor.withValues(alpha: 0.25),
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
@@ -205,7 +205,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Studio Designer',
+                                  '工作室設計器',
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: _mobileViewMode == 0 ? FontWeight.bold : FontWeight.w500,
@@ -241,7 +241,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Live Preview Canvas',
+                                  '即時預覽畫布',
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: _mobileViewMode == 1 ? FontWeight.bold : FontWeight.w500,
@@ -270,7 +270,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                                 backgroundColor: palette.primaryColor,
                                 icon: const Icon(Icons.touch_app_rounded, color: Colors.white, size: 18),
                                 label: const Text(
-                                  'Test Live Canvas',
+                                  '測試即時畫布',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),
@@ -288,7 +288,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                                 backgroundColor: const Color(0xFF161A28),
                                 icon: Icon(Icons.arrow_back_rounded, color: palette.primaryColor, size: 18),
                                 label: const Text(
-                                  'Back to Customizer',
+                                  '返回自訂器',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),
@@ -874,8 +874,8 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                _buildTabChip(0, Icons.drag_indicator_rounded, 'Drag & Drop Layout', palette),
-                _buildTabChip(1, Icons.graphic_eq_rounded, 'Seek Bar Canvas', palette),
+                _buildTabChip(0, Icons.drag_indicator_rounded, '拖放版面配置', palette),
+                _buildTabChip(1, Icons.graphic_eq_rounded, '進度列畫布', palette),
                 _buildTabChip(2, Icons.touch_app_rounded, 'Play Button & Physics', palette),
                 _buildTabChip(3, Icons.image_rounded, 'Artwork & Frame', palette),
               ],
@@ -1138,7 +1138,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
             Icon(Icons.touch_app_rounded, color: palette.primaryColor, size: 18),
             const SizedBox(width: 8),
             const Text(
-              'Play / Pause Button Style',
+              '播放／暫停按鈕樣式',
               style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
             ),
           ],

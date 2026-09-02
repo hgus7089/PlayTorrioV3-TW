@@ -26,7 +26,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Manga UI & Reader Atmosphere',
+          '漫畫介面與閱讀氛圍',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -37,14 +37,14 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             children: [
               // ── 1. Color Themes & Accents ──
-              _buildSectionHeader('COLOR THEMES & ACCENTS'),
+              _buildSectionHeader('色彩主題與強調色'),
               const SizedBox(height: 12),
               _buildThemesGrid(),
 
               const SizedBox(height: 28),
 
               // ── 2. Ambient Background Lighting ──
-              _buildSectionHeader('AMBIENT BACKGROUND LIGHTING & MOVING GLOWS'),
+              _buildSectionHeader('環境背景燈光與流動光暈'),
               const SizedBox(height: 12),
               _buildAmbientLightsCard(palette),
 
@@ -193,7 +193,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
                 title: const Text(
-                  'Enable Moving Ambient Lighting',
+                  '啟用流動環境光',
                   style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w700),
                 ),
                 subtitle: Text(
@@ -376,8 +376,8 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Show "Continue Reading" Slider', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
-                subtitle: const Text('Display your active reading history at the top of the Manga page', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                title: const Text('顯示「繼續閱讀」滑動列', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+                subtitle: const Text('在漫畫頁面頂部顯示目前閱讀紀錄', style: TextStyle(color: Colors.white54, fontSize: 12)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MangaSettings.setShowContinueReading(val),
@@ -389,7 +389,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
           Divider(color: Colors.white.withValues(alpha: 0.08)),
           const SizedBox(height: 12),
 
-          Text('Manga Poster Card Density', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+          Text('漫畫海報卡片密度', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           ValueListenableBuilder<MangaCardDensity>(
             valueListenable: MangaSettings.cardDensity,
@@ -428,7 +428,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Show Content Type Badge (Manga/Manhwa)', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('顯示內容類型標籤（Manga/Manhwa）', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MangaSettings.setShowContentTypeBadge(val),
@@ -441,7 +441,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Show Publication Year on Cards', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('在卡片上顯示出版年份', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MangaSettings.setShowMangaYear(val),
@@ -454,7 +454,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Poster Card Hover Glow Effect', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('海報卡片懸停光暈效果', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MangaSettings.setAmbientCardGlow(val),
@@ -467,7 +467,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Show Desktop Scroll Track', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('顯示桌面捲動軌道', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MangaSettings.setShowScrollTrack(val),
@@ -492,7 +492,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Default Reading Mode
-          Text('Default Reading Mode', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+          Text('預設閱讀模式', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           ValueListenableBuilder<MangaReadingMode>(
             valueListenable: MangaSettings.defaultReadingMode,
@@ -650,7 +650,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Vertical Page Gap', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+                      Text('頁面垂直間距', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
                       Text('${gap.round()} px', style: TextStyle(color: palette.primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -680,7 +680,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
                 title: const Text('Show Page Deck / Thumbnail Previews', style: TextStyle(color: Colors.white, fontSize: 13.5)),
-                subtitle: const Text('Interactive visual tray of thumbnail previews for instant page jumping', style: TextStyle(color: Colors.white54, fontSize: 11.5)),
+                subtitle: const Text('顯示可互動的縮圖預覽列，快速跳轉頁面', style: TextStyle(color: Colors.white54, fontSize: 11.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MangaSettings.setShowPageDeck(val),
@@ -693,7 +693,7 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Show Page Scrubber Slider', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('顯示頁面拖曳滑桿', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MangaSettings.setShowPageScrubber(val),
@@ -706,8 +706,8 @@ class _MangaSettingsPageState extends State<MangaSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Enable Next Chapter Preview Card Deck', style: TextStyle(color: Colors.white, fontSize: 13.5)),
-                subtitle: const Text('Rich glass deck card at the end of each chapter with chapter art and direct launch', style: TextStyle(color: Colors.white54, fontSize: 11.5)),
+                title: const Text('啟用下一章預覽卡片', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                subtitle: const Text('每章結尾顯示帶有章節圖片與直接啟動功能的玻璃卡片', style: TextStyle(color: Colors.white54, fontSize: 11.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MangaSettings.setEnableNextChapterDeck(val),

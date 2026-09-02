@@ -394,7 +394,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
         labelStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
         unselectedLabelStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
         tabs: const [
-          Tab(text: 'Typography', icon: Icon(Icons.text_fields_rounded, size: 16)),
+          Tab(text: '字體排版', icon: Icon(Icons.text_fields_rounded, size: 16)),
           Tab(text: 'Colors & Box', icon: Icon(Icons.palette_rounded, size: 16)),
           Tab(text: 'Outline & Shadow', icon: Icon(Icons.border_style_rounded, size: 16)),
           Tab(text: 'Position', icon: Icon(Icons.vertical_align_bottom_rounded, size: 16)),

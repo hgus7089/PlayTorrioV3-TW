@@ -1232,7 +1232,7 @@ class _HeroSlide extends StatelessWidget {
                                 color: Colors.white.withValues(alpha: 0.80),
                               ),
                               label: Text(
-                                'Details',
+                                '詳細資訊',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: isCompact ? 13.5 : 15,

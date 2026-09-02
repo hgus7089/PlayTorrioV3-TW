@@ -200,7 +200,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                                 child: const Text(
-                                  'LIVE',
+                                  '直播',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 9,
@@ -337,7 +337,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                           color: const Color(0xFF00D2EF),
                         ),
                         label: Text(
-                          allSelected ? 'Deselect All' : 'Select All',
+                          allSelected ? '全部取消選取' : '全部選取',
                           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
                         ),
                         onPressed: () {
@@ -694,7 +694,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                           ),
                           icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
                           label: const Text(
-                            'Watch Live',
+                            '觀看直播',
                             style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
                           ),
                           onPressed: filteredResults.isNotEmpty

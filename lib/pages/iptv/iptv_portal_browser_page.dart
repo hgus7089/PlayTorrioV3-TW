@@ -174,7 +174,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                   const SizedBox(height: 12),
 
                   const Text(
-                    'Channel Stream Layout Mode',
+                    '頻道串流版面模式',
                     style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(height: 8),
@@ -225,7 +225,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text('Grid Stream Columns', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600)),
+                                  const Text('網格串流欄數', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600)),
                                   Text('$cols Cols', style: TextStyle(color: palette.primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
                                 ],
                               ),
@@ -257,7 +257,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                     builder: (context, showLogos, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show Channel Stream Logos', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('顯示頻道串流 Logo', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showLogos,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => IptvSettings.setShowStreamLogos(val),
@@ -270,7 +270,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                     builder: (context, showEpg, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show EPG "Now Playing" Snippet', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('顯示 EPG「目前播放」資訊', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showEpg,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => IptvSettings.setShowEpgSnippet(val),
@@ -283,7 +283,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                     builder: (context, showCount, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show Category Stream Counts', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('顯示分類串流數量', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showCount,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => IptvSettings.setShowCategoryCount(val),
@@ -554,7 +554,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
       final ch = HardcodedChannel(
         id: stream.streamId,
         name: stream.name,
-        short: isLive ? 'LIVE' : (_activeSection == IptvSection.vod ? 'VOD' : 'SERIES'),
+        short: isLive ? '直播' : (_activeSection == IptvSection.vod ? 'VOD' : 'SERIES'),
         category: currentCat.name,
         keywords: [stream.name],
         gradient: const [Color(0xFF7C5CFF), Color(0xFF00D2EF)],
@@ -596,7 +596,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
       final ch = HardcodedChannel(
         id: stream.streamId,
         name: stream.name,
-        short: isLive ? 'LIVE' : 'VOD',
+        short: isLive ? '直播' : 'VOD',
         category: currentCat.name,
         keywords: [stream.name],
         gradient: const [Color(0xFF7C5CFF), Color(0xFF00D2EF)],
@@ -857,7 +857,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            _buildSectionTab('Live TV', Icons.live_tv_rounded, IptvSection.live),
+                            _buildSectionTab('直播電視', Icons.live_tv_rounded, IptvSection.live),
                             const SizedBox(width: 4),
                             _buildSectionTab('Movies', Icons.movie_rounded, IptvSection.vod),
                             const SizedBox(width: 4),
@@ -1818,7 +1818,7 @@ class _LiveChannelListRowState extends State<_LiveChannelListRow> {
                                   Icon(Icons.fiber_manual_record_rounded, color: Colors.greenAccent, size: 7),
                                   SizedBox(width: 3),
                                   Text(
-                                    'LIVE',
+                                    '直播',
                                     style: TextStyle(color: Colors.greenAccent, fontSize: 9, fontWeight: FontWeight.w900),
                                   ),
                                 ],
@@ -2012,7 +2012,7 @@ class _LiveChannelGridCardState extends State<_LiveChannelGridCard> {
                           borderRadius: BorderRadius.circular(4),
                           border: Border.all(color: Colors.greenAccent.withValues(alpha: 0.4)),
                         ),
-                        child: const Text('LIVE', style: TextStyle(color: Colors.greenAccent, fontSize: 9, fontWeight: FontWeight.w900)),
+                        child: const Text('直播', style: TextStyle(color: Colors.greenAccent, fontSize: 9, fontWeight: FontWeight.w900)),
                       ),
 
                     GestureDetector(
@@ -2176,7 +2176,7 @@ class _LiveChannelCompactListRowState extends State<_LiveChannelCompactListRow> 
                       color: Colors.greenAccent.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Text('LIVE', style: TextStyle(color: Colors.greenAccent, fontSize: 9, fontWeight: FontWeight.w900)),
+                    child: const Text('直播', style: TextStyle(color: Colors.greenAccent, fontSize: 9, fontWeight: FontWeight.w900)),
                   ),
                 ],
                 GestureDetector(

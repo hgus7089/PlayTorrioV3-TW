@@ -46,7 +46,7 @@ class _IptvPageState extends State<IptvPage> {
   @override
   void initState() {
     super.initState();
-    DiscordRpcService.instance.setWatchingLiveTv(channelName: 'Live TV');
+    DiscordRpcService.instance.setWatchingLiveTv(channelName: '直播電視');
     IptvSettings.changeNotifier.addListener(_onSettingsChanged);
     AppThemeService.currentPalette.addListener(_onSettingsChanged);
     _ctrl.init();
@@ -435,7 +435,7 @@ class _IptvGlassAppBar extends StatelessWidget {
           // Settings button
           _GlassActionButton(
             icon: Icons.settings_rounded,
-            tooltip: 'Settings',
+            tooltip: '設定',
             onTapWithPosition: onSettingsTap,
           ),
         ],

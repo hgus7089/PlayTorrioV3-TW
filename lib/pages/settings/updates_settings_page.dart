@@ -32,7 +32,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('PlayTorrio is up to date!'),
+            content: Text('PlayTorrio 已是最新版本！'),
             backgroundColor: Color(0xFF7C5CFF),
             behavior: SnackBarBehavior.floating,
           ),
@@ -42,7 +42,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error checking updates: $e'),
+            content: Text('檢查更新時發生錯誤：$e'),
             backgroundColor: Colors.redAccent,
             behavior: SnackBarBehavior.floating,
           ),
@@ -69,7 +69,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'App Updates & System',
+          '應用程式更新與系統',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -83,7 +83,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  'Keep PlayTorrio up to date with the latest features, security patches, and performance improvements.',
+                  '讓 PlayTorrio 保持最新，取得最新功能、安全修補與效能改善。',
                   style: TextStyle(
                     fontSize: 13.5,
                     color: Colors.white.withValues(alpha: 0.5),
@@ -142,7 +142,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    'Installed Version: v$version (Build $buildNumber)',
+                                    '已安裝版本：v$version（建置 $buildNumber）',
                                     style: const TextStyle(
                                       color: Colors.white54,
                                       fontSize: 12.5,
@@ -198,7 +198,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
 
               // Release Channel Info
               Text(
-                'RELEASE CHANNELS',
+                '發行頻道',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,

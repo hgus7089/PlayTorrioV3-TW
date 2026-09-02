@@ -131,7 +131,7 @@ class DownloadTask {
 
   StreamSource toLocalStreamSource() {
     return StreamSource(
-      name: 'Downloaded',
+      name: '已下載',
       title: title,
       url: targetFilePath,
       addonName: 'PlayTorrio Offline',

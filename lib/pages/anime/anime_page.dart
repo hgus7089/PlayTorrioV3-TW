@@ -304,7 +304,7 @@ class _AnimePageState extends State<AnimePage> {
                           backgroundColor: palette.primaryColor,
                         ),
                         onPressed: _loadAnimeData,
-                        child: const Text('Retry'),
+                        child: const Text('重試'),
                       ),
                     ],
                   ),
@@ -413,7 +413,7 @@ class _AnimePageState extends State<AnimePage> {
                         // 2. Anime Continue Watching Slider
                         const ContinueWatchingSlider(
                           typeFilter: 'general_anime',
-                          title: 'Continue Watching',
+                          title: '繼續觀看',
                         ),
 
                         const SizedBox(height: 8),
@@ -1220,7 +1220,7 @@ class _AnimeHeroSlide extends StatelessWidget {
                           color: Colors.white.withValues(alpha: 0.80),
                         ),
                         label: Text(
-                          'Details',
+                          '詳細資訊',
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: isCompact ? 14 : 15.5,

@@ -138,7 +138,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
                         Icon(Icons.tune_rounded, color: settings.accentColor, size: 18),
                         const SizedBox(width: ReaderTokens.space8),
                         Text(
-                          'Appearance',
+                          '外觀',
                           style: TextStyle(
                             fontFamily: ReaderTokens.uiFont,
                             fontSize: 16,
@@ -179,7 +179,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
                   unselectedLabelColor: settings.secondaryTextColor,
                   labelStyle: ReaderTokens.tabLabel,
                   tabs: const [
-                    Tab(text: 'Typography'),
+                    Tab(text: '字體排版'),
                     Tab(text: 'Theme'),
                     Tab(text: 'Layout'),
                   ],
@@ -235,7 +235,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
                         color: _showResetSuccess ? const Color(0xFF10B981) : settings.secondaryTextColor,
                       ),
                       label: Text(
-                        _showResetSuccess ? 'Reset ✓' : 'Reset to Defaults',
+                        _showResetSuccess ? 'Reset ✓' : '重設為預設值',
                         style: TextStyle(
                           fontFamily: ReaderTokens.uiFont,
                           fontSize: 12.5,

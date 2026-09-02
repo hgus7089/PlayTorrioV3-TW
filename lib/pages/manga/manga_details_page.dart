@@ -213,7 +213,7 @@ class _MangaDetailsPageState extends State<MangaDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Synopsis',
+                    '劇情簡介',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: isDesktop ? 22 : 18,

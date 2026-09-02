@@ -275,7 +275,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                     builder: (context, show, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show "Continue Listening" Carousel', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('顯示「繼續聆聽」輪播', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: show,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => AudiobookSettings.setShowContinueListening(val),
@@ -1029,7 +1029,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                     );
                     _loadContinueListening();
                   },
-                  child: const Text('Open Studio', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                  child: const Text('開啟工作室', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
@@ -1141,7 +1141,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                               if (isDone)
                                 ElevatedButton.icon(
                                   icon: const Icon(Icons.play_arrow_rounded, size: 14),
-                                  label: const Text('Play', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                                  label: const Text('播放', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: palette.primaryColor,
                                     foregroundColor: Colors.white,
@@ -1236,7 +1236,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                               const SizedBox(height: 8),
                               ElevatedButton.icon(
                                 icon: const Icon(Icons.play_arrow_rounded, size: 14),
-                                label: const Text('Play', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                                label: const Text('播放', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: palette.primaryColor,
                                   foregroundColor: Colors.white,

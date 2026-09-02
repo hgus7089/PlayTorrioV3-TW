@@ -92,7 +92,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel', style: TextStyle(color: Colors.white60)),
+            child: const Text('取消', style: TextStyle(color: Colors.white60)),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -104,7 +104,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
               Navigator.pop(ctx);
               DownloadService.instance.deleteDownload(task.id);
             },
-            child: const Text('Delete'),
+            child: const Text('刪除'),
           ),
         ],
       ),
@@ -144,7 +144,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                 ),
                 const SizedBox(width: 10),
                 const Text(
-                  'Downloads',
+                  '下載',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -360,7 +360,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                   if (isDownloading)
                     IconButton(
                       icon: const Icon(Icons.pause_circle_rounded, color: Colors.amber, size: 26),
-                      tooltip: 'Pause',
+                      tooltip: '暫停',
                       onPressed: () => DownloadService.instance.pauseDownload(task.id),
                     )
                   else if (isPaused || isFailed)
@@ -383,7 +383,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                   ),
                   IconButton(
                     icon: Icon(Icons.close_rounded, color: Colors.white.withValues(alpha: 0.4), size: 22),
-                    tooltip: 'Cancel',
+                    tooltip: '取消',
                     onPressed: () => _confirmDelete(task),
                   ),
                 ],

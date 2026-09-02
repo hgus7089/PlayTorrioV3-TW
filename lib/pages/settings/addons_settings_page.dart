@@ -114,7 +114,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text(
-                'Cancel',
+                '取消',
                 style: TextStyle(color: Colors.white.withValues(alpha: 0.45)),
               ),
             ),
@@ -163,7 +163,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text(
-                'Cancel',
+                '取消',
                 style: TextStyle(color: Colors.white.withValues(alpha: 0.45)),
               ),
             ),
@@ -180,7 +180,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
                 ),
               ),
               child: const Text(
-                'Remove',
+                '移除',
                 style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
@@ -204,7 +204,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Addons',
+          '外掛程式',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),

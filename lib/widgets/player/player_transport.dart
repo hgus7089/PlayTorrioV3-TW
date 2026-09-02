@@ -228,7 +228,7 @@ class PlayerTransport extends StatelessWidget {
                       size: btnSize,
                       iconSize: btnIconSize,
                       icon: const Icon(Icons.video_library_rounded),
-                      tooltip: 'Episodes',
+                      tooltip: '集數',
                       active: isEpisodesActive,
                       activeColor: PlayerTheme.accent,
                       onPressed: onToggleEpisodes,
@@ -303,7 +303,7 @@ class PlayerTransport extends StatelessWidget {
                       icon: Icon(
                         isFullscreen ? Icons.fullscreen_exit_rounded : Icons.fullscreen_rounded,
                       ),
-                      tooltip: isFullscreen ? 'Exit Fullscreen' : 'Fullscreen',
+                      tooltip: isFullscreen ? 'Exit Fullscreen' : '全螢幕',
                       onPressed: onToggleFullscreen,
                     ),
                   ],

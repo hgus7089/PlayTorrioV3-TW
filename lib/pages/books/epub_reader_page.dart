@@ -495,7 +495,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
           children: [
             IconButton(
               icon: Icon(Icons.arrow_back_ios_new_rounded, color: settings.textColor, size: 18),
-              tooltip: 'Back to Library',
+              tooltip: '返回書庫',
               onPressed: () => Navigator.of(context).pop(),
             ),
             const SizedBox(width: ReaderTokens.space4),
@@ -605,7 +605,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Ch. $current of $total',
+                      '第 $current / $total 章',
                       style: TextStyle(
                         fontFamily: ReaderTokens.uiFont,
                         fontSize: 12.5,
@@ -708,12 +708,12 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
               children: [
                 OutlinedButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Back to Library'),
+                  child: const Text('返回書庫'),
                 ),
                 const SizedBox(width: ReaderTokens.space12),
                 FilledButton(
                   onPressed: _loadBook,
-                  child: const Text('Retry'),
+                  child: const Text('重試'),
                 ),
               ],
             ),
@@ -733,7 +733,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
             Icon(Icons.library_books_rounded, color: settings.secondaryTextColor, size: 48),
             const SizedBox(height: ReaderTokens.space16),
             Text(
-              'No readable chapters found.',
+              '找不到可閱讀的章節。',
               style: TextStyle(
                 fontFamily: ReaderTokens.uiFont,
                 color: settings.secondaryTextColor,
@@ -769,7 +769,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
                   Icon(Icons.format_list_bulleted_rounded, color: settings.accentColor, size: 20),
                   const SizedBox(width: ReaderTokens.space12),
                   Text(
-                    'Table of Contents',
+                    '目錄',
                     style: TextStyle(
                       fontFamily: ReaderTokens.uiFont,
                       fontSize: 16,
@@ -784,7 +784,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
               child: toc.isEmpty
                   ? Center(
                       child: Text(
-                        'No table of contents available',
+                        '沒有可用的目錄',
                         style: TextStyle(
                           fontFamily: ReaderTokens.uiFont,
                           color: settings.secondaryTextColor,

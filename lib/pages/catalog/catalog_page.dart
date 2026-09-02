@@ -219,7 +219,7 @@ class _CatalogPageState extends State<CatalogPage> {
           else if (_items.isEmpty)
             const Center(
               child: Text(
-                'No items found',
+                '找不到項目',
                 style: TextStyle(color: Colors.white54, fontSize: 16),
               ),
             )

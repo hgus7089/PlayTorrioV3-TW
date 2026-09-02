@@ -423,7 +423,7 @@ class _WatchScreenState extends State<WatchScreen>
                             ),
                             SizedBox(width: _S.xs),
                             Text(
-                              'Watch Sources',
+                              '播放來源',
                               style: TextStyle(
                                 color: _C.textPrimary,
                                 fontSize: 18,
@@ -1006,7 +1006,7 @@ class _WatchScreenState extends State<WatchScreen>
                 Icon(Icons.stream_rounded, color: _C.accent, size: 20),
                 SizedBox(width: _S.xs),
                 Text(
-                  'Watch Sources',
+                  '播放來源',
                   style: TextStyle(
                     color: _C.textPrimary,
                     fontSize: 18,
@@ -1879,7 +1879,7 @@ class _CopyMagnetButtonState extends State<_CopyMagnetButton> {
             Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 18),
             SizedBox(width: 8),
             Text(
-              'Magnet link copied to clipboard',
+              'Magnet 連結已複製到剪貼簿',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 13,
@@ -2122,7 +2122,7 @@ class _EmptySourcesStateWidgetState extends State<_EmptySourcesStateWidget>
           ),
           const SizedBox(height: 24),
           const Text(
-            'No sources found',
+            '找不到播放來源',
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
@@ -2133,7 +2133,7 @@ class _EmptySourcesStateWidgetState extends State<_EmptySourcesStateWidget>
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 280),
             child: const Text(
-              'No streams found. Install more addons from Settings or try another title.',
+              '找不到串流來源。請從「設定」安裝更多外掛，或嘗試其他內容。',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF9B9BA5),
@@ -2190,7 +2190,7 @@ class _EmptySourcesStateWidgetState extends State<_EmptySourcesStateWidget>
                       ),
                       SizedBox(width: 8),
                       Text(
-                        'Install Addons',
+                        '安裝外掛',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,

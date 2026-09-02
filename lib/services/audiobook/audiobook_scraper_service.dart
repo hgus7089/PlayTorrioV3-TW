@@ -347,7 +347,7 @@ class AudiobookScraperService {
       final uri = Uri.parse(url);
       final host = uri.host;
       return AudiobookChapter(
-        title: 'Chapter ${i + 1}',
+        title: '第 ${i + 1} 章',
         url: streams[i],
         httpHeaders: {
           'Referer': 'https://$host/',
@@ -374,7 +374,7 @@ class AudiobookScraperService {
     return List.generate(
       streams.length,
       (i) => AudiobookChapter(
-        title: 'Chapter ${i + 1}',
+        title: '第 ${i + 1} 章',
         url: streams[i],
         httpHeaders: {
           'Referer': 'https://audiozaic.com/',
@@ -494,7 +494,7 @@ class AudiobookScraperService {
           return List.generate(
             urls.length,
             (i) => AudiobookChapter(
-              title: urls.length == 1 ? 'Full Audiobook' : 'Chapter ${i + 1}',
+              title: urls.length == 1 ? 'Full Audiobook' : '第 ${i + 1} 章',
               url: urls[i],
             ),
           );

@@ -21,14 +21,14 @@ class BookDownloadService {
     }
     try {
       final appDocDir = await getApplicationDocumentsDirectory();
-      final dir = Directory(p.join(appDocDir.path, 'PlayTorrio', 'Books'));
+      final dir = Directory(p.join(appDocDir.path, 'PlayTorrio', '書籍'));
       if (!await dir.exists()) {
         await dir.create(recursive: true);
       }
       _booksDirectory = dir;
       return dir;
     } catch (_) {
-      final temp = Directory(p.join(Directory.systemTemp.path, 'PlayTorrio', 'Books'));
+      final temp = Directory(p.join(Directory.systemTemp.path, 'PlayTorrio', '書籍'));
       if (!await temp.exists()) {
         await temp.create(recursive: true);
       }

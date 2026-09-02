@@ -21,7 +21,7 @@ extension TraktSeeAllListX on TraktSeeAllList {
   String get label {
     switch (this) {
       case TraktSeeAllList.continueWatching:
-        return 'Continue Watching';
+        return '繼續觀看';
       case TraktSeeAllList.watchlist:
         return 'Watchlist';
       case TraktSeeAllList.history:

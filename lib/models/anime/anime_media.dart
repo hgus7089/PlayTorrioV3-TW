@@ -111,7 +111,7 @@ class AnimeMedia {
       case 'RELEASING':
         return 'Airing';
       case 'FINISHED':
-        return 'Completed';
+        return '已完成';
       case 'NOT_YET_RELEASED':
         return 'Upcoming';
       case 'CANCELLED':
@@ -413,10 +413,10 @@ class AnimeEpisode {
   });
 
   String get displayTitle {
-    if (title.isNotEmpty && title != 'Episode $number') {
+    if (title.isNotEmpty && title != '第 $number 集') {
       return 'EP $number: $title';
     }
-    return 'Episode $number';
+    return '第 $number 集';
   }
 }
 

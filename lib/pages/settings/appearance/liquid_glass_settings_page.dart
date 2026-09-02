@@ -23,7 +23,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Liquid Glass Setup',
+          'Liquid Glass 設定',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
         actions: [
@@ -34,7 +34,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
               if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Liquid Glass settings reset to defaults.'),
+                  content: Text('Liquid Glass 設定已重設為預設值。'),
                   behavior: SnackBarBehavior.floating,
                   backgroundColor: Color(0xFF7C5CFF),
                 ),
@@ -42,7 +42,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
             },
             icon: const Icon(Icons.restore_rounded, size: 18, color: Colors.white70),
             label: const Text(
-              'Reset',
+              '重設',
               style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w700),
             ),
           ),
@@ -87,12 +87,12 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Enable Liquid Glass',
+                                '啟用 Liquid Glass',
                                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Colors.white),
                               ),
                               SizedBox(height: 3),
                               Text(
-                                'Real-time refraction shaders, jelly springs, and lenses',
+                                '即時折射著色器、彈性效果與鏡片效果',
                                 style: TextStyle(color: Colors.white54, fontSize: 12.5),
                               ),
                             ],
@@ -122,7 +122,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
 
               // Presets Selection
               Text(
-                'PRESETS',
+                '預設',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -137,7 +137,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
 
               // Detailed Sliders
               Text(
-                'PHYSICS & OPTICAL PARAMETERS',
+                '物理與光學參數',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -480,7 +480,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 right: 0,
                 child: Center(
                   child: Text(
-                    'Hover or tap the icons to preview spring wobble & scale',
+                    '將滑鼠移到圖示或點擊，以預覽彈性晃動與縮放效果',
                     style: TextStyle(fontSize: 11, color: Colors.white.withValues(alpha: 0.5)),
                   ),
                 ),

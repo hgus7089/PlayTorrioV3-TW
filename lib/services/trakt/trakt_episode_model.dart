@@ -38,7 +38,7 @@ class TraktEpisode {
   /// Display title like "E01 - Pilot" or "E01" if no meaningful title.
   String get displayTitle {
     final epNum = number.toString().padLeft(2, '0');
-    if (title.isNotEmpty && title != 'Episode $number') {
+    if (title.isNotEmpty && title != '第 $number 集') {
       return 'E$epNum - $title';
     }
     return 'Episode $epNum';

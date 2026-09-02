@@ -437,7 +437,7 @@ class _BookDetailSheetState extends State<BookDetailSheet> {
                   // Metadata Details List
                   if (book.publisher.isNotEmpty || book.isbn.isNotEmpty || book.series.isNotEmpty) ...[
                     const Text(
-                      'Information',
+                      '資訊',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 15,
@@ -475,7 +475,7 @@ class _BookDetailSheetState extends State<BookDetailSheet> {
                   // Description
                   if (book.description.isNotEmpty) ...[
                     const Text(
-                      'Overview',
+                      '概覽',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 15,

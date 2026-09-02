@@ -687,7 +687,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
                                 Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 18),
                                 SizedBox(width: 8),
                                 Text(
-                                  'Magnet link copied to clipboard',
+                                  'Magnet 連結已複製到剪貼簿',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 13,

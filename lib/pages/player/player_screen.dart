@@ -235,7 +235,7 @@ class _PlayerScreenState extends State<PlayerScreen>
       final rawUrl = _currentSource.url;
 
       // Handle offline downloaded file playback directly
-      if (rawUrl != null && (File(rawUrl).existsSync() || _currentSource.name == 'Downloaded')) {
+      if (rawUrl != null && (File(rawUrl).existsSync() || _currentSource.name == '已下載')) {
         print('[PlayerScreen] Initializing offline local file playback: $rawUrl');
         await PlayerSettings.applyPreOpenProperties(_player);
         await _player.open(Media(rawUrl), play: true);
@@ -1351,7 +1351,7 @@ class _PlayerScreenState extends State<PlayerScreen>
         ? 'S${_currentEpisode!.season ?? 1}:E${_currentEpisode!.episode ?? 1}${episodeTitle != null && episodeTitle.isNotEmpty ? " • $episodeTitle" : ""}'
         : widget.detail?.year;
 
-    final isOfflineFile = _currentSource.name == 'Downloaded';
+    final isOfflineFile = _currentSource.name == '已下載';
 
     return Stack(
       children: [

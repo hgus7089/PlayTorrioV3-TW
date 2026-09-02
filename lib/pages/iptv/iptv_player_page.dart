@@ -676,7 +676,7 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
                                             ),
                                             child: Text(
                                               isLive
-                                                  ? 'LIVE'
+                                                  ? '直播'
                                                   : (ch.category.isNotEmpty ? ch.category.toUpperCase() : 'VOD'),
                                               style: const TextStyle(
                                                 color: Colors.white,

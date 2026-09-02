@@ -301,7 +301,7 @@ class _MusicPageState extends State<MusicPage> {
             ),
             SizedBox(width: 10),
             Text(
-              'New Playlist',
+              '新增播放清單',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w900,
@@ -381,7 +381,7 @@ class _MusicPageState extends State<MusicPage> {
           TextButton(
             onPressed: () => Navigator.pop(ctx),
             child: const Text(
-              'Cancel',
+              '取消',
               style: TextStyle(color: Colors.white54),
             ),
           ),
@@ -406,7 +406,7 @@ class _MusicPageState extends State<MusicPage> {
               if (ctx.mounted) Navigator.pop(ctx);
             },
             child: const Text(
-              'Create',
+              '建立',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -563,7 +563,7 @@ class _MusicPageState extends State<MusicPage> {
                 Row(
                   children: [
                     const Text(
-                      'Save to Playlist',
+                      '儲存至播放清單',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -582,7 +582,7 @@ class _MusicPageState extends State<MusicPage> {
                         size: 18,
                       ),
                       label: const Text(
-                        'New Playlist',
+                        '新增播放清單',
                         style: TextStyle(
                           color: Color(0xFF7C5CFF),
                           fontWeight: FontWeight.bold,
@@ -606,7 +606,7 @@ class _MusicPageState extends State<MusicPage> {
                           ),
                           const SizedBox(height: 10),
                           const Text(
-                            'No custom playlists yet',
+                            '目前還沒有自訂播放清單',
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 14,
@@ -623,7 +623,7 @@ class _MusicPageState extends State<MusicPage> {
                               _showCreatePlaylistDialog(initialTrack: track);
                             },
                             child: const Text(
-                              'Create First Playlist',
+                              '建立第一個播放清單',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -1131,7 +1131,7 @@ class _MusicPageState extends State<MusicPage> {
           if ((_selectedFilter == 'All' || _selectedFilter.startsWith('Tracks')) &&
               _searchData.tracks.isNotEmpty) ...[
             const Text(
-              'Songs',
+              '歌曲',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -1161,10 +1161,10 @@ class _MusicPageState extends State<MusicPage> {
             ),
             const SizedBox(height: 32),
           ],
-          if ((_selectedFilter == 'All' || _selectedFilter.startsWith('Artists')) &&
+          if ((_selectedFilter == 'All' || _selectedFilter.startsWith('藝人')) &&
               _searchData.artists.isNotEmpty) ...[
             const Text(
-              'Artists',
+              '藝人',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -1219,10 +1219,10 @@ class _MusicPageState extends State<MusicPage> {
             ),
             const SizedBox(height: 32),
           ],
-          if ((_selectedFilter == 'All' || _selectedFilter.startsWith('Albums')) &&
+          if ((_selectedFilter == 'All' || _selectedFilter.startsWith('專輯')) &&
               _searchData.albums.isNotEmpty) ...[
             const Text(
-              'Albums',
+              '專輯',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -1252,10 +1252,10 @@ class _MusicPageState extends State<MusicPage> {
             ),
             const SizedBox(height: 32),
           ],
-          if ((_selectedFilter == 'All' || _selectedFilter.startsWith('Playlists')) &&
+          if ((_selectedFilter == 'All' || _selectedFilter.startsWith('播放清單')) &&
               _searchData.playlists.isNotEmpty) ...[
             const Text(
-              'Playlists',
+              '播放清單',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -1301,12 +1301,12 @@ class _MusicPageState extends State<MusicPage> {
           setState(() {
             if (label.startsWith('Tracks')) {
               _selectedFilter = 'Tracks';
-            } else if (label.startsWith('Artists')) {
-              _selectedFilter = 'Artists';
-            } else if (label.startsWith('Albums')) {
-              _selectedFilter = 'Albums';
-            } else if (label.startsWith('Playlists')) {
-              _selectedFilter = 'Playlists';
+            } else if (label.startsWith('藝人')) {
+              _selectedFilter = '藝人';
+            } else if (label.startsWith('專輯')) {
+              _selectedFilter = '專輯';
+            } else if (label.startsWith('播放清單')) {
+              _selectedFilter = '播放清單';
             } else {
               _selectedFilter = 'All';
             }
@@ -1357,7 +1357,7 @@ class _MusicPageState extends State<MusicPage> {
       padding: const EdgeInsets.only(top: 80, left: 24, right: 24, bottom: 150),
       children: [
         const Text(
-          'Browse Moods & Genres',
+          '瀏覽情緒與音樂類型',
           style: TextStyle(
             color: Colors.white,
             fontSize: 26,
@@ -1440,7 +1440,7 @@ class _MusicPageState extends State<MusicPage> {
       padding: const EdgeInsets.only(top: 80, left: 24, right: 24, bottom: 150),
       children: [
         const Text(
-          'Radio Stations & Live Streams',
+          '廣播電台與直播串流',
           style: TextStyle(
             color: Colors.white,
             fontSize: 26,
@@ -1450,7 +1450,7 @@ class _MusicPageState extends State<MusicPage> {
         ),
         const SizedBox(height: 6),
         const Text(
-          'Continuous music channels tuned to your mood.',
+          '依照你的心情提供連續播放的音樂頻道。',
           style: TextStyle(color: Color(0xFF9E9EA8), fontSize: 14),
         ),
         const SizedBox(height: 20),
@@ -1517,7 +1517,7 @@ class _MusicPageState extends State<MusicPage> {
         Row(
           children: [
             const Text(
-              'Your Library',
+              '你的音樂庫',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 26,
@@ -1538,7 +1538,7 @@ class _MusicPageState extends State<MusicPage> {
                 onPressed: () => _showCreatePlaylistDialog(),
                 icon: const Icon(Icons.add_rounded, color: Colors.white, size: 18),
                 label: const Text(
-                  'New Playlist',
+                  '新增播放清單',
                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -1600,7 +1600,7 @@ class _MusicPageState extends State<MusicPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            'Liked Songs',
+                            '喜歡的歌曲',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
@@ -1699,7 +1699,7 @@ class _MusicPageState extends State<MusicPage> {
                               Row(
                                 children: [
                                   const Text(
-                                    'Downloaded Songs',
+                                    '已下載歌曲',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -1764,7 +1764,7 @@ class _MusicPageState extends State<MusicPage> {
         // User Playlists Section
         if (playlists.isNotEmpty) ...[
           const Text(
-            'Custom Playlists',
+            '自訂播放清單',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -1842,7 +1842,7 @@ class _MusicPageState extends State<MusicPage> {
         // Recent History Section
         if (recent.isNotEmpty) ...[
           const Text(
-            'Recently Played',
+            '最近播放',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -2468,7 +2468,7 @@ class _MusicTopHeader extends StatelessWidget {
               _MusicHoverable(
                 scaleFactor: 1.1,
                 child: IconButton(
-                  tooltip: 'Music Player Studio',
+                  tooltip: '音樂播放器工作室',
                   icon: const Icon(Icons.dashboard_customize_rounded, color: Colors.white70, size: 20),
                   onPressed: () {
                     Navigator.push(
@@ -2612,7 +2612,7 @@ class _AudioSourceSelectorButton extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Audio Source & Quality',
+                              '音訊來源與品質',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -2621,7 +2621,7 @@ class _AudioSourceSelectorButton extends StatelessWidget {
                             ),
                             SizedBox(height: 2),
                             Text(
-                              'Choose your preferred music extraction engine',
+                              '選擇偏好的音樂擷取引擎',
                               style: TextStyle(color: Colors.white54, fontSize: 12),
                             ),
                           ],
@@ -2955,7 +2955,7 @@ class _MusicHeroBillboard extends StatelessWidget {
                           onPressed: onPlayTap,
                           icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
                           label: const Text(
-                            'Play Now',
+                            '立即播放',
                             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -3954,7 +3954,7 @@ class _MusicLyricsDrawer extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 const Text(
-                  'Synced Lyrics',
+                  '同步歌詞',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -3979,7 +3979,7 @@ class _MusicLyricsDrawer extends StatelessWidget {
               const Expanded(
                 child: Center(
                   child: Text(
-                    'No lyrics found for this track.',
+                    '找不到此曲目的歌詞。',
                     style: TextStyle(color: Colors.white38, fontSize: 13),
                   ),
                 ),
@@ -4081,7 +4081,7 @@ class _MusicQueueDrawer extends StatelessWidget {
                   TextButton(
                     onPressed: controller.clearQueue,
                     child: const Text(
-                      'Clear',
+                      '清除',
                       style: TextStyle(color: Colors.white54, fontSize: 12),
                     ),
                   ),
@@ -4096,7 +4096,7 @@ class _MusicQueueDrawer extends StatelessWidget {
               const Expanded(
                 child: Center(
                   child: Text(
-                    'Queue is empty',
+                    '播放佇列是空的',
                     style: TextStyle(color: Colors.white38, fontSize: 13),
                   ),
                 ),
@@ -4251,7 +4251,7 @@ class _MusicArtistDetailModal extends StatelessWidget {
                               ),
                               onPressed: () => onPlayTrack(details.topTracks.first, details.topTracks),
                               icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
-                              label: const Text('Play All', style: TextStyle(color: Colors.white)),
+                              label: const Text('全部播放', style: TextStyle(color: Colors.white)),
                             ),
                         ],
                       ),
@@ -4563,7 +4563,7 @@ class _MusicCuratedPlaylistDetailModal extends StatelessWidget {
                                   ),
                                   onPressed: () => onPlayTrack(tracks.first, tracks),
                                   icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
-                                  label: const Text('Play Playlist', style: TextStyle(color: Colors.white)),
+                                  label: const Text('播放播放清單', style: TextStyle(color: Colors.white)),
                                 ),
                                 OutlinedButton.icon(
                                   style: OutlinedButton.styleFrom(
@@ -4709,7 +4709,7 @@ class _MusicUserPlaylistDetailModal extends StatelessWidget {
                                   ),
                                   onPressed: () => onPlayTrack(tracks.first, tracks),
                                   icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
-                                  label: const Text('Play Playlist', style: TextStyle(color: Colors.white)),
+                                  label: const Text('播放播放清單', style: TextStyle(color: Colors.white)),
                                 ),
                                 OutlinedButton.icon(
                                   style: OutlinedButton.styleFrom(
@@ -4749,7 +4749,7 @@ class _MusicUserPlaylistDetailModal extends StatelessWidget {
                   child: tracks.isEmpty
                       ? const Center(
                           child: Text(
-                            'No tracks in this playlist yet',
+                            '此播放清單目前沒有曲目',
                             style: TextStyle(color: Colors.white38),
                           ),
                         )
@@ -5195,7 +5195,7 @@ class _MusicExpandedPlayerState extends State<_MusicExpandedPlayer> with SingleT
               OutlinedButton.icon(
                 onPressed: widget.onQueueTap,
                 icon: Icon(Icons.queue_music_rounded, color: palette.primaryColor, size: 16),
-                label: const Text('Playing Queue', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                label: const Text('播放佇列', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: palette.primaryColor.withValues(alpha: 0.4)),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -5554,7 +5554,7 @@ class _MusicShortcutsModal extends StatelessWidget {
                     const Icon(Icons.keyboard_rounded, color: Color(0xFF7C5CFF), size: 24),
                     const SizedBox(width: 10),
                     const Text(
-                      'Keyboard Shortcuts',
+                      '鍵盤快速鍵',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -5694,7 +5694,7 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Downloaded Songs',
+                            '已下載歌曲',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: isMobile ? 19 : 23,
@@ -5742,7 +5742,7 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                           widget.onPlayTrack(tracks.first, tracks);
                         },
                         icon: const Icon(Icons.play_arrow_rounded, size: 20),
-                        label: const Text('Play All', style: TextStyle(fontWeight: FontWeight.bold)),
+                        label: const Text('全部播放', style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
                       const SizedBox(width: 8),
                       OutlinedButton.icon(
@@ -5759,7 +5759,7 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                           widget.onPlayTrack(tracks.first, tracks);
                         },
                         icon: const Icon(Icons.shuffle_rounded, size: 18),
-                        label: const Text('Shuffle'),
+                        label: const Text('隨機播放'),
                       ),
                     ],
                     const Spacer(),
@@ -5900,12 +5900,12 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(c, false),
-                                              child: const Text('Cancel', style: TextStyle(color: Colors.white60)),
+                                              child: const Text('取消', style: TextStyle(color: Colors.white60)),
                                             ),
                                             ElevatedButton(
                                               style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
                                               onPressed: () => Navigator.pop(c, true),
-                                              child: const Text('Delete', style: TextStyle(color: Colors.white)),
+                                              child: const Text('刪除', style: TextStyle(color: Colors.white)),
                                             ),
                                           ],
                                         ),

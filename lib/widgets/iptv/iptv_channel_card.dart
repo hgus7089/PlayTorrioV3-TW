@@ -169,7 +169,7 @@ class _IptvChannelCardState extends State<IptvChannelCard> {
                                       ),
                                       const SizedBox(width: 4),
                                       const Text(
-                                        'LIVE',
+                                        '直播',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 9.5,

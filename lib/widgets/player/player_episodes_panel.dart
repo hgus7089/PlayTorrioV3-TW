@@ -374,7 +374,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
-                  'Episodes',
+                  '集數',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,

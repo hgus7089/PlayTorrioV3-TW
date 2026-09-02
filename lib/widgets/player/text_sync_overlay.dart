@@ -730,7 +730,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                                           ),
                                           icon: const Icon(Icons.check_rounded, size: 14),
                                           label: const Text(
-                                            'Sync from here',
+                                            '從這裡同步',
                                             style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
                                           ),
                                           onPressed: () => _handleSyncFromHere(index),
@@ -890,7 +890,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                     size: 15,
                   ),
                   label: Text(
-                    _isPlaying ? 'Pause' : 'Play',
+                    _isPlaying ? '暫停' : '播放',
                     style: TextStyle(fontSize: isLandscapeMobile ? 11 : 12),
                   ),
                   onPressed: () {

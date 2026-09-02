@@ -31,7 +31,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Home Page UI & Themes',
+          '首頁介面與主題',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -43,7 +43,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
             children: [
               // ── 1. Color Schemes & Themes ──
               Text(
-                'COLOR THEMES & ACCENTS',
+                '色彩主題與強調色',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -58,7 +58,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 2. Ambient Background Lighting & Moving Glows ──
               Text(
-                'AMBIENT BACKGROUND LIGHTING & MOVING GLOWS',
+                '環境背景燈光與流動光暈',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -73,7 +73,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 2b. Custom Wallpaper & Background Photo ──
               Text(
-                'CUSTOM BACKGROUND & WALLPAPER',
+                '自訂背景與桌布',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -130,7 +130,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
-                                  'Custom Wallpaper & Lighting Blend',
+                                  '自訂桌布與燈光融合',
                                   style: TextStyle(
                                     fontSize: 14.5,
                                     fontWeight: FontWeight.w700,
@@ -162,7 +162,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 3. "Because you have on your list" Section ──
               Text(
-                'SMART RECOMMENDATIONS ("BECAUSE YOU HAVE ON YOUR LIST")',
+                '智慧推薦（「因為你加入了清單」）',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -177,7 +177,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 4. Hero Carousel & Spotlight ──
               Text(
-                'HERO BANNER & SPOTLIGHT',
+                '主視覺橫幅與焦點',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -192,7 +192,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 5. Card Layout & Poster Density ──
               Text(
-                'POSTER CARDS & DENSITY',
+                '海報卡片與密度',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -369,7 +369,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                               Icon(Icons.auto_awesome_motion_rounded, size: 14, color: palette.primaryColor),
                               const SizedBox(width: 6),
                               Text(
-                                'LIVE LIGHTING ENGINE PREVIEW',
+                                '即時燈光引擎預覽',
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w800,
@@ -410,7 +410,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Moving Ambient Lights & Glows',
+                          '流動環境光與光暈',
                           style: TextStyle(
                             fontSize: 14.5,
                             fontWeight: FontWeight.w700,
@@ -419,7 +419,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          'Drifting faded light waves & floating color orbs in background',
+                          '背景中的漂浮淡光波與彩色光球',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -443,7 +443,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
                 // Lighting Pattern / Position
                 Text(
-                  'Lighting Pattern & Position',
+                  '燈光樣式與位置',
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
@@ -502,7 +502,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Glow Strength / Intensity',
+                              '光暈強度',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
@@ -553,7 +553,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Motion Flow Speed',
+                              '流動速度',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
@@ -632,7 +632,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Smart Recommendations',
+                      '智慧推薦',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
@@ -641,7 +641,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                     ),
                     SizedBox(height: 2),
                     Text(
-                      'Configure personalized & algorithmic recommendation sliders',
+                      '設定個人化與演算法推薦列',
                       style: TextStyle(fontSize: 12, color: Colors.white54),
                     ),
                   ],
@@ -698,7 +698,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                     ),
                   ),
                   child: Text(
-                    isAuthed ? 'CONNECTED' : 'DISCONNECTED',
+                    isAuthed ? '已連線' : '未連線',
                     style: TextStyle(
                       fontSize: 9.5,
                       fontWeight: FontWeight.w800,
@@ -736,7 +736,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                     ),
                   ),
                   child: Text(
-                    isAuthed ? 'CONNECTED' : 'DISCONNECTED',
+                    isAuthed ? '已連線' : '未連線',
                     style: TextStyle(
                       fontSize: 9.5,
                       fontWeight: FontWeight.w800,
@@ -758,7 +758,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
           // Position Dropdown
           Text(
-            'Recommendation Sliders Position on Home Page',
+            '推薦列在首頁的位置',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -899,7 +899,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Show Hero Spotlight Banner',
+                          '顯示主視覺焦點橫幅',
                           style: TextStyle(
                             fontSize: 14.5,
                             fontWeight: FontWeight.w700,
@@ -908,7 +908,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          'Featured rotation banner at the top of the home page',
+                          '在首頁頂部顯示精選輪播橫幅',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -942,7 +942,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
                   // Hero Style Selector
                   Text(
-                    'Spotlight Style',
+                    '焦點樣式',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
@@ -998,7 +998,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Auto-Rotate Spotlight',
+                              '自動輪播焦點內容',
                               style: TextStyle(
                                 fontSize: 13.5,
                                 fontWeight: FontWeight.w700,
@@ -1007,7 +1007,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                             ),
                             SizedBox(height: 2),
                             Text(
-                              'Cycles through featured titles automatically',
+                              '自動輪播精選內容',
                               style: TextStyle(fontSize: 11.5, color: Colors.white54),
                             ),
                           ],
@@ -1077,7 +1077,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Ambient Backdrop Lighting',
+                          '環境背景燈光',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -1086,7 +1086,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          'Soft diffused color glow behind active hero poster',
+                          '在目前主視覺海報後方呈現柔和擴散的色彩光暈',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -1125,7 +1125,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Poster Size & Grid Density',
+            '海報大小與網格密度',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -1183,7 +1183,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Show IMDB Rating Badges',
+                          '顯示 IMDb 評分標籤',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -1192,7 +1192,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          'Display rating star pill on poster corners',
+                          '在海報角落顯示星級評分',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -1226,7 +1226,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                     children: [
                       const Expanded(
                         child: Text(
-                          'Poster Hover Zoom Scale',
+                          '海報懸停縮放比例',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,

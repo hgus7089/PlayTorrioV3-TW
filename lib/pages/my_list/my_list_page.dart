@@ -103,7 +103,7 @@ class _MyListPageState extends State<MyListPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: Text('Cancel',
+            child: Text('取消',
                 style: TextStyle(color: Colors.white.withValues(alpha: 0.6))),
           ),
           ElevatedButton(
@@ -112,7 +112,7 @@ class _MyListPageState extends State<MyListPage> {
               backgroundColor: const Color(0xFFE50914),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             ),
-            child: const Text('Remove', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: const Text('移除', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           ),
         ],
       ),
@@ -369,7 +369,7 @@ class _MyListPageState extends State<MyListPage> {
                       items: const [
                         DropdownMenuItem(value: 'recent', child: Text('Recently Added')),
                         DropdownMenuItem(value: 'title', child: Text('Alphabetical')),
-                        DropdownMenuItem(value: 'year', child: Text('Release Year')),
+                        DropdownMenuItem(value: 'year', child: Text('上映年份')),
                       ],
                       onChanged: (v) => setState(() => _sortBy = v!),
                     ),

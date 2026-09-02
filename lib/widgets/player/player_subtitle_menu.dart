@@ -403,7 +403,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
           children: [
             // Off Button
             _buildLanguagePill(
-              label: 'Off',
+              label: '關閉',
               isSelected: isOff,
               icon: Icon(
                 Icons.block_rounded,
@@ -589,7 +589,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                         ),
                         const SizedBox(width: 7),
                         const Text(
-                          'Off',
+                          '關閉',
                           style: TextStyle(
                             color: PlayerTheme.inkMuted,
                             fontSize: 12,

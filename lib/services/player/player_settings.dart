@@ -46,7 +46,7 @@ enum SubtitleStylePreset {
 /// Anime4K GLSL shader upscaling presets for libmpv / media_kit.
 enum Anime4KPreset {
   off(
-    'Off',
+    '關閉',
     'Standard video playback without neural upscaling shaders',
     [],
   ),

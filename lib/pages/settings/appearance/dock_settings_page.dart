@@ -41,7 +41,7 @@ class _DockSettingsPageState extends State<DockSettingsPage> {
             },
             icon: const Icon(Icons.restore_rounded, size: 18, color: Colors.white70),
             label: const Text(
-              'Reset',
+              '重設',
               style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w700),
             ),
           ),

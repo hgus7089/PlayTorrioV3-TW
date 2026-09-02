@@ -232,7 +232,7 @@ class _MangaPageState extends State<MangaPage> {
                       Icon(Icons.tune_rounded, color: palette.primaryColor, size: 20),
                       const SizedBox(width: 10),
                       const Text(
-                        'Customize Manga Section',
+                        '自訂漫畫區塊',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -307,7 +307,7 @@ class _MangaPageState extends State<MangaPage> {
                     builder: (context, show, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show "Continue Reading" Slider', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('顯示「繼續閱讀」滑動列', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: show,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => MangaSettings.setShowContinueReading(val),
@@ -320,7 +320,7 @@ class _MangaPageState extends State<MangaPage> {
                     builder: (context, show, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show Content Type Badge on Posters', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('在海報上顯示內容類型標籤', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: show,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => MangaSettings.setShowContentTypeBadge(val),
@@ -343,7 +343,7 @@ class _MangaPageState extends State<MangaPage> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       icon: const Icon(Icons.settings_rounded, size: 18),
-                      label: const Text('More Appearance & Reader Settings', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                      label: const Text('更多外觀與閱讀設定', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                       onPressed: () {
                         Navigator.pop(ctx);
                         Navigator.push(
@@ -441,7 +441,7 @@ class _MangaPageState extends State<MangaPage> {
                 vertical: isMobile ? 12.0 : 16.0,
               ),
               child: Text(
-                'Continue Reading',
+                '繼續閱讀',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: isMobile ? 22 : 28,
@@ -562,7 +562,7 @@ class _MangaPageState extends State<MangaPage> {
             hasScrollBody: false,
             child: Center(
               child: Text(
-                'No manga found',
+                '找不到漫畫',
                 style: TextStyle(color: Colors.white70, fontSize: 18),
               ),
             ),
@@ -696,7 +696,7 @@ class _MangaPageState extends State<MangaPage> {
                 ),
                 child: IconButton(
                   icon: const Icon(Icons.tune_rounded, color: Colors.white70),
-                  tooltip: 'Customize Manga Section',
+                  tooltip: '自訂漫畫區塊',
                   onPressed: () => _showMangaCustomizer(context),
                   splashRadius: 20,
                 ),

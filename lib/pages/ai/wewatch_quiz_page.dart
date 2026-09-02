@@ -348,7 +348,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                 Icon(Icons.auto_awesome_rounded, size: 14, color: palette.primaryColor),
                 const SizedBox(width: 5),
                 Text(
-                  'AI TASTE MATCH',
+                  'AI 品味配對',
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w900,
@@ -361,7 +361,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
           ),
           const SizedBox(width: 10),
           const Text(
-            'Recommendation Quiz',
+            '推薦問卷',
             style: TextStyle(
               color: Colors.white,
               fontSize: 17,
@@ -377,7 +377,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               ),
               icon: const Icon(Icons.refresh_rounded, size: 16),
-              label: const Text('Retake', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+              label: const Text('重新測驗', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
               onPressed: () => setState(() => _recommendations = null),
             ),
         ],
@@ -412,7 +412,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'What do you like to watch?',
+                        '你喜歡看什麼？',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -507,7 +507,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
               icon: const Icon(Icons.add_rounded, size: 18),
-              label: const Text('Add Another Title', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+              label: const Text('新增其他內容', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
               onPressed: _addAnotherTitle,
             ),
           ),
@@ -716,7 +716,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                         children: [
                           Icon(Icons.lightbulb_outline_rounded, size: 14, color: palette.primaryColor),
                           const SizedBox(width: 6),
-                          const Text('Need ideas?', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                          const Text('需要靈感嗎？', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
                           const SizedBox(width: 4),
                           Icon(
                             (_showStarterPicks[index] ?? false)
@@ -803,7 +803,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'How was your experience with it?',
+                              '你對它的感受如何？',
                               style: TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 8),
@@ -851,7 +851,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                                   child: CircularProgressIndicator(strokeWidth: 2, color: palette.primaryColor),
                                 ),
                                 const SizedBox(width: 8),
-                                const Text('Fetching reason tags...', style: TextStyle(color: Colors.white54, fontSize: 11)),
+                                const Text('正在取得原因標籤…', style: TextStyle(color: Colors.white54, fontSize: 11)),
                               ],
                             ),
                           );
@@ -1010,7 +1010,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Your Personalized Matches',
+                  '你的個人化推薦',
                   style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.w900, letterSpacing: -0.3),
                 ),
                 const SizedBox(height: 2),

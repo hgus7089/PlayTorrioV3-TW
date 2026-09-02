@@ -128,7 +128,7 @@ class _SearchPageState extends State<SearchPage> {
   void _playDirectStream(String url) {
     final trimmed = url.trim();
     final uri = Uri.tryParse(trimmed);
-    String title = 'Direct Stream';
+    String title = '直接串流';
     if (uri != null && uri.pathSegments.isNotEmpty) {
       final last = uri.pathSegments.last;
       if (last.isNotEmpty) {
@@ -141,10 +141,10 @@ class _SearchPageState extends State<SearchPage> {
       MaterialPageRoute(
         builder: (_) => PlayerScreen(
           source: StreamSource(
-            name: 'Direct Stream',
+            name: '直接串流',
             title: title,
             url: trimmed,
-            addonName: 'Direct Stream',
+            addonName: '直接串流',
           ),
           title: title,
         ),
@@ -408,7 +408,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'No results for "$_lastQuery"',
+                    '找不到「$_lastQuery」的結果',
                     style: TextStyle(
                       color: Colors.white.withValues(alpha: 0.6),
                       fontSize: 16,
@@ -456,7 +456,7 @@ class _SearchPageState extends State<SearchPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'RECENT SEARCHES',
+                  '最近搜尋',
                   style: TextStyle(
                     fontSize: 11.5,
                     fontWeight: FontWeight.w800,
@@ -467,7 +467,7 @@ class _SearchPageState extends State<SearchPage> {
                 GestureDetector(
                   onTap: _clearSearchHistory,
                   child: const Text(
-                    'Clear All',
+                    '全部清除',
                     style: TextStyle(
                       fontSize: 11.5,
                       fontWeight: FontWeight.w600,
@@ -511,7 +511,7 @@ class _SearchPageState extends State<SearchPage> {
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              'TRENDING & SUGGESTED',
+              '熱門與推薦',
               style: TextStyle(
                 fontSize: 11.5,
                 fontWeight: FontWeight.w800,

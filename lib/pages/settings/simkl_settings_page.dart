@@ -211,7 +211,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                                       borderRadius: BorderRadius.circular(6),
                                     ),
                                     child: Text(
-                                      _isAuthed ? 'CONNECTED' : 'DISCONNECTED',
+                                      _isAuthed ? '已連線' : '未連線',
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w800,
@@ -225,7 +225,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                               const SizedBox(height: 4),
                               Text(
                                 _isLoading
-                                    ? 'Checking credentials...'
+                                    ? '正在檢查登入資訊…'
                                     : _isAuthed
                                         ? 'Logged in as ${_username ?? 'Simkl User'}'
                                         : 'Sign in with PIN to activate Simkl cloud sync',
@@ -252,7 +252,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                         ),
                         onPressed: _logout,
-                        child: const Text('Disconnect', style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: const Text('解除連線', style: TextStyle(fontWeight: FontWeight.bold)),
                       );
                     } else if (!_pairing) {
                       actionWidget = ElevatedButton.icon(
@@ -377,7 +377,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
               // Cloud Sync Actions
               if (_isAuthed) ...[
                 const Text(
-                  'Cloud Sync Controls',
+                  '雲端同步控制',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white70),
                 ),
                 const SizedBox(height: 12),

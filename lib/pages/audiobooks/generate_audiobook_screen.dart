@@ -139,7 +139,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx, false),
-                child: const Text('Cancel', style: TextStyle(color: Colors.white54)),
+                child: const Text('取消', style: TextStyle(color: Colors.white54)),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -247,10 +247,10 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
         title: const Text('Remove Generation Job?'),
         content: Text('Remove "${job.fileName}" from the generation list?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('取消')),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Remove', style: TextStyle(color: Colors.redAccent)),
+            child: const Text('移除', style: TextStyle(color: Colors.redAccent)),
           ),
         ],
       ),
@@ -399,7 +399,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx),
-                child: const Text('Cancel', style: TextStyle(color: Colors.white54)),
+                child: const Text('取消', style: TextStyle(color: Colors.white54)),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -845,7 +845,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
     String statusLabel;
     if (isDone) {
       statusColor = const Color(0xFF10B981);
-      statusLabel = 'Completed';
+      statusLabel = '已完成';
     } else if (isFailed) {
       statusColor = Colors.redAccent;
       statusLabel = 'Failed';
@@ -1137,7 +1137,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
           ),
           ElevatedButton.icon(
             icon: const Icon(Icons.play_arrow_rounded, size: 16),
-            label: const Text('Play'),
+            label: const Text('播放'),
             style: ElevatedButton.styleFrom(
               backgroundColor: palette.primaryColor,
               foregroundColor: Colors.white,
@@ -1158,8 +1158,8 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                   title: const Text('Delete Audiobook?'),
                   content: Text('Delete "${book.title}" from your library?'),
                   actions: [
-                    TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
-                    TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Delete', style: TextStyle(color: Colors.redAccent))),
+                    TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('取消')),
+                    TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('刪除', style: TextStyle(color: Colors.redAccent))),
                   ],
                 ),
               );

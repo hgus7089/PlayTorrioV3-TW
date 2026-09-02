@@ -269,7 +269,7 @@ class _AnimeArabicDetailsPageState extends State<AnimeArabicDetailsPage>
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(backgroundColor: _Palette.accent),
                               onPressed: _loadDetails,
-                              child: const Text('Retry'),
+                              child: const Text('重試'),
                             ),
                           ],
                         ),

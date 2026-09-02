@@ -18,7 +18,7 @@ enum DockItemKey {
   ),
   books(
     key: 'books',
-    label: 'Books',
+    label: '書籍',
     icon: Icons.menu_book_rounded,
     isRemovable: true,
     description: 'Read EPUB and PDF eBooks with custom themes.',
@@ -46,21 +46,21 @@ enum DockItemKey {
   ),
   liveTv(
     key: 'livetv',
-    label: 'Live TV',
+    label: '直播電視',
     icon: Icons.live_tv_rounded,
     isRemovable: true,
     description: 'Watch worldwide live television channels and sports streams.',
   ),
   addons(
     key: 'addons',
-    label: 'Addons',
+    label: '外掛程式',
     icon: Icons.extension_rounded,
     isRemovable: true,
     description: 'Manage installed Stremio add-ons, catalogs, and scrapers.',
   ),
   downloads(
     key: 'downloads',
-    label: 'Downloads',
+    label: '下載',
     icon: Icons.download_rounded,
     isRemovable: true,
     description: 'View active torrent and direct media download tasks.',
@@ -74,7 +74,7 @@ enum DockItemKey {
   ),
   settings(
     key: 'settings',
-    label: 'Settings',
+    label: '設定',
     icon: Icons.settings_rounded,
     isRemovable: false,
     description: 'App preferences, accounts, appearance, and player options.',

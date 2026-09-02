@@ -83,7 +83,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
         ),
         title: screenW < 600
             ? const Text(
-                'Music Player Studio',
+                '音樂播放器工作室',
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
               )
             : Row(
@@ -105,7 +105,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Custom Music Player Studio',
+                          '自訂音樂播放器工作室',
                           style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16, letterSpacing: -0.3),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -146,7 +146,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                         Icon(Icons.fullscreen_rounded, size: 14, color: _studioPlayerTarget == 0 ? Colors.white : Colors.white60),
                         if (screenW >= 480) ...[
                           const SizedBox(width: 4),
-                          Text('Fullscreen', style: TextStyle(color: _studioPlayerTarget == 0 ? Colors.white : Colors.white60, fontSize: 11, fontWeight: FontWeight.bold)),
+                          Text('全螢幕', style: TextStyle(color: _studioPlayerTarget == 0 ? Colors.white : Colors.white60, fontSize: 11, fontWeight: FontWeight.bold)),
                         ],
                       ],
                     ),
@@ -167,7 +167,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                         Icon(Icons.dock_rounded, size: 14, color: _studioPlayerTarget == 1 ? Colors.white : Colors.white60),
                         if (screenW >= 480) ...[
                           const SizedBox(width: 4),
-                          Text('Mini Bar', style: TextStyle(color: _studioPlayerTarget == 1 ? Colors.white : Colors.white60, fontSize: 11, fontWeight: FontWeight.bold)),
+                          Text('迷你列', style: TextStyle(color: _studioPlayerTarget == 1 ? Colors.white : Colors.white60, fontSize: 11, fontWeight: FontWeight.bold)),
                         ],
                       ],
                     ),
@@ -180,7 +180,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
 
           if (screenW < 520)
             IconButton(
-              tooltip: 'Apply As Active Player',
+              tooltip: '套用為目前播放器',
               onPressed: _applyAsActivePlayer,
               icon: Icon(Icons.check_circle_rounded, color: palette.primaryColor, size: 24),
             )
@@ -188,7 +188,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
             TextButton.icon(
               onPressed: _applyAsActivePlayer,
               icon: const Icon(Icons.check_circle_rounded, color: Colors.white, size: 18),
-              label: const Text('Apply Active', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
+              label: const Text('套用並啟用', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
               style: TextButton.styleFrom(
                 backgroundColor: palette.primaryColor.withValues(alpha: 0.25),
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -248,7 +248,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Studio Designer',
+                                  '工作室設計器',
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: _mobileViewMode == 0 ? FontWeight.bold : FontWeight.w500,
@@ -284,7 +284,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Live Preview Canvas',
+                                  '即時預覽畫布',
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: _mobileViewMode == 1 ? FontWeight.bold : FontWeight.w500,
@@ -313,7 +313,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                                 backgroundColor: palette.primaryColor,
                                 icon: const Icon(Icons.touch_app_rounded, color: Colors.white, size: 18),
                                 label: const Text(
-                                  'Test Live Canvas',
+                                  '測試即時畫布',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),
@@ -331,7 +331,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                                 backgroundColor: const Color(0xFF161A28),
                                 icon: Icon(Icons.arrow_back_rounded, color: palette.primaryColor, size: 18),
                                 label: const Text(
-                                  'Back to Customizer',
+                                  '返回自訂器',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),
@@ -628,7 +628,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
               OutlinedButton.icon(
                 onPressed: () => setState(() => _showLyricsPreview = true),
                 icon: Icon(Icons.format_quote_rounded, color: palette.primaryColor, size: 15),
-                label: const Text('Synced Lyrics', style: TextStyle(color: Colors.white, fontSize: 11.5, fontWeight: FontWeight.bold)),
+                label: const Text('同步歌詞', style: TextStyle(color: Colors.white, fontSize: 11.5, fontWeight: FontWeight.bold)),
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: palette.primaryColor.withValues(alpha: 0.4)),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -639,7 +639,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
               OutlinedButton.icon(
                 onPressed: () => setState(() => _showQueuePreview = true),
                 icon: Icon(Icons.queue_music_rounded, color: palette.primaryColor, size: 15),
-                label: const Text('Playing Queue', style: TextStyle(color: Colors.white, fontSize: 11.5, fontWeight: FontWeight.bold)),
+                label: const Text('播放佇列', style: TextStyle(color: Colors.white, fontSize: 11.5, fontWeight: FontWeight.bold)),
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: palette.primaryColor.withValues(alpha: 0.4)),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -1168,8 +1168,8 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                _buildTabChip(0, Icons.drag_indicator_rounded, 'Drag & Drop Layout', palette),
-                _buildTabChip(1, Icons.graphic_eq_rounded, 'Seek Bar Canvas', palette),
+                _buildTabChip(0, Icons.drag_indicator_rounded, '拖放版面配置', palette),
+                _buildTabChip(1, Icons.graphic_eq_rounded, '進度列畫布', palette),
                 _buildTabChip(2, Icons.touch_app_rounded, 'Play Button & Physics', palette),
                 _buildTabChip(3, Icons.album_rounded, 'Artwork & Turntable', palette),
               ],

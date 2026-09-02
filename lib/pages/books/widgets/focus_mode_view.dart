@@ -436,7 +436,7 @@ class _FocusModeViewState extends State<FocusModeView> {
                               Icon(Icons.center_focus_strong_rounded, color: Color(0xFFA78BFA), size: 16),
                               SizedBox(width: ReaderTokens.space8),
                               Text(
-                                'Focus Mode Active',
+                                '專注模式已啟用',
                                 style: TextStyle(
                                   fontFamily: ReaderTokens.uiFont,
                                   fontSize: 12,
@@ -472,7 +472,7 @@ class _FocusModeViewState extends State<FocusModeView> {
                                   Icon(Icons.close_rounded, color: Colors.white, size: 16),
                                   SizedBox(width: ReaderTokens.space4),
                                   Text(
-                                    'Exit (Esc)',
+                                    '離開（Esc）',
                                     style: TextStyle(
                                       fontFamily: ReaderTokens.uiFont,
                                       fontSize: 12.5,

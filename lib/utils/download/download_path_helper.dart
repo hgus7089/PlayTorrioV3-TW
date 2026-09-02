@@ -81,7 +81,7 @@ class DownloadPathHelper {
     }
 
     final appDocDir = await getApplicationDocumentsDirectory();
-    final fallback = Directory(p.join(appDocDir.path, 'Downloads'));
+    final fallback = Directory(p.join(appDocDir.path, '下載'));
     if (!await fallback.exists()) {
       await fallback.create(recursive: true);
     }

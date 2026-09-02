@@ -288,7 +288,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                       TextButton(
                         onPressed: () => Navigator.of(ctx).pop(_PickResult<T>(null, true)),
                         child: Text(
-                          'Clear',
+                          '清除',
                           style: TextStyle(
                             color: AppThemeService.currentPalette.value.primaryColor,
                             fontWeight: FontWeight.w700,
@@ -376,7 +376,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
     final now = DateTime.now().year;
     final years = List.generate(40, (i) => now + 1 - i);
     _pickFromList<int>(
-      title: 'Release Year',
+      title: '上映年份',
       items: years,
       label: (y) => '$y',
       current: _year,
@@ -786,7 +786,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                                       Icon(Icons.close_rounded, size: 14, color: Colors.white70),
                                       SizedBox(width: 4),
                                       Text(
-                                        'Reset',
+                                        '重設',
                                         style: TextStyle(
                                           color: Colors.white70,
                                           fontSize: 12,

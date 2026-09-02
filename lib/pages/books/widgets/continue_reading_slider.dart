@@ -13,7 +13,7 @@ class ContinueReadingSlider extends StatefulWidget {
 
   const ContinueReadingSlider({
     super.key,
-    this.title = 'Continue Reading',
+    this.title = '繼續閱讀',
   });
 
   @override

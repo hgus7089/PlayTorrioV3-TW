@@ -94,7 +94,7 @@ Future<int?> showSimklRatingDialog(BuildContext context) {
               TextButton(
                 onPressed: () => Navigator.of(dialogContext).pop(),
                 child: const Text(
-                  'Cancel',
+                  '取消',
                   style: TextStyle(color: Colors.white54),
                 ),
               ),
@@ -257,14 +257,14 @@ List<SimklMenuOption> buildSimklMenuOptions({
     if (current != 'plantowatch')
       moveOption(
         'plantowatch',
-        'Plan to Watch',
+        '計畫觀看',
         Icons.bookmark_add_rounded,
         const Color(0xFFFBBF24),
       ),
     if (isSeries && current != 'watching')
       moveOption(
         'watching',
-        'Watching',
+        '觀看中',
         Icons.visibility_rounded,
         const Color(0xFF60A5FA),
       ),
@@ -278,14 +278,14 @@ List<SimklMenuOption> buildSimklMenuOptions({
     if (current != 'completed')
       moveOption(
         'completed',
-        'Completed',
+        '已完成',
         Icons.check_circle_rounded,
         const Color(0xFF34D399),
       ),
     if (current != 'dropped')
       moveOption(
         'dropped',
-        'Dropped',
+        '已放棄',
         Icons.cancel_rounded,
         const Color(0xFFEF4444),
       ),
@@ -298,7 +298,7 @@ List<SimklMenuOption> buildSimklMenuOptions({
         icon: Icons.playlist_remove_rounded,
         color: Color(0xFFF87171),
         label: 'Remove from Continue Watching',
-        caption: 'Remove',
+        caption: '移除',
       ),
     SimklMenuOption(
       action: SimklItemMenuAction.rate,

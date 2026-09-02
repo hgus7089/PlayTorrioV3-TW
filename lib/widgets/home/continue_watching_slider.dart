@@ -21,7 +21,7 @@ class ContinueWatchingSlider extends StatefulWidget {
   const ContinueWatchingSlider({
     super.key,
     this.typeFilter,
-    this.title = 'Continue Watching',
+    this.title = '繼續觀看',
   });
 
   @override

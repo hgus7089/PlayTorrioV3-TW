@@ -16,7 +16,7 @@ class AboutSettingsPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'About PlayTorrio',
+          '關於 PlayTorrio',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -70,7 +70,7 @@ class AboutSettingsPage extends StatelessWidget {
                       builder: (context, snapshot) {
                         final version = snapshot.hasData ? snapshot.data!.version : '1.0.9';
                         return Text(
-                          'Version $version • Next-Gen Streaming Hub',
+                          '版本 $version • 次世代串流中心',
                           style: TextStyle(
                             fontSize: 13,
                             color: Colors.white.withValues(alpha: 0.45),
@@ -99,7 +99,7 @@ class AboutSettingsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Universal Entertainment Ecosystem',
+                      '全方位娛樂生態系',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
@@ -108,7 +108,7 @@ class AboutSettingsPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'PlayTorrio is an all-in-one entertainment client bringing together movies, TV series, anime, live IPTV, music, manga, and audiobooks into a unified, high-performance interface with custom Liquid Glass visuals.',
+                      'PlayTorrio 是一站式娛樂客戶端，整合電影、影集、動漫、IPTV 直播、音樂、漫畫與有聲書，並以高效能介面與自訂 Liquid Glass 視覺效果呈現。',
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.white.withValues(alpha: 0.5),
@@ -123,7 +123,7 @@ class AboutSettingsPage extends StatelessWidget {
 
               // Architecture & Core Technologies
               Text(
-                'CORE TECHNOLOGIES',
+                '核心技術',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,

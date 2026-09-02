@@ -557,7 +557,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
                   Row(
                     children: [
                       const Text(
-                        'Custom Music Player Studio',
+                        '自訂音樂播放器工作室',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -596,7 +596,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
                     },
                     icon: const Icon(Icons.tune_rounded, size: 18, color: Colors.white),
                     label: const Text(
-                      'Enter Custom Player Studio',
+                      '進入自訂播放器工作室',
                       style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13, color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -661,7 +661,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
               );
             },
             icon: const Icon(Icons.dashboard_customize_rounded, size: 18, color: Colors.white),
-            label: const Text('Launch Full Custom Player Studio', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13.5, color: Colors.white)),
+            label: const Text('開啟完整自訂播放器工作室', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13.5, color: Colors.white)),
             style: ElevatedButton.styleFrom(
               backgroundColor: palette.primaryColor,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

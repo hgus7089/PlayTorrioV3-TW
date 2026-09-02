@@ -284,7 +284,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                     builder: (context, showExpiry, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show Portal Expiry Date', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('顯示入口到期日', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showExpiry,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => IptvSettings.setShowPortalExpiry(val),
@@ -308,7 +308,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                   const SizedBox(height: 8),
 
                   const Text(
-                    'Default Starting Tab',
+                    '預設起始分頁',
                     style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(height: 8),
@@ -318,7 +318,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                       return Row(
                         children: [
                           ChoiceChip(
-                            label: const Text('Xtream Panels'),
+                            label: const Text('Xtream 面板'),
                             selected: tabIdx == 0,
                             selectedColor: palette.primaryColor.withValues(alpha: 0.25),
                             backgroundColor: const Color(0xFF0D1017),
@@ -338,7 +338,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           ),
                           const SizedBox(width: 8),
                           ChoiceChip(
-                            label: const Text('M3U Playlists'),
+                            label: const Text('M3U 播放清單'),
                             selected: tabIdx == 1,
                             selectedColor: palette.primaryColor.withValues(alpha: 0.25),
                             backgroundColor: const Color(0xFF0D1017),
@@ -705,7 +705,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           color: const Color(0xFF00D2EF),
                         ),
                         label: Text(
-                          allSelected ? 'Deselect All' : 'Select All',
+                          allSelected ? '全部取消選取' : '全部選取',
                           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12.5),
                         ),
                         onPressed: () {
@@ -764,7 +764,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         onPressed: _deleteAllPortals,
-                        child: const Text('Delete All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                        child: const Text('全部刪除', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                       ),
                     ],
                   ),
@@ -1232,7 +1232,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           color: const Color(0xFF00D2EF),
                         ),
                         label: Text(
-                          allSelected ? 'Deselect All' : 'Select All',
+                          allSelected ? '全部取消選取' : '全部選取',
                           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12.5),
                         ),
                         onPressed: () {
@@ -1291,7 +1291,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         onPressed: _deleteAllM3u,
-                        child: const Text('Delete All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                        child: const Text('全部刪除', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                       ),
                     ],
                   ),

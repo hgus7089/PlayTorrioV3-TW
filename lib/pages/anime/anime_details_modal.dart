@@ -426,19 +426,19 @@ class _AnimeDetailsModalState extends State<AnimeDetailsModal> {
                                     itemBuilder: (context) => [
                                       const PopupMenuItem(
                                         value: AnimeWatchStatus.watching,
-                                        child: Text('Watching', style: TextStyle(color: Colors.white)),
+                                        child: Text('觀看中', style: TextStyle(color: Colors.white)),
                                       ),
                                       const PopupMenuItem(
                                         value: AnimeWatchStatus.planToWatch,
-                                        child: Text('Plan to Watch', style: TextStyle(color: Colors.white)),
+                                        child: Text('計畫觀看', style: TextStyle(color: Colors.white)),
                                       ),
                                       const PopupMenuItem(
                                         value: AnimeWatchStatus.completed,
-                                        child: Text('Completed', style: TextStyle(color: Colors.white)),
+                                        child: Text('已完成', style: TextStyle(color: Colors.white)),
                                       ),
                                       const PopupMenuItem(
                                         value: AnimeWatchStatus.dropped,
-                                        child: Text('Dropped', style: TextStyle(color: Colors.white54)),
+                                        child: Text('已放棄', style: TextStyle(color: Colors.white54)),
                                       ),
                                     ],
                                     child: _HoverScale(
@@ -599,7 +599,7 @@ class _AnimeDetailsModalState extends State<AnimeDetailsModal> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       const Text(
-                                        'Episodes',
+                                        '集數',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,

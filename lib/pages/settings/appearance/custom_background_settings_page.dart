@@ -77,7 +77,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                   onPressed: () => Navigator.pop(context),
                 ),
                 title: const Text(
-                  'Custom Background & Wallpaper',
+                  '自訂背景與桌布',
                   style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
                 ),
               ),
@@ -91,7 +91,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                       Padding(
                         padding: const EdgeInsets.only(bottom: 16),
                         child: Text(
-                          'Upload your own photo or choose a curated wallpaper. Theme colors and moving ambient lights softly blend into the background for a unified look.',
+                          '上傳自己的照片或選擇精選桌布。主題色彩與流動環境光會柔和地融入背景，打造一致的視覺效果。',
                           style: TextStyle(
                             fontSize: 13.5,
                             color: Colors.white.withValues(alpha: 0.5),
@@ -269,7 +269,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                             ),
                             IconButton(
                               icon: const Icon(Icons.content_paste_rounded, color: Colors.white54, size: 18),
-                              tooltip: 'Paste from Clipboard',
+                              tooltip: '從剪貼簿貼上',
                               onPressed: () async {
                                 final data = await Clipboard.getData(Clipboard.kTextPlain);
                                 if (data?.text != null) {
@@ -280,7 +280,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                             TextButton(
                               onPressed: _handleApplyUrl,
                               child: Text(
-                                'Apply',
+                                '套用',
                                 style: TextStyle(
                                   color: palette.primaryColor,
                                   fontWeight: FontWeight.w700,
@@ -295,7 +295,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
 
                       // ── 3. Curated Wallpaper Presets ──
                       Text(
-                        'CURATED DARK WALLPAPERS',
+                        '精選深色桌布',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
@@ -407,7 +407,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
 
                       // ── 4. Atmosphere & Blending Controls ──
                       Text(
-                        'WALLPAPER & LIGHT BLENDING CONTROLS',
+                        '桌布與燈光融合控制',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
@@ -470,7 +470,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                               contentPadding: EdgeInsets.zero,
                               activeColor: palette.primaryColor,
                               title: const Text(
-                                'Blend Moving Ambient Lights',
+                                '融合流動環境光',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
@@ -478,7 +478,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                                 ),
                               ),
                               subtitle: Text(
-                                'Softly illuminates and animates theme lights over your wallpaper',
+                                '在桌布上柔和地呈現並動畫化主題燈光',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.white.withValues(alpha: 0.5),

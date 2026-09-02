@@ -227,7 +227,7 @@ class _BooksPageState extends State<BooksPage> {
                           const SizedBox(height: 16),
                           ElevatedButton(
                             onPressed: () => _loadBooks(),
-                            child: const Text('Retry'),
+                            child: const Text('重試'),
                           ),
                         ],
                       ),
@@ -243,7 +243,7 @@ class _BooksPageState extends State<BooksPage> {
                           Icon(Icons.search_off_rounded, color: Colors.white38, size: 56),
                           SizedBox(height: 14),
                           Text(
-                            'No books found',
+                            '找不到書籍',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 16,
@@ -253,7 +253,7 @@ class _BooksPageState extends State<BooksPage> {
                           ),
                           SizedBox(height: 6),
                           Text(
-                            'Try searching for another title, author, or language',
+                            '請嘗試搜尋其他書名、作者或語言',
                             style: TextStyle(color: Colors.white38, fontSize: 13),
                           ),
                         ],
@@ -352,7 +352,7 @@ class _BooksPageState extends State<BooksPage> {
               ),
               const SizedBox(width: 10),
               const Text(
-                'Books',
+                '書籍',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 22,

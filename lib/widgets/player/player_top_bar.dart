@@ -184,7 +184,7 @@ class PlayerTopBar extends StatelessWidget {
                           ),
                           const SizedBox(width: 7),
                           Text(
-                            'Episodes',
+                            '集數',
                             style: TextStyle(
                               color: isEpisodesActive ? Colors.white : Colors.white.withValues(alpha: 0.9),
                               fontSize: 12.5,

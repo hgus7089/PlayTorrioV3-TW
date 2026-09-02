@@ -184,7 +184,7 @@ class DiscordRpcService {
 
     final presence = DiscordPresence(
       type: DiscordActivityType.watching,
-      details: 'Watching $cleanTitle',
+      details: '正在觀看 $cleanTitle',
       state: isPaused
           ? 'Paused'
           : (year != null && year.trim().isNotEmpty ? '($year)' : 'In PlayTorrioV3'),
@@ -236,7 +236,7 @@ class DiscordRpcService {
 
     final presence = DiscordPresence(
       type: DiscordActivityType.watching,
-      details: 'Watching $cleanTitle',
+      details: '正在觀看 $cleanTitle',
       state: stateText,
       largeAsset: hasValidPoster
           ? DiscordAsset.fromUrl(posterUrl.trim(), text: cleanTitle)
@@ -291,7 +291,7 @@ class DiscordRpcService {
 
     final presence = DiscordPresence(
       type: DiscordActivityType.watching,
-      details: 'Watching $cleanTitle',
+      details: '正在觀看 $cleanTitle',
       state: stateText,
       largeAsset: hasValidPoster
           ? DiscordAsset.fromUrl(posterUrl.trim(), text: cleanTitle)

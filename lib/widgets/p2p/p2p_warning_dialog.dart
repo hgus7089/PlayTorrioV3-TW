@@ -126,7 +126,7 @@ class P2pWarningDialog extends StatelessWidget {
                         ),
                         IconButton(
                           icon: const Icon(Icons.close_rounded, color: Colors.white60),
-                          tooltip: 'Exit',
+                          tooltip: '退出',
                           onPressed: () => Navigator.of(context).pop(),
                         ),
                       ],
@@ -314,7 +314,7 @@ class P2pWarningDialog extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             foregroundColor: Colors.white60,
           ),
-          child: const Text('Exit', style: TextStyle(fontWeight: FontWeight.w600)),
+          child: const Text('退出', style: TextStyle(fontWeight: FontWeight.w600)),
         ),
         const Spacer(),
 
@@ -331,7 +331,7 @@ class P2pWarningDialog extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
           child: const Text(
-            "Don't Show Again",
+            "不再顯示",
             style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600),
           ),
         ),
@@ -345,7 +345,7 @@ class P2pWarningDialog extends StatelessWidget {
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('P2P torrent source turned off. PlayTorrioHTTP will be used.'),
+                  content: Text('P2P Torrent 來源已關閉，將使用 PlayTorrioHTTP。'),
                   backgroundColor: Color(0xFF10B981),
                   behavior: SnackBarBehavior.floating,
                 ),
@@ -355,7 +355,7 @@ class P2pWarningDialog extends StatelessWidget {
           },
           icon: const Icon(Icons.check_circle_outline_rounded, size: 18),
           label: const Text(
-            'Yes, Turn Off P2P',
+            '是，關閉 P2P',
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13),
           ),
           style: ElevatedButton.styleFrom(
@@ -383,7 +383,7 @@ class P2pWarningDialog extends StatelessWidget {
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('P2P torrent source turned off. PlayTorrioHTTP will be used.'),
+                  content: Text('P2P Torrent 來源已關閉，將使用 PlayTorrioHTTP。'),
                   backgroundColor: Color(0xFF10B981),
                   behavior: SnackBarBehavior.floating,
                 ),
@@ -393,7 +393,7 @@ class P2pWarningDialog extends StatelessWidget {
           },
           icon: const Icon(Icons.check_circle_outline_rounded, size: 18),
           label: const Text(
-            'Yes, Turn Off P2P',
+            '是，關閉 P2P',
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13.5),
           ),
           style: ElevatedButton.styleFrom(
@@ -421,7 +421,7 @@ class P2pWarningDialog extends StatelessWidget {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
                 child: const Text(
-                  "Don't Show Again",
+                  "不再顯示",
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                 ),
               ),
@@ -433,7 +433,7 @@ class P2pWarningDialog extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                 foregroundColor: Colors.white60,
               ),
-              child: const Text('Exit', style: TextStyle(fontWeight: FontWeight.w600)),
+              child: const Text('退出', style: TextStyle(fontWeight: FontWeight.w600)),
             ),
           ],
         ),

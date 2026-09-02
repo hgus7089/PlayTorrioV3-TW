@@ -718,7 +718,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
               ),
               icon: const Icon(Icons.play_arrow_rounded, size: 18),
               label: const Text(
-                'Play',
+                '播放',
                 style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.bold),
               ),
             )
