@@ -41,7 +41,7 @@ class _MusicPageState extends State<MusicPage> {
   final FocusNode _searchFocusNode = FocusNode();
   final FocusNode _keyboardFocusNode = FocusNode();
 
-  String _activeTab = '首頁'; // '首頁', '搜尋', 'Browse', 'Radio', 'Library'
+  String _activeTab = 'Home'; // 'Home', 'Search', 'Browse', 'Radio', 'Library'
 
   Map<String, List<MusicTrack>> _sections = {};
   List<MusicArtist> _trendingArtists = [];
@@ -148,7 +148,7 @@ class _MusicPageState extends State<MusicPage> {
         });
       }
     } catch (e) {
-      debugPrint('錯誤 loading music data: $e');
+      debugPrint('Error loading music data: $e');
       if (mounted) setState(() => _isLoading = false);
     }
   }
@@ -171,7 +171,7 @@ class _MusicPageState extends State<MusicPage> {
       setState(() {
         _isSearching = true;
         _activeQuery = trimmed;
-        if (_activeTab != '搜尋') _activeTab = '搜尋';
+        if (_activeTab != 'Search') _activeTab = 'Search';
       });
 
       final results = await _musicService.searchFull(trimmed);
@@ -192,7 +192,7 @@ class _MusicPageState extends State<MusicPage> {
   }
 
   Future<void> _openArtistModal(String artistId) async {
-    _showToast('載入中 artist details...');
+    _showToast('Loading artist details...');
     final details = await _musicService.fetchArtistDetails(artistId);
     if (details != null && mounted) {
       setState(() {
@@ -202,7 +202,7 @@ class _MusicPageState extends State<MusicPage> {
   }
 
   Future<void> _openAlbumModal(String albumId) async {
-    _showToast('載入中 album...');
+    _showToast('Loading album...');
     final details = await _musicService.fetchAlbumDetails(albumId);
     if (details != null && mounted) {
       setState(() {
@@ -212,7 +212,7 @@ class _MusicPageState extends State<MusicPage> {
   }
 
   Future<void> _openCuratedPlaylistModal(String playlistId) async {
-    _showToast('載入中 playlist...');
+    _showToast('Loading playlist...');
     final details = await _musicService.fetchPlaylistDetails(playlistId);
     if (details != null && mounted) {
       setState(() {
@@ -301,7 +301,7 @@ class _MusicPageState extends State<MusicPage> {
             ),
             SizedBox(width: 10),
             Text(
-              'New 播放list',
+              'New Playlist',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w900,
@@ -381,7 +381,7 @@ class _MusicPageState extends State<MusicPage> {
           TextButton(
             onPressed: () => Navigator.pop(ctx),
             child: const Text(
-              '取消',
+              'Cancel',
               style: TextStyle(color: Colors.white54),
             ),
           ),
@@ -398,7 +398,7 @@ class _MusicPageState extends State<MusicPage> {
                 final pl = await _libraryService.createPlaylist(name);
                 if (initialTrack != null) {
                   await _libraryService.addTrackToPlaylist(pl.id, initialTrack);
-                  _showToast('新增ed "${initialTrack.title}" to "$name"');
+                  _showToast('Added "${initialTrack.title}" to "$name"');
                 } else {
                   _showToast('Created playlist "$name"');
                 }
@@ -509,10 +509,10 @@ class _MusicPageState extends State<MusicPage> {
                         Navigator.pop(ctx);
                         if (isDownloaded) {
                           await MusicDownloadService.instance.deleteDownloadedTrack(track.id);
-                          _showToast('移除d "${track.title}" from downloads');
+                          _showToast('Removed "${track.title}" from downloads');
                         } else if (!isQueued) {
                           MusicDownloadService.instance.queueTrack(track);
-                          _showToast('新增ed "${track.title}" to download queue');
+                          _showToast('Added "${track.title}" to download queue');
                         }
                       },
                       borderRadius: BorderRadius.circular(14),
@@ -542,8 +542,8 @@ class _MusicPageState extends State<MusicPage> {
                             Expanded(
                               child: Text(
                                 isDownloaded
-                                    ? '已下載 離線 (Tap to 移除)'
-                                    : (isQueued ? '下載中 / Queued...' : '下載 Track 離線'),
+                                    ? 'Downloaded Offline (Tap to Remove)'
+                                    : (isQueued ? 'Downloading / Queued...' : 'Download Track Offline'),
                                 style: TextStyle(
                                   color: isDownloaded ? const Color(0xFF00E5FF) : Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -563,7 +563,7 @@ class _MusicPageState extends State<MusicPage> {
                 Row(
                   children: [
                     const Text(
-                      '儲存 to 播放list',
+                      'Save to Playlist',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -582,7 +582,7 @@ class _MusicPageState extends State<MusicPage> {
                         size: 18,
                       ),
                       label: const Text(
-                        'New 播放list',
+                        'New Playlist',
                         style: TextStyle(
                           color: Color(0xFF7C5CFF),
                           fontWeight: FontWeight.bold,
@@ -623,7 +623,7 @@ class _MusicPageState extends State<MusicPage> {
                               _showCreatePlaylistDialog(initialTrack: track);
                             },
                             child: const Text(
-                              'Create First 播放list',
+                              'Create First Playlist',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -694,13 +694,13 @@ class _MusicPageState extends State<MusicPage> {
                                 pl.id,
                                 track.id,
                               );
-                              _showToast('移除d from "${pl.title}"');
+                              _showToast('Removed from "${pl.title}"');
                             } else {
                               await _libraryService.addTrackToPlaylist(
                                 pl.id,
                                 track,
                               );
-                              _showToast('新增ed to "${pl.title}"');
+                              _showToast('Added to "${pl.title}"');
                             }
                             if (ctx.mounted) Navigator.pop(ctx);
                           },
@@ -747,7 +747,7 @@ class _MusicPageState extends State<MusicPage> {
                     onTabSelected: (tab) {
                       setState(() {
                         _activeTab = tab;
-                        if (tab != '搜尋') _hasSearched = false;
+                        if (tab != 'Search') _hasSearched = false;
                       });
                     },
                     onShortcutsTap: () => setState(() => _showShortcutsModal = true),
@@ -801,7 +801,7 @@ class _MusicPageState extends State<MusicPage> {
                   onTabSelected: (tab) {
                     setState(() {
                       _activeTab = tab;
-                      if (tab != '搜尋') _hasSearched = false;
+                      if (tab != 'Search') _hasSearched = false;
                     });
                   },
                 ),
@@ -997,12 +997,12 @@ class _MusicPageState extends State<MusicPage> {
       );
     }
 
-    if (_activeTab == '搜尋' || _hasSearched || _searchController.text.isNotEmpty) {
+    if (_activeTab == 'Search' || _hasSearched || _searchController.text.isNotEmpty) {
       return _buildSearchView();
     }
     if (_activeTab == 'Browse') return _buildBrowseView();
     if (_activeTab == 'Radio') return _buildRadioView();
-    if (_activeTab == '媒體庫') return _buildLibraryView();
+    if (_activeTab == 'Library') return _buildLibraryView();
 
     final bottomPad = isDesktop ? 120.0 : 160.0;
 
@@ -1026,8 +1026,8 @@ class _MusicPageState extends State<MusicPage> {
                 _libraryService.toggleLikeTrack(_heroTrack!);
                 _showToast(
                   _libraryService.isTrackLiked(_heroTrack!.id)
-                      ? '儲存d to 媒體庫'
-                      : '移除d from 媒體庫',
+                      ? 'Saved to Library'
+                      : 'Removed from Library',
                 );
               },
               onAddToPlaylistTap: () => _showAddToPlaylistMenu(_heroTrack!),
@@ -1088,7 +1088,7 @@ class _MusicPageState extends State<MusicPage> {
               const SizedBox(width: 8),
               _filterTab('Albums (${_searchData.albums.length})'),
               const SizedBox(width: 8),
-              _filterTab('播放lists (${_searchData.playlists.length})'),
+              _filterTab('Playlists (${_searchData.playlists.length})'),
             ],
           ),
         ),
@@ -1252,10 +1252,10 @@ class _MusicPageState extends State<MusicPage> {
             ),
             const SizedBox(height: 32),
           ],
-          if ((_selectedFilter == 'All' || _selectedFilter.startsWith('播放lists')) &&
+          if ((_selectedFilter == 'All' || _selectedFilter.startsWith('Playlists')) &&
               _searchData.playlists.isNotEmpty) ...[
             const Text(
-              '播放lists',
+              'Playlists',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -1305,8 +1305,8 @@ class _MusicPageState extends State<MusicPage> {
               _selectedFilter = 'Artists';
             } else if (label.startsWith('Albums')) {
               _selectedFilter = 'Albums';
-            } else if (label.startsWith('播放lists')) {
-              _selectedFilter = '播放lists';
+            } else if (label.startsWith('Playlists')) {
+              _selectedFilter = 'Playlists';
             } else {
               _selectedFilter = 'All';
             }
@@ -1357,7 +1357,7 @@ class _MusicPageState extends State<MusicPage> {
       padding: const EdgeInsets.only(top: 80, left: 24, right: 24, bottom: 150),
       children: [
         const Text(
-          'Browse Moods & 類型',
+          'Browse Moods & Genres',
           style: TextStyle(
             color: Colors.white,
             fontSize: 26,
@@ -1517,7 +1517,7 @@ class _MusicPageState extends State<MusicPage> {
         Row(
           children: [
             const Text(
-              'Your 媒體庫',
+              'Your Library',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 26,
@@ -1538,7 +1538,7 @@ class _MusicPageState extends State<MusicPage> {
                 onPressed: () => _showCreatePlaylistDialog(),
                 icon: const Icon(Icons.add_rounded, color: Colors.white, size: 18),
                 label: const Text(
-                  'New 播放list',
+                  'New Playlist',
                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -1699,7 +1699,7 @@ class _MusicPageState extends State<MusicPage> {
                               Row(
                                 children: [
                                   const Text(
-                                    '已下載 Songs',
+                                    'Downloaded Songs',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -1764,7 +1764,7 @@ class _MusicPageState extends State<MusicPage> {
         // User Playlists Section
         if (playlists.isNotEmpty) ...[
           const Text(
-            'Custom 播放lists',
+            'Custom Playlists',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -1842,7 +1842,7 @@ class _MusicPageState extends State<MusicPage> {
         // Recent History Section
         if (recent.isNotEmpty) ...[
           const Text(
-            'Recently 播放ed',
+            'Recently Played',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -2097,7 +2097,7 @@ class _MusicSidebar extends StatelessWidget {
                 _MusicHoverable(
                   scaleFactor: 1.08,
                   child: IconButton(
-                    tooltip: '返回 to 首頁 (Esc)',
+                    tooltip: 'Back to Home (Esc)',
                     icon: const Icon(Icons.arrow_back_rounded, color: Colors.white, size: 20),
                     style: IconButton.styleFrom(
                       backgroundColor: Colors.white.withValues(alpha: 0.08),
@@ -2139,15 +2139,15 @@ class _MusicSidebar extends StatelessWidget {
           const Divider(color: Colors.white10),
           const SizedBox(height: 8),
           _sidebarActionItem(
-            '退出 音樂',
+            'Exit Music',
             Icons.logout_rounded,
             () => Navigator.maybePop(context),
           ),
           const SizedBox(height: 4),
-          _sidebarItem('首頁', Icons.home_rounded),
+          _sidebarItem('Home', Icons.home_rounded),
           _sidebarItem('Browse', Icons.explore_rounded),
           _sidebarItem('Radio', Icons.radio_rounded),
-          _sidebarItem('媒體庫', Icons.library_music_rounded),
+          _sidebarItem('Library', Icons.library_music_rounded),
           const SizedBox(height: 12),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
@@ -2407,7 +2407,7 @@ class _MusicTopHeader extends StatelessWidget {
             _MusicHoverable(
               scaleFactor: 1.08,
               child: IconButton(
-                tooltip: '返回 to 首頁 (Esc)',
+                tooltip: 'Back to Home (Esc)',
                 icon: const Icon(Icons.arrow_back_rounded, color: Colors.white, size: 20),
                 style: IconButton.styleFrom(
                   backgroundColor: Colors.white.withValues(alpha: 0.08),
@@ -2442,8 +2442,8 @@ class _MusicTopHeader extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: isMobile ? 13 : 14),
                         decoration: InputDecoration(
                           hintText: isVeryNarrow
-                              ? '搜尋…'
-                              : (isMobile ? '搜尋 music…' : '搜尋 songs, artists, albums, playlists...'),
+                              ? 'Search…'
+                              : (isMobile ? 'Search music…' : 'Search songs, artists, albums, playlists...'),
                           hintStyle: TextStyle(color: Colors.white38, fontSize: isMobile ? 12 : 13),
                           border: InputBorder.none,
                           isDense: true,
@@ -2468,7 +2468,7 @@ class _MusicTopHeader extends StatelessWidget {
               _MusicHoverable(
                 scaleFactor: 1.1,
                 child: IconButton(
-                  tooltip: '音樂播放器工作室',
+                  tooltip: 'Music Player Studio',
                   icon: const Icon(Icons.dashboard_customize_rounded, color: Colors.white70, size: 20),
                   onPressed: () {
                     Navigator.push(
@@ -2482,7 +2482,7 @@ class _MusicTopHeader extends StatelessWidget {
               _MusicHoverable(
                 scaleFactor: 1.1,
                 child: IconButton(
-                  tooltip: '音樂 Atmosphere 設定',
+                  tooltip: 'Music Atmosphere Settings',
                   icon: const Icon(Icons.palette_rounded, color: Colors.white70, size: 20),
                   onPressed: () {
                     Navigator.push(
@@ -2497,7 +2497,7 @@ class _MusicTopHeader extends StatelessWidget {
             _MusicHoverable(
               scaleFactor: 1.1,
               child: IconButton(
-                tooltip: 'App 設定',
+                tooltip: 'App Settings',
                 icon: const Icon(Icons.settings_rounded, color: Colors.white70, size: 20),
                 onPressed: onSettingsTap,
               ),
@@ -2612,7 +2612,7 @@ class _AudioSourceSelectorButton extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '音訊 來源 & 畫質',
+                              'Audio Source & Quality',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -2621,7 +2621,7 @@ class _AudioSourceSelectorButton extends StatelessWidget {
                             ),
                             SizedBox(height: 2),
                             Text(
-                              '選擇 your preferred music extraction engine',
+                              'Choose your preferred music extraction engine',
                               style: TextStyle(color: Colors.white54, fontSize: 12),
                             ),
                           ],
@@ -2644,7 +2644,7 @@ class _AudioSourceSelectorButton extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     _sourceOptionCard(
-                      title: 'YouTube 音訊',
+                      title: 'YouTube Audio',
                       subtitle: 'High-speed audio extraction with intelligent track & duration matching',
                       icon: Icons.play_circle_fill_rounded,
                       iconColor: const Color(0xFFFF3366),
@@ -2790,10 +2790,10 @@ class _MusicMobileBottomNav extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _navItem('首頁', Icons.home_rounded),
+            _navItem('Home', Icons.home_rounded),
             _navItem('Browse', Icons.explore_rounded),
             _navItem('Radio', Icons.radio_rounded),
-            _navItem('媒體庫', Icons.library_music_rounded),
+            _navItem('Library', Icons.library_music_rounded),
           ],
         ),
       ),
@@ -2955,7 +2955,7 @@ class _MusicHeroBillboard extends StatelessWidget {
                           onPressed: onPlayTap,
                           icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
                           label: const Text(
-                            '播放 Now',
+                            'Play Now',
                             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -3009,7 +3009,7 @@ class _MusicTrendingArtists extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _MusicHorizontalScrollSection(
-      title: '🌟 熱門 Artists',
+      title: '🌟 Trending Artists',
       height: 130,
       itemCount: artists.length,
       itemBuilder: (context, index) {
@@ -3438,7 +3438,7 @@ class _MusicTrackRow extends StatelessWidget {
 
     if (isDownloaded) {
       return Tooltip(
-        message: '已下載 (離線)',
+        message: 'Downloaded (Offline)',
         child: Container(
           padding: const EdgeInsets.all(6),
           child: const Icon(
@@ -3452,7 +3452,7 @@ class _MusicTrackRow extends StatelessWidget {
 
     if (isDownloading) {
       return Tooltip(
-        message: '下載中 ${(task.progress * 100).toInt()}%',
+        message: 'Downloading ${(task.progress * 100).toInt()}%',
         child: Container(
           width: 28,
           height: 28,
@@ -3482,12 +3482,12 @@ class _MusicTrackRow extends StatelessWidget {
 
     return IconButton(
       icon: const Icon(Icons.download_rounded, color: Colors.white38, size: 18),
-      tooltip: '下載 Track',
+      tooltip: 'Download Track',
       onPressed: () {
         MusicDownloadService.instance.queueTrack(track);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('新增ed "${track.title}" to download queue'),
+            content: Text('Added "${track.title}" to download queue'),
             duration: const Duration(seconds: 2),
           ),
         );
@@ -3954,7 +3954,7 @@ class _MusicLyricsDrawer extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 const Text(
-                  '同步歌詞',
+                  'Synced Lyrics',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -4081,7 +4081,7 @@ class _MusicQueueDrawer extends StatelessWidget {
                   TextButton(
                     onPressed: controller.clearQueue,
                     child: const Text(
-                      '清除',
+                      'Clear',
                       style: TextStyle(color: Colors.white54, fontSize: 12),
                     ),
                   ),
@@ -4251,7 +4251,7 @@ class _MusicArtistDetailModal extends StatelessWidget {
                               ),
                               onPressed: () => onPlayTrack(details.topTracks.first, details.topTracks),
                               icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
-                              label: const Text('播放 All', style: TextStyle(color: Colors.white)),
+                              label: const Text('Play All', style: TextStyle(color: Colors.white)),
                             ),
                         ],
                       ),
@@ -4418,7 +4418,7 @@ class _MusicAlbumDetailModal extends StatelessWidget {
                                   ),
                                   onPressed: () => onPlayTrack(tracks.first, tracks),
                                   icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
-                                  label: const Text('播放 Album', style: TextStyle(color: Colors.white)),
+                                  label: const Text('Play Album', style: TextStyle(color: Colors.white)),
                                 ),
                                 OutlinedButton.icon(
                                   style: OutlinedButton.styleFrom(
@@ -4432,13 +4432,13 @@ class _MusicAlbumDetailModal extends StatelessWidget {
                                     MusicDownloadService.instance.queueTracks(tracks, collectionName: album.title);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text('新增ed ${tracks.length} tracks from "${album.title}" to download queue'),
+                                        content: Text('Added ${tracks.length} tracks from "${album.title}" to download queue'),
                                         duration: const Duration(seconds: 2),
                                       ),
                                     );
                                   },
                                   icon: const Icon(Icons.download_rounded, size: 18),
-                                  label: const Text('下載 Album'),
+                                  label: const Text('Download Album'),
                                 ),
                               ],
                             ),
@@ -4563,7 +4563,7 @@ class _MusicCuratedPlaylistDetailModal extends StatelessWidget {
                                   ),
                                   onPressed: () => onPlayTrack(tracks.first, tracks),
                                   icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
-                                  label: const Text('播放 播放list', style: TextStyle(color: Colors.white)),
+                                  label: const Text('Play Playlist', style: TextStyle(color: Colors.white)),
                                 ),
                                 OutlinedButton.icon(
                                   style: OutlinedButton.styleFrom(
@@ -4577,13 +4577,13 @@ class _MusicCuratedPlaylistDetailModal extends StatelessWidget {
                                     MusicDownloadService.instance.queueTracks(tracks, collectionName: playlist.title);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text('新增ed ${tracks.length} tracks from "${playlist.title}" to download queue'),
+                                        content: Text('Added ${tracks.length} tracks from "${playlist.title}" to download queue'),
                                         duration: const Duration(seconds: 2),
                                       ),
                                     );
                                   },
                                   icon: const Icon(Icons.download_rounded, size: 18),
-                                  label: const Text('下載 播放list'),
+                                  label: const Text('Download Playlist'),
                                 ),
                               ],
                             ),
@@ -4691,7 +4691,7 @@ class _MusicUserPlaylistDetailModal extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            'Custom 播放list • ${tracks.length} tracks',
+                            'Custom Playlist • ${tracks.length} tracks',
                             style: const TextStyle(color: Colors.white54, fontSize: 13),
                           ),
                           const SizedBox(height: 12),
@@ -4709,7 +4709,7 @@ class _MusicUserPlaylistDetailModal extends StatelessWidget {
                                   ),
                                   onPressed: () => onPlayTrack(tracks.first, tracks),
                                   icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
-                                  label: const Text('播放 播放list', style: TextStyle(color: Colors.white)),
+                                  label: const Text('Play Playlist', style: TextStyle(color: Colors.white)),
                                 ),
                                 OutlinedButton.icon(
                                   style: OutlinedButton.styleFrom(
@@ -4723,13 +4723,13 @@ class _MusicUserPlaylistDetailModal extends StatelessWidget {
                                     MusicDownloadService.instance.queueTracks(tracks, collectionName: playlist.title);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text('新增ed ${tracks.length} tracks from "${playlist.title}" to download queue'),
+                                        content: Text('Added ${tracks.length} tracks from "${playlist.title}" to download queue'),
                                         duration: const Duration(seconds: 2),
                                       ),
                                     );
                                   },
                                   icon: const Icon(Icons.download_rounded, size: 18),
-                                  label: const Text('下載 All'),
+                                  label: const Text('Download All'),
                                 ),
                               ],
                             ),
@@ -5148,7 +5148,7 @@ class _MusicExpandedPlayerState extends State<_MusicExpandedPlayer> with SingleT
               border: Border.all(color: const Color(0xFF00D2EF).withValues(alpha: 0.4)),
             ),
             child: Text(
-              '${widget.playerController.current畫質Label.toUpperCase()} • HI-RES LOSSLESS AUDIO',
+              '${widget.playerController.currentQualityLabel.toUpperCase()} • HI-RES LOSSLESS AUDIO',
               style: const TextStyle(color: Color(0xFF00D2EF), fontSize: 9.5, fontWeight: FontWeight.w800, letterSpacing: 0.6),
             ),
           ),
@@ -5195,7 +5195,7 @@ class _MusicExpandedPlayerState extends State<_MusicExpandedPlayer> with SingleT
               OutlinedButton.icon(
                 onPressed: widget.onQueueTap,
                 icon: Icon(Icons.queue_music_rounded, color: palette.primaryColor, size: 16),
-                label: const Text('播放佇列', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                label: const Text('Playing Queue', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: palette.primaryColor.withValues(alpha: 0.4)),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -5523,12 +5523,12 @@ class _MusicShortcutsModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final shortcuts = [
-      {'key': 'Space / K', 'desc': 'Toggle 播放 / 暫停'},
+      {'key': 'Space / K', 'desc': 'Toggle Play / Pause'},
       {'key': 'J', 'desc': 'Seek -5 seconds backward'},
       {'key': 'L', 'desc': 'Seek +5 seconds forward'},
-      {'key': 'M', 'desc': 'Toggle 靜音 / 取消靜音'},
+      {'key': 'M', 'desc': 'Toggle Mute / Unmute'},
       {'key': 'Q', 'desc': 'Toggle Queue Drawer'},
-      {'key': 'F', 'desc': 'Toggle 全螢幕 正在播放'},
+      {'key': 'F', 'desc': 'Toggle Fullscreen Now Playing'},
       {'key': '? / Shift + /', 'desc': 'Show Shortcuts'},
     ];
 
@@ -5694,7 +5694,7 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '已下載 Songs',
+                            'Downloaded Songs',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: isMobile ? 19 : 23,
@@ -5703,7 +5703,7 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            '${all已下載.length} offline tracks • $sizeMb MB storage',
+                            '${allDownloaded.length} offline tracks • $sizeMb MB storage',
                             style: const TextStyle(color: Colors.white54, fontSize: 12.5),
                           ),
                         ],
@@ -5742,7 +5742,7 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                           widget.onPlayTrack(tracks.first, tracks);
                         },
                         icon: const Icon(Icons.play_arrow_rounded, size: 20),
-                        label: const Text('播放 All', style: TextStyle(fontWeight: FontWeight.bold)),
+                        label: const Text('Play All', style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
                       const SizedBox(width: 8),
                       OutlinedButton.icon(
@@ -5771,7 +5771,7 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                         onChanged: (v) => setState(() => _searchQuery = v),
                         style: const TextStyle(color: Colors.white, fontSize: 12.5),
                         decoration: InputDecoration(
-                          hintText: '搜尋 offline...',
+                          hintText: 'Search offline...',
                           hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.35)),
                           prefixIcon: const Icon(Icons.search_rounded, color: Color(0xFF00B4DB), size: 16),
                           filled: true,
@@ -5889,23 +5889,23 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                                 children: [
                                   IconButton(
                                     icon: const Icon(Icons.delete_outline_rounded, color: Colors.white38, size: 20),
-                                    tooltip: '刪除 from downloads',
+                                    tooltip: 'Delete from downloads',
                                     onPressed: () async {
                                       final confirm = await showDialog<bool>(
                                         context: context,
                                         builder: (c) => AlertDialog(
                                           backgroundColor: const Color(0xFF161924),
-                                          title: const Text('刪除 已下載 Song', style: TextStyle(color: Colors.white)),
-                                          content: Text('刪除 "${item.title}" from offline storage?', style: const TextStyle(color: Colors.white70)),
+                                          title: const Text('Delete Downloaded Song', style: TextStyle(color: Colors.white)),
+                                          content: Text('Delete "${item.title}" from offline storage?', style: const TextStyle(color: Colors.white70)),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(c, false),
-                                              child: const Text('取消', style: TextStyle(color: Colors.white60)),
+                                              child: const Text('Cancel', style: TextStyle(color: Colors.white60)),
                                             ),
                                             ElevatedButton(
                                               style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
                                               onPressed: () => Navigator.pop(c, true),
-                                              child: const Text('刪除', style: TextStyle(color: Colors.white)),
+                                              child: const Text('Delete', style: TextStyle(color: Colors.white)),
                                             ),
                                           ],
                                         ),
@@ -5991,7 +5991,7 @@ class _MusicDownloadedTracksModalState extends State<_MusicDownloadedTracksModal
                 child: Text(
                   isExtracting
                       ? 'Extracting stream for "${activeTask.track.title}"...'
-                      : '下載中 "${activeTask.track.title}" (${(progress * 100).toInt()}%)',
+                      : 'Downloading "${activeTask.track.title}" (${(progress * 100).toInt()}%)',
                   style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

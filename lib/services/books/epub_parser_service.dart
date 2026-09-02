@@ -114,7 +114,7 @@ class EpubParserService {
     final bytes = await file.readAsBytes();
     final fmt = format.toLowerCase().trim();
 
-    return compute(_parseBookIn背景, _ParseBookPayload(bytes, fmt, p.basename(file.path)));
+    return compute(_parseBookInBackground, _ParseBookPayload(bytes, fmt, p.basename(file.path)));
   }
 }
 
@@ -126,7 +126,7 @@ class _ParseBookPayload {
   _ParseBookPayload(this.bytes, this.format, this.fileName);
 }
 
-EpubBookData _parseBookIn背景(_ParseBookPayload payload) {
+EpubBookData _parseBookInBackground(_ParseBookPayload payload) {
   final fmt = payload.format;
   if (fmt == 'epub') {
     return _parseEpubSync(payload.bytes, payload.fileName);
@@ -176,16 +176,16 @@ EpubBookData _parseEpubSync(Uint8List bytes, String fileName) {
   final opfXml = utf8.decode(opfFile.content as List<int>, allowMalformed: true);
   final opfDoc = html_parser.parse(opfXml);
 
-  final title = opfDoc.query選取or('title, dc\\:title')?.text.trim() ??
+  final title = opfDoc.querySelector('title, dc\\:title')?.text.trim() ??
       p.basenameWithoutExtension(fileName).replaceAll(RegExp(r'[_\-]+'), ' ');
-  final author = opfDoc.query選取or('creator, dc\\:creator')?.text.trim() ?? 'Unknown Author';
-  final description = opfDoc.query選取or('description, dc\\:description')?.text.trim() ?? '';
-  final publisher = opfDoc.query選取or('publisher, dc\\:publisher')?.text.trim() ?? '';
-  final language = opfDoc.query選取or('language, dc\\:language')?.text.trim() ?? 'en';
+  final author = opfDoc.querySelector('creator, dc\\:creator')?.text.trim() ?? 'Unknown Author';
+  final description = opfDoc.querySelector('description, dc\\:description')?.text.trim() ?? '';
+  final publisher = opfDoc.querySelector('publisher, dc\\:publisher')?.text.trim() ?? '';
+  final language = opfDoc.querySelector('language, dc\\:language')?.text.trim() ?? 'en';
 
   final manifestItems = <String, String>{};
   final manifestTypes = <String, String>{};
-  for (final item in opfDoc.query選取orAll('manifest > item, item')) {
+  for (final item in opfDoc.querySelectorAll('manifest > item, item')) {
     final id = item.attributes['id'];
     final href = item.attributes['href'];
     final mediaType = item.attributes['media-type'] ?? '';
@@ -197,7 +197,7 @@ EpubBookData _parseEpubSync(Uint8List bytes, String fileName) {
   }
 
   final spineItemIds = <String>[];
-  for (final itemref in opfDoc.query選取orAll('spine > itemref, itemref')) {
+  for (final itemref in opfDoc.querySelectorAll('spine > itemref, itemref')) {
     final idref = itemref.attributes['idref'];
     if (idref != null && manifestItems.containsKey(idref)) {
       spineItemIds.add(idref);
@@ -247,9 +247,9 @@ EpubBookData _parseEpubSync(Uint8List bytes, String fileName) {
       final ncxXml = utf8.decode(ncxFile.content as List<int>, allowMalformed: true);
       final ncxDoc = html_parser.parse(ncxXml);
       int navIdx = 0;
-      for (final navPoint in ncxDoc.query選取orAll('navPoint')) {
-        final label = navPoint.query選取or('navLabel > text, text')?.text.trim() ?? 'Chapter ${navIdx + 1}';
-        final src = navPoint.query選取or('content')?.attributes['src'] ?? '';
+      for (final navPoint in ncxDoc.querySelectorAll('navPoint')) {
+        final label = navPoint.querySelector('navLabel > text, text')?.text.trim() ?? 'Chapter ${navIdx + 1}';
+        final src = navPoint.querySelector('content')?.attributes['src'] ?? '';
         toc.add(EpubTocItem(
           title: label,
           contentSrc: src,
@@ -280,7 +280,7 @@ EpubBookData _parseEpubSync(Uint8List bytes, String fileName) {
       final doc = html_parser.parse(rawHtml);
 
       String chapterTitle = '';
-      final h1 = doc.query選取or('h1, h2, h3, title');
+      final h1 = doc.querySelector('h1, h2, h3, title');
       if (h1 != null && h1.text.trim().isNotEmpty) {
         chapterTitle = h1.text.trim();
       }
@@ -614,17 +614,17 @@ class _HuffCdicReader {
   }
 
   void _parseHuff(Uint8List record) {
-    final table1關閉set = _readUint32(record, 8);
-    final table2關閉set = _readUint32(record, 12);
+    final table1Offset = _readUint32(record, 8);
+    final table2Offset = _readUint32(record, 12);
 
     for (int i = 0; i < 256; i++) {
-      _table1[i] = _readUint32(record, table1關閉set + (i * 4));
+      _table1[i] = _readUint32(record, table1Offset + (i * 4));
     }
 
     _minCodeTable[0] = 0;
     _maxCodeTable[0] = 0xFFFFFFFF;
     for (int i = 1; i <= 32; i++) {
-      final off = table2關閉set + ((i - 1) * 8);
+      final off = table2Offset + ((i - 1) * 8);
       final minCode = _readUint32(record, off);
       final maxCode = _readUint32(record, off + 4);
       _minCodeTable[i] = (minCode << (32 - i)) & 0xFFFFFFFF;
@@ -637,9 +637,9 @@ class _HuffCdicReader {
     for (int i = 0; i < phrasesCount; i++) {
       final off = 16 + (i * 2);
       if (off + 2 <= record.length) {
-        final phrase關閉 = _readUint16(record, off);
+        final phraseOff = _readUint16(record, off);
         final base = 16 + (phrasesCount * 2);
-        final phrasePos = base + phrase關閉;
+        final phrasePos = base + phraseOff;
         if (phrasePos + 2 <= record.length) {
           final phraseLen = _readUint16(record, phrasePos);
           final len = phraseLen & 0x7FFF;
@@ -676,15 +676,15 @@ class _HuffCdicReader {
 
     while (bitPos < totalBits) {
       int bits = 0;
-      final byte關閉set = bitPos ~/ 8;
-      final bit關閉set = bitPos % 8;
+      final byteOffset = bitPos ~/ 8;
+      final bitOffset = bitPos % 8;
 
       for (int i = 0; i < 4; i++) {
-        final idx = byte關閉set + i;
+        final idx = byteOffset + i;
         final b = (idx < input.length) ? input[idx] : 0;
         bits = (bits << 8) | b;
       }
-      bits = ((bits << bit關閉set) & 0xFFFFFFFF);
+      bits = ((bits << bitOffset) & 0xFFFFFFFF);
 
       int codeLen = 0;
       int code = 0;
@@ -724,19 +724,19 @@ EpubBookData _parseMobiSync(Uint8List bytes, String fileName) {
   }
 
   final numRecords = _readUint16(bytes, 76);
-  final record關閉sets = <int>[];
+  final recordOffsets = <int>[];
   for (int i = 0; i < numRecords; i++) {
-    record關閉sets.add(_readUint32(bytes, 78 + (i * 8)));
+    recordOffsets.add(_readUint32(bytes, 78 + (i * 8)));
   }
 
-  if (record關閉sets.isEmpty) {
+  if (recordOffsets.isEmpty) {
     return _parseLegacyFallbackSync(bytes, fileName, 'mobi');
   }
 
   // Record 0
-  final r0關閉set = record關閉sets[0];
-  final r0End = (record關閉sets.length > 1) ? record關閉sets[1] : bytes.length;
-  final r0 = bytes.sublist(r0關閉set, r0End);
+  final r0Offset = recordOffsets[0];
+  final r0End = (recordOffsets.length > 1) ? recordOffsets[1] : bytes.length;
+  final r0 = bytes.sublist(r0Offset, r0End);
 
   final compression = _readUint16(r0, 0);
   final textRecordCount = _readUint16(r0, 8);
@@ -747,10 +747,10 @@ EpubBookData _parseMobiSync(Uint8List bytes, String fileName) {
   }
 
   if (r0.length > 88) {
-    final title關閉set = _readUint32(r0, 84);
+    final titleOffset = _readUint32(r0, 84);
     final titleLen = _readUint32(r0, 88);
-    if (title關閉set + titleLen <= r0.length && titleLen > 0) {
-      title = utf8.decode(r0.sublist(title關閉set, title關閉set + titleLen), allowMalformed: true).trim();
+    if (titleOffset + titleLen <= r0.length && titleLen > 0) {
+      title = utf8.decode(r0.sublist(titleOffset, titleOffset + titleLen), allowMalformed: true).trim();
     }
   }
 
@@ -769,8 +769,8 @@ EpubBookData _parseMobiSync(Uint8List bytes, String fileName) {
   if (firstImageIndex < numRecords) {
     int imgCounter = 1;
     for (int rIdx = firstImageIndex; rIdx < numRecords; rIdx++) {
-      final start = record關閉sets[rIdx];
-      final end = (rIdx + 1 < record關閉sets.length) ? record關閉sets[rIdx + 1] : bytes.length;
+      final start = recordOffsets[rIdx];
+      final end = (rIdx + 1 < recordOffsets.length) ? recordOffsets[rIdx + 1] : bytes.length;
       final recData = bytes.sublist(start, end);
 
       if (recData.length > 4) {
@@ -800,28 +800,28 @@ EpubBookData _parseMobiSync(Uint8List bytes, String fileName) {
 
   final fullTextBuilder = BytesBuilder();
 
-  if (compression == 17480 && huffIndex > 0 && huffCount > 1 && huffIndex + huffCount <= record關閉sets.length) {
+  if (compression == 17480 && huffIndex > 0 && huffCount > 1 && huffIndex + huffCount <= recordOffsets.length) {
     try {
-      final huffRec = bytes.sublist(record關閉sets[huffIndex], (huffIndex + 1 < record關閉sets.length) ? record關閉sets[huffIndex + 1] : bytes.length);
+      final huffRec = bytes.sublist(recordOffsets[huffIndex], (huffIndex + 1 < recordOffsets.length) ? recordOffsets[huffIndex + 1] : bytes.length);
       final cdicRecs = <Uint8List>[];
       for (int c = 1; c < huffCount; c++) {
         final cIdx = huffIndex + c;
-        cdicRecs.add(bytes.sublist(record關閉sets[cIdx], (cIdx + 1 < record關閉sets.length) ? record關閉sets[cIdx + 1] : bytes.length));
+        cdicRecs.add(bytes.sublist(recordOffsets[cIdx], (cIdx + 1 < recordOffsets.length) ? recordOffsets[cIdx + 1] : bytes.length));
       }
 
       final huffReader = _HuffCdicReader(huffRec, cdicRecs);
-      for (int i = 1; i <= textRecordCount && i < record關閉sets.length; i++) {
-        final start = record關閉sets[i];
-        final end = (i + 1 < record關閉sets.length) ? record關閉sets[i + 1] : bytes.length;
+      for (int i = 1; i <= textRecordCount && i < recordOffsets.length; i++) {
+        final start = recordOffsets[i];
+        final end = (i + 1 < recordOffsets.length) ? recordOffsets[i + 1] : bytes.length;
         final rec = bytes.sublist(start, end);
         final decompressed = huffReader.decompress(rec, extraFlags);
         fullTextBuilder.add(decompressed);
       }
     } catch (_) {}
   } else {
-    for (int i = 1; i <= textRecordCount && i < record關閉sets.length; i++) {
-      final start = record關閉sets[i];
-      final end = (i + 1 < record關閉sets.length) ? record關閉sets[i + 1] : bytes.length;
+    for (int i = 1; i <= textRecordCount && i < recordOffsets.length; i++) {
+      final start = recordOffsets[i];
+      final end = (i + 1 < recordOffsets.length) ? recordOffsets[i + 1] : bytes.length;
       final rec = bytes.sublist(start, end);
 
       if (compression == 1) {
@@ -851,7 +851,7 @@ EpubBookData _parseMobiSync(Uint8List bytes, String fileName) {
       if (chHtml.isEmpty || chHtml == '</div>') continue;
 
       final doc = html_parser.parse(chHtml);
-      final h1 = doc.query選取or('h1, h2, h3, title, b');
+      final h1 = doc.querySelector('h1, h2, h3, title, b');
       final chTitle = (h1 != null && h1.text.trim().isNotEmpty && h1.text.trim().length < 80)
           ? h1.text.trim()
           : 'Chapter ${chapters.length + 1}';
@@ -1044,12 +1044,12 @@ EpubBookData _parseComicSync(Uint8List bytes, String fileName) {
         if (headType == 0x74) {
           final packSize = _readUint32(bytes, pos + 7);
           final nameSize = _readUint16(bytes, pos + 26);
-          int name關閉set = pos + 32;
-          if (name關閉set + nameSize <= pos + headSize) {
-            final filename = utf8.decode(bytes.sublist(name關閉set, name關閉set + nameSize), allowMalformed: true);
-            final data關閉set = pos + headSize;
-            if (data關閉set + packSize <= bytes.length && packSize > 0) {
-              final fileBytes = bytes.sublist(data關閉set, data關閉set + packSize);
+          int nameOffset = pos + 32;
+          if (nameOffset + nameSize <= pos + headSize) {
+            final filename = utf8.decode(bytes.sublist(nameOffset, nameOffset + nameSize), allowMalformed: true);
+            final dataOffset = pos + headSize;
+            if (dataOffset + packSize <= bytes.length && packSize > 0) {
+              final fileBytes = bytes.sublist(dataOffset, dataOffset + packSize);
               final lower = filename.toLowerCase();
               if (lower.endsWith('.jpg') || lower.endsWith('.jpeg') || lower.endsWith('.png') || lower.endsWith('.webp')) {
                 rarFiles[filename] = fileBytes;
@@ -1164,8 +1164,8 @@ bool _isLegitimateTextLine(String line) {
 
   int realWords = 0;
   for (final w in words) {
-    final alpha開啟ly = w.replaceAll(RegExp(r'[^a-zA-Z]'), '');
-    if (alpha開啟ly.length >= 2 && alpha開啟ly.length <= 20) {
+    final alphaOnly = w.replaceAll(RegExp(r'[^a-zA-Z]'), '');
+    if (alphaOnly.length >= 2 && alphaOnly.length <= 20) {
       realWords++;
     }
   }

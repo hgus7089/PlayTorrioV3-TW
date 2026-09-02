@@ -78,7 +78,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
       }
       _seasons = seasons;
       _seasonEpisodes = map;
-      _seasonLabels = {for (final s in seasons) s: '季 $s'};
+      _seasonLabels = {for (final s in seasons) s: 'Season $s'};
     } else if (widget.videos.length > 50) {
       // Group single season with 50+ episodes into 50-episode tabs (e.g. 1-50, 51-100)
       const chunkSize = 50;
@@ -109,7 +109,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
         ..sort((a, b) => (a.episode ?? 0).compareTo(b.episode ?? 0));
       _seasons = [s];
       _seasonEpisodes = map;
-      _seasonLabels = {s: '季 1'};
+      _seasonLabels = {s: 'Season 1'};
     }
   }
 
@@ -316,7 +316,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
                           top: 12,
                           child: _buildScrollFloatingButton(
                             icon: Icons.keyboard_arrow_up_rounded,
-                            tooltip: '向上捲動',
+                            tooltip: 'Scroll Up',
                             onTap: () => _scrollStep(false),
                           ),
                         ),
@@ -325,7 +325,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
                           bottom: 12,
                           child: _buildScrollFloatingButton(
                             icon: Icons.keyboard_arrow_down_rounded,
-                            tooltip: '向下捲動',
+                            tooltip: 'Scroll Down',
                             onTap: () => _scrollStep(true),
                           ),
                         ),
@@ -374,7 +374,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
-                  '集數',
+                  'Episodes',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,
@@ -383,7 +383,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
                   ),
                 ),
                 Text(
-                  '${_seasonLabels[_selected季] ?? "季 $_selected季"} • $episodeCount 集數',
+                  '${_seasonLabels[_selectedSeason] ?? "Season $_selectedSeason"} • $episodeCount Episodes',
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.55),
                     fontSize: 12,
@@ -397,7 +397,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
             size: 36,
             iconSize: 18,
             icon: const Icon(Icons.close_rounded),
-            tooltip: '關閉',
+            tooltip: 'Close',
             backgroundColor: Colors.white.withValues(alpha: 0.08),
             onPressed: widget.onClose,
           ),
@@ -421,7 +421,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
               padding: const EdgeInsets.only(left: 4, right: 2),
               child: _buildSeasonArrowButton(
                 icon: Icons.chevron_left_rounded,
-                tooltip: '上一季',
+                tooltip: 'Previous Seasons',
                 onTap: () => _scrollSeason(false),
               ),
             ),
@@ -438,7 +438,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
               itemBuilder: (context, index) {
                 final season = _seasons[index];
                 final isActive = season == _selectedSeason;
-                final tabLabel = _seasonLabels[season] ?? '季 $season';
+                final tabLabel = _seasonLabels[season] ?? 'Season $season';
 
                 return Material(
                   color: Colors.transparent,
@@ -491,7 +491,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
               padding: const EdgeInsets.only(left: 2, right: 4),
               child: _buildSeasonArrowButton(
                 icon: Icons.chevron_right_rounded,
-                tooltip: '下一季',
+                tooltip: 'Next Seasons',
                 onTap: () => _scrollSeason(true),
               ),
             ),
@@ -543,7 +543,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
     required bool isCompact,
   }) {
     final epNum = video.episode ?? (index + 1);
-    final epTitle = video.title.isNotEmpty ? video.title : '第 $epNum 集';
+    final epTitle = video.title.isNotEmpty ? video.title : 'Episode $epNum';
     final hasOverview = video.overview != null && video.overview!.trim().isNotEmpty;
     final isHovered = _hoveredIndex == index;
 
@@ -816,7 +816,7 @@ class _PlayerEpisodesPanelState extends State<PlayerEpisodesPanel> {
                             Icon(Icons.play_circle_filled_rounded, color: Colors.white, size: 18),
                             SizedBox(width: 8),
                             Text(
-                              '選擇來源s',
+                              'Select Sources',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 13,

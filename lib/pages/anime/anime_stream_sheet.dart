@@ -89,7 +89,7 @@ class _AnimeStreamSheetState extends State<AnimeStreamSheet> {
             _isScraping = false;
             if (_allSources.isEmpty) {
               _error =
-                  'No playable streams found for 集 ${widget.episodeNumber}.';
+                  'No playable streams found for Episode ${widget.episodeNumber}.';
             }
           });
         }
@@ -135,7 +135,7 @@ class _AnimeStreamSheetState extends State<AnimeStreamSheet> {
       MaterialPageRoute(
         builder: (_) => PlayerScreen(
           source: source,
-          title: '${widget.anime.displayTitle} - 集 ${widget.episodeNumber}',
+          title: '${widget.anime.displayTitle} - Episode ${widget.episodeNumber}',
           backdropUrl: widget.anime.backdropUrl,
           detail: detail,
           episode: video,
@@ -209,7 +209,7 @@ class _AnimeStreamSheetState extends State<AnimeStreamSheet> {
                             ),
                           ] else
                             Text(
-                              '${_all來源.length} sources found',
+                              '${_allSources.length} sources found',
                               style: const TextStyle(
                                 color: Colors.white54,
                                 fontSize: 12,
@@ -233,7 +233,7 @@ class _AnimeStreamSheetState extends State<AnimeStreamSheet> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
             child: Row(
               children: [
-                _buildFilterChip('All (${_all來源.length})', 'all'),
+                _buildFilterChip('All (${_allSources.length})', 'all'),
                 const SizedBox(width: 8),
                 _buildFilterChip('Sub', 'sub'),
                 const SizedBox(width: 8),
@@ -256,7 +256,7 @@ class _AnimeStreamSheetState extends State<AnimeStreamSheet> {
                         CircularProgressIndicator(color: Color(0xFF7C5CFF)),
                         SizedBox(height: 14),
                         Text(
-                          'Extracting Mega播放, VidWish, All動漫 & Miruro streams...',
+                          'Extracting MegaPlay, VidWish, AllAnime & Miruro streams...',
                           style: TextStyle(color: Colors.white70, fontSize: 13),
                         ),
                       ],
@@ -288,7 +288,7 @@ class _AnimeStreamSheetState extends State<AnimeStreamSheet> {
                                 backgroundColor: const Color(0xFF7C5CFF),
                               ),
                               onPressed: _startScraping,
-                              child: const Text('重試 Scraping'),
+                              child: const Text('Retry Scraping'),
                             ),
                           ],
                         ),
@@ -357,7 +357,7 @@ class _AnimeStreamSheetState extends State<AnimeStreamSheet> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                s.name ?? '串流來源',
+                                                s.name ?? 'Stream Source',
                                                 style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 14,

@@ -539,7 +539,7 @@ class IptvScraper {
   static bool _isLoadingCloudPortals = false;
 
   static const _catalogSubs = ['IPTV_ZONENEW', 'FreeIPTV', 'iptvguru', 'IPTVfree'];
-  static const _oauthUa = '播放Torrio/1.3.6 (by /u/播放TorrioApp)';
+  static const _oauthUa = 'PlayTorrio/1.3.6 (by /u/PlayTorrioApp)';
   static const _oauthClientIds = [
     'ohXpoqrZYub1kg', // Slide for Reddit
     'NOe2iKrPPzwscA', // RedReader
@@ -548,7 +548,7 @@ class IptvScraper {
   static String? _oauthToken;
   static DateTime? _oauthTokenExpiry;
   static int _oauthClientIdx = 0;
-  static const _ua = 'Mozilla/5.0 (Linux; Android 11; 播放Torrio) '
+  static const _ua = 'Mozilla/5.0 (Linux; Android 11; PlayTorrio) '
       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36';
 
   static const _pasteDomains = [
@@ -633,7 +633,7 @@ class IptvScraper {
       _cachedCloudPortals = list;
       return list;
     } catch (e) {
-      debugPrint('[IptvScraper] 錯誤 loading Cloud Vault database: $e');
+      debugPrint('[IptvScraper] Error loading Cloud Vault database: $e');
       return const [];
     } finally {
       _isLoadingCloudPortals = false;
@@ -679,7 +679,7 @@ class IptvScraper {
 
     final slice = allPortals.skip(offset).take(maxResults).toList();
     final nextOffset = offset + slice.length;
-    final nextAfter = nextOffset < allPortals.length ? 'cloud:$next關閉set' : null;
+    final nextAfter = nextOffset < allPortals.length ? 'cloud:$nextOffset' : null;
 
     return ScrapePage(portals: slice, nextAfter: nextAfter);
   }

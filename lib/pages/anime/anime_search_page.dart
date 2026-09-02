@@ -52,17 +52,17 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
 
   static const _genres = [
     'Action', 'Adventure', 'Comedy', 'Drama', 'Ecchi', 'Fantasy',
-    'Hentai', 'Horror', 'Mahou Shoujo', 'Mecha', '音樂', 'Mystery',
+    'Hentai', 'Horror', 'Mahou Shoujo', 'Mecha', 'Music', 'Mystery',
     'Psychological', 'Romance', 'Sci-Fi', 'Slice of Life',
-    '體育', 'Supernatural', 'Thriller',
+    'Sports', 'Supernatural', 'Thriller',
   ];
 
   static const _seasons = ['WINTER', 'SPRING', 'SUMMER', 'FALL'];
   static const _formats = ['TV', 'TV_SHORT', 'MOVIE', 'OVA', 'ONA', 'SPECIAL', 'MUSIC'];
   static const _statuses = ['RELEASING', 'FINISHED', 'NOT_YET_RELEASED', 'CANCELLED', 'HIATUS'];
   static const _sorts = <String, String>{
-    'TRENDING_DESC': '熱門',
-    'POPULARITY_DESC': 'Most 熱門',
+    'TRENDING_DESC': 'Trending',
+    'POPULARITY_DESC': 'Most Popular',
     'SCORE_DESC': 'Top Rated',
     'FAVOURITES_DESC': 'Most Favorited',
     'START_DATE_DESC': 'Newest',
@@ -288,7 +288,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                       TextButton(
                         onPressed: () => Navigator.of(ctx).pop(_PickResult<T>(null, true)),
                         child: Text(
-                          '清除',
+                          'Clear',
                           style: TextStyle(
                             color: AppThemeService.currentPalette.value.primaryColor,
                             fontWeight: FontWeight.w700,
@@ -376,7 +376,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
     final now = DateTime.now().year;
     final years = List.generate(40, (i) => now + 1 - i);
     _pickFromList<int>(
-      title: 'Release 年份',
+      title: 'Release Year',
       items: years,
       label: (y) => '$y',
       current: _year,
@@ -554,7 +554,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                                 onChanged: _onSearchChanged,
                                 onSubmitted: _performSearch,
                                 decoration: InputDecoration(
-                                  hintText: '搜尋 anime, movies, OVAs...',
+                                  hintText: 'Search anime, movies, OVAs...',
                                   hintStyle: TextStyle(
                                     color: Colors.white.withValues(alpha: 0.35),
                                     fontSize: 14,
@@ -618,7 +618,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    _isArabicMode ? '🇸🇦 Arabic' : '🇯🇵 動漫',
+                                    _isArabicMode ? '🇸🇦 Arabic' : '🇯🇵 Anime',
                                     style: TextStyle(
                                       color: _isArabicMode
                                           ? palette.primaryColor
@@ -694,7 +694,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                       children: [
                         // Sort Dropdown
                         _buildFilterDropdownButton(
-                          label: 'Sort: ${_sorts[_sort] ?? "熱門"}',
+                          label: 'Sort: ${_sorts[_sort] ?? "Trending"}',
                           active: _sort != 'TRENDING_DESC',
                           onTap: () => _pickFromList<String>(
                             title: 'Sort By',
@@ -720,17 +720,17 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
 
                         // Year Dropdown
                         _buildFilterDropdownButton(
-                          label: _year != null ? '$_year' : '年份',
+                          label: _year != null ? '$_year' : 'Year',
                           active: _year != null,
                           onTap: _pickYear,
                         ),
 
                         // Season Dropdown
                         _buildFilterDropdownButton(
-                          label: _season != null ? _capitalize(_season!) : '季',
+                          label: _season != null ? _capitalize(_season!) : 'Season',
                           active: _season != null,
                           onTap: () => _pickFromList<String>(
-                            title: '季',
+                            title: 'Season',
                             items: _seasons,
                             label: (s) => _capitalize(s),
                             current: _season,
@@ -786,7 +786,7 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                                       Icon(Icons.close_rounded, size: 14, color: Colors.white70),
                                       SizedBox(width: 4),
                                       Text(
-                                        '重設',
+                                        'Reset',
                                         style: TextStyle(
                                           color: Colors.white70,
                                           fontSize: 12,
@@ -857,14 +857,14 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                 children: [
                   if (tvSeries.isNotEmpty)
                     AnimeSliderSection(
-                      title: '動漫 TV 影集',
-                      subtitle: '${tv影集.length} Results',
+                      title: 'Anime TV Series',
+                      subtitle: '${tvSeries.length} Results',
                       animeList: tvSeries,
                       onAnimeTap: _openDetails,
                     ),
                   if (movies.isNotEmpty)
                     AnimeSliderSection(
-                      title: '動漫 電影',
+                      title: 'Anime Movies',
                       subtitle: '${movies.length} Results',
                       animeList: movies,
                       onAnimeTap: _openDetails,
@@ -890,13 +890,13 @@ class _AnimeSearchPageState extends State<AnimeSearchPage> {
                 children: [
                   if (_trendingList.isNotEmpty)
                     AnimeSliderSection(
-                      title: '熱門 動漫',
+                      title: 'Trending Anime',
                       animeList: _trendingList,
                       onAnimeTap: _openDetails,
                     ),
                   if (_popularSeasonList.isNotEmpty)
                     AnimeSliderSection(
-                      title: '熱門 This 季',
+                      title: 'Popular This Season',
                       animeList: _popularSeasonList,
                       onAnimeTap: _openDetails,
                     ),

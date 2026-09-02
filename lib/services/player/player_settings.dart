@@ -13,7 +13,7 @@ enum SubtitleStylePreset {
   cinemaYellow('Cinema Yellow', 'Warm yellow text with subtle shadow and border', '#FFFFEB3B', '#00000000', '#FF000000', 2.5, 1.5, '#80000000', false, false),
   streamingBox('Streaming Box', 'White text inside a 50% translucent black box', '#FFFFFFFF', '#80000000', '#00000000', 0.0, 0.0, '#00000000', false, false),
   highContrast('High Contrast', 'Bold yellow text with solid opaque black box', '#FFFFD600', '#FF000000', '#FF000000', 0.0, 0.0, '#00000000', true, false),
-  animeClean('動漫 Clean', 'Bold white text with deep outline & shadow', '#FFFFFFFF', '#00000000', '#FF000000', 3.5, 2.0, '#BF000000', true, false),
+  animeClean('Anime Clean', 'Bold white text with deep outline & shadow', '#FFFFFFFF', '#00000000', '#FF000000', 3.5, 2.0, '#BF000000', true, false),
   cyberpunkCyan('Cyberpunk Cyan', 'Vibrant cyan text with dark border', '#00E5FF', '#00000000', '#FF0D111A', 2.5, 1.0, '#6600E5FF', false, false),
   nightModeSoft('Night Mode Warm', 'Soft cream text with 40% translucent background', '#FFF8E1', '#66000000', '#00000000', 0.0, 0.0, '#00000000', false, false),
   custom('Custom', 'User configured custom subtitle styles', '#FFFFFFFF', '#00000000', '#FF000000', 2.0, 0.0, '#00000000', false, false);
@@ -46,55 +46,55 @@ enum SubtitleStylePreset {
 /// Anime4K GLSL shader upscaling presets for libmpv / media_kit.
 enum Anime4KPreset {
   off(
-    '關閉',
+    'Off',
     'Standard video playback without neural upscaling shaders',
     [],
   ),
   modeAFast(
     'Mode A (Fast / Balanced)',
-    '還原s line art and upscales cleanly. Balanced GPU load, ideal for 1080p anime and mobile/integrated GPUs.',
+    'Restores line art and upscales cleanly. Balanced GPU load, ideal for 1080p anime and mobile/integrated GPUs.',
     [
-      '動漫4K_Clamp_Highlights.glsl',
-      '動漫4K_還原_CNN_M.glsl',
-      '動漫4K_Upscale_CNN_x2_M.glsl',
-      '動漫4K_AutoDownscalePre_x2.glsl',
-      '動漫4K_AutoDownscalePre_x4.glsl',
-      '動漫4K_Upscale_CNN_x2_M.glsl',
+      'Anime4K_Clamp_Highlights.glsl',
+      'Anime4K_Restore_CNN_M.glsl',
+      'Anime4K_Upscale_CNN_x2_M.glsl',
+      'Anime4K_AutoDownscalePre_x2.glsl',
+      'Anime4K_AutoDownscalePre_x4.glsl',
+      'Anime4K_Upscale_CNN_x2_M.glsl',
     ],
   ),
   modeAHQ(
-    'Mode A (High 畫質 / HQ)',
+    'Mode A (High Quality / HQ)',
     'Ultra-crisp perceptual line reconstruction and upscale using Very Large CNNs. Best for discrete desktop GPUs.',
     [
-      '動漫4K_Clamp_Highlights.glsl',
-      '動漫4K_還原_CNN_VL.glsl',
-      '動漫4K_Upscale_CNN_x2_VL.glsl',
-      '動漫4K_AutoDownscalePre_x2.glsl',
-      '動漫4K_AutoDownscalePre_x4.glsl',
-      '動漫4K_Upscale_CNN_x2_M.glsl',
+      'Anime4K_Clamp_Highlights.glsl',
+      'Anime4K_Restore_CNN_VL.glsl',
+      'Anime4K_Upscale_CNN_x2_VL.glsl',
+      'Anime4K_AutoDownscalePre_x2.glsl',
+      'Anime4K_AutoDownscalePre_x4.glsl',
+      'Anime4K_Upscale_CNN_x2_M.glsl',
     ],
   ),
   modeB(
     'Mode B (Soft / Denoise)',
     'Soft line reconstruction and artifact reduction. Best for blurry, compressed, or older anime.',
     [
-      '動漫4K_Clamp_Highlights.glsl',
-      '動漫4K_還原_CNN_Soft_M.glsl',
-      '動漫4K_Upscale_CNN_x2_M.glsl',
-      '動漫4K_AutoDownscalePre_x2.glsl',
-      '動漫4K_AutoDownscalePre_x4.glsl',
-      '動漫4K_Upscale_CNN_x2_M.glsl',
+      'Anime4K_Clamp_Highlights.glsl',
+      'Anime4K_Restore_CNN_Soft_M.glsl',
+      'Anime4K_Upscale_CNN_x2_M.glsl',
+      'Anime4K_AutoDownscalePre_x2.glsl',
+      'Anime4K_AutoDownscalePre_x4.glsl',
+      'Anime4K_Upscale_CNN_x2_M.glsl',
     ],
   ),
   modeC(
     'Mode C (Deblur / Upscale)',
     'Aggressive deblurring and scaling. Best for 720p / 480p low-resolution anime streams.',
     [
-      '動漫4K_Clamp_Highlights.glsl',
-      '動漫4K_Upscale_Denoise_CNN_x2_M.glsl',
-      '動漫4K_AutoDownscalePre_x2.glsl',
-      '動漫4K_AutoDownscalePre_x4.glsl',
-      '動漫4K_Upscale_CNN_x2_M.glsl',
+      'Anime4K_Clamp_Highlights.glsl',
+      'Anime4K_Upscale_Denoise_CNN_x2_M.glsl',
+      'Anime4K_AutoDownscalePre_x2.glsl',
+      'Anime4K_AutoDownscalePre_x4.glsl',
+      'Anime4K_Upscale_CNN_x2_M.glsl',
     ],
   );
 
@@ -186,7 +186,7 @@ abstract final class PlayerSettings {
     'Roboto',
     'Arial',
     'Trebuchet MS',
-    '開啟 Sans',
+    'Open Sans',
     'Montserrat',
     'Comic Sans MS',
     'Courier New',
@@ -257,45 +257,45 @@ abstract final class PlayerSettings {
       }
 
       final shaderFiles = [
-        '動漫4K_AutoDownscalePre_x2.glsl',
-        '動漫4K_AutoDownscalePre_x4.glsl',
-        '動漫4K_Clamp_Highlights.glsl',
-        '動漫4K_深色en_Fast.glsl',
-        '動漫4K_深色en_HQ.glsl',
-        '動漫4K_深色en_VeryFast.glsl',
-        '動漫4K_Deblur_DoG.glsl',
-        '動漫4K_Deblur_Original.glsl',
-        '動漫4K_Denoise_Bilateral_Mean.glsl',
-        '動漫4K_Denoise_Bilateral_Median.glsl',
-        '動漫4K_Denoise_Bilateral_Mode.glsl',
-        '動漫4K_還原_CNN_L.glsl',
-        '動漫4K_還原_CNN_M.glsl',
-        '動漫4K_還原_CNN_S.glsl',
-        '動漫4K_還原_CNN_Soft_L.glsl',
-        '動漫4K_還原_CNN_Soft_M.glsl',
-        '動漫4K_還原_CNN_Soft_S.glsl',
-        '動漫4K_還原_CNN_Soft_UL.glsl',
-        '動漫4K_還原_CNN_Soft_VL.glsl',
-        '動漫4K_還原_CNN_UL.glsl',
-        '動漫4K_還原_CNN_VL.glsl',
-        '動漫4K_Thin_Fast.glsl',
-        '動漫4K_Thin_HQ.glsl',
-        '動漫4K_Thin_VeryFast.glsl',
-        '動漫4K_Upscale_CNN_x2_L.glsl',
-        '動漫4K_Upscale_CNN_x2_M.glsl',
-        '動漫4K_Upscale_CNN_x2_S.glsl',
-        '動漫4K_Upscale_CNN_x2_UL.glsl',
-        '動漫4K_Upscale_CNN_x2_VL.glsl',
-        '動漫4K_Upscale_Deblur_DoG_x2.glsl',
-        '動漫4K_Upscale_Deblur_Original_x2.glsl',
-        '動漫4K_Upscale_Denoise_CNN_x2_L.glsl',
-        '動漫4K_Upscale_Denoise_CNN_x2_M.glsl',
-        '動漫4K_Upscale_Denoise_CNN_x2_S.glsl',
-        '動漫4K_Upscale_Denoise_CNN_x2_UL.glsl',
-        '動漫4K_Upscale_Denoise_CNN_x2_VL.glsl',
-        '動漫4K_Upscale_DoG_x2.glsl',
-        '動漫4K_Upscale_DTD_x2.glsl',
-        '動漫4K_Upscale_Original_x2.glsl',
+        'Anime4K_AutoDownscalePre_x2.glsl',
+        'Anime4K_AutoDownscalePre_x4.glsl',
+        'Anime4K_Clamp_Highlights.glsl',
+        'Anime4K_Darken_Fast.glsl',
+        'Anime4K_Darken_HQ.glsl',
+        'Anime4K_Darken_VeryFast.glsl',
+        'Anime4K_Deblur_DoG.glsl',
+        'Anime4K_Deblur_Original.glsl',
+        'Anime4K_Denoise_Bilateral_Mean.glsl',
+        'Anime4K_Denoise_Bilateral_Median.glsl',
+        'Anime4K_Denoise_Bilateral_Mode.glsl',
+        'Anime4K_Restore_CNN_L.glsl',
+        'Anime4K_Restore_CNN_M.glsl',
+        'Anime4K_Restore_CNN_S.glsl',
+        'Anime4K_Restore_CNN_Soft_L.glsl',
+        'Anime4K_Restore_CNN_Soft_M.glsl',
+        'Anime4K_Restore_CNN_Soft_S.glsl',
+        'Anime4K_Restore_CNN_Soft_UL.glsl',
+        'Anime4K_Restore_CNN_Soft_VL.glsl',
+        'Anime4K_Restore_CNN_UL.glsl',
+        'Anime4K_Restore_CNN_VL.glsl',
+        'Anime4K_Thin_Fast.glsl',
+        'Anime4K_Thin_HQ.glsl',
+        'Anime4K_Thin_VeryFast.glsl',
+        'Anime4K_Upscale_CNN_x2_L.glsl',
+        'Anime4K_Upscale_CNN_x2_M.glsl',
+        'Anime4K_Upscale_CNN_x2_S.glsl',
+        'Anime4K_Upscale_CNN_x2_UL.glsl',
+        'Anime4K_Upscale_CNN_x2_VL.glsl',
+        'Anime4K_Upscale_Deblur_DoG_x2.glsl',
+        'Anime4K_Upscale_Deblur_Original_x2.glsl',
+        'Anime4K_Upscale_Denoise_CNN_x2_L.glsl',
+        'Anime4K_Upscale_Denoise_CNN_x2_M.glsl',
+        'Anime4K_Upscale_Denoise_CNN_x2_S.glsl',
+        'Anime4K_Upscale_Denoise_CNN_x2_UL.glsl',
+        'Anime4K_Upscale_Denoise_CNN_x2_VL.glsl',
+        'Anime4K_Upscale_DoG_x2.glsl',
+        'Anime4K_Upscale_DTD_x2.glsl',
+        'Anime4K_Upscale_Original_x2.glsl',
       ];
 
       for (final filename in shaderFiles) {
@@ -314,9 +314,9 @@ abstract final class PlayerSettings {
       }
 
       _extractedAnime4kDir = shadersDir.path;
-      debugPrint('[播放器設定] 動漫4K shaders extracted to: $_extracted動漫4kDir');
+      debugPrint('[PlayerSettings] Anime4K shaders extracted to: $_extractedAnime4kDir');
     } catch (e) {
-      debugPrint('[播放器設定] 錯誤 extracting 動漫4K shaders: $e');
+      debugPrint('[PlayerSettings] Error extracting Anime4K shaders: $e');
     }
   }
 
@@ -363,10 +363,10 @@ abstract final class PlayerSettings {
       if (await fontFile.exists() && (await fontFile.length()) > 0) {
         _extractedFontDir = fontsDir.path;
         _extractedFontPath = fontFile.path;
-        debugPrint('[播放器設定] libass font extracted successfully to: $_extractedFontPath');
+        debugPrint('[PlayerSettings] libass font extracted successfully to: $_extractedFontPath');
       }
     } catch (e) {
-      debugPrint('[播放器設定] 錯誤 extracting libass font fallback: $e');
+      debugPrint('[PlayerSettings] Error extracting libass font fallback: $e');
     }
   }
 
@@ -409,7 +409,7 @@ abstract final class PlayerSettings {
         await platform.setProperty('stream-lavf-o', '');
       }
     } catch (e) {
-      debugPrint('[播放器設定] applyStreamContinuity warning: $e');
+      debugPrint('[PlayerSettings] applyStreamContinuity warning: $e');
     }
   }
 
@@ -453,7 +453,7 @@ abstract final class PlayerSettings {
               .map((f) => p.join(_extractedAnime4kDir!, f))
               .join(separator);
           await platform.setProperty('glsl-shaders', shaderChain);
-          debugPrint('[播放器設定] Applied 動漫4K pre-open shader chain: ${anime4kPreset.value.label}');
+          debugPrint('[PlayerSettings] Applied Anime4K pre-open shader chain: ${anime4kPreset.value.label}');
         } else {
           await platform.setProperty('glsl-shaders', '');
         }
@@ -498,7 +498,7 @@ abstract final class PlayerSettings {
       await platform.setProperty('demuxer-lavf-analyzeduration', '20');
       await platform.setProperty('demuxer-lavf-o', 'strict=experimental');
     } catch (e) {
-      debugPrint('[播放器設定] applyPre開啟Properties warning: $e');
+      debugPrint('[PlayerSettings] applyPreOpenProperties warning: $e');
     }
   }
 
@@ -508,7 +508,7 @@ abstract final class PlayerSettings {
     try {
       await applySubtitleStyling(player);
     } catch (e) {
-      debugPrint('[播放器設定] applyPost開啟Properties warning: $e');
+      debugPrint('[PlayerSettings] applyPostOpenProperties warning: $e');
     }
   }
 
@@ -655,7 +655,7 @@ abstract final class PlayerSettings {
         }
       }
     } catch (e) {
-      debugPrint('[播放器設定] applySubtitleStyling error: $e');
+      debugPrint('[PlayerSettings] applySubtitleStyling error: $e');
     }
   }
 

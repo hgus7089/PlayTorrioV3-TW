@@ -25,7 +25,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('${addon.manifest.name} 安裝成功！'),
+          content: Text('${addon.manifest.name} installed successfully!'),
           behavior: SnackBarBehavior.floating,
           backgroundColor: const Color(0xFF10B981),
         ),
@@ -57,7 +57,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
             borderRadius: BorderRadius.circular(20),
           ),
           title: const Text(
-            '新增 Stremio 附加元件',
+            'Add Stremio Addon',
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
           ),
           content: Column(
@@ -114,7 +114,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text(
-                '取消',
+                'Cancel',
                 style: TextStyle(color: Colors.white.withValues(alpha: 0.45)),
               ),
             ),
@@ -154,7 +154,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
-          title: Text('移除 ${addon.manifest.name}?'),
+          title: Text('Remove ${addon.manifest.name}?'),
           content: Text(
             'Its catalogs and metadata will be removed from your home page.',
             style: TextStyle(color: Colors.white.withValues(alpha: 0.55), fontSize: 13.5),
@@ -163,7 +163,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text(
-                '取消',
+                'Cancel',
                 style: TextStyle(color: Colors.white.withValues(alpha: 0.45)),
               ),
             ),
@@ -180,7 +180,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
                 ),
               ),
               child: const Text(
-                '移除',
+                'Remove',
                 style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
@@ -204,7 +204,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          '附加元件',
+          'Addons',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -218,7 +218,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  '附加元件 provide movie, series, and anime metadata catalogs for your home page and search.',
+                  'Addons provide movie, series, and anime metadata catalogs for your home page and search.',
                   style: TextStyle(
                     fontSize: 13.5,
                     color: Colors.white.withValues(alpha: 0.5),
@@ -235,7 +235,7 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
               Row(
                 children: [
                   Text(
-                    '已安裝的附加元件',
+                    'INSTALLED ADDONS',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
@@ -277,12 +277,12 @@ class _AddonsSettingsPageState extends State<AddonsSettingsPage> {
                       Icon(Icons.extension_off_rounded, size: 40, color: Colors.white.withValues(alpha: 0.25)),
                       const SizedBox(height: 12),
                       const Text(
-                        '尚未安裝附加元件',
+                        'No Addons Installed',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white70),
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        'Click "新增附加元件" above to install a Stremio manifest URL.',
+                        'Click "Add Addon" above to install a Stremio manifest URL.',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 12.5, color: Colors.white.withValues(alpha: 0.4)),
                       ),
@@ -405,8 +405,8 @@ class _AddonCard extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       m.supportsSubtitles && m.catalogs.isEmpty
-                          ? 'v${m.version}  ·  字幕 Provider'
-                          : 'v${m.version}  ·  ${m.catalogs.length} catalog${m.catalogs.length == 1 ? '' : 's'}${m.supports字幕 ? '  ·  Subtitles' : ''}',
+                          ? 'v${m.version}  ·  Subtitles Provider'
+                          : 'v${m.version}  ·  ${m.catalogs.length} catalog${m.catalogs.length == 1 ? '' : 's'}${m.supportsSubtitles ? '  ·  Subtitles' : ''}',
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.white.withValues(alpha: 0.4),
@@ -481,7 +481,7 @@ class _AddonCard extends StatelessWidget {
                       if (hasCatalogs)
                         _FeatureToggleChip(
                           icon: Icons.grid_view_rounded,
-                          label: '目錄',
+                          label: 'Catalogs',
                           count: m.catalogs.isNotEmpty ? m.catalogs.length : null,
                           isEnabled: addon.enableCatalogs,
                           onTap: () => onUpdateFeature(
@@ -491,7 +491,7 @@ class _AddonCard extends StatelessWidget {
                       if (hasSearch)
                         _FeatureToggleChip(
                           icon: Icons.search_rounded,
-                          label: '搜尋',
+                          label: 'Search',
                           isEnabled: addon.enableSearch,
                           onTap: () => onUpdateFeature(
                             enableSearch: !addon.enableSearch,
@@ -500,7 +500,7 @@ class _AddonCard extends StatelessWidget {
                       if (hasStreams)
                         _FeatureToggleChip(
                           icon: Icons.play_circle_outline_rounded,
-                          label: '來源',
+                          label: 'Sources',
                           isEnabled: addon.enableStreams,
                           onTap: () => onUpdateFeature(
                             enableStreams: !addon.enableStreams,
@@ -509,7 +509,7 @@ class _AddonCard extends StatelessWidget {
                       if (hasSubtitles)
                         _FeatureToggleChip(
                           icon: Icons.subtitles_rounded,
-                          label: '字幕',
+                          label: 'Subtitles',
                           isEnabled: addon.enableSubtitles,
                           onTap: () => onUpdateFeature(
                             enableSubtitles: !addon.enableSubtitles,
@@ -559,7 +559,7 @@ class _AddonCard extends StatelessWidget {
                 icon: const Icon(Icons.delete_outline_rounded, size: 20),
                 color: Colors.red.withValues(alpha: 0.6),
                 onPressed: onRemove,
-                tooltip: '移除附加元件',
+                tooltip: 'Remove addon',
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
               ),
@@ -713,7 +713,7 @@ class _AddAddonButton extends StatelessWidget {
               const Icon(Icons.add_rounded, color: Color(0xFF7C5CFF), size: 22),
             const SizedBox(width: 10),
             Text(
-              isLoading ? '安裝中…' : '新增附加元件',
+              isLoading ? 'Installing...' : 'Add Addon',
               style: const TextStyle(
                 fontSize: 14.5,
                 fontWeight: FontWeight.w700,

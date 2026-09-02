@@ -61,7 +61,7 @@ class MagnetFilesView extends StatefulWidget {
 }
 
 class _MagnetFilesViewState extends State<MagnetFilesView> {
-  bool _is載入中 = true;
+  bool _isLoading = true;
   String? _errorMessage;
   String _torrentTitle = '';
   String? _infoHash;
@@ -80,14 +80,14 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
   }
 
   @override
-  void did更新Widget(covariant MagnetFilesView oldWidget) {
-    super.did更新Widget(oldWidget);
+  void didUpdateWidget(covariant MagnetFilesView oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if (oldWidget.magnet != widget.magnet) {
       _loadMagnetFiles();
     }
   }
 
-  static bool _checkIs影片(String name) {
+  static bool _checkIsVideo(String name) {
     final lower = name.toLowerCase();
     return lower.endsWith('.mp4') ||
         lower.endsWith('.mkv') ||
@@ -119,7 +119,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
   Future<void> _loadMagnetFiles() async {
     if (!mounted) return;
     setState(() {
-      _is載入中 = true;
+      _isLoading = true;
       _errorMessage = null;
       _files = [];
       _totalSize = 0;
@@ -144,7 +144,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
       _isDebrid = useDebrid;
 
       if (useDebrid) {
-        final activeService = await DebridService().get選取edService();
+        final activeService = await DebridService().getSelectedService();
         _providerName = activeService;
 
         final debridFiles = await DebridService().resolveMagnet(magnet: normalizedMagnet);
@@ -156,14 +156,14 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
         int sumBytes = 0;
         for (int i = 0; i < debridFiles.length; i++) {
           final df = debridFiles[i];
-          final isVid = _checkIs影片(df.filename);
+          final isVid = _checkIsVideo(df.filename);
           sumBytes += df.filesize;
           items.add(MagnetFileItem(
             id: i,
             name: df.filename,
             size: df.filesize,
             downloadUrl: df.downloadUrl,
-            is影片: isVid,
+            isVideo: isVid,
           ));
         }
 
@@ -171,7 +171,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
           setState(() {
             _files = items;
             _totalSize = sumBytes;
-            _is載入中 = false;
+            _isLoading = false;
           });
         }
       } else {
@@ -186,13 +186,13 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
         final items = <MagnetFileItem>[];
         int sumBytes = 0;
         for (final stat in info.fileStats) {
-          final isVid = _checkIs影片(stat.path);
+          final isVid = _checkIsVideo(stat.path);
           sumBytes += stat.length;
           items.add(MagnetFileItem(
             id: stat.id,
             name: stat.path,
             size: stat.length,
-            is影片: isVid,
+            isVideo: isVid,
           ));
         }
 
@@ -204,7 +204,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
           setState(() {
             _files = items;
             _totalSize = sumBytes > 0 ? sumBytes : info.torrentSize;
-            _is載入中 = false;
+            _isLoading = false;
           });
         }
       }
@@ -212,7 +212,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
       if (mounted) {
         setState(() {
           _errorMessage = e.toString().replaceFirst('Exception: ', '');
-          _is載入中 = false;
+          _isLoading = false;
         });
       }
     }
@@ -221,16 +221,16 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
   void _playFile(MagnetFileItem file) {
     final streamTitle = file.cleanFilename;
 
-    Stream來源 source;
+    StreamSource source;
     if (_isDebrid) {
-      source = Stream來源(
+      source = StreamSource(
         name: _providerName,
         title: streamTitle,
         url: file.downloadUrl,
         addonName: _providerName,
       );
     } else {
-      source = Stream來源(
+      source = StreamSource(
         name: 'Torrent Engine',
         title: streamTitle,
         infoHash: _infoHash,
@@ -242,7 +242,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => 播放器Screen(
+        builder: (_) => PlayerScreen(
           source: source,
           title: streamTitle,
         ),
@@ -252,8 +252,8 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
 
   List<MagnetFileItem> get _filteredFiles {
     return _files.where((f) {
-      if (_activeCategory == 'video' && !f.is影片) return false;
-      if (_activeCategory == 'other' && f.is影片) return false;
+      if (_activeCategory == 'video' && !f.isVideo) return false;
+      if (_activeCategory == 'other' && f.isVideo) return false;
       if (_searchFilter.isNotEmpty) {
         return f.name.toLowerCase().contains(_searchFilter.toLowerCase());
       }
@@ -263,10 +263,10 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<App主題Palette>(
-      valueListenable: App主題Service.currentPalette,
+    return ValueListenableBuilder<AppThemePalette>(
+      valueListenable: AppThemeService.currentPalette,
       builder: (context, palette, _) {
-        if (_is載入中) {
+        if (_isLoading) {
           return Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -368,7 +368,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
         }
 
         final filtered = _filteredFiles;
-        final videoCount = _files.where((f) => f.is影片).length;
+        final videoCount = _files.where((f) => f.isVideo).length;
 
         return ListView(
           padding: EdgeInsets.fromLTRB(
@@ -384,7 +384,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
 
             const SizedBox(height: 18),
 
-            // 搜尋 & Filter Toolbar
+            // Search & Filter Toolbar
             _buildFilterToolbar(palette, videoCount),
 
             const SizedBox(height: 14),
@@ -408,7 +408,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
     );
   }
 
-  Widget _buildTorrentHeaderCard(App主題Palette palette, int videoCount) {
+  Widget _buildTorrentHeaderCard(AppThemePalette palette, int videoCount) {
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -422,7 +422,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.4),
             blurRadius: 18,
-            offset: const 關閉set(0, 6),
+            offset: const Offset(0, 6),
           ),
         ],
       ),
@@ -496,7 +496,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
                 label: '${_files.length} ${_files.length == 1 ? "file" : "files"}',
                 color: Colors.white70,
               ),
-              // 影片 Files Badge
+              // Video Files Badge
               if (videoCount > 0)
                 _buildBadge(
                   icon: Icons.movie_rounded,
@@ -540,10 +540,10 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
     );
   }
 
-  Widget _buildFilterToolbar(App主題Palette palette, int videoCount) {
+  Widget _buildFilterToolbar(AppThemePalette palette, int videoCount) {
     return Column(
       children: [
-        // 搜尋 Filter Input
+        // Search Filter Input
         Container(
           height: 38,
           decoration: BoxDecoration(
@@ -579,20 +579,20 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
     );
   }
 
-  Widget _buildCategoryChip(String category, String label, App主題Palette palette) {
-    final is選取ed = _activeCategory == category;
+  Widget _buildCategoryChip(String category, String label, AppThemePalette palette) {
+    final isSelected = _activeCategory == category;
     return GestureDetector(
       onTap: () => setState(() => _activeCategory = category),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 180),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
-          color: is選取ed
+          color: isSelected
               ? palette.primaryColor.withValues(alpha: 0.25)
               : Colors.white.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: is選取ed
+            color: isSelected
                 ? palette.primaryColor
                 : Colors.white.withValues(alpha: 0.1),
             width: 1,
@@ -602,27 +602,27 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
           label,
           style: TextStyle(
             fontSize: 11.5,
-            fontWeight: is選取ed ? FontWeight.bold : FontWeight.normal,
-            color: is選取ed ? Colors.white : Colors.white60,
+            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            color: isSelected ? Colors.white : Colors.white60,
           ),
         ),
       ),
     );
   }
 
-  Widget _buildFileTile(MagnetFileItem file, App主題Palette palette) {
+  Widget _buildFileTile(MagnetFileItem file, AppThemePalette palette) {
     final ext = file.extension;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: file.is影片
+        color: file.isVideo
             ? const Color(0xFF161B26).withValues(alpha: 0.75)
             : const Color(0xFF10141C).withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: file.is影片
+          color: file.isVideo
               ? palette.primaryColor.withValues(alpha: 0.2)
               : Colors.white.withValues(alpha: 0.05),
           width: 0.9,
@@ -635,18 +635,18 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
             width: 38,
             height: 38,
             decoration: BoxDecoration(
-              color: file.is影片
+              color: file.isVideo
                   ? palette.primaryColor.withValues(alpha: 0.15)
                   : Colors.white.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(
-              file.is影片
+              file.isVideo
                   ? Icons.movie_rounded
                   : (ext == 'MP3' || ext == 'FLAC' || ext == 'M4A'
                       ? Icons.audiotrack_rounded
                       : Icons.insert_drive_file_rounded),
-              color: file.is影片 ? palette.primaryColor : Colors.white54,
+              color: file.isVideo ? palette.primaryColor : Colors.white54,
               size: 20,
             ),
           ),
@@ -661,8 +661,8 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
                   file.cleanFilename,
                   style: TextStyle(
                     fontSize: 13,
-                    fontWeight: file.is影片 ? FontWeight.w600 : FontWeight.normal,
-                    color: file.is影片 ? Colors.white : Colors.white70,
+                    fontWeight: file.isVideo ? FontWeight.w600 : FontWeight.normal,
+                    color: file.isVideo ? Colors.white : Colors.white70,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -704,7 +704,7 @@ class _MagnetFilesViewState extends State<MagnetFilesView> {
           const SizedBox(width: 10),
 
           // Action Button
-          if (file.is影片)
+          if (file.isVideo)
             ElevatedButton.icon(
               onPressed: () => _playFile(file),
               style: ElevatedButton.styleFrom(

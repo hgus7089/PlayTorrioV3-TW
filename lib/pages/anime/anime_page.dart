@@ -104,10 +104,10 @@ class _AnimePageState extends State<AnimePage> {
           });
         }
       } catch (e) {
-        debugPrint('錯誤 loading Arabic 動漫 data: $e');
+        debugPrint('Error loading Arabic Anime data: $e');
         if (mounted) {
           setState(() {
-            _error = 'Failed to load Arabic 動漫 catalog. 檢查 your internet connection.';
+            _error = 'Failed to load Arabic Anime catalog. Check your internet connection.';
             _loading = false;
           });
         }
@@ -150,10 +150,10 @@ class _AnimePageState extends State<AnimePage> {
         });
       }
     } catch (e) {
-      debugPrint('錯誤 loading 動漫 data: $e');
+      debugPrint('Error loading Anime data: $e');
       if (mounted) {
         setState(() {
-          _error = 'Failed to load 動漫 catalog. 檢查 your internet connection.';
+          _error = 'Failed to load Anime catalog. Check your internet connection.';
           _loading = false;
         });
       }
@@ -304,7 +304,7 @@ class _AnimePageState extends State<AnimePage> {
                           backgroundColor: palette.primaryColor,
                         ),
                         onPressed: _loadAnimeData,
-                        child: const Text('重試'),
+                        child: const Text('Retry'),
                       ),
                     ],
                   ),
@@ -413,20 +413,20 @@ class _AnimePageState extends State<AnimePage> {
                         // 2. Anime Continue Watching Slider
                         const ContinueWatchingSlider(
                           typeFilter: 'general_anime',
-                          title: '繼續觀看',
+                          title: 'Continue Watching',
                         ),
 
                         const SizedBox(height: 8),
 
                         // 3. Sliders with Desktop Scroll Arrows
                         AnimeSliderSection(
-                          title: '🔥 熱門 動漫',
+                          title: '🔥 Trending Anime',
                           subtitle: 'Top popular and trending series',
                           animeList: _trending,
                           onAnimeTap: _openDetails,
                         ),
                         AnimeSliderSection(
-                          title: '🌟 熱門 This 季 (${AnilistService.current季()})',
+                          title: '🌟 Popular This Season (${AnilistService.currentSeason()})',
                           subtitle: 'Currently airing hits',
                           animeList: _popularSeason,
                           onAnimeTap: _openDetails,
@@ -438,7 +438,7 @@ class _AnimePageState extends State<AnimePage> {
                           onAnimeTap: _openDetails,
                         ),
                         AnimeSliderSection(
-                          title: '🚀 Anticipated Next 季',
+                          title: '🚀 Anticipated Next Season',
                           subtitle: 'Upcoming anime you cannot miss',
                           animeList: _upcoming,
                           onAnimeTap: _openDetails,
@@ -614,7 +614,7 @@ class _AnimeGlassAppBar extends StatelessWidget {
               const SizedBox(width: 10),
               RichText(
                 text: TextSpan(
-                  text: '播放Torrio ',
+                  text: 'PlayTorrio ',
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
@@ -623,7 +623,7 @@ class _AnimeGlassAppBar extends StatelessWidget {
                   ),
                   children: [
                     TextSpan(
-                      text: isArabicMode ? '動漫 • Arabic' : '動漫',
+                      text: isArabicMode ? 'Anime • Arabic' : 'Anime',
                       style: TextStyle(
                         color: AppThemeService.currentPalette.value.primaryColor,
                         fontWeight: FontWeight.w900,
@@ -649,12 +649,12 @@ class _AnimeGlassAppBar extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _buildModeButton(
-                    label: isDesktop ? '🇯🇵 一般' : '🇯🇵',
+                    label: isDesktop ? '🇯🇵 General' : '🇯🇵',
                     isActive: !isArabicMode,
                     onTap: () => onModeChanged(false),
                   ),
                   _buildModeButton(
-                    label: isDesktop ? '🇸🇦 Arabic 動漫' : '🇸🇦',
+                    label: isDesktop ? '🇸🇦 Arabic Anime' : '🇸🇦',
                     isActive: isArabicMode,
                     onTap: () => onModeChanged(true),
                   ),
@@ -1029,7 +1029,7 @@ class _AnimeHeroSlide extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Rating + Year + 集數 row
+                  // Rating + Year + Episodes row
                   Row(
                     children: [
                       if (anime.averageScore > 0) ...[
@@ -1069,7 +1069,7 @@ class _AnimeHeroSlide extends StatelessWidget {
                       ],
                       if (anime.seasonYear > 0)
                         Text(
-                          '${anime.season年份}',
+                          '${anime.seasonYear}',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.white.withValues(alpha: 0.55),
@@ -1086,7 +1086,7 @@ class _AnimeHeroSlide extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '${anime.total集} 集',
+                          '${anime.totalEpisodes} Episodes',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.white.withValues(alpha: 0.55),
@@ -1183,7 +1183,7 @@ class _AnimeHeroSlide extends StatelessWidget {
                     ),
                   ],
 
-                  // Action buttons (Matching 首頁 Page)
+                  // Action buttons (Matching Home Page)
                   SizedBox(height: isCompact ? 22 : 26),
                   Row(
                     children: [
@@ -1191,7 +1191,7 @@ class _AnimeHeroSlide extends StatelessWidget {
                         onPressed: onWatchNow,
                         icon: const Icon(Icons.play_arrow_rounded, size: 24),
                         label: const Text(
-                          '觀看 Ep 1',
+                          'Watch Ep 1',
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15.5,
@@ -1220,7 +1220,7 @@ class _AnimeHeroSlide extends StatelessWidget {
                           color: Colors.white.withValues(alpha: 0.80),
                         ),
                         label: Text(
-                          '詳細資訊',
+                          'Details',
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: isCompact ? 14 : 15.5,

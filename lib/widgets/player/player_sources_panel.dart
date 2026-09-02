@@ -77,7 +77,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
 
     final isArabicAnime = id.startsWith('arabic_anime:') ||
         (detail?.id.startsWith('arabic_anime:') ?? false) ||
-        widget.currentAddonName == 'Arabic動漫';
+        widget.currentAddonName == 'ArabicAnime';
 
     _streamSub?.cancel();
 
@@ -128,7 +128,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
             return;
           }
         } catch (e) {
-          debugPrint('[播放器來源Panel] Arabic anime scrape error: $e');
+          debugPrint('[PlayerSourcesPanel] Arabic anime scrape error: $e');
         }
 
         if (mounted) {
@@ -141,9 +141,9 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
     final isAnime = type == 'anime' ||
         id.startsWith('anilist:') ||
         (detail?.id.startsWith('anilist:') ?? false) ||
-        widget.currentAddonName == 'Mega播放' ||
+        widget.currentAddonName == 'MegaPlay' ||
         widget.currentAddonName == 'AniDB' ||
-        widget.currentAddonName == '觀看Hentai' ||
+        widget.currentAddonName == 'WatchHentai' ||
         widget.currentAddonName == 'Hentaini';
 
     if (isAnime) {
@@ -301,7 +301,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
             size: 36,
             iconSize: 20,
             icon: const Icon(Icons.chevron_left_rounded),
-            tooltip: '返回集數',
+            tooltip: 'Back to Episodes',
             backgroundColor: Colors.white.withValues(alpha: 0.08),
             onPressed: widget.onBackToEpisodes,
           ),
@@ -336,7 +336,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
                       child: Text(
                         widget.episode.title.isNotEmpty
                             ? widget.episode.title
-                            : '集 $eNum',
+                            : 'Episode $eNum',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14.5,
@@ -351,7 +351,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Provider: ${widget.current新增onName}',
+                  'Provider: ${widget.currentAddonName}',
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.50),
                     fontSize: 11.5,
@@ -367,7 +367,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
             size: 36,
             iconSize: 18,
             icon: const Icon(Icons.close_rounded),
-            tooltip: '關閉',
+            tooltip: 'Close',
             backgroundColor: Colors.white.withValues(alpha: 0.08),
             onPressed: widget.onClose,
           ),
@@ -427,7 +427,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
           ),
           const SizedBox(height: 16),
           Text(
-            'Scraping sources (${widget.current新增onName})...',
+            'Scraping sources (${widget.currentAddonName})...',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.70),
               fontSize: 13,
@@ -469,7 +469,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
             ElevatedButton.icon(
               onPressed: _startScraping,
               icon: const Icon(Icons.refresh_rounded, size: 16),
-              label: const Text('重新搜尋來源'),
+              label: const Text('Rescrape Sources'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: PlayerTheme.accent,
                 foregroundColor: Colors.white,
@@ -534,7 +534,7 @@ class _PlayerSourcesPanelState extends State<PlayerSourcesPanel> {
     bool isHovered,
     bool isCompact,
   ) {
-    final title = source.title ?? source.name ?? '串流來源';
+    final title = source.title ?? source.name ?? 'Stream Source';
     final isTorrent = source.infoHash != null && source.infoHash!.isNotEmpty;
     final resolution = _extractResolution(title);
 

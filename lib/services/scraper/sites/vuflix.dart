@@ -25,7 +25,7 @@ class _UnwrappedUrl {
 /// into direct stream endpoints with required provider-specific headers.
 class VuflixScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _apiBase = 'https://vuflix.co';
   static const _referer = 'https://vuflix.co/';
@@ -45,9 +45,9 @@ class VuflixScraper extends StreamScraper {
 
   static const _fallbackProviders = [
     _ProviderInfo(id: 'vsembed', name: 'Sigma'),
-    _ProviderInfo(id: 'moonflix', name: '來源 40'),
-    _ProviderInfo(id: 'megasource', name: '來源 39'),
-    _ProviderInfo(id: 'hdghar', name: '來源 44'),
+    _ProviderInfo(id: 'moonflix', name: 'Source 40'),
+    _ProviderInfo(id: 'megasource', name: 'Source 39'),
+    _ProviderInfo(id: 'hdghar', name: 'Source 44'),
     _ProviderInfo(id: 'moviebox', name: 'Pi'),
     _ProviderInfo(id: 'cineplay', name: '4K'),
     _ProviderInfo(id: 'huhu', name: 'Beta'),
@@ -55,7 +55,7 @@ class VuflixScraper extends StreamScraper {
     _ProviderInfo(id: 'onlyflix', name: 'Gamma'),
     _ProviderInfo(id: 'vaplayer', name: 'Alpha'),
     _ProviderInfo(id: 'flixhqz', name: 'Gamma'),
-    _ProviderInfo(id: 'castle', name: '來源 40'),
+    _ProviderInfo(id: 'castle', name: 'Source 40'),
     _ProviderInfo(id: 'cinejoy', name: '4K2'),
     _ProviderInfo(id: 'filesun', name: 'Tau'),
     _ProviderInfo(id: 'yoru', name: 'Yoru'),
@@ -152,7 +152,7 @@ class VuflixScraper extends StreamScraper {
         }
       }
     } catch (e) {
-      debugPrint('[VuflixScraper] 錯誤 decoding relay token: $e');
+      debugPrint('[VuflixScraper] Error decoding relay token: $e');
     }
 
     return _UnwrappedUrl(url: rawUrl, headers: defaultH);
@@ -232,7 +232,7 @@ class VuflixScraper extends StreamScraper {
               final itemLanguage = (item['language'] ?? '').toString();
               final itemLabel = (item['label'] ?? '').toString();
 
-              // 1. 檢查 quality variants (e.g. 2160p 4K, 1080p, 720p, 480p)
+              // 1. Check quality variants (e.g. 2160p 4K, 1080p, 720p, 480p)
               final qualities = item['qualities'];
               if (qualities is List && qualities.isNotEmpty) {
                 for (final q in qualities) {
@@ -248,8 +248,8 @@ class VuflixScraper extends StreamScraper {
 
                   final qQuality = (q['quality'] ?? 'Auto').toString();
                   final qType = (q['type'] ?? itemType).toString().toUpperCase();
-                  final streamTitle = '[Vuflix - $providerName] $q畫質';
-                  final desc = '$providerName • $q畫質 • $qType';
+                  final streamTitle = '[Vuflix - $providerName] $qQuality';
+                  final desc = '$providerName • $qQuality • $qType';
 
                   if (!controller.isClosed) {
                     controller.add(
@@ -265,7 +265,7 @@ class VuflixScraper extends StreamScraper {
                 }
               }
 
-              // 2. 檢查 candidate mirrors (e.g. Alpha mirror 1, 2, 3)
+              // 2. Check candidate mirrors (e.g. Alpha mirror 1, 2, 3)
               final candidates = item['candidates'];
               if (candidates is List && candidates.isNotEmpty) {
                 var candIndex = 1;
@@ -283,7 +283,7 @@ class VuflixScraper extends StreamScraper {
                   final cQuality = (c['quality'] ?? '1080p').toString();
                   final cType = (c['type'] ?? itemType).toString().toUpperCase();
                   final streamTitle =
-                      '[Vuflix - $providerName] Mirror $candIndex • $c畫質';
+                      '[Vuflix - $providerName] Mirror $candIndex • $cQuality';
                   final desc = '$providerName Mirror $candIndex • $cType';
                   candIndex++;
 
@@ -301,7 +301,7 @@ class VuflixScraper extends StreamScraper {
                 }
               }
 
-              // 3. 檢查 multi-language audio tracks with switchable URLs
+              // 3. Check multi-language audio tracks with switchable URLs
               final audioTracks = item['audioTracks'];
               if (audioTracks is List && audioTracks.isNotEmpty) {
                 for (final a in audioTracks) {
@@ -319,11 +319,11 @@ class VuflixScraper extends StreamScraper {
                   final aLabel = (a['label'] ??
                           a['name'] ??
                           a['language'] ??
-                          '音訊')
+                          'Audio')
                       .toString();
-                  final streamTitle = '[Vuflix - $providerName] $aLabel 音訊';
+                  final streamTitle = '[Vuflix - $providerName] $aLabel Audio';
                   final desc =
-                      '$providerName • $aLabel 音訊 • ${itemType.toUpperCase()}';
+                      '$providerName • $aLabel Audio • ${itemType.toUpperCase()}';
 
                   if (!controller.isClosed) {
                     controller.add(
@@ -357,9 +357,9 @@ class VuflixScraper extends StreamScraper {
 
                   final streamTitle = cleanLabel.startsWith('[')
                       ? cleanLabel
-                      : '[Vuflix - $providerName] $display畫質';
+                      : '[Vuflix - $providerName] $displayQuality';
                   final desc = itemLanguage.isNotEmpty
-                      ? '$providerName • $item語言 • ${itemType.toUpperCase()}'
+                      ? '$providerName • $itemLanguage • ${itemType.toUpperCase()}'
                       : '$providerName • ${itemType.toUpperCase()}';
 
                   if (!controller.isClosed) {
@@ -383,7 +383,7 @@ class VuflixScraper extends StreamScraper {
 
         await Future.wait(providerTasks);
       } catch (e) {
-        debugPrint('[VuflixScraper] 錯誤 scraping "$title": $e');
+        debugPrint('[VuflixScraper] Error scraping "$title": $e');
       } finally {
         if (!controller.isClosed) {
           controller.close();
@@ -406,7 +406,7 @@ class VuflixScraper extends StreamScraper {
       title: title,
       description: description,
       url: url,
-      addonName: '播放TorrioHTTP',
+      addonName: 'PlayTorrioHTTP',
       headers: headers,
       behaviorHints: {
         'notWebReady': false,

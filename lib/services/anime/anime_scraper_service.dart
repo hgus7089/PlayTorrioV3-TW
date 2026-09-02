@@ -24,9 +24,9 @@ class AnimeScraperService {
 
   static String cleanAnimeTitle(String raw) {
     var s = raw;
-    s = s.replaceAll(RegExp(r'\s*-\s*集\s*\d+.*', caseSensitive: false), '');
+    s = s.replaceAll(RegExp(r'\s*-\s*Episode\s*\d+.*', caseSensitive: false), '');
     s = s.replaceAll(RegExp(r'\s*•\s*Ep\s*\d+.*', caseSensitive: false), '');
-    s = s.replaceAll(RegExp(r'\s*•\s*集\s*\d+.*', caseSensitive: false), '');
+    s = s.replaceAll(RegExp(r'\s*•\s*Episode\s*\d+.*', caseSensitive: false), '');
     s = s.replaceAll(RegExp(r'\(TV\)', caseSensitive: false), '');
     s = s.replaceAll(RegExp(r'\[.*?\]'), '');
     return s.trim();
@@ -68,17 +68,17 @@ class AnimeScraperService {
                 !controller.isClosed) {
               final catUpper = cat.toUpperCase();
               final subCount = res.tracks.where((t) => t.kind != 'thumbnails').length;
-              final subLabel = subCount > 0 ? ' • $subCount 字幕' : '';
+              final subLabel = subCount > 0 ? ' • $subCount Subtitles' : '';
 
               controller.add(
                 StreamSource(
-                  name: '⚡ Mega播放 • $catUpper',
+                  name: '⚡ MegaPlay • $catUpper',
                   title:
-                      '${anime.displayTitle} • Ep $episodeNumber [Mega播放 • $catUpper]',
+                      '${anime.displayTitle} • Ep $episodeNumber [MegaPlay • $catUpper]',
                   description:
-                      'Mega播放 • Master HLS • $catUpper$subLabel',
+                      'MegaPlay • Master HLS • $catUpper$subLabel',
                   url: res.url,
-                  addonName: 'Mega播放',
+                  addonName: 'MegaPlay',
                   headers: res.headers,
                   behaviorHints: {
                     'notWebReady': false,
@@ -92,7 +92,7 @@ class AnimeScraperService {
               );
             }
           }).catchError((e) {
-            if (kDebugMode) debugPrint('[動漫Scraper] Mega播放 ($cat) error: $e');
+            if (kDebugMode) debugPrint('[AnimeScraper] MegaPlay ($cat) error: $e');
           }),
         );
       }
@@ -113,7 +113,7 @@ class AnimeScraperService {
                 !controller.isClosed) {
               final catUpper = cat.toUpperCase();
               final subCount = res.tracks.where((t) => t.kind != 'thumbnails').length;
-              final subLabel = subCount > 0 ? ' • $subCount 字幕' : '';
+              final subLabel = subCount > 0 ? ' • $subCount Subtitles' : '';
 
               controller.add(
                 StreamSource(
@@ -137,7 +137,7 @@ class AnimeScraperService {
               );
             }
           }).catchError((e) {
-            if (kDebugMode) debugPrint('[動漫Scraper] ReCloud ($cat) error: $e');
+            if (kDebugMode) debugPrint('[AnimeScraper] ReCloud ($cat) error: $e');
           }),
         );
       }
@@ -158,7 +158,7 @@ class AnimeScraperService {
                   !controller.isClosed) {
                 final catUpper = cat.toUpperCase();
                 final subCount = res.tracks.length;
-                final subLabel = subCount > 0 ? ' • $subCount 字幕' : '';
+                final subLabel = subCount > 0 ? ' • $subCount Subtitles' : '';
 
                 controller.add(
                   StreamSource(
@@ -183,7 +183,7 @@ class AnimeScraperService {
               }
             }
           }).catchError((e) {
-            if (kDebugMode) debugPrint('[動漫Scraper] TryEmbed ($cat) error: $e');
+            if (kDebugMode) debugPrint('[AnimeScraper] TryEmbed ($cat) error: $e');
           }),
         );
       }
@@ -224,7 +224,7 @@ class AnimeScraperService {
                 );
               }
             }).catchError((e) {
-              if (kDebugMode) debugPrint('[動漫Scraper] AniDB ($cat) error: $e');
+              if (kDebugMode) debugPrint('[AnimeScraper] AniDB ($cat) error: $e');
             }),
           );
         }
@@ -248,11 +248,11 @@ class AnimeScraperService {
                 !controller.isClosed) {
               controller.add(
                 StreamSource(
-                  name: '⚡ 觀看Hentai',
-                  title: '${anime.displayTitle} • Ep $episodeNumber [觀看Hentai]',
-                  description: '觀看Hentai • Direct MP4',
+                  name: '⚡ WatchHentai',
+                  title: '${anime.displayTitle} • Ep $episodeNumber [WatchHentai]',
+                  description: 'WatchHentai • Direct MP4',
                   url: res.url,
-                  addonName: '觀看Hentai',
+                  addonName: 'WatchHentai',
                   headers: {
                     'Referer': res.referer,
                     'Origin': res.origin,
@@ -337,15 +337,15 @@ class AnimeScraperService {
                   !controller.isClosed) {
                 final catUpper = cat.toUpperCase();
                 final subCount = res.tracks.where((t) => t.kind != 'thumbnails').length;
-                final subLabel = subCount > 0 ? ' • $subCount 字幕' : '';
+                final subLabel = subCount > 0 ? ' • $subCount Subtitles' : '';
 
                 controller.add(
                   StreamSource(
-                    name: '⚡ Mega播放 • $catUpper',
-                    title: '$cleanTitle • Ep $episodeNumber [Mega播放 • $catUpper]',
-                    description: 'Mega播放 • Master HLS • $catUpper$subLabel',
+                    name: '⚡ MegaPlay • $catUpper',
+                    title: '$cleanTitle • Ep $episodeNumber [MegaPlay • $catUpper]',
+                    description: 'MegaPlay • Master HLS • $catUpper$subLabel',
                     url: res.url,
-                    addonName: 'Mega播放',
+                    addonName: 'MegaPlay',
                     headers: res.headers,
                     behaviorHints: {
                       'notWebReady': false,
@@ -359,7 +359,7 @@ class AnimeScraperService {
                 );
               }
             }).catchError((e) {
-              if (kDebugMode) debugPrint('[動漫Scraper] In-player Mega播放 error: $e');
+              if (kDebugMode) debugPrint('[AnimeScraper] In-player MegaPlay error: $e');
             }),
           );
         }
@@ -380,7 +380,7 @@ class AnimeScraperService {
                   !controller.isClosed) {
                 final catUpper = cat.toUpperCase();
                 final subCount = res.tracks.where((t) => t.kind != 'thumbnails').length;
-                final subLabel = subCount > 0 ? ' • $subCount 字幕' : '';
+                final subLabel = subCount > 0 ? ' • $subCount Subtitles' : '';
 
                 controller.add(
                   StreamSource(
@@ -402,7 +402,7 @@ class AnimeScraperService {
                 );
               }
             }).catchError((e) {
-              if (kDebugMode) debugPrint('[動漫Scraper] In-player ReCloud error: $e');
+              if (kDebugMode) debugPrint('[AnimeScraper] In-player ReCloud error: $e');
             }),
           );
         }
@@ -423,7 +423,7 @@ class AnimeScraperService {
                     !controller.isClosed) {
                   final catUpper = cat.toUpperCase();
                   final subCount = res.tracks.length;
-                  final subLabel = subCount > 0 ? ' • $subCount 字幕' : '';
+                  final subLabel = subCount > 0 ? ' • $subCount Subtitles' : '';
 
                   controller.add(
                     StreamSource(
@@ -446,7 +446,7 @@ class AnimeScraperService {
                 }
               }
             }).catchError((e) {
-              if (kDebugMode) debugPrint('[動漫Scraper] In-player TryEmbed error: $e');
+              if (kDebugMode) debugPrint('[AnimeScraper] In-player TryEmbed error: $e');
             }),
           );
         }
@@ -486,7 +486,7 @@ class AnimeScraperService {
                 );
               }
             }).catchError((e) {
-              if (kDebugMode) debugPrint('[動漫Scraper] In-player AniDB error: $e');
+              if (kDebugMode) debugPrint('[AnimeScraper] In-player AniDB error: $e');
             }),
           );
         }
@@ -505,11 +505,11 @@ class AnimeScraperService {
                 !controller.isClosed) {
               controller.add(
                 StreamSource(
-                  name: '⚡ 觀看Hentai',
-                  title: '$cleanTitle • Ep $episodeNumber [觀看Hentai]',
-                  description: '觀看Hentai • Direct MP4',
+                  name: '⚡ WatchHentai',
+                  title: '$cleanTitle • Ep $episodeNumber [WatchHentai]',
+                  description: 'WatchHentai • Direct MP4',
                   url: res.url,
-                  addonName: '觀看Hentai',
+                  addonName: 'WatchHentai',
                   headers: {
                     'Referer': res.referer,
                     'Origin': res.origin,
@@ -599,7 +599,7 @@ class AnimeScraperService {
           id: 'anilist:${anime.id}:${ep.number}',
           season: 1,
           episode: ep.number,
-          title: '集 ${ep.number}',
+          title: 'Episode ${ep.number}',
           thumbnail: anime.backdropUrl,
         );
       });
@@ -610,7 +610,7 @@ class AnimeScraperService {
           id: 'anilist:${anime.id}:${i + 1}',
           season: 1,
           episode: i + 1,
-          title: '集 ${i + 1}',
+          title: 'Episode ${i + 1}',
           thumbnail: anime.backdropUrl,
         ),
       );
@@ -623,7 +623,7 @@ class AnimeScraperService {
       poster: anime.coverUrl,
       background: anime.backdropUrl,
       description: anime.description,
-      year: anime.seasonYear > 0 ? '${anime.season年份}' : null,
+      year: anime.seasonYear > 0 ? '${anime.seasonYear}' : null,
       imdbRating: anime.averageScore > 0 ? anime.formattedScore : null,
       genres: anime.genres,
       videos: videos,
@@ -635,7 +635,7 @@ class AnimeScraperService {
       id: 'anilist:${anime.id}:$episodeNumber',
       season: 1,
       episode: episodeNumber,
-      title: (title != null && title.isNotEmpty) ? title : '集 $episodeNumber',
+      title: (title != null && title.isNotEmpty) ? title : 'Episode $episodeNumber',
       thumbnail: (thumbnail != null && thumbnail.isNotEmpty) ? thumbnail : anime.backdropUrl,
     );
   }

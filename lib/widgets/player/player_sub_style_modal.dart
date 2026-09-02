@@ -31,21 +31,21 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
     {'name': 'Neon Green', 'hex': '#00E676', 'color': Color(0xFF00E676)},
     {'name': 'Vibrant Orange', 'hex': '#FF9100', 'color': Color(0xFFFF9100)},
     {'name': 'Soft Rose', 'hex': '#FF80AB', 'color': Color(0xFFFF80AB)},
-    {'name': '淺色 Gray', 'hex': '#D1D5DB', 'color': Color(0xFFD1D5DB)},
+    {'name': 'Light Gray', 'hex': '#D1D5DB', 'color': Color(0xFFD1D5DB)},
   ];
 
   static const List<Map<String, dynamic>> _boxColorOptions = [
     {'name': 'None', 'hex': '#00000000', 'desc': 'Transparent'},
-    {'name': '25% 深色', 'hex': '#40000000', 'desc': 'Subtle'},
-    {'name': '50% 深色', 'hex': '#80000000', 'desc': 'Standard Box'},
-    {'name': '75% 深色', 'hex': '#BF000000', 'desc': 'High Contrast'},
+    {'name': '25% Dark', 'hex': '#40000000', 'desc': 'Subtle'},
+    {'name': '50% Dark', 'hex': '#80000000', 'desc': 'Standard Box'},
+    {'name': '75% Dark', 'hex': '#BF000000', 'desc': 'High Contrast'},
     {'name': '100% Solid', 'hex': '#FF000000', 'desc': 'Opaque Black'},
     {'name': '50% Indigo', 'hex': '#800F172A', 'desc': 'Slate Tint'},
   ];
 
   static const List<Map<String, dynamic>> _borderColorPalette = [
     {'name': 'Black', 'hex': '#FF000000', 'color': Color(0xFF000000)},
-    {'name': '深色 Slate', 'hex': '#FF1E293B', 'color': Color(0xFF1E293B)},
+    {'name': 'Dark Slate', 'hex': '#FF1E293B', 'color': Color(0xFF1E293B)},
     {'name': 'White', 'hex': '#FFFFFFFF', 'color': Color(0xFFFFFFFF)},
     {'name': 'Gold', 'hex': '#FFFFD700', 'color': Color(0xFFFFD700)},
     {'name': 'Crimson', 'hex': '#FFE11D48', 'color': Color(0xFFE11D48)},
@@ -180,7 +180,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '字幕外觀',
+                    'Subtitle Appearance',
                     style: TextStyle(
                       color: PlayerTheme.ink,
                       fontSize: isSmall ? 13.5 : 15.5,
@@ -204,13 +204,13 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
               // Reset Button
               IconButton(
                 icon: const Icon(Icons.restart_alt_rounded, size: 19, color: PlayerTheme.inkMuted),
-                tooltip: '重設字幕預設值',
+                tooltip: 'Reset Subtitle Defaults',
                 onPressed: () => PlayerSettings.resetSubtitleDefaults(player: widget.player),
               ),
               // Close Button
               IconButton(
                 icon: const Icon(Icons.close_rounded, size: 20, color: Colors.white),
-                tooltip: '關閉',
+                tooltip: 'Close',
                 onPressed: widget.onClose,
               ),
             ],
@@ -277,7 +277,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
               borderRadius: BorderRadius.circular(6),
             ),
             child: Text(
-              '播放Torrio • Sample Subtitle Preview',
+              'PlayTorrio • Sample Subtitle Preview',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: fontName,
@@ -398,7 +398,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
           Tab(text: 'Colors & Box', icon: Icon(Icons.palette_rounded, size: 16)),
           Tab(text: 'Outline & Shadow', icon: Icon(Icons.border_style_rounded, size: 16)),
           Tab(text: 'Position', icon: Icon(Icons.vertical_align_bottom_rounded, size: 16)),
-          Tab(text: '進階 / ASS', icon: Icon(Icons.tune_rounded, size: 16)),
+          Tab(text: 'Advanced / ASS', icon: Icon(Icons.tune_rounded, size: 16)),
         ],
       ),
     );
@@ -432,7 +432,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
               dropdownColor: const Color(0xFF131826),
               icon: const Icon(Icons.arrow_drop_down_rounded, color: Colors.white70),
               items: PlayerSettings.popularFonts.map((f) {
-                final label = f == 'subfont' ? '預設 (播放Torrio Subfont)' : f;
+                final label = f == 'subfont' ? 'Default (PlayTorrio Subfont)' : f;
                 return DropdownMenuItem<String>(
                   value: f,
                   child: Text(
@@ -456,7 +456,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
         const SizedBox(height: 18),
 
         // Base Font Size Slider
-        _buildSectionTitle('BASE FONT SIZE (${播放器設定.subFontSize.value}pt)'),
+        _buildSectionTitle('BASE FONT SIZE (${PlayerSettings.subFontSize.value}pt)'),
         Row(
           children: [
             IconButton(
@@ -485,7 +485,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
         const SizedBox(height: 14),
 
         // Scale Multiplier Slider
-        _buildSectionTitle('SCALE MULTIPLIER (${(播放器設定.subScale.value * 100).round()}%)'),
+        _buildSectionTitle('SCALE MULTIPLIER (${(PlayerSettings.subScale.value * 100).round()}%)'),
         SliderTheme(
           data: _sliderTheme(),
           child: Slider(
@@ -504,7 +504,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
           children: [
             Expanded(
               child: _buildToggleTile(
-                title: '粗體文字',
+                title: 'Bold Text',
                 icon: Icons.format_bold_rounded,
                 value: PlayerSettings.subBold.value,
                 onChanged: (val) => PlayerSettings.setSubBold(val, player: widget.player),
@@ -513,7 +513,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
             const SizedBox(width: 12),
             Expanded(
               child: _buildToggleTile(
-                title: '斜體文字',
+                title: 'Italic Text',
                 icon: Icons.format_italic_rounded,
                 value: PlayerSettings.subItalic.value,
                 onChanged: (val) => PlayerSettings.setSubItalic(val, player: widget.player),
@@ -709,7 +709,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
         const SizedBox(height: 18),
 
         // Outline Thickness Slider
-        _buildSectionTitle('OUTLINE THICKNESS (${播放器設定.subBorderSize.value.toStringAsFixed(1)}px)'),
+        _buildSectionTitle('OUTLINE THICKNESS (${PlayerSettings.subBorderSize.value.toStringAsFixed(1)}px)'),
         SliderTheme(
           data: _sliderTheme(),
           child: Slider(
@@ -724,7 +724,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
         const SizedBox(height: 18),
 
         // Drop Shadow Offset Slider
-        _buildSectionTitle('DROP SHADOW OFFSET (${播放器設定.subShadow關閉set.value.toStringAsFixed(1)}px)'),
+        _buildSectionTitle('DROP SHADOW OFFSET (${PlayerSettings.subShadowOffset.value.toStringAsFixed(1)}px)'),
         SliderTheme(
           data: _sliderTheme(),
           child: Slider(
@@ -764,7 +764,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
         const SizedBox(height: 20),
 
         // Bottom Margin
-        _buildSectionTitle('BOTTOM MARGIN / OFFSET (${播放器設定.subMarginY.value.round()}px)'),
+        _buildSectionTitle('BOTTOM MARGIN / OFFSET (${PlayerSettings.subMarginY.value.round()}px)'),
         SliderTheme(
           data: _sliderTheme(),
           child: Slider(
@@ -779,7 +779,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
         const SizedBox(height: 20),
 
         // Vertical Screen Position
-        _buildSectionTitle('VERTICAL POSITION (${播放器設定.subPos.value.round()}%)'),
+        _buildSectionTitle('VERTICAL POSITION (${PlayerSettings.subPos.value.round()}%)'),
         SliderTheme(
           data: _sliderTheme(),
           child: Slider(
@@ -839,12 +839,12 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
     final overrideModes = [
       {
         'val': 'no',
-        'title': 'Preserve 動漫 & SSA/ASS Styling (推薦)',
+        'title': 'Preserve Anime & SSA/ASS Styling (Recommended)',
         'subtitle': 'Leaves SSA/ASS anime subtitles untouched to preserve custom karaoke, styling & positions. Plain SRT/VTT are styled with your custom theme.',
       },
       {
         'val': 'scale',
-        'title': 'Scale 開啟ly',
+        'title': 'Scale Only',
         'subtitle': 'Applies size scaling to SSA/ASS scripts while preserving their fonts, colors, and author typography.',
       },
       {
@@ -900,7 +900,7 @@ class _PlayerSubStyleModalState extends State<PlayerSubStyleModal>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Flutter Subtitle Engine (推薦)',
+                          'Flutter Subtitle Engine (Recommended)',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 13,

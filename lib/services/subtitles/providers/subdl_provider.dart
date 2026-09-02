@@ -38,7 +38,7 @@ class SubdlProvider extends SubtitleProvider {
       // 1. Build search query candidates
       final searchQueries = <String>[];
       if (targetYear != null) {
-        searchQueries.add('$cleanTitle $target年份');
+        searchQueries.add('$cleanTitle $targetYear');
       }
       searchQueries.add(cleanTitle);
       if (imdbId != null && imdbId.isNotEmpty) {
@@ -155,8 +155,8 @@ class SubdlProvider extends SubtitleProvider {
 
           final aTag = rowLi.querySelector('a[href*="dl.subdl.com"]') ??
               rowLi.querySelector('a[href*=".zip"]') ??
-              rowLi.querySelector('a[title*="下載"]') ??
-              rowLi.querySelector('button[title*="下載"]')?.parent ??
+              rowLi.querySelector('a[title*="Download"]') ??
+              rowLi.querySelector('button[title*="Download"]')?.parent ??
               rowLi.querySelector('a[href*="/subtitle/"]');
           final titleTag = rowLi.querySelector('h4') ?? rowLi.querySelector('a');
 

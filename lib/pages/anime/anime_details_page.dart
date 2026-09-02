@@ -603,7 +603,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage>
     if (_anime.seasonYear > 0) {
       items.add(
         Text(
-          '${_anime.season年份}',
+          '${_anime.seasonYear}',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -720,8 +720,8 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage>
             const SizedBox(width: 6),
             Text(
               watchItem != null && watchItem.lastWatchedEpisode > 0
-                  ? '繼續播放 Ep $resumeEp'
-                  : '播放 Ep 1',
+                  ? 'Resume Ep $resumeEp'
+                  : 'Play Ep 1',
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 15,
@@ -752,11 +752,11 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage>
       itemBuilder: (context) => [
         const PopupMenuItem(
           value: AnimeWatchStatus.watching,
-          child: Text('觀看ing', style: TextStyle(color: Colors.white)),
+          child: Text('Watching', style: TextStyle(color: Colors.white)),
         ),
         const PopupMenuItem(
           value: AnimeWatchStatus.planToWatch,
-          child: Text('Plan to 觀看', style: TextStyle(color: Colors.white)),
+          child: Text('Plan to Watch', style: TextStyle(color: Colors.white)),
         ),
         const PopupMenuItem(
           value: AnimeWatchStatus.completed,
@@ -884,7 +884,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionHeader('Characters & 投放'),
+        _buildSectionHeader('Characters & Cast'),
         const SizedBox(height: _Space.md),
         MouseRegion(
           onEnter: (_) => setState(() => _isHoveringCast = true),
@@ -1012,7 +1012,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage>
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildSectionHeader('集數'),
+                _buildSectionHeader('Episodes'),
                 const SizedBox(width: 8),
                 Text(
                   '($totalEps total)',

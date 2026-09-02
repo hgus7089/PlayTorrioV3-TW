@@ -81,7 +81,7 @@ class _AnimeCardState extends State<AnimeCard> {
                   children: [
                     if (anime.seasonYear > 0) ...[
                       Text(
-                        '${anime.season年份}',
+                        '${anime.seasonYear}',
                         style: TextStyle(
                           fontSize: 13,
                           color: Colors.white.withValues(alpha: 0.52),
@@ -266,7 +266,7 @@ class _AnimePosterFrame extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                   ),
                   child: Text(
-                    '${anime.total集} EPS',
+                    '${anime.totalEpisodes} EPS',
                     style: const TextStyle(
                       fontSize: 9.5,
                       fontWeight: FontWeight.bold,

@@ -68,7 +68,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
     if (widget.portal != null) {
       return IptvPortalFavoritesStore.portalKey(widget.portal!.portal);
     } else if (widget.m3uPlaylist != null) {
-      return 'm3u_${widget.m3u播放list!.id}';
+      return 'm3u_${widget.m3uPlaylist!.id}';
     }
     return '';
   }
@@ -155,7 +155,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                       Icon(Icons.tune_rounded, color: palette.primaryColor, size: 20),
                       const SizedBox(width: 10),
                       const Text(
-                        '自訂 Portal Browser',
+                        'Customize Portal Browser',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -174,7 +174,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                   const SizedBox(height: 12),
 
                   const Text(
-                    '頻道串流版面模式',
+                    'Channel Stream Layout Mode',
                     style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(height: 8),
@@ -225,7 +225,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text('串流網格欄數', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600)),
+                                  const Text('Grid Stream Columns', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600)),
                                   Text('$cols Cols', style: TextStyle(color: palette.primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
                                 ],
                               ),
@@ -257,7 +257,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                     builder: (context, showLogos, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('顯示頻道串流 Logo', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('Show Channel Stream Logos', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showLogos,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => IptvSettings.setShowStreamLogos(val),
@@ -270,7 +270,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                     builder: (context, showEpg, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show EPG "正在播放" Snippet', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('Show EPG "Now Playing" Snippet', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showEpg,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => IptvSettings.setShowEpgSnippet(val),
@@ -283,7 +283,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                     builder: (context, showCount, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('顯示分類串流數量', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('Show Category Stream Counts', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showCount,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => IptvSettings.setShowCategoryCount(val),
@@ -352,7 +352,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
   }
 
   String _selectedCategoryName() {
-    if (_selectedCategoryId == favoritesCategoryId) return '⭐ 收藏';
+    if (_selectedCategoryId == favoritesCategoryId) return '⭐ Favorites';
     if (_selectedCategoryId.isEmpty) return 'All Categories';
     final found = _categories.firstWhere(
       (c) => c.id == _selectedCategoryId,
@@ -383,7 +383,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
         setState(() {
           _categories = [
             const IptvCategory(id: '', name: 'All Categories'),
-            const IptvCategory(id: favoritesCategoryId, name: '收藏'),
+            const IptvCategory(id: favoritesCategoryId, name: 'Favorites'),
             ...cats,
           ];
           _selectedCategoryId = '';
@@ -397,7 +397,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
       } else if (widget.m3uPlaylist != null) {
         final pl = widget.m3uPlaylist!;
         final groupNames = pl.channels
-            .map((c) => c.group.isNotEmpty ? c.group : '一般')
+            .map((c) => c.group.isNotEmpty ? c.group : 'General')
             .toSet()
             .toList();
 
@@ -410,7 +410,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                   streamId: c.url,
                   name: c.name,
                   icon: c.logo,
-                  categoryId: c.group.isNotEmpty ? c.group : '一般',
+                  categoryId: c.group.isNotEmpty ? c.group : 'General',
                   containerExt: 'm3u8',
                   kind: 'live',
                 ))
@@ -420,7 +420,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
         setState(() {
           _categories = [
             const IptvCategory(id: '', name: 'All Categories'),
-            const IptvCategory(id: favoritesCategoryId, name: '收藏'),
+            const IptvCategory(id: favoritesCategoryId, name: 'Favorites'),
             ...cats,
           ];
           _selectedCategoryId = '';
@@ -540,7 +540,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
 
     final currentCat = _categories.firstWhere(
       (c) => c.id == _selectedCategoryId,
-      orElse: () => IptvCategory(id: '', name: isLive ? 'Live Channels' : (_activeSection == IptvSection.vod ? '電影' : '影集')),
+      orElse: () => IptvCategory(id: '', name: isLive ? 'Live Channels' : (_activeSection == IptvSection.vod ? 'Movies' : 'Series')),
     );
 
     if (widget.portal != null) {
@@ -679,7 +679,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                         const Icon(Icons.folder_rounded, color: Color(0xFF7C5CFF), size: 20),
                         const SizedBox(width: 8),
                         const Text(
-                          '選取 Category',
+                          'Select Category',
                           style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         const Spacer(),
@@ -788,7 +788,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                   children: [
                     IconButton(
                       icon: const Icon(Icons.arrow_back_rounded, color: Colors.white, size: 22),
-                      tooltip: '返回',
+                      tooltip: 'Back',
                       onPressed: () => Navigator.pop(context),
                     ),
                     const SizedBox(width: 8),
@@ -859,9 +859,9 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                           children: [
                             _buildSectionTab('Live TV', Icons.live_tv_rounded, IptvSection.live),
                             const SizedBox(width: 4),
-                            _buildSectionTab('電影', Icons.movie_rounded, IptvSection.vod),
+                            _buildSectionTab('Movies', Icons.movie_rounded, IptvSection.vod),
                             const SizedBox(width: 4),
-                            _buildSectionTab('TV 影集', Icons.tv_rounded, IptvSection.series),
+                            _buildSectionTab('TV Series', Icons.tv_rounded, IptvSection.series),
                           ],
                         ),
                       ),
@@ -876,7 +876,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                         controller: _searchCtrl,
                         style: const TextStyle(color: Colors.white, fontSize: 13),
                         decoration: InputDecoration(
-                          hintText: '搜尋 channels…',
+                          hintText: 'Search channels…',
                           hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 12.5),
                           prefixIcon: Icon(Icons.search_rounded, color: palette.primaryColor, size: 18),
                           suffixIcon: _searchQuery.isNotEmpty
@@ -921,7 +921,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                               )
                             : const Icon(Icons.speed_rounded, size: 16, color: Colors.white),
                         label: Text(
-                          _isCheckingAlive ? 'Stop ($_aliveChecked/$_aliveTotal)' : '檢查 Health',
+                          _isCheckingAlive ? 'Stop ($_aliveChecked/$_aliveTotal)' : 'Check Health',
                           style: const TextStyle(color: Colors.white, fontSize: 12.5, fontWeight: FontWeight.w700),
                         ),
                         onPressed: _isCheckingAlive ? () => setState(() => _cancelAlive = true) : _startAliveCheck,
@@ -932,7 +932,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
 
                     IconButton(
                       icon: const Icon(Icons.tune_rounded, color: Colors.white70, size: 20),
-                      tooltip: '自訂 Portal Browser Layout',
+                      tooltip: 'Customize Portal Browser Layout',
                       onPressed: () => _showBrowserCustomizer(context),
                     ),
                   ],
@@ -995,7 +995,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                         ),
                         if (_activeSection == IptvSection.live && widget.portal != null)
                           IconButton(
-                            tooltip: '檢查 Health',
+                            tooltip: 'Check Health',
                             icon: _isCheckingAlive
                                 ? const SizedBox(
                                     width: 18,
@@ -1007,7 +1007,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                           ),
                         IconButton(
                           icon: const Icon(Icons.tune_rounded, color: Colors.white70, size: 20),
-                          tooltip: '自訂',
+                          tooltip: 'Customize',
                           onPressed: () => _showBrowserCustomizer(context),
                         ),
                       ],
@@ -1069,9 +1069,9 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                                   children: [
                                     _buildSectionTab('Live', Icons.live_tv_rounded, IptvSection.live),
                                     const SizedBox(width: 2),
-                                    _buildSectionTab('電影', Icons.movie_rounded, IptvSection.vod),
+                                    _buildSectionTab('Movies', Icons.movie_rounded, IptvSection.vod),
                                     const SizedBox(width: 2),
-                                    _buildSectionTab('影集', Icons.tv_rounded, IptvSection.series),
+                                    _buildSectionTab('Series', Icons.tv_rounded, IptvSection.series),
                                   ],
                                 ),
                               ),
@@ -1094,7 +1094,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
                         controller: _searchCtrl,
                         style: const TextStyle(color: Colors.white, fontSize: 12.5),
                         decoration: InputDecoration(
-                          hintText: '搜尋 in this category…',
+                          hintText: 'Search in this category…',
                           hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.35), fontSize: 12),
                           prefixIcon: const Icon(Icons.search_rounded, color: Color(0xFF7C5CFF), size: 18),
                           suffixIcon: _searchQuery.isNotEmpty
@@ -1350,7 +1350,7 @@ class _IptvPortalBrowserPageState extends State<IptvPortalBrowserPage> {
               ),
               const SizedBox(height: 6),
               const Text(
-                'Tap the star icon on any channel to save it to your 收藏.',
+                'Tap the star icon on any channel to save it to your Favorites.',
                 style: TextStyle(color: Colors.white54, fontSize: 13.5),
               ),
             ],
@@ -1872,7 +1872,7 @@ class _LiveChannelListRowState extends State<_LiveChannelListRow> {
                     color: widget.isFavorite ? const Color(0xFFFFC107) : Colors.white38,
                     size: 21,
                   ),
-                  tooltip: widget.isFavorite ? '移除 from 收藏' : '新增 to 收藏',
+                  tooltip: widget.isFavorite ? 'Remove from Favorites' : 'Add to Favorites',
                   onPressed: widget.onToggleFavorite,
                 ),
 
@@ -2437,7 +2437,7 @@ class _SeriesEpisodesSheetState extends State<_SeriesEpisodesSheet> {
                 ],
           initialHitIndex: initialIndex,
           isLive: false,
-          categoryTitle: '${widget.series.name} 集數',
+          categoryTitle: '${widget.series.name} Episodes',
         ),
       ),
     );
@@ -2512,7 +2512,7 @@ class _SeriesEpisodesSheetState extends State<_SeriesEpisodesSheet> {
                               ),
                             ),
                             title: Text(
-                              ep.title.isNotEmpty ? ep.title : '集 ${ep.episode}',
+                              ep.title.isNotEmpty ? ep.title : 'Episode ${ep.episode}',
                               style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                             ),
                             trailing: const Icon(Icons.play_circle_fill_rounded, color: Color(0xFF7C5CFF)),

@@ -11,7 +11,7 @@ import 'tmdb_helper.dart';
 /// from flystream.net API.
 class FlyStreamScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _apiBase = 'https://flystream.net';
   static const _ua =
@@ -69,7 +69,7 @@ class FlyStreamScraper extends StreamScraper {
             if (!url.startsWith('http')) continue;
 
             final quality = s['quality']?.toString() ?? 'Auto';
-            final codec = s['video編碼']?.toString() ?? '';
+            final codec = s['videoCodec']?.toString() ?? '';
             final size = s['size']?.toString();
             final name = s['name']?.toString() ?? s['title']?.toString() ?? title;
 
@@ -80,10 +80,10 @@ class FlyStreamScraper extends StreamScraper {
             ].join(' · ');
 
             sources.add(StreamSource(
-              name: '播放TorrioHTTP',
-              addonName: '播放TorrioHTTP',
+              name: 'PlayTorrioHTTP',
+              addonName: 'PlayTorrioHTTP',
               title: 'FlyStream $name',
-              description: descDetails.isNotEmpty ? 'FlyStream $desc詳細資訊' : 'FlyStream Direct HLS Stream',
+              description: descDetails.isNotEmpty ? 'FlyStream $descDetails' : 'FlyStream Direct HLS Stream',
               url: url,
               headers: {
                 'User-Agent': _ua,

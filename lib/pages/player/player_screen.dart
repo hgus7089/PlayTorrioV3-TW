@@ -224,19 +224,19 @@ class _PlayerScreenState extends State<PlayerScreen>
   Future<void> _initStream() async {
     String? streamUrl;
 
-    print('[播放器Screen] Initializing playback:');
-    print('[播放器Screen]   Title: $_currentTitle');
-    print('[播放器Screen]   來源 Name: ${_current來源.name}');
-    print('[播放器Screen]   新增on Name: ${_current來源.addonName}');
-    print('[播放器Screen]   來源 Title: ${_current來源.title}');
-    print('[播放器Screen]   Raw URL: ${_current來源.url}');
+    print('[PlayerScreen] Initializing playback:');
+    print('[PlayerScreen]   Title: $_currentTitle');
+    print('[PlayerScreen]   Source Name: ${_currentSource.name}');
+    print('[PlayerScreen]   Addon Name: ${_currentSource.addonName}');
+    print('[PlayerScreen]   Source Title: ${_currentSource.title}');
+    print('[PlayerScreen]   Raw URL: ${_currentSource.url}');
 
     try {
       final rawUrl = _currentSource.url;
 
       // Handle offline downloaded file playback directly
-      if (rawUrl != null && (File(rawUrl).existsSync() || _currentSource.name == '已下載')) {
-        print('[播放器Screen] Initializing offline local file playback: $rawUrl');
+      if (rawUrl != null && (File(rawUrl).existsSync() || _currentSource.name == 'Downloaded')) {
+        print('[PlayerScreen] Initializing offline local file playback: $rawUrl');
         await PlayerSettings.applyPreOpenProperties(_player);
         await _player.open(Media(rawUrl), play: true);
         await PlayerSettings.applyPostOpenProperties(_player);
@@ -288,7 +288,7 @@ class _PlayerScreenState extends State<PlayerScreen>
           }
 
           streamUrl = debridFiles.first.downloadUrl;
-          print('[播放器Screen] Debrid resolved stream URL: $streamUrl');
+          print('[PlayerScreen] Debrid resolved stream URL: $streamUrl');
         } else {
           if (!mounted) return;
           setState(() => _statusMessage = 'Gathering metadata & peers...');
@@ -323,11 +323,11 @@ class _PlayerScreenState extends State<PlayerScreen>
       }
 
       final cleanUri = Uri.parse(sanitizedUrlStr);
-      print('[播放器Screen] 開啟ing direct network stream URL: $cleanUri (headers: ${playerHeaders.keys})');
+      print('[PlayerScreen] Opening direct network stream URL: $cleanUri (headers: ${playerHeaders.keys})');
 
       if (!mounted) return;
       final epLabel = _currentEpisode != null
-          ? 'S${_current集!.season ?? 1}:E${_current集!.episode ?? 1} - ${_current集!.title.isNotEmpty ? _current集!.title : "集 ${_current集!.episode ?? 1}"}'
+          ? 'S${_currentEpisode!.season ?? 1}:E${_currentEpisode!.episode ?? 1} - ${_currentEpisode!.title.isNotEmpty ? _currentEpisode!.title : "Episode ${_currentEpisode!.episode ?? 1}"}'
           : (widget.detail?.name ?? _currentTitle);
       setState(() => _statusMessage = 'Buffering $epLabel...');
 
@@ -360,7 +360,7 @@ class _PlayerScreenState extends State<PlayerScreen>
             }
           }
         } catch (e) {
-          print('[播放器Screen] 警告 setting native header properties: $e');
+          print('[PlayerScreen] Warning setting native header properties: $e');
         }
       }
 
@@ -378,7 +378,7 @@ class _PlayerScreenState extends State<PlayerScreen>
       _setSubtitleScale(_subtitleScale);
       _applyVolume(_isMuted ? 0.0 : _volume);
 
-      print('[播放器Screen SUCCESS] 播放器 opened media successfully for $streamUrl');
+      print('[PlayerScreen SUCCESS] Player opened media successfully for $streamUrl');
 
       _updateMediaTracks(_player.state.tracks);
 
@@ -425,9 +425,9 @@ class _PlayerScreenState extends State<PlayerScreen>
         _savePlaybackProgress();
       });
     } catch (e, stackTrace) {
-      print('[播放器Screen ERROR] Failed to initialize stream URL: "$streamUrl"');
-      print('[播放器Screen ERROR] Exception: $e');
-      print('[播放器Screen ERROR] StackTrace:\n$stackTrace');
+      print('[PlayerScreen ERROR] Failed to initialize stream URL: "$streamUrl"');
+      print('[PlayerScreen ERROR] Exception: $e');
+      print('[PlayerScreen ERROR] StackTrace:\n$stackTrace');
 
       if (!mounted) return;
 
@@ -437,16 +437,16 @@ class _PlayerScreenState extends State<PlayerScreen>
           _isLoading = false;
           _showSourcesPanel = true;
           _sourcesEpisode = _currentEpisode;
-          _sourcesErrorMessage = '來源 failed to play. Please select another source below.';
+          _sourcesErrorMessage = 'Source failed to play. Please select another source below.';
         });
         return;
       }
 
-      String displayMessage = '錯誤: $e';
+      String displayMessage = 'Error: $e';
       if (e is PlatformException &&
           (e.message?.contains('invalid or unsupported media') ?? false)) {
         displayMessage =
-            'Media 開啟 錯誤: Stream server quota exceeded or invalid media format.\nPlease select another stream.';
+            'Media Open Error: Stream server quota exceeded or invalid media format.\nPlease select another stream.';
       }
 
       setState(() {
@@ -525,7 +525,7 @@ class _PlayerScreenState extends State<PlayerScreen>
         if (yMatch != null) searchYear = int.tryParse(yMatch.group(1)!);
       }
       final showName = cleanMediaTitle(rawName);
-      print('[播放器Screen] Scraping initial subtitles for "$showName" (year: $search年份, imdb: ${widget.detail?.id})...');
+      print('[PlayerScreen] Scraping initial subtitles for "$showName" (year: $searchYear, imdb: ${widget.detail?.id})...');
 
       final groups = await SubtitleService().fetchAllSubtitles(
         showName,
@@ -534,7 +534,7 @@ class _PlayerScreenState extends State<PlayerScreen>
         episode: _currentEpisode?.episode,
         year: searchYear,
       );
-      print('[播放器Screen] Scraped ${groups.length} subtitle language groups with ${groups.fold(0, (s, g) => s + g.variants.length)} total variants');
+      print('[PlayerScreen] Scraped ${groups.length} subtitle language groups with ${groups.fold(0, (s, g) => s + g.variants.length)} total variants');
       if (mounted && groups.isNotEmpty) {
         setState(() => _subtitleGroups = groups);
 
@@ -554,7 +554,7 @@ class _PlayerScreenState extends State<PlayerScreen>
         }
       }
     } catch (e) {
-      debugPrint('[播放器Screen] 錯誤 loading subtitles: $e');
+      debugPrint('[PlayerScreen] Error loading subtitles: $e');
     }
   }
 
@@ -653,7 +653,7 @@ class _PlayerScreenState extends State<PlayerScreen>
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('下載中 ${variant.language} subtitle...'),
+          content: Text('Downloading ${variant.language} subtitle...'),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -679,7 +679,7 @@ class _PlayerScreenState extends State<PlayerScreen>
         _currentSubFormat = parseResult.format;
       }
     } catch (e) {
-      print('[播放器Screen] Subtitle cues parse error: $e');
+      print('[PlayerScreen] Subtitle cues parse error: $e');
     }
 
     _currentSubtitlePath = path;
@@ -733,7 +733,7 @@ class _PlayerScreenState extends State<PlayerScreen>
     try {
       np.setProperty('sub-delay', delaySec.toString());
     } catch (e) {
-      print('[播放器Screen] applyLiveDelay error: $e');
+      print('[PlayerScreen] applyLiveDelay error: $e');
     }
   }
 
@@ -767,7 +767,7 @@ class _PlayerScreenState extends State<PlayerScreen>
   void _onControllerError(dynamic err) {
     if (!mounted) return;
     final errorMsg = err.toString();
-    print('[播放器Screen ERROR] 播放器 error: $errorMsg');
+    print('[PlayerScreen ERROR] Player error: $errorMsg');
 
     // Ignore non-fatal subtitle track loading errors so video playback is not interrupted
     final lower = errorMsg.toLowerCase();
@@ -793,14 +793,14 @@ class _PlayerScreenState extends State<PlayerScreen>
         _isLoading = false;
         _showSourcesPanel = true;
         _sourcesEpisode = _currentEpisode;
-        _sourcesErrorMessage = '播放back error: $errorMsg. Please select another source below.';
+        _sourcesErrorMessage = 'Playback error: $errorMsg. Please select another source below.';
       });
       return;
     }
 
     setState(() {
       _isLoading = true;
-      _statusMessage = '播放back error: $errorMsg';
+      _statusMessage = 'Playback error: $errorMsg';
     });
   }
 
@@ -918,9 +918,9 @@ class _PlayerScreenState extends State<PlayerScreen>
       final showName = widget.detail?.name ?? widget.title;
       final epNum = newEpisode.episode ?? 1;
       final sNum = newEpisode.season ?? 1;
-      _currentTitle = '$showName - S${sNum}E$epNum ${new集.title}';
+      _currentTitle = '$showName - S${sNum}E$epNum ${newEpisode.title}';
       _isLoading = true;
-      _statusMessage = 'Buffering S$sNum:E$epNum - ${new集.title.isNotEmpty ? new集.title : "第 $epNum 集"}...';
+      _statusMessage = 'Buffering S$sNum:E$epNum - ${newEpisode.title.isNotEmpty ? newEpisode.title : "Episode $epNum"}...';
       _showEpisodesPanel = false;
       _showSourcesPanel = false;
       _activeMenu = null;
@@ -963,7 +963,7 @@ class _PlayerScreenState extends State<PlayerScreen>
         });
       }
     } catch (e) {
-      debugPrint('[播放器Screen] 錯誤 loading skip segments: $e');
+      debugPrint('[PlayerScreen] Error loading skip segments: $e');
     }
   }
 
@@ -1291,7 +1291,7 @@ class _PlayerScreenState extends State<PlayerScreen>
     if (existing != null) {
       if (existing.status == DownloadStatus.downloading) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('下載 already in progress in background.')),
+          const SnackBar(content: Text('Download already in progress in background.')),
         );
         return;
       } else if (existing.status == DownloadStatus.completed) {
@@ -1329,7 +1329,7 @@ class _PlayerScreenState extends State<PlayerScreen>
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('下載 started in background. Track progress in 下載 tab.'),
+            content: Text('Download started in background. Track progress in Downloads tab.'),
             duration: Duration(seconds: 3),
           ),
         );
@@ -1337,7 +1337,7 @@ class _PlayerScreenState extends State<PlayerScreen>
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('下載 failed to start: $e')),
+          SnackBar(content: Text('Download failed to start: $e')),
         );
       }
     }
@@ -1348,10 +1348,10 @@ class _PlayerScreenState extends State<PlayerScreen>
 
     final episodeTitle = _currentEpisode?.title;
     final episodeSubtitle = _currentEpisode != null
-        ? 'S${_current集!.season ?? 1}:E${_current集!.episode ?? 1}${episodeTitle != null && episodeTitle.isNotEmpty ? " • $episodeTitle" : ""}'
+        ? 'S${_currentEpisode!.season ?? 1}:E${_currentEpisode!.episode ?? 1}${episodeTitle != null && episodeTitle.isNotEmpty ? " • $episodeTitle" : ""}'
         : widget.detail?.year;
 
-    final isOfflineFile = _currentSource.name == '已下載';
+    final isOfflineFile = _currentSource.name == 'Downloaded';
 
     return Stack(
       children: [
@@ -1732,9 +1732,9 @@ class _PlayerScreenState extends State<PlayerScreen>
                       detail: widget.detail,
                       currentAddonName: _currentSource.addonName,
                       errorMessage: _sourcesErrorMessage,
-                      cachedSources: _cachedSourcesByEpisode['${_sources集!.season ?? 1}:${_sources集!.episode ?? 1}'],
+                      cachedSources: _cachedSourcesByEpisode['${_sourcesEpisode!.season ?? 1}:${_sourcesEpisode!.episode ?? 1}'],
                       onSourcesLoaded: (sources) {
-                        _cachedSourcesByEpisode['${_sources集!.season ?? 1}:${_sources集!.episode ?? 1}'] = sources;
+                        _cachedSourcesByEpisode['${_sourcesEpisode!.season ?? 1}:${_sourcesEpisode!.episode ?? 1}'] = sources;
                       },
                       onPlaySource: _playNewSource,
                       onBackToEpisodes: _onBackToEpisodes,

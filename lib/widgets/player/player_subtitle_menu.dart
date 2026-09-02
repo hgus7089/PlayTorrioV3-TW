@@ -117,7 +117,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
           ? _searchQuery!
           : cleanMediaTitle(rawTitle);
 
-      debugPrint('[播放器SubtitleMenu] 搜尋ing subtitles online for: "$query" (year: $year, imdb: ${widget.imdbId})');
+      debugPrint('[PlayerSubtitleMenu] Searching subtitles online for: "$query" (year: $year, imdb: ${widget.imdbId})');
       final results = await SubtitleService().fetchAllSubtitles(
         query,
         imdbId: widget.imdbId,
@@ -125,7 +125,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
         episode: widget.episode,
         year: year,
       );
-      debugPrint('[播放器SubtitleMenu] Found ${results.length} subtitle language groups');
+      debugPrint('[PlayerSubtitleMenu] Found ${results.length} subtitle language groups');
       if (mounted) {
         setState(() {
           _dynamicGroups = results;
@@ -135,7 +135,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
         });
       }
     } catch (e) {
-      debugPrint('[播放器SubtitleMenu] search error: $e');
+      debugPrint('[PlayerSubtitleMenu] search error: $e');
     } finally {
       if (mounted) setState(() => _isLoadingSearch = false);
     }
@@ -237,7 +237,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text(
-                        '字幕',
+                        'Subtitles',
                         style: TextStyle(
                           color: PlayerTheme.ink,
                           fontSize: 14.5,
@@ -284,7 +284,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                               ),
                             )
                           : const Icon(Icons.refresh_rounded),
-                      tooltip: '重新整理線上字幕',
+                      tooltip: 'Refresh Online Subtitles',
                       onPressed: _isLoadingSearch ? null : _searchOnline,
                     ),
                     const SizedBox(width: 3),
@@ -295,7 +295,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                         size: buttonSize,
                         iconSize: iconSize,
                         icon: const Icon(Icons.timer_outlined),
-                        tooltip: '字幕同步列',
+                        tooltip: 'Subtitle Sync Bar',
                         showActiveBadge: widget.delaySec != 0,
                         onPressed: () {
                           widget.onClose();
@@ -310,7 +310,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                       size: buttonSize,
                       iconSize: iconSize,
                       icon: const Icon(Icons.tune_rounded),
-                      tooltip: '字幕外觀',
+                      tooltip: 'Subtitle Appearance',
                       onPressed: () {
                         widget.onClose();
                         widget.onOpenStyleBar();
@@ -324,7 +324,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                         size: buttonSize,
                         iconSize: iconSize,
                         icon: const Icon(Icons.text_fields_rounded),
-                        tooltip: '語音文字同步',
+                        tooltip: 'Speech Text Sync',
                         onPressed: () {
                           widget.onClose();
                           widget.onOpenTextSync();
@@ -338,7 +338,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                       size: buttonSize,
                       iconSize: iconSize,
                       icon: const Icon(Icons.close_rounded),
-                      tooltip: '關閉',
+                      tooltip: 'Close',
                       onPressed: widget.onClose,
                     ),
                   ],
@@ -403,7 +403,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
           children: [
             // Off Button
             _buildLanguagePill(
-              label: '關閉',
+              label: 'Off',
               isSelected: isOff,
               icon: Icon(
                 Icons.block_rounded,
@@ -589,7 +589,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                         ),
                         const SizedBox(width: 7),
                         const Text(
-                          '關閉',
+                          'Off',
                           style: TextStyle(
                             color: PlayerTheme.inkMuted,
                             fontSize: 12,
@@ -655,7 +655,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                               borderRadius: BorderRadius.circular(999),
                             ),
                             child: Text(
-                              '${widget.embedded字幕.length}',
+                              '${widget.embeddedSubtitles.length}',
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 9,
@@ -707,7 +707,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                           const SizedBox(width: 7),
                           const Expanded(
                             child: Text(
-                              'All 語言s',
+                              'All Languages',
                               style: TextStyle(
                                 color: PlayerTheme.inkMuted,
                                 fontSize: 11.5,
@@ -837,7 +837,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                   Icon(Icons.search_rounded, size: 13, color: PlayerTheme.accent),
                   SizedBox(width: 4),
                   Text(
-                    '搜尋 開啟line',
+                    'Search Online',
                     style: TextStyle(
                       color: PlayerTheme.accent,
                       fontSize: 11,
@@ -1003,7 +1003,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
             ),
             SizedBox(height: 10),
             Text(
-              '搜尋ing subtitles...',
+              'Searching subtitles...',
               style: TextStyle(color: PlayerTheme.inkMuted, fontSize: 12),
             ),
           ],
@@ -1042,7 +1042,7 @@ class _PlayerSubtitleMenuState extends State<PlayerSubtitleMenu> {
                   ),
                 ),
                 icon: const Icon(Icons.search_rounded, size: 15),
-                label: const Text('搜尋線上提供者', style: TextStyle(fontSize: 11.5)),
+                label: const Text('Search Online Providers', style: TextStyle(fontSize: 11.5)),
                 onPressed: _searchOnline,
               ),
             ],

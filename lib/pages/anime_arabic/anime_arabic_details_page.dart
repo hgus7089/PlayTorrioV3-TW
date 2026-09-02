@@ -269,7 +269,7 @@ class _AnimeArabicDetailsPageState extends State<AnimeArabicDetailsPage>
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(backgroundColor: _Palette.accent),
                               onPressed: _loadDetails,
-                              child: const Text('重試'),
+                              child: const Text('Retry'),
                             ),
                           ],
                         ),
@@ -635,7 +635,7 @@ class _AnimeArabicDetailsPageState extends State<AnimeArabicDetailsPage>
             Icon(Icons.video_library_rounded, color: _Palette.accent, size: 22),
             const SizedBox(width: 10),
             Text(
-              'الحلقات ($total集)',
+              'الحلقات ($totalEpisodes)',
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,

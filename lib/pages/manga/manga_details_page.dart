@@ -130,7 +130,7 @@ class _MangaDetailsPageState extends State<MangaDetailsPage> {
           // Background Hero Cover with ambient blur
           Positioned.fill(
             child: Hero(
-              tag: 'manga_cover_${display漫畫.id}',
+              tag: 'manga_cover_${displayManga.id}',
               child: Image.network(
                 coverUrl,
                 fit: BoxFit.cover,
@@ -355,7 +355,7 @@ class _MangaDetailsPageState extends State<MangaDetailsPage> {
               child: Center(
                 child: Text(
                   _chapterSearchQuery.isNotEmpty
-                      ? 'No chapters matching "$_chapter搜尋Query"'
+                      ? 'No chapters matching "$_chapterSearchQuery"'
                       : 'No chapters found.',
                   style: const TextStyle(color: Colors.white70),
                 ),
@@ -492,7 +492,7 @@ class _MangaDetailsPageState extends State<MangaDetailsPage> {
       },
       style: const TextStyle(color: Colors.white, fontSize: 13.5),
       decoration: InputDecoration(
-        hintText: '搜尋 chapters...',
+        hintText: 'Search chapters...',
         hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.35)),
         prefixIcon: Icon(Icons.search_rounded, color: palette.primaryColor, size: 18),
         suffixIcon: _chapterSearchQuery.isNotEmpty
@@ -738,7 +738,7 @@ class _MangaDetailsPageState extends State<MangaDetailsPage> {
       final chNum = (_chapters != null && _historyEntry!['chapterIndex'] < _chapters!.length)
           ? _chapters![_historyEntry!['chapterIndex']].number
           : '';
-      final label = '繼續播放 Chapter ${chNum.toString().isNotEmpty ? chNum : ''}';
+      final label = 'Resume Chapter ${chNum.toString().isNotEmpty ? chNum : ''}';
 
       return _buildActionButton(
         icon: Icons.play_arrow_rounded,

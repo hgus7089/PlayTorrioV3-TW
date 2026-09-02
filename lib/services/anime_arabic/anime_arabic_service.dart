@@ -40,7 +40,7 @@ class AnimeArabicService {
     try {
       final req = await client.getUrl(Uri.parse(url));
       req.headers.set('User-Agent', _userAgent);
-      req.headers.set('Accept-語言', 'ar,en;q=0.8');
+      req.headers.set('Accept-Language', 'ar,en;q=0.8');
       req.followRedirects = true;
       final res = await req.close();
       final body = await res.transform(utf8.decoder).join();
@@ -99,7 +99,7 @@ class AnimeArabicService {
       }
       return out;
     } catch (e) {
-      debugPrint('[動漫ArabicService] search JSON parse failed: $e');
+      debugPrint('[AnimeArabicService] search JSON parse failed: $e');
       try {
         final html = await _get('/?s=${Uri.encodeQueryComponent(q)}');
         return _parseCardGrid(html);
@@ -140,13 +140,13 @@ class AnimeArabicService {
       final t = h.text;
       if (t.contains('آخر الحلقات') || t.contains('Latest')) {
         feed.recentEpisodes = cards;
-      } else if (t.contains('الأكثر شهرة') || t.contains('شعبية هذا') || t.contains('熱門')) {
+      } else if (t.contains('الأكثر شهرة') || t.contains('شعبية هذا') || t.contains('Trending')) {
         feed.trending = cards;
-      } else if (t.contains('الأفلام الأكثر شعبية') || t.contains('電影')) {
+      } else if (t.contains('الأفلام الأكثر شعبية') || t.contains('Movies')) {
         feed.popularMovies = cards;
       } else if (t.contains('أفضل انميات') || t.contains('أفضل الأنميات')) {
         feed.topSeasonal = cards;
-      } else if (t.contains('أنميات موسيمية') || t.contains('季al')) {
+      } else if (t.contains('أنميات موسيمية') || t.contains('Seasonal')) {
         feed.seasonal = cards;
       } else if (t.contains('أسطورية') || t.contains('Legendary')) {
         feed.legendary = cards;
@@ -419,7 +419,7 @@ class AnimeArabicService {
         'title': anime.title,
         'cover': anime.cover,
         'episodeNumber': episodeNumber,
-        'total集': totalEpisodes,
+        'totalEpisodes': totalEpisodes,
         'positionMs': position?.inMilliseconds ?? 0,
         'durationMs': duration?.inMilliseconds ?? 0,
         'updatedAt': DateTime.now().millisecondsSinceEpoch,
@@ -485,7 +485,7 @@ class ArabicAnimeCard {
     this.episodeBadge,
   });
 
-  String get pageUrl => '${動漫ArabicService.baseUrl}/title/$slug';
+  String get pageUrl => '${AnimeArabicService.baseUrl}/title/$slug';
 
   AnimeMedia toAnimeMedia() {
     final epCount = episodeBadge != null
@@ -618,7 +618,7 @@ class ArabicEpisode {
     this.thumb,
   });
 
-  String get watchUrl => '${動漫ArabicService.baseUrl}$watchPath';
+  String get watchUrl => '${AnimeArabicService.baseUrl}$watchPath';
 }
 
 class HomeFeed {

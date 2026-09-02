@@ -27,7 +27,7 @@ abstract final class AppThemeService {
   static const List<AppThemePalette> palettes = [
     AppThemePalette(
       id: 'amethyst',
-      name: '紫水晶紫',
+      name: 'Amethyst Violet',
       primaryColor: Color(0xFF7C5CFF),
       accentColor: Color(0xFF00E5FF),
       scaffoldBackgroundColor: Color(0xFF080A0F),
@@ -36,7 +36,7 @@ abstract final class AppThemeService {
     ),
     AppThemePalette(
       id: 'cyberpunk',
-      name: '賽博龐克霓虹',
+      name: 'Cyberpunk Neon',
       primaryColor: Color(0xFFFF2A85),
       accentColor: Color(0xFF00F0FF),
       scaffoldBackgroundColor: Color(0xFF0C0812),
@@ -45,7 +45,7 @@ abstract final class AppThemeService {
     ),
     AppThemePalette(
       id: 'emerald',
-      name: '翡翠極光',
+      name: 'Emerald Aurora',
       primaryColor: Color(0xFF10B981),
       accentColor: Color(0xFF34D399),
       scaffoldBackgroundColor: Color(0xFF060F0B),
@@ -54,7 +54,7 @@ abstract final class AppThemeService {
     ),
     AppThemePalette(
       id: 'sunset',
-      name: '夕陽深紅',
+      name: 'Sunset Crimson',
       primaryColor: Color(0xFFFF3366),
       accentColor: Color(0xFFFF9900),
       scaffoldBackgroundColor: Color(0xFF0F080B),
@@ -63,7 +63,7 @@ abstract final class AppThemeService {
     ),
     AppThemePalette(
       id: 'sapphire',
-      name: '午夜藍寶石',
+      name: 'Midnight Sapphire',
       primaryColor: Color(0xFF3B82F6),
       accentColor: Color(0xFF60A5FA),
       scaffoldBackgroundColor: Color(0xFF060B14),
@@ -72,7 +72,7 @@ abstract final class AppThemeService {
     ),
     AppThemePalette(
       id: 'amber',
-      name: '琥珀金',
+      name: 'Golden Amber',
       primaryColor: Color(0xFFF59E0B),
       accentColor: Color(0xFFFCD34D),
       scaffoldBackgroundColor: Color(0xFF0F0C06),
@@ -81,7 +81,7 @@ abstract final class AppThemeService {
     ),
     AppThemePalette(
       id: 'vampire',
-      name: '吸血鬼紅',
+      name: 'Vampire Red',
       primaryColor: Color(0xFFE50914),
       accentColor: Color(0xFFFF4D4D),
       scaffoldBackgroundColor: Color(0xFF0E0607),
@@ -90,7 +90,7 @@ abstract final class AppThemeService {
     ),
     AppThemePalette(
       id: 'barbie',
-      name: '芭比粉',
+      name: 'Pink Barbie',
       primaryColor: Color(0xFFFF1493),
       accentColor: Color(0xFFFF80BF),
       scaffoldBackgroundColor: Color(0xFF14050E),

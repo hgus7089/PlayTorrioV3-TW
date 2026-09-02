@@ -131,7 +131,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('移除d $count portal${count == 1 ? "" : "s"}'),
+          content: Text('Removed $count portal${count == 1 ? "" : "s"}'),
           duration: const Duration(seconds: 2),
           backgroundColor: const Color(0xFF1E2235),
         ),
@@ -149,7 +149,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('移除d all $count portals'),
+          content: Text('Removed all $count portals'),
           duration: const Duration(seconds: 2),
           backgroundColor: const Color(0xFF1E2235),
         ),
@@ -171,7 +171,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('移除d $count playlist${count == 1 ? "" : "s"}'),
+          content: Text('Removed $count playlist${count == 1 ? "" : "s"}'),
           duration: const Duration(seconds: 2),
           backgroundColor: const Color(0xFF1E2235),
         ),
@@ -189,7 +189,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('移除d all $count playlists'),
+          content: Text('Removed all $count playlists'),
           duration: const Duration(seconds: 2),
           backgroundColor: const Color(0xFF1E2235),
         ),
@@ -221,7 +221,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                       Icon(Icons.tune_rounded, color: palette.primaryColor, size: 20),
                       const SizedBox(width: 10),
                       const Text(
-                        '自訂 Portals Modal',
+                        'Customize Portals Modal',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -284,7 +284,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                     builder: (context, showExpiry, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('顯示入口到期日', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('Show Portal Expiry Date', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showExpiry,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => IptvSettings.setShowPortalExpiry(val),
@@ -308,7 +308,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                   const SizedBox(height: 8),
 
                   const Text(
-                    '預設起始分頁',
+                    'Default Starting Tab',
                     style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(height: 8),
@@ -318,7 +318,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                       return Row(
                         children: [
                           ChoiceChip(
-                            label: const Text('Xtream 面板'),
+                            label: const Text('Xtream Panels'),
                             selected: tabIdx == 0,
                             selectedColor: palette.primaryColor.withValues(alpha: 0.25),
                             backgroundColor: const Color(0xFF0D1017),
@@ -338,7 +338,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           ),
                           const SizedBox(width: 8),
                           ChoiceChip(
-                            label: const Text('M3U 播放清單'),
+                            label: const Text('M3U Playlists'),
                             selected: tabIdx == 1,
                             selectedColor: palette.primaryColor.withValues(alpha: 0.25),
                             backgroundColor: const Color(0xFF0D1017),
@@ -410,7 +410,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           SizedBox(width: isMobile ? 8 : 12),
                           Expanded(
                             child: Text(
-                              'IPTV Portals & 播放lists',
+                              'IPTV Portals & Playlists',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: isMobile ? 16 : 19,
@@ -422,7 +422,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           ),
                           IconButton(
                             icon: const Icon(Icons.tune_rounded, color: Colors.white70, size: 19),
-                            tooltip: '自訂 Modal Style',
+                            tooltip: 'Customize Modal Style',
                             visualDensity: VisualDensity.compact,
                             padding: const EdgeInsets.all(6),
                             constraints: const BoxConstraints(),
@@ -450,8 +450,8 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                       labelStyle: TextStyle(fontWeight: FontWeight.w800, fontSize: isMobile ? 12.5 : 14),
                       unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: isMobile ? 12.5 : 14),
                       tabs: [
-                        Tab(text: 'Xtream 面板 (${_ctrl.verified.length})'),
-                        Tab(text: 'M3U 播放清單 (${_ctrl.m3u播放lists.length})'),
+                        Tab(text: 'Xtream Panels (${_ctrl.verified.length})'),
+                        Tab(text: 'M3U Playlists (${_ctrl.m3uPlaylists.length})'),
                       ],
                     ),
 
@@ -508,7 +508,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                     : const Icon(Icons.radar_rounded, size: 16, color: Colors.white),
                 label: Text(
                   _ctrl.isScraping
-                      ? 'Finding ${_ctrl.scrape來源 == Catalog來源.cloudVault ? 'Cloud Vault' : 'Reddit'}…'
+                      ? 'Finding ${_ctrl.scrapeSource == CatalogSource.cloudVault ? 'Cloud Vault' : 'Reddit'}…'
                       : 'Generate Portals',
                   style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                 ),
@@ -517,7 +517,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
 
               // Source Selector Popup/Dropdown Menu
               PopupMenuButton<CatalogSource>(
-                tooltip: '選擇 Portal 來源',
+                tooltip: 'Choose Portal Source',
                 initialValue: _ctrl.scrapeSource,
                 onSelected: (s) {
                   _ctrl.setScrapeSource(s);
@@ -645,7 +645,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                 ),
                 icon: const Icon(Icons.add_rounded, size: 16),
-                label: const Text('新增 Portal', style: TextStyle(fontWeight: FontWeight.w700)),
+                label: const Text('Add Portal', style: TextStyle(fontWeight: FontWeight.w700)),
                 onPressed: () => setState(() {
                   _showAddForm = !_showAddForm;
                 }),
@@ -662,7 +662,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   ),
                   icon: Icon(_isPortalsEditMode ? Icons.edit_off_rounded : Icons.edit_rounded, size: 16),
-                  label: Text(_isPortalsEditMode ? 'Done' : '管理', style: const TextStyle(fontWeight: FontWeight.w700)),
+                  label: Text(_isPortalsEditMode ? 'Done' : 'Manage', style: const TextStyle(fontWeight: FontWeight.w700)),
                   onPressed: () {
                     setState(() {
                       _isPortalsEditMode = !_isPortalsEditMode;
@@ -705,7 +705,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           color: const Color(0xFF00D2EF),
                         ),
                         label: Text(
-                          allSelected ? 'Deselect All' : '選取 All',
+                          allSelected ? 'Deselect All' : 'Select All',
                           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12.5),
                         ),
                         onPressed: () {
@@ -748,7 +748,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                         ),
                         icon: const Icon(Icons.delete_rounded, size: 14),
                         label: Text(
-                          '刪除 (${_selectedPortalKeys.length})',
+                          'Delete (${_selectedPortalKeys.length})',
                           style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                         ),
                         onPressed: _selectedPortalKeys.isEmpty ? null : _deleteSelectedPortals,
@@ -764,7 +764,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         onPressed: _deleteAllPortals,
-                        child: const Text('刪除 All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                        child: const Text('Delete All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                       ),
                     ],
                   ),
@@ -794,7 +794,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('新增 Xtream Codes Portal',
+                  const Text('Add Xtream Codes Portal',
                       style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800)),
                   const SizedBox(height: 10),
                   TextField(
@@ -850,7 +850,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                               height: 14,
                               child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                             )
-                          : const Text('Verify & 儲存'),
+                          : const Text('Verify & Save'),
                     ),
                   ),
                 ],
@@ -898,7 +898,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                   const SizedBox(width: 6),
                   _buildSourceChip(
                     'fav',
-                    '收藏 ⭐ (${_ctrl.verified.where((p) => _ctrl.isFavoritePortal(p.key)).length})',
+                    'Favorites ⭐ (${_ctrl.verified.where((p) => _ctrl.isFavoritePortal(p.key)).length})',
                     Icons.star_rounded,
                     palette,
                     activeColor: const Color(0xFFFFC107),
@@ -917,8 +917,8 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                 return Center(
                   child: Text(
                     _ctrl.verified.isEmpty
-                        ? 'No verified portals. Tap "Generate Portals" (${_ctrl.scrape來源 == Catalog來源.cloudVault ? "Cloud Vault" : "Reddit"}) to auto-discover.'
-                        : 'No portals found in "$_portal來源Filter" filter.',
+                        ? 'No verified portals. Tap "Generate Portals" (${_ctrl.scrapeSource == CatalogSource.cloudVault ? "Cloud Vault" : "Reddit"}) to auto-discover.'
+                        : 'No portals found in "$_portalSourceFilter" filter.',
                     style: const TextStyle(color: Colors.white54),
                   ),
                 );
@@ -1084,7 +1084,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                                 ),
                                 IconButton(
                                   icon: const Icon(Icons.copy_rounded, color: Colors.white54, size: 18),
-                                  tooltip: '複製 Login (url:username:password)',
+                                  tooltip: 'Copy Login (url:username:password)',
                                   onPressed: () {
                                     final text = '${p.portal.url}:${p.portal.username}:${p.portal.password}';
                                     Clipboard.setData(ClipboardData(text: text));
@@ -1172,7 +1172,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                 ),
                 icon: const Icon(Icons.playlist_add_rounded, size: 18, color: Colors.white),
-                label: const Text('新增 M3U URL', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+                label: const Text('Add M3U URL', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
                 onPressed: () => setState(() => _showM3uForm = !_showM3uForm),
               ),
 
@@ -1188,7 +1188,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   ),
                   icon: Icon(_isM3uEditMode ? Icons.edit_off_rounded : Icons.edit_rounded, size: 16),
-                  label: Text(_isM3uEditMode ? 'Done' : '管理', style: const TextStyle(fontWeight: FontWeight.w700)),
+                  label: Text(_isM3uEditMode ? 'Done' : 'Manage', style: const TextStyle(fontWeight: FontWeight.w700)),
                   onPressed: () {
                     setState(() {
                       _isM3uEditMode = !_isM3uEditMode;
@@ -1232,7 +1232,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           color: const Color(0xFF00D2EF),
                         ),
                         label: Text(
-                          allSelected ? 'Deselect All' : '選取 All',
+                          allSelected ? 'Deselect All' : 'Select All',
                           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12.5),
                         ),
                         onPressed: () {
@@ -1248,7 +1248,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        '(${_selectedM3uIds.length}/${_ctrl.m3u播放lists.length})',
+                        '(${_selectedM3uIds.length}/${_ctrl.m3uPlaylists.length})',
                         style: TextStyle(
                           color: Colors.white.withValues(alpha: 0.7),
                           fontSize: 12,
@@ -1275,7 +1275,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                         ),
                         icon: const Icon(Icons.delete_rounded, size: 14),
                         label: Text(
-                          '刪除 (${_selectedM3uIds.length})',
+                          'Delete (${_selectedM3uIds.length})',
                           style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                         ),
                         onPressed: _selectedM3uIds.isEmpty ? null : _deleteSelectedM3u,
@@ -1291,7 +1291,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         onPressed: _deleteAllM3u,
-                        child: const Text('刪除 All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                        child: const Text('Delete All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                       ),
                     ],
                   ),
@@ -1312,14 +1312,14 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('新增 M3U 播放list Subscription',
+                  const Text('Add M3U Playlist Subscription',
                       style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800)),
                   const SizedBox(height: 10),
                   TextField(
                     controller: _m3uNameCtrl,
                     style: const TextStyle(color: Colors.white, fontSize: 13),
                     decoration: const InputDecoration(
-                      labelText: '播放list Name',
+                      labelText: 'Playlist Name',
                       isDense: true,
                       border: OutlineInputBorder(),
                     ),
@@ -1346,7 +1346,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                               height: 14,
                               child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                             )
-                          : const Text('Fetch & 儲存'),
+                          : const Text('Fetch & Save'),
                     ),
                   ),
                 ],
@@ -1449,7 +1449,7 @@ class _IptvPortalsModalState extends State<IptvPortalsModal>
                                 ),
                                 IconButton(
                                   icon: const Icon(Icons.copy_rounded, color: Colors.white54, size: 18),
-                                  tooltip: '複製 播放list URL',
+                                  tooltip: 'Copy Playlist URL',
                                   onPressed: () {
                                     final text = pl.sourceUrl ?? '';
                                     if (text.isNotEmpty) {

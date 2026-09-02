@@ -61,7 +61,7 @@ class _AnimeArabicStreamSheetState extends State<AnimeArabicStreamSheet> {
       if (hits.isEmpty) {
         setState(() {
           _isScraping = false;
-          _error = 'No playable Arabic streams found for 集 ${widget.episode.number}.';
+          _error = 'No playable Arabic streams found for Episode ${widget.episode.number}.';
         });
         return;
       }
@@ -110,7 +110,7 @@ class _AnimeArabicStreamSheetState extends State<AnimeArabicStreamSheet> {
       MaterialPageRoute(
         builder: (_) => PlayerScreen(
           source: source,
-          title: '${widget.details.title} - 集 ${widget.episode.number}',
+          title: '${widget.details.title} - Episode ${widget.episode.number}',
           backdropUrl: widget.details.displayBanner,
           detail: movieDetail,
           episode: video,
@@ -197,7 +197,7 @@ class _AnimeArabicStreamSheetState extends State<AnimeArabicStreamSheet> {
                     Text(
                       _isScraping
                           ? 'جاري فحص السيرفرات...'
-                          : '${_all來源.length} سيرفر متاح',
+                          : '${_allSources.length} سيرفر متاح',
                       style: TextStyle(
                         fontSize: 13,
                         color: AppThemeService.currentPalette.value.primaryColor.withValues(alpha: 0.9),

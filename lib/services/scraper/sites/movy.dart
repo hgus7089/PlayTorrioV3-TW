@@ -12,7 +12,7 @@ import 'tmdb_helper.dart';
 /// and decrypts live HLS/m3u8 streaming sources using Movy's custom FNV-1a PRNG cipher.
 class MovyScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _apiBase = 'https://api.wecollege.net';
   static const _referer = 'https://www.movy.bz/';
@@ -158,7 +158,7 @@ class MovyScraper extends StreamScraper {
 
                       final rawQuality = src['quality']?.toString() ?? 'Auto';
                       final cleanQuality = _formatQuality(rawQuality);
-                      final streamTitle = '[Movy - $serverName] $clean畫質';
+                      final streamTitle = '[Movy - $serverName] $cleanQuality';
                       final desc = '$note • HLS';
 
                       final source = StreamSource(
@@ -166,7 +166,7 @@ class MovyScraper extends StreamScraper {
                         title: streamTitle,
                         description: desc,
                         url: streamUrl,
-                        addonName: '播放TorrioHTTP',
+                        addonName: 'PlayTorrioHTTP',
                         headers: {
                           'User-Agent': _ua,
                           'Referer': _referer,
@@ -197,7 +197,7 @@ class MovyScraper extends StreamScraper {
 
         await Future.wait(futures);
       } catch (e) {
-        debugPrint('[MovyScraper] 一般 error: $e');
+        debugPrint('[MovyScraper] General error: $e');
       } finally {
         if (!controller.isClosed) {
           controller.close();

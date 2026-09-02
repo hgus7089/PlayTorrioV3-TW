@@ -64,7 +64,7 @@ class AnimeArabicExtractor {
     'riftv2': 'Zen V2',
     'shof': 'Shof',
     'blkom': 'Blkom',
-    'animeify': '動漫ify',
+    'animeify': 'Animeify',
     'topcinema': 'TopCinema',
     'kuudere': 'Kuudere',
   };
@@ -132,7 +132,7 @@ class AnimeArabicExtractor {
       try {
         final pageHtml = await _get(
           client,
-          '${動漫ArabicService.baseUrl}$path',
+          '${AnimeArabicService.baseUrl}$path',
         ).timeout(timeout);
         String? pluck(String key) {
           final re = RegExp('const\\s+$key\\s*=\\s*"([^"]*)"');
@@ -318,7 +318,7 @@ class AnimeArabicExtractor {
         client,
         server.iframeUrl,
         headers: {
-          'Referer': '${動漫ArabicService.baseUrl}/',
+          'Referer': '${AnimeArabicService.baseUrl}/',
           'Accept': 'text/html,*/*',
         },
       ).timeout(timeout);
@@ -390,7 +390,7 @@ class AnimeArabicExtractor {
     }
     try {
       final raw = await _get(client, _flareUrl, headers: {
-        'Referer': '${動漫ArabicService.baseUrl}/',
+        'Referer': '${AnimeArabicService.baseUrl}/',
         'Accept': 'application/json,*/*',
       }).timeout(timeout);
       final j = jsonDecode(raw) as Map<String, dynamic>;
@@ -433,7 +433,7 @@ class AnimeArabicExtractor {
     req.headers.set(HttpHeaders.userAgentHeader, _userAgent);
     req.headers.set(HttpHeaders.contentTypeHeader, 'application/x-www-form-urlencoded; charset=UTF-8');
     req.headers.set('Origin', AnimeArabicService.baseUrl);
-    req.headers.set('Referer', '${動漫ArabicService.baseUrl}/');
+    req.headers.set('Referer', '${AnimeArabicService.baseUrl}/');
     req.headers.set(HttpHeaders.acceptHeader, 'application/json, text/plain, */*');
     if (headers != null) headers.forEach(req.headers.set);
     req.write(body);
@@ -495,9 +495,9 @@ class AnimeArabicExtractor {
       out.add(StreamSource(
         name: sourceName,
         title: title,
-        description: '動漫Slayer • ${h.server.displayName} • ${h.type.toUpperCase()}$qLabel (Arabic Sub)',
+        description: 'AnimeSlayer • ${h.server.displayName} • ${h.type.toUpperCase()}$qLabel (Arabic Sub)',
         url: h.url,
-        addonName: 'Arabic動漫',
+        addonName: 'ArabicAnime',
         headers: h.headers,
         behaviorHints: {
           'notWebReady': false,
