@@ -1,0 +1,13 @@
+PlayTorrio V3 繁體中文版
+
+這一版只翻譯 Dart 字串內容，不修改 class、function、variable 等程式識別名稱，
+避免中文化造成程式無法編譯。
+
+Windows：
+1. 安裝 Flutter SDK 與 Visual Studio 的 Desktop development with C++。
+2. 在本資料夾雙擊 build_windows.bat。
+3. 完成後執行檔在 build\\windows\\x64\\runner\\Release\\。
+
+也附上 .github/workflows/build-windows-cn.yml：
+如果把專案放到自己的 GitHub repository，可以用 GitHub Actions 的 Run workflow
+在 Windows runner 上自動編譯並產生 ZIP。
