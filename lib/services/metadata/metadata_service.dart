@@ -91,9 +91,9 @@ class MetadataService {
     return List.from(result);
   }
 
-  // ── 搜尋 ────────────────────────────────────────────────────────────
+  // ── Search ────────────────────────────────────────────────────────────
 
-  /// 搜尋 an addon's catalog.
+  /// Search an addon's catalog.
   static Future<List<Movie>> search({
     required String baseUrl,
     required String type,

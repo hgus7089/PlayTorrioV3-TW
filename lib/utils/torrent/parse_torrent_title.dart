@@ -142,7 +142,7 @@ class ParseTorrentTitle {
     addHandler('audio', RegExp(r'\b(DD(?!-EX)(?:\b|\d)|AC-?3)', caseSensitive: false), value: 'dd');
     addHandler('audio', RegExp(r'AAC(?:[. ]?2[. ]0)?'), value: 'aac');
     addHandler('audio', RegExp(r'DTS-ES'), type: 'lowercase');
-    addHandler('audio', RegExp(r'DTS-HD[\s-.]?(MA|Master 音訊)'), value: 'dts-hd-ma');
+    addHandler('audio', RegExp(r'DTS-HD[\s-.]?(MA|Master Audio)'), value: 'dts-hd-ma');
     addHandler('audio', RegExp(r'DTS(?:[- ]?HD)'), value: 'dts-hd', skipIfAlreadyFound: true);
     addHandler('audio', RegExp(r'DTS'), value: 'dts', skipIfAlreadyFound: true);
 
@@ -174,7 +174,7 @@ class ParseTorrentTitle {
     addHandler('season', RegExp(r'([0-9]{1,2})xall', caseSensitive: false), type: 'integer');
     addHandler('season', RegExp(r'S([0-9]{1,2}) ?E[0-9]{1,2}', caseSensitive: false), type: 'integer');
     addHandler('season', RegExp(r'([0-9]{1,2})x[0-9]{1,2}'), type: 'integer');
-    addHandler('season', RegExp(r'(?:Saison|季)[. _-]?([0-9]{1,2})', caseSensitive: false), type: 'integer');
+    addHandler('season', RegExp(r'(?:Saison|Season)[. _-]?([0-9]{1,2})', caseSensitive: false), type: 'integer');
     addHandler('season', RegExp(r'\bS([0-9]{1,2})(?![0-9])', caseSensitive: false), type: 'integer');
 
     // Episode
@@ -184,7 +184,7 @@ class ParseTorrentTitle {
 
     // Language
     addHandler('language', RegExp(r'\bMULTi(?:Lang|-audio|-VF2)?\b', caseSensitive: false), value: 'multi');
-    addHandler('language', RegExp(r'Dual(?:[- ]音訊)?|[ .]DL[ .]', caseSensitive: false), value: 'dual');
+    addHandler('language', RegExp(r'Dual(?:[- ]Audio)?|[ .]DL[ .]', caseSensitive: false), value: 'dual');
     addHandler('language', RegExp(r'\bRUS\b', caseSensitive: false), type: 'lowercase');
     addHandler('language', RegExp(r'\bUKR\b', caseSensitive: false), type: 'lowercase');
     addHandler('language', RegExp(r'\bJPN\b', caseSensitive: false), type: 'lowercase');

@@ -36,7 +36,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          '有聲書介面與播放器工作室',
+          'Audiobook UI & Player Studio',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -47,14 +47,14 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             children: [
               // ── 1. Color Themes & Accents ──
-              _buildSectionHeader('色彩主題與強調色'),
+              _buildSectionHeader('COLOR THEMES & ACCENTS'),
               const SizedBox(height: 12),
               _buildThemesGrid(),
 
               const SizedBox(height: 28),
 
               // ── 2. Ambient Background Lighting ──
-              _buildSectionHeader('環境背景光與動態光暈'),
+              _buildSectionHeader('AMBIENT BACKGROUND LIGHTING & MOVING GLOWS'),
               const SizedBox(height: 12),
               _buildAmbientLightsCard(palette),
 
@@ -73,7 +73,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
               const SizedBox(height: 28),
 
               // ── 4. Player Presets ──
-              _buildSectionHeader('選擇有聲書播放器預設'),
+              _buildSectionHeader('CHOOSE AUDIO PLAYER PRESET'),
               const SizedBox(height: 12),
               _buildPlayerPresetSelector(palette),
 
@@ -215,11 +215,11 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
                 title: const Text(
-                  '啟用動態環境氛圍',
+                  'Enable Moving Ambient Atmosphere',
                   style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w700),
                 ),
                 subtitle: Text(
-                  '以 ${palette.name} 為主題的柔和發光光球與極光波紋',
+                  'Soft flowing glowing orbs and aurora waves themed to ${palette.name}',
                   style: TextStyle(color: Colors.white.withValues(alpha: 0.45), fontSize: 12),
                 ),
                 value: enabled,
@@ -234,7 +234,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
           const SizedBox(height: 12),
 
           Text(
-            '燈光流動模式',
+            'Lighting Flow Pattern',
             style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 8),
@@ -280,7 +280,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('光暈強度／透明度', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+                      Text('Glow Strength / Opacity', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
                       Text('${(intensity * 100).round()}%', style: TextStyle(color: palette.primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -314,7 +314,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('動態漂移速度', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+                      Text('Motion Drift Speed', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
                       Text('${speed.toStringAsFixed(1)}x', style: TextStyle(color: palette.primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -366,7 +366,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
                         children: [
                           Icon(Icons.headphones_rounded, color: palette.primaryColor, size: 14),
                           const SizedBox(width: 6),
-                          const Text('即時氛圍預覽', style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
+                          const Text('Live Atmosphere Preview', style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),
@@ -397,8 +397,8 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, enabled, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示首頁聚光燈輪播', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
-                subtitle: const Text('在首頁頂端顯示熱門暢銷有聲書', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                title: const Text('Show Hero Spotlight Carousel', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+                subtitle: const Text('Featured bestselling audiobook showcase at the top of the hub', style: TextStyle(color: Colors.white54, fontSize: 12)),
                 value: enabled,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setEnableSpotlight(val),
@@ -411,8 +411,8 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示「繼續收聽」輪播', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
-                subtitle: const Text('顯示可快速繼續播放的卡片、章節進度與直接播放', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                title: const Text('Show "Continue Listening" Carousel', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+                subtitle: const Text('Quick resume cards with chapter progress bar and direct play', style: TextStyle(color: Colors.white54, fontSize: 12)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setShowContinueListening(val),
@@ -424,7 +424,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
           Divider(color: Colors.white.withValues(alpha: 0.08)),
           const SizedBox(height: 12),
 
-          Text('有聲書海報卡片密度', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+          Text('Audiobook Poster Card Density', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           ValueListenableBuilder<AudiobookCardDensity>(
             valueListenable: AudiobookSettings.cardDensity,
@@ -463,7 +463,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示快速類型與分類標籤', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('Show Quick Genre & Category Badges', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setShowCategoryPills(val),
@@ -476,7 +476,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示有聲書播放時間／總時長', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('Show Audiobook Runtime / Total Duration', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setShowDurationBadge(val),
@@ -489,7 +489,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('海報卡片懸停光暈與浮起效果', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('Poster Card Hover Glow & Elevation', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setCardHoverGlow(val),
@@ -573,7 +573,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
                           },
                           icon: Icon(Icons.tune_rounded, size: 14, color: palette.primaryColor),
                           label: Text(
-                            '開啟工作室',
+                            'Open Studio',
                             style: TextStyle(color: palette.primaryColor, fontSize: 11.5, fontWeight: FontWeight.bold),
                           ),
                           style: OutlinedButton.styleFrom(
@@ -653,7 +653,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
                   Row(
                     children: [
                       const Text(
-                        '視覺化自訂播放器工作室',
+                        'Visual Custom Player Studio',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -669,7 +669,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
-                          '完整工作室',
+                          'FULL STUDIO',
                           style: TextStyle(color: palette.primaryColor, fontSize: 9.5, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -694,7 +694,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
                     },
                     icon: const Icon(Icons.tune_rounded, size: 18, color: Colors.white),
                     label: const Text(
-                      '進入自訂播放器工作室',
+                      'Enter Custom Player Studio',
                       style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13, color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -751,7 +751,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
                       children: [
                         Icon(Icons.auto_fix_high_rounded, color: palette.primaryColor, size: 16),
                         const SizedBox(width: 6),
-                        const Text('互動式工作室預覽', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                        const Text('Interactive Studio Preview', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
                       ],
                     ),
                     Container(
@@ -915,7 +915,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
           const SizedBox(height: 20),
 
           // ── Customize Seek Bar Style ──
-          Text('進度條／拖曳條樣式', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+          Text('Seek Bar / Scrubber Style', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           ValueListenableBuilder<AudiobookSeekbarStyle>(
             valueListenable: AudiobookSettings.customSeekbarStyle,
@@ -950,7 +950,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
           const SizedBox(height: 16),
 
           // ── Customize Play / Pause Button Style ──
-          Text('播放／暫停按鈕樣式', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+          Text('Play / Pause Button Styling', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           ValueListenableBuilder<AudiobookPlayButtonStyle>(
             valueListenable: AudiobookSettings.customPlayButtonStyle,
@@ -985,7 +985,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
           const SizedBox(height: 16),
 
           // ── Customize Artwork Display ──
-          Text('封面顯示樣式', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+          Text('Artwork Display Style', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           ValueListenableBuilder<AudiobookArtworkStyle>(
             valueListenable: AudiobookSettings.customArtworkStyle,
@@ -1020,7 +1020,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
           const SizedBox(height: 16),
 
           // ── Hover & Touch Physics ──
-          Text('按鈕懸停與觸控物理效果', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+          Text('Button Hover & Touch Physics', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           ValueListenableBuilder<AudiobookHoverEffect>(
             valueListenable: AudiobookSettings.customHoverEffect,
@@ -1061,7 +1061,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '播放器 Layout Components (Drag to Arrange)',
+                'Player Layout Components (Drag to Arrange)',
                 style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 13.5, fontWeight: FontWeight.w700),
               ),
               Icon(Icons.drag_indicator_rounded, color: palette.primaryColor, size: 18),
@@ -1069,7 +1069,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
           ),
           const SizedBox(height: 8),
           Text(
-            '按住並拖曳區塊，重新排列播放器內控制項的順序',
+            'Hold and drag any block to reorder how controls appear inside your player',
             style: TextStyle(color: Colors.white.withValues(alpha: 0.5), fontSize: 12),
           ),
           const SizedBox(height: 10),
@@ -1117,7 +1117,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, enabled, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Liquid Glass 播放器模糊與折射', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('Liquid Glass Player Blur & Refraction', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: enabled,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setEnableLiquidGlass(val),
@@ -1130,7 +1130,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示播放速度選擇器（0.5x－2.5x）', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('Show Playback Speed Selector (0.5x - 2.5x)', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setShowSpeedControl(val),
@@ -1143,7 +1143,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示快轉／倒轉按鈕（±10 秒）', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('Show Skip Forward/Rewind Buttons (±10s)', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setShowSkip10Buttons(val),
@@ -1156,7 +1156,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
             builder: (context, show, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示快速章節滑動面板按鈕', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                title: const Text('Show Quick Chapters Sliding Drawer Button', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                 value: show,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => AudiobookSettings.setShowChaptersQuickButton(val),
@@ -1179,7 +1179,7 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
               },
               icon: const Icon(Icons.dashboard_customize_rounded, size: 18, color: Colors.white),
               label: const Text(
-                '開啟完整自訂播放器工作室',
+                'Launch Full Custom Player Studio',
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13.5, color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
@@ -1325,15 +1325,15 @@ class _AudiobookSettingsPageState extends State<AudiobookSettingsPage> {
   String _getComponentLabel(String key) {
     switch (key) {
       case 'artwork':
-        return '有聲書封面展示面板';
+        return 'Audiobook Cover Artwork Deck';
       case 'title':
-        return '標題、作者與章節標籤';
+        return 'Title, Author & Chapter Label';
       case 'seekbar':
-        return '進度條與波形畫布拖曳器';
+        return 'Seek Bar & Waveform Canvas Scrubber';
       case 'mainControls':
-        return '主要播放／暫停／跳轉（±10 秒）控制組';
+        return 'Main Play / Pause / Skip (±10s) Cluster';
       case 'secondaryControls':
-        return '速度選擇器與音量控制';
+        return 'Speed Selector & Volume Controls';
       case 'chaptersButton':
         return 'Premade Sliding Chapters Panel Trigger';
       default:

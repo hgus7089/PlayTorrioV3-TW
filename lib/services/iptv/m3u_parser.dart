@@ -7,7 +7,7 @@ class M3uParser {
   /// if the content does not look like an M3U playlist at all.
   static List<M3uChannel> parse(String content) {
     if (content.isEmpty) {
-      throw const FormatException('播放list is empty');
+      throw const FormatException('Playlist is empty');
     }
     final text = content.replaceAll('\r\n', '\n').replaceAll('\r', '\n');
     final lines = text.split('\n');

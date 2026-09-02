@@ -75,7 +75,7 @@ class DiscordRpcService {
         await _disconnect();
       }
     } catch (e) {
-      debugPrint('[DiscordRPC] set已啟用 error: $e');
+      debugPrint('[DiscordRPC] setEnabled error: $e');
     }
   }
 
@@ -92,7 +92,7 @@ class DiscordRpcService {
       _rpc = rpc;
       await rpc.initialize(appId);
       _isInitialized = true;
-      debugPrint('[DiscordRPC] 已連線 to Discord successfully.');
+      debugPrint('[DiscordRPC] Connected to Discord successfully.');
     } catch (e) {
       _isInitialized = false;
       debugPrint('[DiscordRPC] Failed to connect to Discord IPC: $e');
@@ -109,7 +109,7 @@ class DiscordRpcService {
         await _disposeRpc();
       }
     } catch (e) {
-      debugPrint('[DiscordRPC] 解除連線 error: $e');
+      debugPrint('[DiscordRPC] Disconnect error: $e');
     } finally {
       _isInitialized = false;
     }
@@ -151,8 +151,8 @@ class DiscordRpcService {
     _currentKind = DiscordActivityKind.idle;
     final presence = DiscordPresence(
       type: DiscordActivityType.playing,
-      details: 'Browsing 播放TorrioV3',
-      largeAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+      details: 'Browsing PlayTorrioV3',
+      largeAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
       timestamps: DiscordTimestamps.started(_sessionStartTime),
     );
     await _updatePresence(presence);
@@ -184,14 +184,14 @@ class DiscordRpcService {
 
     final presence = DiscordPresence(
       type: DiscordActivityType.watching,
-      details: '觀看ing $cleanTitle',
+      details: 'Watching $cleanTitle',
       state: isPaused
-          ? '暫停d'
-          : (year != null && year.trim().isNotEmpty ? '($year)' : 'In 播放TorrioV3'),
+          ? 'Paused'
+          : (year != null && year.trim().isNotEmpty ? '($year)' : 'In PlayTorrioV3'),
       largeAsset: hasValidPoster
           ? DiscordAsset.fromUrl(posterUrl.trim(), text: cleanTitle)
-          : const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
-      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+          : const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
+      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
       timestamps: timestamps,
     );
 
@@ -218,9 +218,9 @@ class DiscordRpcService {
     if (episodeTitle != null && episodeTitle.trim().isNotEmpty) {
       stateText = 'S${s}E$e: ${episodeTitle.trim()}';
     } else {
-      stateText = '季 $s 集 $e';
+      stateText = 'Season $s Episode $e';
     }
-    if (isPaused) stateText = '$stateText (暫停d)';
+    if (isPaused) stateText = '$stateText (Paused)';
 
     DiscordTimestamps? timestamps;
     if (!isPaused) {
@@ -236,12 +236,12 @@ class DiscordRpcService {
 
     final presence = DiscordPresence(
       type: DiscordActivityType.watching,
-      details: '觀看ing $cleanTitle',
+      details: 'Watching $cleanTitle',
       state: stateText,
       largeAsset: hasValidPoster
           ? DiscordAsset.fromUrl(posterUrl.trim(), text: cleanTitle)
-          : const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
-      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+          : const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
+      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
       timestamps: timestamps,
     );
 
@@ -265,17 +265,17 @@ class DiscordRpcService {
     String stateText;
     if (episode != null) {
       if (season != null && season > 1) {
-        stateText = '季 $season 集 $episode';
+        stateText = 'Season $season Episode $episode';
       } else {
-        stateText = '集 $episode';
+        stateText = 'Episode $episode';
       }
       if (episodeTitle != null && episodeTitle.trim().isNotEmpty) {
         stateText = '$stateText - ${episodeTitle.trim()}';
       }
     } else {
-      stateText = '動漫 in 播放TorrioV3';
+      stateText = 'Anime in PlayTorrioV3';
     }
-    if (isPaused) stateText = '$stateText (暫停d)';
+    if (isPaused) stateText = '$stateText (Paused)';
 
     DiscordTimestamps? timestamps;
     if (!isPaused) {
@@ -291,12 +291,12 @@ class DiscordRpcService {
 
     final presence = DiscordPresence(
       type: DiscordActivityType.watching,
-      details: '觀看ing $cleanTitle',
+      details: 'Watching $cleanTitle',
       state: stateText,
       largeAsset: hasValidPoster
           ? DiscordAsset.fromUrl(posterUrl.trim(), text: cleanTitle)
-          : const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
-      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+          : const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
+      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
       timestamps: timestamps,
     );
 
@@ -317,12 +317,12 @@ class DiscordRpcService {
 
     final presence = DiscordPresence(
       type: DiscordActivityType.watching,
-      details: '觀看ing Live TV',
+      details: 'Watching Live TV',
       state: stateText,
       largeAsset: hasValidLogo
           ? DiscordAsset.fromUrl(logoUrl.trim(), text: stateText)
-          : const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
-      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+          : const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
+      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
       timestamps: DiscordTimestamps.started(DateTime.now()),
     );
 
@@ -348,9 +348,9 @@ class DiscordRpcService {
     } else if (chapter != null && chapter.trim().isNotEmpty) {
       stateText = chapter.trim();
     } else {
-      stateText = '音訊book in 播放TorrioV3';
+      stateText = 'Audiobook in PlayTorrioV3';
     }
-    if (isPaused) stateText = '$stateText (暫停d)';
+    if (isPaused) stateText = '$stateText (Paused)';
 
     DiscordTimestamps? timestamps;
     if (!isPaused) {
@@ -370,8 +370,8 @@ class DiscordRpcService {
       state: stateText,
       largeAsset: hasValidCover
           ? DiscordAsset.fromUrl(coverUrl.trim(), text: cleanTitle)
-          : const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
-      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+          : const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
+      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
       timestamps: timestamps,
     );
 
@@ -398,7 +398,7 @@ class DiscordRpcService {
     } else if (author != null && author.trim().isNotEmpty) {
       stateText = 'by ${author.trim()}';
     } else {
-      stateText = 'eBook in 播放TorrioV3';
+      stateText = 'eBook in PlayTorrioV3';
     }
 
     final hasValidCover = coverUrl != null && coverUrl.trim().isNotEmpty && coverUrl.startsWith('http');
@@ -409,8 +409,8 @@ class DiscordRpcService {
       state: stateText,
       largeAsset: hasValidCover
           ? DiscordAsset.fromUrl(coverUrl.trim(), text: cleanTitle)
-          : const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
-      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+          : const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
+      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
     );
 
     await _updatePresence(presence);
@@ -427,7 +427,7 @@ class DiscordRpcService {
 
     final stateText = (chapter != null && chapter.trim().isNotEmpty)
         ? (chapter.trim().toLowerCase().startsWith('chapter') ? chapter.trim() : 'Chapter ${chapter.trim()}')
-        : '漫畫 in 播放TorrioV3';
+        : 'Manga in PlayTorrioV3';
 
     final hasValidCover = coverUrl != null && coverUrl.trim().isNotEmpty && coverUrl.startsWith('http');
 
@@ -437,8 +437,8 @@ class DiscordRpcService {
       state: stateText,
       largeAsset: hasValidCover
           ? DiscordAsset.fromUrl(coverUrl.trim(), text: cleanTitle)
-          : const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
-      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+          : const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
+      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
     );
 
     await _updatePresence(presence);
@@ -458,8 +458,8 @@ class DiscordRpcService {
     final cleanTitle = title.trim();
     final cleanArtist = artist.trim();
 
-    String stateText = cleanArtist.isNotEmpty ? 'by $cleanArtist' : '音樂 in 播放TorrioV3';
-    if (!isPlaying) stateText = '$stateText (暫停d)';
+    String stateText = cleanArtist.isNotEmpty ? 'by $cleanArtist' : 'Music in PlayTorrioV3';
+    if (!isPlaying) stateText = '$stateText (Paused)';
 
     DiscordTimestamps? timestamps;
     if (isPlaying) {
@@ -479,8 +479,8 @@ class DiscordRpcService {
       state: stateText,
       largeAsset: hasValidCover
           ? DiscordAsset.fromUrl(coverUrl.trim(), text: cleanTitle)
-          : const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
-      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: '播放TorrioV3'),
+          : const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
+      smallAsset: const DiscordAsset.fromKey(_defaultAssetKey, text: 'PlayTorrioV3'),
       timestamps: timestamps,
     );
 

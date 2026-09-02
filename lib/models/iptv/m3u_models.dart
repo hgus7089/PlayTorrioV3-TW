@@ -81,7 +81,7 @@ class M3uPlaylist {
 
   factory M3uPlaylist.fromJson(Map<String, dynamic> j) => M3uPlaylist(
         id: j['id'] as String? ?? '',
-        name: j['name'] as String? ?? '播放list',
+        name: j['name'] as String? ?? 'Playlist',
         sourceUrl: j['sourceUrl'] as String?,
         addedAt: (j['addedAt'] as num?)?.toInt() ?? 0,
         updatedAt: (j['updatedAt'] as num?)?.toInt() ?? 0,

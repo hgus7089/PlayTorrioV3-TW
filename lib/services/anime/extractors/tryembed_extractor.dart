@@ -18,7 +18,7 @@ class TryEmbedTrack {
   factory TryEmbedTrack.fromJson(Map<String, dynamic> json) {
     return TryEmbedTrack(
       file: json['url']?.toString() ?? json['file']?.toString() ?? '',
-      label: json['label']?.toString() ?? '字幕',
+      label: json['label']?.toString() ?? 'Subtitles',
       lang: json['lang']?.toString() ?? 'en',
       isDefault: json['default'] == true,
     );
@@ -74,7 +74,7 @@ class TryEmbedExtractor {
         'Accept',
         'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
       );
-      embedReq.headers.set('Accept-語言', 'en-US,en;q=0.9');
+      embedReq.headers.set('Accept-Language', 'en-US,en;q=0.9');
       embedReq.headers.set('Referer', 'https://google.com/');
 
       final embedRes = await embedReq.close().timeout(const Duration(seconds: 10));

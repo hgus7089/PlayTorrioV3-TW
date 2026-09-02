@@ -63,10 +63,10 @@ class DownloadedMusicTrack {
       coverUrl: json['coverUrl']?.toString() ?? '',
       durationSeconds: (json['durationSeconds'] as num?)?.toInt() ?? 0,
       explicit: json['explicit'] == true,
-      localAudioPath: json['local音訊Path']?.toString() ?? '',
+      localAudioPath: json['localAudioPath']?.toString() ?? '',
       localCoverPath: json['localCoverPath']?.toString() ?? '',
       format: json['format']?.toString() ?? 'm4a',
-      quality: json['quality']?.toString() ?? 'HQ 音訊',
+      quality: json['quality']?.toString() ?? 'HQ Audio',
       fileSizeBytes: (json['fileSizeBytes'] as num?)?.toInt() ?? 0,
       downloadedAt: json['downloadedAt'] != null
           ? DateTime.tryParse(json['downloadedAt'].toString()) ?? DateTime.now()
@@ -85,7 +85,7 @@ class DownloadedMusicTrack {
         'coverUrl': coverUrl,
         'durationSeconds': durationSeconds,
         'explicit': explicit,
-        'local音訊Path': localAudioPath,
+        'localAudioPath': localAudioPath,
         'localCoverPath': localCoverPath,
         'format': format,
         'quality': quality,

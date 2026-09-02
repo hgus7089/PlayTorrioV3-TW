@@ -47,10 +47,10 @@ class BackupRestoreService {
         'imageUrl': currentBg.imageUrl,
         'opacity': currentBg.opacity,
         'blur': currentBg.blur,
-        'blend主題淺色s': currentBg.blendThemeLights,
+        'blendThemeLights': currentBg.blendThemeLights,
         'themeTintOpacity': currentBg.themeTintOpacity,
       },
-      'ambient淺色s已啟用': HomePageSettings.enableAmbientLights.value,
+      'ambientLightsEnabled': HomePageSettings.enableAmbientLights.value,
       'ambientPattern': HomePageSettings.ambientLightPattern.value.name,
       'ambientIntensity': HomePageSettings.ambientLightIntensity.value,
       'ambientSpeed': HomePageSettings.ambientLightSpeed.value,
@@ -75,7 +75,7 @@ class BackupRestoreService {
 
       exportData['iptv'] = {
         'customPortals': customPortals,
-        'm3u播放lists': m3uPlaylists,
+        'm3uPlaylists': m3uPlaylists,
         'favoritePortals': favPortals,
       };
     } catch (_) {}
@@ -86,10 +86,10 @@ class BackupRestoreService {
           .map((a) => {
                 'baseUrl': a.baseUrl,
                 'enabled': a.enabled,
-                'enable目錄': a.enableCatalogs,
-                'enable搜尋': a.enableSearch,
+                'enableCatalogs': a.enableCatalogs,
+                'enableSearch': a.enableSearch,
                 'enableStreams': a.enableStreams,
-                'enable字幕': a.enableSubtitles,
+                'enableSubtitles': a.enableSubtitles,
               })
           .toList();
 
@@ -198,10 +198,10 @@ class BackupRestoreService {
               final added = await AddonManager.instance.addAddon(url);
               await AddonManager.instance.updateAddonFeature(
                 addonId: added.manifest.id,
-                enableCatalogs: item['enable目錄'] as bool?,
-                enableSearch: item['enable搜尋'] as bool?,
+                enableCatalogs: item['enableCatalogs'] as bool?,
+                enableSearch: item['enableSearch'] as bool?,
                 enableStreams: item['enableStreams'] as bool?,
-                enableSubtitles: item['enable字幕'] as bool?,
+                enableSubtitles: item['enableSubtitles'] as bool?,
               );
             } catch (_) {}
           }
@@ -216,8 +216,8 @@ class BackupRestoreService {
         final list = (iptvObj['customPortals'] as List).map((e) => e.toString()).toList();
         await prefs.setStringList('iptv_custom_portals', list);
       }
-      if (iptvObj['m3u播放lists'] is String) {
-        await prefs.setString('iptv_m3u_playlists', iptvObj['m3u播放lists'] as String);
+      if (iptvObj['m3uPlaylists'] is String) {
+        await prefs.setString('iptv_m3u_playlists', iptvObj['m3uPlaylists'] as String);
       }
       if (iptvObj['favoritePortals'] is List) {
         final list = (iptvObj['favoritePortals'] as List).map((e) => e.toString()).toList();

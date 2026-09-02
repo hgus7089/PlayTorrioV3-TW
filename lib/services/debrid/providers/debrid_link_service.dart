@@ -83,7 +83,7 @@ class DebridLinkService {
   }) async {
     final apiKey = await getKey();
     if (apiKey == null || apiKey.isEmpty) {
-      throw Exception('Debrid-Link API key is missing. Please configure it in 設定.');
+      throw Exception('Debrid-Link API key is missing. Please configure it in Settings.');
     }
     final headers = {
       'Authorization': 'Bearer $apiKey',

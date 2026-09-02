@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppUpdaterService {
-  static const String githubRepo = 'ayman708-UX/播放TorrioV3';
+  static const String githubRepo = 'ayman708-UX/PlayTorrioV3';
   static const String githubApiUrl =
       'https://api.github.com/repos/$githubRepo/releases/latest';
   static const String _keyDismissedVersion = 'dismissed_update_version';
@@ -18,9 +18,9 @@ class AppUpdaterService {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(_keyDismissedVersion, version);
-      debugPrint('[App更新rService] Dismissed update version: $version');
+      debugPrint('[AppUpdaterService] Dismissed update version: $version');
     } catch (e) {
-      debugPrint('[App更新rService] 錯誤 dismissing update version: $e');
+      debugPrint('[AppUpdaterService] Error dismissing update version: $e');
     }
   }
 
@@ -63,7 +63,7 @@ class AppUpdaterService {
 
         if (_isNewerVersion(currentVersion, latestVersion)) {
           if (!ignoreDismissed && await isVersionDismissed(latestVersion)) {
-            debugPrint('[App更新rService] 更新 $latestVersion is newer but was dismissed by user.');
+            debugPrint('[AppUpdaterService] Update $latestVersion is newer but was dismissed by user.');
             return null;
           }
 
@@ -83,7 +83,7 @@ class AppUpdaterService {
       }
       return null;
     } catch (e) {
-      debugPrint('錯誤 checking for updates: $e');
+      debugPrint('Error checking for updates: $e');
       return null;
     }
   }
@@ -97,7 +97,7 @@ class AppUpdaterService {
       abi = Abi.current();
       debugPrint('Detected system ABI: $abi');
     } catch (e) {
-      debugPrint('錯誤 detecting ABI: $e');
+      debugPrint('Error detecting ABI: $e');
     }
 
     if (Platform.isAndroid) {
@@ -185,7 +185,7 @@ class AppUpdaterService {
             ((a['name'] as String).toLowerCase().contains('setup') || (a['name'] as String).toLowerCase().contains('install')))
         .firstOrNull;
     if (setupExe != null) {
-      debugPrint('選取ed Windows Setup installer: ${setupExe['name']}');
+      debugPrint('Selected Windows Setup installer: ${setupExe['name']}');
       return setupExe['browser_download_url'];
     }
 
@@ -194,7 +194,7 @@ class AppUpdaterService {
         .where((a) => (a['name'] as String).toLowerCase().endsWith('.exe'))
         .firstOrNull;
     if (anyExe != null) {
-      debugPrint('選取ed Windows exe: ${anyExe['name']}');
+      debugPrint('Selected Windows exe: ${anyExe['name']}');
       return anyExe['browser_download_url'];
     }
 

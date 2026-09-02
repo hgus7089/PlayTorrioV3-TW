@@ -22,10 +22,10 @@ class EpubCover {
       Directory? targetDir;
       try {
         final appDocDir = await getApplicationDocumentsDirectory();
-        targetDir = Directory(p.join(appDocDir.path, '播放Torrio', '音訊bookCovers'));
+        targetDir = Directory(p.join(appDocDir.path, 'PlayTorrio', 'AudiobookCovers'));
       } catch (_) {
         final temp = await getTemporaryDirectory();
-        targetDir = Directory(p.join(temp.path, '播放Torrio', '音訊bookCovers'));
+        targetDir = Directory(p.join(temp.path, 'PlayTorrio', 'AudiobookCovers'));
       }
 
       if (!await targetDir.exists()) {

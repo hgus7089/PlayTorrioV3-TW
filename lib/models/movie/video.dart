@@ -38,7 +38,7 @@ class Video {
 
     return Video(
       id: json['id']?.toString() ?? '',
-      title: json['title']?.toString() ?? json['name']?.toString() ?? '集',
+      title: json['title']?.toString() ?? json['name']?.toString() ?? 'Episode',
       season: parseNum(json['season']),
       episode: parseNum(json['episode'] ?? json['number']),
       released: json['released']?.toString(),

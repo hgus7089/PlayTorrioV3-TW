@@ -495,7 +495,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
           children: [
             IconButton(
               icon: Icon(Icons.arrow_back_ios_new_rounded, color: settings.textColor, size: 18),
-              tooltip: '返回 to 媒體庫',
+              tooltip: 'Back to Library',
               onPressed: () => Navigator.of(context).pop(),
             ),
             const SizedBox(width: ReaderTokens.space4),
@@ -537,7 +537,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
               ),
               IconButton(
                 icon: Icon(Icons.tune_rounded, color: settings.textColor, size: 20),
-                tooltip: '外觀與自訂',
+                tooltip: 'Appearance & Customization',
                 onPressed: () => ReaderCustomizationSheet.show(
                   context,
                   realBookSampleText: _getSamplePreviewText(),
@@ -547,7 +547,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
 
             IconButton(
               icon: Icon(Icons.fullscreen_rounded, color: settings.textColor, size: 22),
-              tooltip: 'Toggle 全螢幕 (F)',
+              tooltip: 'Toggle Fullscreen (F)',
               onPressed: () => WindowService.instance.toggleFullscreen(),
             ),
           ],
@@ -595,7 +595,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
           children: [
             IconButton(
               icon: Icon(Icons.chevron_left_rounded, color: settings.textColor, size: 26),
-              tooltip: '上一章 (Left Arrow)',
+              tooltip: 'Previous Chapter (Left Arrow)',
               onPressed: _currentChapterIndex > 0 ? () => _goToChapter(_currentChapterIndex - 1) : null,
             ),
             Expanded(
@@ -627,7 +627,7 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
             ),
             IconButton(
               icon: Icon(Icons.chevron_right_rounded, color: settings.textColor, size: 26),
-              tooltip: '下一章 (Right Arrow)',
+              tooltip: 'Next Chapter (Right Arrow)',
               onPressed: _currentChapterIndex < total - 1 ? () => _goToChapter(_currentChapterIndex + 1) : null,
             ),
           ],
@@ -708,12 +708,12 @@ class _EpubReaderPageState extends State<EpubReaderPage> {
               children: [
                 OutlinedButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('返回 to 媒體庫'),
+                  child: const Text('Back to Library'),
                 ),
                 const SizedBox(width: ReaderTokens.space12),
                 FilledButton(
                   onPressed: _loadBook,
-                  child: const Text('重試'),
+                  child: const Text('Retry'),
                 ),
               ],
             ),

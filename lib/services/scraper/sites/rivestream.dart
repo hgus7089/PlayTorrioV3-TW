@@ -13,7 +13,7 @@ import 'tmdb_helper.dart';
 /// Excludes torrents, captions, and drive downloads.
 class RiveStreamScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _apiBase = 'https://scrapper.rivestream.app';
   static const _referer = 'https://www.rivestream.app/';
@@ -170,7 +170,7 @@ class RiveStreamScraper extends StreamScraper {
 
         await Future.wait(providerTasks);
       } catch (e) {
-        debugPrint('[RiveStreamScraper] 錯誤 scraping "$title": $e');
+        debugPrint('[RiveStreamScraper] Error scraping "$title": $e');
       } finally {
         if (!controller.isClosed) {
           controller.close();
@@ -203,7 +203,7 @@ class RiveStreamScraper extends StreamScraper {
       title: title,
       description: description,
       url: url,
-      addonName: '播放TorrioHTTP',
+      addonName: 'PlayTorrioHTTP',
       headers: {
         'User-Agent': _ua,
         'Referer': _referer,

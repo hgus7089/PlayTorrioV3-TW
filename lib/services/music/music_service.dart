@@ -71,7 +71,7 @@ class MusicService {
       final artists = await _deezer.getChartArtists(limit: 20);
       if (artists.isNotEmpty) return artists;
     } catch (e) {
-      debugPrint('fetch熱門Artists error: $e');
+      debugPrint('fetchTrendingArtists error: $e');
     }
     return [];
   }
@@ -93,7 +93,7 @@ class MusicService {
       if (playlists.isNotEmpty) return playlists;
       return _deezer.getEditorialSelection(limit: 20);
     } catch (e) {
-      debugPrint('fetchCurated播放lists error: $e');
+      debugPrint('fetchCuratedPlaylists error: $e');
       return [];
     }
   }
@@ -105,7 +105,7 @@ class MusicService {
       // 1. Chart Top Tracks
       final chartTracks = await _deezer.getChartTracks(limit: 25);
       if (chartTracks.isNotEmpty) {
-        results['🔥 Top Global & 熱門 Hits'] = chartTracks;
+        results['🔥 Top Global & Trending Hits'] = chartTracks;
       }
 
       // 2. Genre / Mood Searches
@@ -114,7 +114,7 @@ class MusicService {
         '🎙️ Hip-Hop & Rap Heavyweights': 'Hip Hop Hits',
         '🎧 Electronic, Dance & EDM': 'Electronic Dance',
         '🎸 Rock Classics & Alternative': 'Rock Essentials',
-        '🎬 Film & 動漫 Soundtracks': 'Hans Zimmer Soundtracks',
+        '🎬 Film & Anime Soundtracks': 'Hans Zimmer Soundtracks',
         '🌙 Chill, Lofi & Ambient Beats': 'Lofi Beats Chill',
       };
 

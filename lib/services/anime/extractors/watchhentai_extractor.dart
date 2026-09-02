@@ -56,7 +56,7 @@ class WatchHentaiExtractor {
     req.headers.set('User-Agent', _ua);
     req.headers.set('Accept',
         'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8');
-    req.headers.set('Accept-語言', 'en-US,en;q=0.9');
+    req.headers.set('Accept-Language', 'en-US,en;q=0.9');
     req.headers.set('Cache-Control', 'no-cache');
     if (referer != null) req.headers.set('Referer', referer);
   }
@@ -67,13 +67,13 @@ class WatchHentaiExtractor {
       _setHeaders(req, referer: referer);
       final resp = await req.close().timeout(const Duration(seconds: 25));
       if (resp.statusCode != 200) {
-        if (kDebugMode) debugPrint('[觀看Hentai] $url HTTP ${resp.statusCode}');
+        if (kDebugMode) debugPrint('[WatchHentai] $url HTTP ${resp.statusCode}');
         await resp.drain<void>();
         return null;
       }
       return await resp.transform(const SystemEncoding().decoder).join();
     } catch (e) {
-      if (kDebugMode) debugPrint('[觀看Hentai] GET $url error: $e');
+      if (kDebugMode) debugPrint('[WatchHentai] GET $url error: $e');
       return null;
     }
   }
@@ -204,7 +204,7 @@ class WatchHentaiExtractor {
       final html = await _get('$_origin/?s=${Uri.encodeQueryComponent(q)}');
       if (html == null) continue;
       final hits = _parseHits(html);
-      if (kDebugMode) debugPrint('[觀看Hentai] search "$q" -> ${hits.length} hits');
+      if (kDebugMode) debugPrint('[WatchHentai] search "$q" -> ${hits.length} hits');
       for (final h in hits) {
         if (allHits.any((x) => x.url == h.url)) continue;
         allHits.add(h);
@@ -229,9 +229,9 @@ class WatchHentaiExtractor {
       }
     }
 
-    if (kDebugMode) debugPrint('[觀看Hentai] best: "${best!.title}" score=${bestScore.toStringAsFixed(2)}');
+    if (kDebugMode) debugPrint('[WatchHentai] best: "${best!.title}" score=${bestScore.toStringAsFixed(2)}');
     if (bestScore < 0.50) {
-      if (kDebugMode) debugPrint('[觀看Hentai] best score below threshold, no match');
+      if (kDebugMode) debugPrint('[WatchHentai] best score below threshold, no match');
       return null;
     }
     return best?.url;
@@ -250,7 +250,7 @@ class WatchHentaiExtractor {
       return m != null && m.group(1) == epStr;
     }).toList();
     if (matching.isEmpty) {
-      if (kDebugMode) debugPrint('[觀看Hentai] no episode $ep in series');
+      if (kDebugMode) debugPrint('[WatchHentai] no episode $ep in series');
       return null;
     }
     matching.sort((a, b) {
@@ -304,33 +304,33 @@ class WatchHentaiExtractor {
   }) async {
     final seriesUrl = await _findSeries(titleCandidates);
     if (seriesUrl == null) return null;
-    if (kDebugMode) debugPrint('[觀看Hentai] series: $seriesUrl');
+    if (kDebugMode) debugPrint('[WatchHentai] series: $seriesUrl');
 
     final seriesHtml = await _get(seriesUrl);
     if (seriesHtml == null) return null;
     final videoUrl = _pickEpisode(seriesHtml, episodeNumber);
     if (videoUrl == null) return null;
-    if (kDebugMode) debugPrint('[觀看Hentai] ep=$episodeNumber -> $videoUrl');
+    if (kDebugMode) debugPrint('[WatchHentai] ep=$episodeNumber -> $videoUrl');
 
     final videoHtml = await _get(videoUrl, referer: _origin);
     if (videoHtml == null) return null;
     final jwUrl = _extractStreamUrl(videoHtml);
     if (jwUrl == null) {
-      if (kDebugMode) debugPrint('[觀看Hentai] no jwplayer iframe in $videoUrl');
+      if (kDebugMode) debugPrint('[WatchHentai] no jwplayer iframe in $videoUrl');
       return null;
     }
 
     final jwHtml = await _get(jwUrl, referer: videoUrl);
     if (jwHtml == null) {
-      if (kDebugMode) debugPrint('[觀看Hentai] jwplayer page failed: $jwUrl');
+      if (kDebugMode) debugPrint('[WatchHentai] jwplayer page failed: $jwUrl');
       return null;
     }
     final stream = _pickBestSource(jwHtml);
     if (stream == null) {
-      if (kDebugMode) debugPrint('[觀看Hentai] no playable source in jwplayer page');
+      if (kDebugMode) debugPrint('[WatchHentai] no playable source in jwplayer page');
       return null;
     }
-    if (kDebugMode) debugPrint('[觀看Hentai] stream: $stream');
+    if (kDebugMode) debugPrint('[WatchHentai] stream: $stream');
     return WatchHentaiResult(
       url: stream,
       referer: '$_origin/',

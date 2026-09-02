@@ -22,7 +22,7 @@ class _DockSettingsPageState extends State<DockSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Liquid Dock 與導覽列',
+          'Liquid Dock & Navbar',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
         actions: [
@@ -33,7 +33,7 @@ class _DockSettingsPageState extends State<DockSettingsPage> {
               if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Dock 項目已重設為預設配置。'),
+                  content: Text('Dock items reset to default layout.'),
                   behavior: SnackBarBehavior.floating,
                   backgroundColor: Color(0xFF7C5CFF),
                 ),
@@ -41,7 +41,7 @@ class _DockSettingsPageState extends State<DockSettingsPage> {
             },
             icon: const Icon(Icons.restore_rounded, size: 18, color: Colors.white70),
             label: const Text(
-              '重設',
+              'Reset',
               style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w700),
             ),
           ),
@@ -88,7 +88,7 @@ class _DockSettingsPageState extends State<DockSettingsPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '自訂底部 Dock',
+                                  'Customize Bottom Dock',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w800,
@@ -97,7 +97,7 @@ class _DockSettingsPageState extends State<DockSettingsPage> {
                                 ),
                                 SizedBox(height: 3),
                                 Text(
-                                  '選擇 which navigation items appear in your bottom liquid glass dock across all screens. 首頁 & 設定 are essential and stay pinned.',
+                                  'Choose which navigation items appear in your bottom liquid glass dock across all screens. Home & Settings are essential and stay pinned.',
                                   style: TextStyle(
                                     color: Colors.white54,
                                     fontSize: 12.5,
@@ -121,7 +121,7 @@ class _DockSettingsPageState extends State<DockSettingsPage> {
                           const Icon(Icons.tune_rounded, size: 16, color: Colors.white54),
                           const SizedBox(width: 8),
                           Text(
-                            '導覽捷徑',
+                            'NAVIGATION SHORTCUTS',
                             style: TextStyle(
                               fontSize: 11.5,
                               fontWeight: FontWeight.w700,
@@ -179,7 +179,7 @@ class _DockSettingsPageState extends State<DockSettingsPage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      '即時 Dock 預覽',
+                      'LIVE DOCK PREVIEW',
                       style: TextStyle(
                         fontSize: 10.5,
                         fontWeight: FontWeight.w800,

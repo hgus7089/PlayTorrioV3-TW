@@ -122,8 +122,8 @@ class WeWatchService {
 
   static const List<WeWatchStarterPick> starterPicks = [
     WeWatchStarterPick(
-      label: 'The 關閉ice',
-      query: 'The 關閉ice 2005',
+      label: 'The Office',
+      query: 'The Office 2005',
       mediaType: 'tv',
       posterPath: '/dg9e5fPRRId8PoBE0F6jl5y85Eu.jpg',
     ),
@@ -146,8 +146,8 @@ class WeWatchService {
       posterPath: '/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg',
     ),
     WeWatchStarterPick(
-      label: 'The 深色 Knight',
-      query: 'The 深色 Knight',
+      label: 'The Dark Knight',
+      query: 'The Dark Knight',
       mediaType: 'movie',
       posterPath: '/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
     ),
@@ -253,7 +253,7 @@ class WeWatchService {
         }
       }
     } catch (e) {
-      debugPrint('[We觀看Service] searchMedia error: $e');
+      debugPrint('[WeWatchService] searchMedia error: $e');
     }
     return [];
   }
@@ -296,7 +296,7 @@ class WeWatchService {
         }
       }
     } catch (e) {
-      debugPrint('[We觀看Service] generateReasonPills error: $e');
+      debugPrint('[WeWatchService] generateReasonPills error: $e');
     }
 
     // Default fallback pills based on sentiment
@@ -360,7 +360,7 @@ class WeWatchService {
     final bodyJson = jsonEncode({
       'movies': moviesPayload,
       'platforms': [],
-      'recommendation畫質': quality,
+      'recommendationQuality': quality,
       'guidance': moodGuidance,
     });
 
@@ -468,7 +468,7 @@ class WeWatchService {
         year: yearStr,
         mediaType: mediaType,
         reasoning: reasoningMatch?.group(1) ?? 'Matches your favorite themes and pacing.',
-        matchExplanation: matchExpMatch?.group(1) ?? '推薦 based on your rated favorites.',
+        matchExplanation: matchExpMatch?.group(1) ?? 'Recommended based on your rated favorites.',
         matchConfidence: int.tryParse(confidenceMatch?.group(1) ?? '') ?? 85,
         posterUrl: posterMatch?.group(1),
         backdropUrl: backdropMatch?.group(1),

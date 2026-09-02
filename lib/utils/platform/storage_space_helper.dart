@@ -78,7 +78,7 @@ class StorageSpaceHelper {
         }
       }
     } catch (e) {
-      debugPrint('[StorageSpaceHelper] 錯誤 checking free space: $e');
+      debugPrint('[StorageSpaceHelper] Error checking free space: $e');
     }
     // Fallback: 50GB assumed if check fails
     return const StorageSpaceInfo(

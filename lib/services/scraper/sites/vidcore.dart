@@ -9,7 +9,7 @@ import 'tmdb_helper.dart';
 /// Fetches multi-server m3u8 streams via www.vidcore.org / vidcore.org API.
 class VidCoreScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const List<String> _apiBases = [
     'https://www.vidcore.org',
@@ -128,8 +128,8 @@ class VidCoreScraper extends StreamScraper {
         final isDash = url.contains('.mpd');
 
         sources.add(StreamSource(
-          name: '播放TorrioHTTP',
-          addonName: '播放TorrioHTTP',
+          name: 'PlayTorrioHTTP',
+          addonName: 'PlayTorrioHTTP',
           title: 'VidCore $label · $quality',
           description: isHls ? 'VidCore Direct HLS Stream' : (isDash ? 'VidCore Direct DASH Stream' : 'VidCore Direct VOD Stream'),
           url: url,

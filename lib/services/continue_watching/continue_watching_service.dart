@@ -59,7 +59,7 @@ class ContinueWatchingService {
         activeItems.value = items;
       }
     } catch (e) {
-      debugPrint('[Continue觀看ingService] Failed to load sessions: $e');
+      debugPrint('[ContinueWatchingService] Failed to load sessions: $e');
     }
 
     // Sync cloud items in background
@@ -118,7 +118,7 @@ class ContinueWatchingService {
             ));
           }
         } catch (e) {
-          debugPrint('[Continue觀看ingService] Trakt sync error: $e');
+          debugPrint('[ContinueWatchingService] Trakt sync error: $e');
         }
       }
 
@@ -170,7 +170,7 @@ class ContinueWatchingService {
             }
           }
         } catch (e) {
-          debugPrint('[Continue觀看ingService] Simkl sync error: $e');
+          debugPrint('[ContinueWatchingService] Simkl sync error: $e');
         }
       }
 
@@ -199,7 +199,7 @@ class ContinueWatchingService {
         activeItems.value = merged;
       });
     } catch (e) {
-      debugPrint('[Continue觀看ingService] Cloud sync error: $e');
+      debugPrint('[ContinueWatchingService] Cloud sync error: $e');
     }
   }
 
@@ -290,7 +290,7 @@ class ContinueWatchingService {
       final jsonList = trimmed.map((e) => e.toJson()).toList();
       await prefs.setString(_storageKey, jsonEncode(jsonList));
     } catch (e) {
-      debugPrint('[Continue觀看ingService] Failed to persist session: $e');
+      debugPrint('[ContinueWatchingService] Failed to persist session: $e');
     }
 
     // Push cloud scrobble / history to Trakt and Simkl
@@ -351,7 +351,7 @@ class ContinueWatchingService {
           );
         }
       } catch (e) {
-        debugPrint('[Continue觀看ingService] Trakt cloud scrobble error: $e');
+        debugPrint('[ContinueWatchingService] Trakt cloud scrobble error: $e');
       }
     }
 
@@ -379,7 +379,7 @@ class ContinueWatchingService {
           );
         }
       } catch (e) {
-        debugPrint('[Continue觀看ingService] Simkl cloud scrobble error: $e');
+        debugPrint('[ContinueWatchingService] Simkl cloud scrobble error: $e');
       }
     }
   }
@@ -399,7 +399,7 @@ class ContinueWatchingService {
       final jsonList = current.map((e) => e.toJson()).toList();
       await prefs.setString(_storageKey, jsonEncode(jsonList));
     } catch (e) {
-      debugPrint('[Continue觀看ingService] Failed to remove session: $e');
+      debugPrint('[ContinueWatchingService] Failed to remove session: $e');
     }
 
     // Cloud Removal (Trakt & Simkl)
@@ -423,10 +423,10 @@ class ContinueWatchingService {
         if (isSeries) {
           await TraktService.instance.removeFromHistory(baseId, 'series');
         }
-        debugPrint('[Continue觀看ingService] 移除d $baseId ($type) from Trakt continue watching');
+        debugPrint('[ContinueWatchingService] Removed $baseId ($type) from Trakt continue watching');
       }
     } catch (e) {
-      debugPrint('[Continue觀看ingService] Trakt cloud removal error for $baseId: $e');
+      debugPrint('[ContinueWatchingService] Trakt cloud removal error for $baseId: $e');
     }
 
     // 2. Simkl Cloud Removal
@@ -436,10 +436,10 @@ class ContinueWatchingService {
         if (isSeries) {
           await SimklService.instance.addToList(baseId, 'series', 'hold');
         }
-        debugPrint('[Continue觀看ingService] 移除d $baseId ($type) from Simkl continue watching');
+        debugPrint('[ContinueWatchingService] Removed $baseId ($type) from Simkl continue watching');
       }
     } catch (e) {
-      debugPrint('[Continue觀看ingService] Simkl cloud removal error for $baseId: $e');
+      debugPrint('[ContinueWatchingService] Simkl cloud removal error for $baseId: $e');
     }
   }
 
@@ -466,7 +466,7 @@ class ContinueWatchingService {
     if (item.season != null && item.episode != null) {
       video = Video(
         id: item.episodeId ?? '${item.id}:${item.season}:${item.episode}',
-        title: item.episodeTitle ?? '集 ${item.episode}',
+        title: item.episodeTitle ?? 'Episode ${item.episode}',
         season: item.season ?? 1,
         episode: item.episode ?? 1,
         thumbnail: item.backdropUrl,
@@ -496,7 +496,7 @@ class ContinueWatchingService {
     }
 
     // 1. Arabic Anime Specialized Resume Path
-    if (item.id.startsWith('arabic_anime:') || item.addonName == 'Arabic動漫') {
+    if (item.id.startsWith('arabic_anime:') || item.addonName == 'ArabicAnime') {
       final slug = item.id.replaceAll('arabic_anime:', '');
       final episodeNum = item.episode ?? 1;
 
@@ -594,7 +594,7 @@ class ContinueWatchingService {
           return;
         }
       } catch (e) {
-        debugPrint('[Continue觀看ing] Arabic resume error: $e');
+        debugPrint('[ContinueWatching] Arabic resume error: $e');
         if (context.mounted && Navigator.canPop(context)) {
           Navigator.pop(context);
         }
@@ -867,8 +867,8 @@ class ContinueWatchingService {
     StreamSource? selectedSource;
 
     // Rule A: If saved as PlayTorrioHTTP, strictly select from PlayTorrioHTTP
-    if (item.addonName == '播放TorrioHTTP') {
-      final httpSources = candidateSources.where((s) => s.addonName == '播放TorrioHTTP').toList();
+    if (item.addonName == 'PlayTorrioHTTP') {
+      final httpSources = candidateSources.where((s) => s.addonName == 'PlayTorrioHTTP').toList();
       if (httpSources.isNotEmpty) {
         selectedSource = httpSources.firstWhere(
           (s) => s.name == item.streamName || s.quality == item.quality,

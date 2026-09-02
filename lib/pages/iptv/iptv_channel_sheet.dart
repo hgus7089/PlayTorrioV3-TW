@@ -84,7 +84,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('移除d $count stream feed${count == 1 ? "" : "s"}'),
+          content: Text('Removed $count stream feed${count == 1 ? "" : "s"}'),
           duration: const Duration(seconds: 2),
           backgroundColor: const Color(0xFF1E2235),
         ),
@@ -241,7 +241,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                           color: _isSelecting ? const Color(0xFF00D2EF) : Colors.white70,
                           size: 22,
                         ),
-                        tooltip: _isSelecting ? '取消 選取ion' : '管理 / 刪除 Channels',
+                        tooltip: _isSelecting ? 'Cancel Selection' : 'Manage / Delete Channels',
                         onPressed: () {
                           setState(() {
                             _isSelecting = !_isSelecting;
@@ -280,7 +280,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                       style: const TextStyle(color: Colors.white, fontSize: 13.5),
                       cursorColor: const Color(0xFF7C5CFF),
                       decoration: InputDecoration(
-                        hintText: '搜尋 ${results.length} channels (e.g. 1080p, 4K, feed name)...',
+                        hintText: 'Search ${results.length} channels (e.g. 1080p, 4K, feed name)...',
                         hintStyle: TextStyle(
                           color: Colors.white.withValues(alpha: 0.4),
                           fontSize: 13,
@@ -337,7 +337,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                           color: const Color(0xFF00D2EF),
                         ),
                         label: Text(
-                          allSelected ? 'Deselect All' : '選取 All',
+                          allSelected ? 'Deselect All' : 'Select All',
                           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
                         ),
                         onPressed: () {
@@ -374,7 +374,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                         ),
                         icon: const Icon(Icons.delete_rounded, size: 15),
                         label: Text(
-                          '刪除 (${_selectedUrls.length})',
+                          'Delete (${_selectedUrls.length})',
                           style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                         ),
                         onPressed: _selectedUrls.isEmpty ? null : _deleteSelectedStreams,
@@ -497,7 +497,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                                       setState(() => _searchQuery = '');
                                     },
                                     child: const Text(
-                                      '清除 搜尋',
+                                      'Clear Search',
                                       style: TextStyle(
                                         color: Color(0xFF7C5CFF),
                                         fontWeight: FontWeight.bold,
@@ -694,7 +694,7 @@ class _IptvChannelSheetState extends State<IptvChannelSheet> {
                           ),
                           icon: const Icon(Icons.play_arrow_rounded, color: Colors.white),
                           label: const Text(
-                            '觀看 Live',
+                            'Watch Live',
                             style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
                           ),
                           onPressed: filteredResults.isNotEmpty

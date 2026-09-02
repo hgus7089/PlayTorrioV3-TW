@@ -31,7 +31,7 @@ class AddonManifest {
   factory AddonManifest.fromJson(Map<String, dynamic> json) {
     return AddonManifest(
       id: json['id']?.toString() ?? '',
-      name: json['name']?.toString() ?? 'Unknown 新增on',
+      name: json['name']?.toString() ?? 'Unknown Addon',
       version: json['version']?.toString() ?? '0.0.0',
       description: json['description']?.toString(),
       logo: json['logo']?.toString(),
@@ -92,7 +92,7 @@ class AddonCatalog {
     }
 
     List<String> genres = [];
-    bool supportsSearch = json['supports搜尋'] as bool? ?? false;
+    bool supportsSearch = json['supportsSearch'] as bool? ?? false;
     bool supportsSkip = json['supportsSkip'] as bool? ?? false;
 
     for (final extra in extras) {
@@ -126,7 +126,7 @@ class AddonCatalog {
         'id': id,
         if (name != null) 'name': name,
         'genres': genres,
-        'supports搜尋': supportsSearch,
+        'supportsSearch': supportsSearch,
         'supportsSkip': supportsSkip,
       };
 }
@@ -169,9 +169,9 @@ class InstalledAddon {
       manifest:
           AddonManifest.fromJson(json['manifest'] as Map<String, dynamic>),
       enabled: json['enabled'] as bool? ?? true,
-      enableCatalogs: json['enable目錄'] as bool? ?? true,
-      enableSearch: json['enable搜尋'] as bool? ?? true,
-      enableSubtitles: json['enable字幕'] as bool? ?? true,
+      enableCatalogs: json['enableCatalogs'] as bool? ?? true,
+      enableSearch: json['enableSearch'] as bool? ?? true,
+      enableSubtitles: json['enableSubtitles'] as bool? ?? true,
       enableStreams: json['enableStreams'] as bool? ?? true,
     );
   }
@@ -180,9 +180,9 @@ class InstalledAddon {
         'baseUrl': baseUrl,
         'manifest': manifest.toJson(),
         'enabled': enabled,
-        'enable目錄': enableCatalogs,
-        'enable搜尋': enableSearch,
-        'enable字幕': enableSubtitles,
+        'enableCatalogs': enableCatalogs,
+        'enableSearch': enableSearch,
+        'enableSubtitles': enableSubtitles,
         'enableStreams': enableStreams,
       };
 }

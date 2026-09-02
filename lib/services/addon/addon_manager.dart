@@ -371,17 +371,17 @@ class AddonManager {
     }
 
     final typeLabel = catalog.type == 'series'
-        ? '影集'
+        ? 'Series'
         : (catalog.type == 'anime'
-            ? '動漫'
-            : (catalog.type == 'movie' ? '電影' : catalog.type));
+            ? 'Anime'
+            : (catalog.type == 'movie' ? 'Movies' : catalog.type));
 
     switch (catalog.id) {
       case 'top':
-        return '熱門 $typeLabel';
+        return 'Popular $typeLabel';
       case 'year':
         return 'New $typeLabel';
-      case 'imdb評分':
+      case 'imdbRating':
         return 'Top Rated $typeLabel';
       default:
         final id = catalog.id;

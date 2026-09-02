@@ -272,7 +272,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              '下載中…',
+                              'Downloading...',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
@@ -359,7 +359,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '更新 Now',
+                              'Update Now',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -413,7 +413,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
           .execute(
             widget.updateInfo.downloadUrl,
             destinationFilename:
-                '播放Torrio_${widget.updateInfo.latestVersion}.apk',
+                'PlayTorrio_${widget.updateInfo.latestVersion}.apk',
           )
           .listen(
             (OtaEvent event) {
@@ -437,7 +437,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text(
-                            'Please enable "Install unknown apps" permission for 播放Torrio in Android settings.',
+                            'Please enable "Install unknown apps" permission for PlayTorrio in Android settings.',
                           ),
                           duration: Duration(seconds: 5),
                           backgroundColor: Colors.orange,
@@ -453,7 +453,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                       WakelockPlus.disable();
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('更新失敗：${event.status}'),
+                          content: Text('Update failed: ${event.status}'),
                           backgroundColor: Colors.redAccent,
                         ),
                       );
@@ -471,7 +471,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                 setState(() => _isDownloading = false);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('下載失敗：$error'),
+                    content: Text('Download failed: $error'),
                     backgroundColor: Colors.redAccent,
                   ),
                 );
@@ -484,7 +484,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
         setState(() => _isDownloading = false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('更新失敗：$e'),
+            content: Text('Update failed: $e'),
             backgroundColor: Colors.redAccent,
           ),
         );
@@ -513,7 +513,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
 
       final extension = Platform.isWindows ? '.exe' : '.AppImage';
       final fileName =
-          '播放Torrio-${widget.updateInfo.latestVersion}$extension';
+          'PlayTorrio-${widget.updateInfo.latestVersion}$extension';
       final filePath = path.join(dir.path, fileName);
       final file = File(filePath);
 
@@ -560,7 +560,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                 Icon(Icons.check_circle, color: Colors.green, size: 32),
                 SizedBox(width: 12),
                 Text(
-                  '下載 Complete',
+                  'Download Complete',
                   style: TextStyle(color: Colors.white),
                 ),
               ],
@@ -570,7 +570,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  '更新 downloaded to:',
+                  'Update downloaded to:',
                   style: TextStyle(color: Colors.white70),
                 ),
                 const SizedBox(height: 8),
@@ -592,7 +592,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                 const SizedBox(height: 16),
                 Text(
                   Platform.isWindows
-                      ? '關閉 播放Torrio and run the installer to update.'
+                      ? 'Close PlayTorrio and run the installer to update.'
                       : 'Make the file executable and run it:\nchmod +x "$fileName"\n./$fileName',
                   style: const TextStyle(color: Colors.white70),
                 ),
@@ -609,7 +609,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                   if (context.mounted) Navigator.of(context).pop();
                 },
                 child: const Text(
-                  '開啟資料夾',
+                  'Open Folder',
                   style: TextStyle(color: Colors.white70),
                 ),
               ),
@@ -635,7 +635,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
         setState(() => _isDownloading = false);
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text('下載 failed: $e')));
+        ).showSnackBar(SnackBar(content: Text('Download failed: $e')));
       }
     }
   }

@@ -95,7 +95,7 @@ class _PlayerVolumeControlState extends State<PlayerVolumeControl> {
                 _getVolumeIcon(),
                 color: isBoosting ? boostColor : (widget.isMuted ? PlayerTheme.inkSubtle : Colors.white),
               ),
-              tooltip: widget.isMuted ? '取消靜音' : '靜音',
+              tooltip: widget.isMuted ? 'Unmute' : 'Mute',
               onPressed: widget.onToggleMute,
             ),
 

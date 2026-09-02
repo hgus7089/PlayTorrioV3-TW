@@ -43,7 +43,7 @@ class TraktCalendarEntry {
         showTitle: (show['title'] as String?) ?? 'Unknown Show',
         seasonNumber: (episode['season'] as int?) ?? 1,
         episodeNumber: (episode['number'] as int?) ?? 1,
-        episodeTitle: (episode['title'] as String?) ?? '集',
+        episodeTitle: (episode['title'] as String?) ?? 'Episode',
         episodeOverview: episode['overview'] as String?,
         imdbId: (showIds['imdb'] as String?) ?? (episodeIds['imdb'] as String?),
       );
@@ -69,7 +69,7 @@ class TraktCalendarEntry {
         showTitle: (show['title'] as String?) ?? (json['show_title'] as String?) ?? 'Unknown Show',
         seasonNumber: (json['season'] as int?) ?? 1,
         episodeNumber: (json['episode'] as int?) ?? (json['number'] as int?) ?? 1,
-        episodeTitle: (json['title'] as String?) ?? (json['episode_title'] as String?) ?? '集',
+        episodeTitle: (json['title'] as String?) ?? (json['episode_title'] as String?) ?? 'Episode',
         episodeOverview: json['overview'] as String?,
         imdbId: showIds['imdb'] as String?,
       );

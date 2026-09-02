@@ -17,7 +17,7 @@ import 'tmdb_helper.dart';
 /// - Queries active Cinejoy servers (Lisbon, Solara, Athens, Castle, Canaias)
 class CinejoyScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _apiBase = 'https://api.shegu.st';
   static const _origin = 'https://cinejoy.to';
@@ -36,7 +36,7 @@ class CinejoyScraper extends StreamScraper {
     {'name': 'Lisbon', '4k': true, 'status': 'ok'},
     {'name': 'Solara', '4k': false, 'status': 'ok'},
     {'name': 'Athens', '4k': false, 'status': 'ok'},
-    {'name': '演員le', '4k': false, 'status': 'ok'},
+    {'name': 'Castle', '4k': false, 'status': 'ok'},
     {'name': 'Canaias', '4k': false, 'status': 'ok'},
   ];
 
@@ -314,7 +314,7 @@ class CinejoyScraper extends StreamScraper {
                 final streamTitle = '[Cinejoy - $srvName] $quality';
                 final desc = '$srvName • $quality • HLS';
 
-                debugPrint('[CinejoyScraper SUCCESS] 新增ed stream source from $srvName: $playlistUrl');
+                debugPrint('[CinejoyScraper SUCCESS] Added stream source from $srvName: $playlistUrl');
 
                 if (!controller.isClosed) {
                   controller.add(
@@ -347,7 +347,7 @@ class CinejoyScraper extends StreamScraper {
                   final format = (qVal['type'] ?? 'mp4').toString().toUpperCase();
                   final desc = '$label • $quality • $format';
 
-                  debugPrint('[CinejoyScraper SUCCESS] 新增ed MP4 source from $label: $fileUrl');
+                  debugPrint('[CinejoyScraper SUCCESS] Added MP4 source from $label: $fileUrl');
 
                   if (!controller.isClosed) {
                     controller.add(
@@ -363,7 +363,7 @@ class CinejoyScraper extends StreamScraper {
               }
             }
           } catch (e, stack) {
-            debugPrint('[CinejoyScraper] 錯誤 querying server $srvName: $e\n$stack');
+            debugPrint('[CinejoyScraper] Error querying server $srvName: $e\n$stack');
           }
         });
 
@@ -391,7 +391,7 @@ class CinejoyScraper extends StreamScraper {
       title: title,
       description: description,
       url: url,
-      addonName: '播放TorrioHTTP',
+      addonName: 'PlayTorrioHTTP',
       headers: {
         'User-Agent': _ua,
         'Referer': _referer,

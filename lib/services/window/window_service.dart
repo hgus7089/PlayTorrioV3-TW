@@ -66,7 +66,7 @@ class WindowService with WindowListener {
         isFullscreenNotifier.value = true;
       }
     } catch (e) {
-      debugPrint('[WindowService] toggle全螢幕 error: $e');
+      debugPrint('[WindowService] toggleFullscreen error: $e');
     } finally {
       _isTransitioning = false;
     }
@@ -96,7 +96,7 @@ class WindowService with WindowListener {
         isFullscreenNotifier.value = false;
       }
     } catch (e) {
-      debugPrint('[WindowService] exit全螢幕 error: $e');
+      debugPrint('[WindowService] exitFullscreen error: $e');
     } finally {
       _isTransitioning = false;
     }

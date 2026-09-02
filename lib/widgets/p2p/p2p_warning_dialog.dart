@@ -126,7 +126,7 @@ class P2pWarningDialog extends StatelessWidget {
                         ),
                         IconButton(
                           icon: const Icon(Icons.close_rounded, color: Colors.white60),
-                          tooltip: '退出',
+                          tooltip: 'Exit',
                           onPressed: () => Navigator.of(context).pop(),
                         ),
                       ],
@@ -166,7 +166,7 @@ class P2pWarningDialog extends StatelessWidget {
                                 _buildSourceInfoRow(
                                   icon: Icons.cloud_done_rounded,
                                   iconColor: const Color(0xFF10B981),
-                                  title: '播放Torrio HTTP (Direct Stream)',
+                                  title: 'PlayTorrio HTTP (Direct Stream)',
                                   subtitle: 'Safe direct HTTPS web streams. No torrenting or peer uploading.',
                                 ),
                                 Padding(
@@ -179,7 +179,7 @@ class P2pWarningDialog extends StatelessWidget {
                                 _buildSourceInfoRow(
                                   icon: Icons.hub_rounded,
                                   iconColor: _warningColor,
-                                  title: '播放Torrio (Torrent 引擎)',
+                                  title: 'PlayTorrio (Torrent Engine)',
                                   subtitle: 'P2P swarms (Knaben, TorrentGalaxy). Involves peer data sharing.',
                                 ),
                               ],
@@ -208,7 +208,7 @@ class P2pWarningDialog extends StatelessWidget {
                                 const SizedBox(width: 12),
                                 Expanded(
                                   child: Text(
-                                    'Would you like to turn off the built-in 播放Torrio P2P torrent source and use only direct HTTP streaming?',
+                                    'Would you like to turn off the built-in PlayTorrio P2P torrent source and use only direct HTTP streaming?',
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w600,
@@ -222,7 +222,7 @@ class P2pWarningDialog extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            'Note: You can easily toggle the built-in P2P source back on or off anytime in 設定.',
+                            'Note: You can easily toggle the built-in P2P source back on or off anytime in Settings.',
                             style: TextStyle(
                               fontSize: 11.5,
                               color: Colors.white.withValues(alpha: 0.45),
@@ -314,7 +314,7 @@ class P2pWarningDialog extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             foregroundColor: Colors.white60,
           ),
-          child: const Text('退出', style: TextStyle(fontWeight: FontWeight.w600)),
+          child: const Text('Exit', style: TextStyle(fontWeight: FontWeight.w600)),
         ),
         const Spacer(),
 
@@ -345,7 +345,7 @@ class P2pWarningDialog extends StatelessWidget {
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('P2P torrent source turned off. 播放TorrioHTTP will be used.'),
+                  content: Text('P2P torrent source turned off. PlayTorrioHTTP will be used.'),
                   backgroundColor: Color(0xFF10B981),
                   behavior: SnackBarBehavior.floating,
                 ),
@@ -355,7 +355,7 @@ class P2pWarningDialog extends StatelessWidget {
           },
           icon: const Icon(Icons.check_circle_outline_rounded, size: 18),
           label: const Text(
-            'Yes, Turn 關閉 P2P',
+            'Yes, Turn Off P2P',
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13),
           ),
           style: ElevatedButton.styleFrom(
@@ -383,7 +383,7 @@ class P2pWarningDialog extends StatelessWidget {
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('P2P torrent source turned off. 播放TorrioHTTP will be used.'),
+                  content: Text('P2P torrent source turned off. PlayTorrioHTTP will be used.'),
                   backgroundColor: Color(0xFF10B981),
                   behavior: SnackBarBehavior.floating,
                 ),
@@ -393,7 +393,7 @@ class P2pWarningDialog extends StatelessWidget {
           },
           icon: const Icon(Icons.check_circle_outline_rounded, size: 18),
           label: const Text(
-            'Yes, Turn 關閉 P2P',
+            'Yes, Turn Off P2P',
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13.5),
           ),
           style: ElevatedButton.styleFrom(

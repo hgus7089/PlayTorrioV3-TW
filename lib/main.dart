@@ -128,7 +128,7 @@ class _PlayTorrioAppState extends State<PlayTorrioApp>
       }
     } catch (e) {
       _isShowingUpdateDialog = false;
-      debugPrint('錯誤 checking for app updates: $e');
+      debugPrint('Error checking for app updates: $e');
     }
   }
 
@@ -139,7 +139,7 @@ class _PlayTorrioAppState extends State<PlayTorrioApp>
       builder: (context, palette, _) {
         return MaterialApp(
           navigatorKey: navigatorKey,
-          title: '播放Torrio',
+          title: 'PlayTorrio',
           debugShowCheckedModeBanner: false,
           theme: AppThemeService.createThemeData(palette),
           scrollBehavior: const MaterialScrollBehavior().copyWith(

@@ -58,7 +58,7 @@ class RealDebridService {
   }) async {
     final token = await getToken();
     if (token == null || token.isEmpty) {
-      throw Exception('Real-Debrid API token is missing. Please configure it in 設定.');
+      throw Exception('Real-Debrid API token is missing. Please configure it in Settings.');
     }
 
     final headers = {'Authorization': 'Bearer $token'};

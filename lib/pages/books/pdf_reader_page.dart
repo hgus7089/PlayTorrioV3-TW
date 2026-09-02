@@ -188,7 +188,7 @@ class _PdfReaderPageState extends State<PdfReaderPage> {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 20),
-                          tooltip: '返回 to 媒體庫',
+                          tooltip: 'Back to Library',
                           onPressed: () => Navigator.of(context).pop(),
                         ),
                         const SizedBox(width: 12),
@@ -233,7 +233,7 @@ class _PdfReaderPageState extends State<PdfReaderPage> {
                         ),
                         IconButton(
                           icon: const Icon(Icons.fullscreen_rounded, color: Colors.white, size: 24),
-                          tooltip: '全螢幕 (F)',
+                          tooltip: 'Fullscreen (F)',
                           onPressed: () => WindowService.instance.toggleFullscreen(),
                         ),
                       ],
@@ -270,7 +270,7 @@ class _PdfReaderPageState extends State<PdfReaderPage> {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.chevron_left_rounded, color: Colors.white, size: 28),
-                          tooltip: '上一頁',
+                          tooltip: 'Previous Page',
                           onPressed: _currentPage > 1
                               ? () => _pdfController.goToPage(pageNumber: _currentPage - 1)
                               : null,
@@ -327,7 +327,7 @@ class _PdfReaderPageState extends State<PdfReaderPage> {
                         ),
                         IconButton(
                           icon: const Icon(Icons.chevron_right_rounded, color: Colors.white, size: 28),
-                          tooltip: '下一頁',
+                          tooltip: 'Next Page',
                           onPressed: _currentPage < _pageCount
                               ? () => _pdfController.goToPage(pageNumber: _currentPage + 1)
                               : null,

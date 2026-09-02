@@ -21,21 +21,21 @@ extension TraktSeeAllListX on TraktSeeAllList {
   String get label {
     switch (this) {
       case TraktSeeAllList.continueWatching:
-        return '繼續觀看';
+        return 'Continue Watching';
       case TraktSeeAllList.watchlist:
-        return '觀看清單';
+        return 'Watchlist';
       case TraktSeeAllList.history:
-        return '觀看紀錄';
+        return 'History';
       case TraktSeeAllList.collection:
         return 'Collection';
       case TraktSeeAllList.ratings:
-        return '評分s';
+        return 'Ratings';
       case TraktSeeAllList.recommendations:
         return 'Recommendations';
       case TraktSeeAllList.trending:
-        return '熱門';
+        return 'Trending';
       case TraktSeeAllList.popular:
-        return '熱門';
+        return 'Popular';
       case TraktSeeAllList.anticipated:
         return 'Anticipated';
     }

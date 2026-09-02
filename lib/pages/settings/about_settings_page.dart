@@ -16,7 +16,7 @@ class AboutSettingsPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          '關於 播放Torrio',
+          'About PlayTorrio',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -56,7 +56,7 @@ class AboutSettingsPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     const Text(
-                      '播放Torrio',
+                      'PlayTorrio',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w900,
@@ -70,7 +70,7 @@ class AboutSettingsPage extends StatelessWidget {
                       builder: (context, snapshot) {
                         final version = snapshot.hasData ? snapshot.data!.version : '1.0.9';
                         return Text(
-                          '版本 $version • 新一代串流中心',
+                          'Version $version • Next-Gen Streaming Hub',
                           style: TextStyle(
                             fontSize: 13,
                             color: Colors.white.withValues(alpha: 0.45),
@@ -99,7 +99,7 @@ class AboutSettingsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      '全方位娛樂生態系',
+                      'Universal Entertainment Ecosystem',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
@@ -108,7 +108,7 @@ class AboutSettingsPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      '播放Torrio is an all-in-one entertainment client bringing together movies, TV series, anime, live IPTV, music, manga, and audiobooks into a unified, high-performance interface with custom Liquid Glass visuals.',
+                      'PlayTorrio is an all-in-one entertainment client bringing together movies, TV series, anime, live IPTV, music, manga, and audiobooks into a unified, high-performance interface with custom Liquid Glass visuals.',
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.white.withValues(alpha: 0.5),
@@ -123,7 +123,7 @@ class AboutSettingsPage extends StatelessWidget {
 
               // Architecture & Core Technologies
               Text(
-                '核心技術',
+                'CORE TECHNOLOGIES',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -134,23 +134,23 @@ class AboutSettingsPage extends StatelessWidget {
               const SizedBox(height: 12),
 
               _buildTechTile(
-                title: '高效能影片引擎',
-                subtitle: '由內嵌 media_kit／libmpv 驅動，支援硬體加速解碼。',
+                title: 'High-Performance Video Engine',
+                subtitle: 'Powered by embedded media_kit / libmpv with hardware-accelerated decoding.',
               ),
               const SizedBox(height: 10),
               _buildTechTile(
-                title: 'Debrid 與多來源搜尋器',
-                subtitle: '透過 Real-Debrid、TorBox 與 Stremio 附加元件進行高速雲端播放。',
+                title: 'Debrid & Multi-Source Scrapers',
+                subtitle: 'Direct high-speed cloud playback via Real-Debrid, TorBox, and Stremio addons.',
               ),
               const SizedBox(height: 10),
               _buildTechTile(
-                title: 'Liquid Glass GLSL 著色器',
-                subtitle: '即時自訂光學折射、鏡片與流體物理效果。',
+                title: 'Liquid Glass GLSL Shaders',
+                subtitle: 'Custom real-time optical refraction, lenses, and fluid physics.',
               ),
               const SizedBox(height: 10),
               _buildTechTile(
-                title: 'Trakt 與雲端同步',
-                subtitle: '跨平台待看清單、集數追蹤與播放紀錄同步。',
+                title: 'Trakt & Cloud Synchronization',
+                subtitle: 'Cross-platform watchlist, episode tracking, and playback scrobbling.',
               ),
             ],
           ),

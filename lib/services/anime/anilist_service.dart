@@ -55,7 +55,7 @@ class AnilistService {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'User-Agent': '播放Torrio/1.0.0 (動漫)',
+          'User-Agent': 'PlayTorrio/1.0.0 (Anime)',
         },
         body: jsonEncode({
           'query': query,
@@ -105,7 +105,7 @@ class AnilistService {
     popularity
     favourites
     season
-    season年份
+    seasonYear
     description(asHtml: false)
     studios(isMain: true) {
       nodes {
@@ -117,7 +117,7 @@ class AnilistService {
       id
       site
     }
-    nextAiring集 {
+    nextAiringEpisode {
       airingAt
       timeUntilAiring
       episode
@@ -149,9 +149,9 @@ class AnilistService {
     int perPage = 20,
   }) async {
     const query = '''
-      query (\$page: Int, \$perPage: Int, \$season: Media季, \$season年份: Int) {
+      query (\$page: Int, \$perPage: Int, \$season: MediaSeason, \$seasonYear: Int) {
         Page(page: \$page, perPage: \$perPage) {
-          media(type: ANIME, season: \$season, season年份: \$season年份, sort: POPULARITY_DESC, isAdult: false) {
+          media(type: ANIME, season: \$season, seasonYear: \$seasonYear, sort: POPULARITY_DESC, isAdult: false) {
             $_mediaFields
           }
         }
@@ -162,7 +162,7 @@ class AnilistService {
       'page': page,
       'perPage': perPage,
       'season': currentSeason(),
-      'season年份': DateTime.now().year,
+      'seasonYear': DateTime.now().year,
     });
     return _parseMediaList(data);
   }
@@ -173,9 +173,9 @@ class AnilistService {
     int perPage = 20,
   }) async {
     const query = '''
-      query (\$page: Int, \$perPage: Int, \$season: Media季, \$season年份: Int) {
+      query (\$page: Int, \$perPage: Int, \$season: MediaSeason, \$seasonYear: Int) {
         Page(page: \$page, perPage: \$perPage) {
-          media(type: ANIME, season: \$season, season年份: \$season年份, sort: POPULARITY_DESC, isAdult: false) {
+          media(type: ANIME, season: \$season, seasonYear: \$seasonYear, sort: POPULARITY_DESC, isAdult: false) {
             $_mediaFields
           }
         }
@@ -186,7 +186,7 @@ class AnilistService {
       'page': page,
       'perPage': perPage,
       'season': nextSeason(),
-      'season年份': nextSeasonYear(),
+      'seasonYear': nextSeasonYear(),
     });
     return _parseMediaList(data);
   }
@@ -252,9 +252,9 @@ class AnilistService {
     final isAdultFinal = isAdult || (genre != null && genre.toLowerCase() == 'hentai');
 
     final query = '''
-      query (\$page: Int, \$perPage: Int, \$search: String, \$genre: String, \$year: Int, \$season: Media季, \$format: MediaFormat, \$status: MediaStatus, \$isAdult: Boolean) {
+      query (\$page: Int, \$perPage: Int, \$search: String, \$genre: String, \$year: Int, \$season: MediaSeason, \$format: MediaFormat, \$status: MediaStatus, \$isAdult: Boolean) {
         Page(page: \$page, perPage: \$perPage) {
-          media(type: ANIME, search: \$search, genre: \$genre, season年份: \$year, season: \$season, format: \$format, status: \$status, sort: $sortClause, isAdult: \$isAdult) {
+          media(type: ANIME, search: \$search, genre: \$genre, seasonYear: \$year, season: \$season, format: \$format, status: \$status, sort: $sortClause, isAdult: \$isAdult) {
             $_mediaFields
           }
         }

@@ -5,7 +5,7 @@ import 'iptv_network.dart';
 
 enum PortalCardStyle {
   rich('Rich Card with Badges'),
-  compact('精簡 Row');
+  compact('Compact Row');
 
   final String label;
   const PortalCardStyle(this.label);
@@ -14,7 +14,7 @@ enum PortalCardStyle {
 enum PortalBrowserLayout {
   grid('Grid Cards'),
   list('Detailed List with EPG'),
-  compactList('精簡 Channel List');
+  compactList('Compact Channel List');
 
   final String label;
   const PortalBrowserLayout(this.label);
@@ -51,12 +51,12 @@ abstract final class IptvSettings {
   static const List<String> defaultCategories = [
     'Premier Live Broadcasts',
     'ESPN & College Basketball (NCAA)',
-    'US Major Leagues & 體育',
+    'US Major Leagues & Sports',
     'Global Football & Soccer',
     'Combat & Martial Arts',
     'Motorsport & Racing',
-    '電影 & Premium 網路s',
-    '24/7 Global News 網路s',
+    'Movies & Premium Networks',
+    '24/7 Global News Networks',
     'Arabic & Regional Hub',
     'Discovery & Documentaries',
     'Kids & Family',

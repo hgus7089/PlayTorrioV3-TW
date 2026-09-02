@@ -307,7 +307,7 @@ class _AnimeHeroSpotlightState extends State<AnimeHeroSpotlight> {
                                   size: 20,
                                 ),
                                 label: const Text(
-                                  '播放 Ep 1',
+                                  'Play Ep 1',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,

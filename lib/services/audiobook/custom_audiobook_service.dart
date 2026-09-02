@@ -40,7 +40,7 @@ class UserUploadedAudiobook {
   factory UserUploadedAudiobook.fromJson(Map<String, dynamic> j) =>
       UserUploadedAudiobook(
         id: j['id'] as String,
-        title: j['title'] as String? ?? 'Untitled 音訊book',
+        title: j['title'] as String? ?? 'Untitled Audiobook',
         author: j['author'] as String? ?? 'Unknown Author',
         coverPath: j['coverPath'] as String?,
         audioFilePaths: (j['audioFilePaths'] as List?)?.cast<String>() ?? [],
@@ -101,7 +101,7 @@ class CustomAudiobookService {
             .toList();
         audiobooks.value = list;
       } catch (e) {
-        debugPrint('[Custom音訊bookService] 錯誤 decoding: $e');
+        debugPrint('[CustomAudiobookService] Error decoding: $e');
       }
     }
     _loaded = true;
@@ -131,10 +131,10 @@ class CustomAudiobookService {
     Directory? targetDir;
     try {
       final appDocDir = await getApplicationDocumentsDirectory();
-      targetDir = Directory(p.join(appDocDir.path, '播放Torrio', 'Custom有聲書'));
+      targetDir = Directory(p.join(appDocDir.path, 'PlayTorrio', 'CustomAudiobooks'));
     } catch (_) {
       final temp = await getTemporaryDirectory();
-      targetDir = Directory(p.join(temp.path, '播放Torrio', 'Custom有聲書'));
+      targetDir = Directory(p.join(temp.path, 'PlayTorrio', 'CustomAudiobooks'));
     }
 
     final id = DateTime.now().millisecondsSinceEpoch.toString();
@@ -166,7 +166,7 @@ class CustomAudiobookService {
 
     final newBook = UserUploadedAudiobook(
       id: id,
-      title: title.trim().isEmpty ? 'Uploaded 音訊book' : title.trim(),
+      title: title.trim().isEmpty ? 'Uploaded Audiobook' : title.trim(),
       author: author.trim().isEmpty ? 'Unknown Author' : author.trim(),
       coverPath: savedCoverPath,
       audioFilePaths: savedAudioPaths,
@@ -227,7 +227,7 @@ class CustomAudiobookService {
         }
       }
     } catch (e) {
-      debugPrint('[Custom音訊bookService] 錯誤 deleting directory: $e');
+      debugPrint('[CustomAudiobookService] Error deleting directory: $e');
     }
 
     audiobooks.value = audiobooks.value.where((a) => a.id != id).toList();

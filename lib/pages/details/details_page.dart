@@ -414,7 +414,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
         children: [
           const Icon(Icons.broken_image_rounded, size: 64, color: Colors.white24),
           const SizedBox(height: _Space.md),
-          const Text('詳細資訊 unavailable.', style: TextStyle(color: Colors.white54, fontSize: 18)),
+          const Text('Details unavailable.', style: TextStyle(color: Colors.white54, fontSize: 18)),
           const SizedBox(height: _Space.lg),
           ElevatedButton(
             onPressed: () => Navigator.pop(context),
@@ -849,7 +849,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
     if (_isSeries) {
       final seasonCount = meta.videos.map((v) => v.season).where((s) => s != null).toSet().length;
       if (seasonCount > 0) {
-        items.add(Text('$seasonCount 季${seasonCount > 1 ? "s" : ""}',
+        items.add(Text('$seasonCount Season${seasonCount > 1 ? "s" : ""}',
             style: const TextStyle(color: Colors.white70, fontSize: 14)));
       }
     } else if (meta.runtime != null && meta.runtime!.isNotEmpty) {
@@ -917,7 +917,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
             const Icon(Icons.play_arrow_rounded, color: Colors.white, size: 24),
             const SizedBox(width: 6),
             Text(
-              _isSeries ? '播放 集' : '播放 Movie',
+              _isSeries ? 'Play Episodes' : 'Play Movie',
               style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700),
             ),
           ],
@@ -970,7 +970,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
                 ),
                 const SizedBox(width: 6),
                 Text(
-                  inList ? 'In 媒體庫' : '媒體庫',
+                  inList ? 'In Library' : 'Library',
                   style: TextStyle(
                     color: inList ? const Color(0xFF7C5CFF) : Colors.white,
                     fontSize: 14,
@@ -1063,7 +1063,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSectionHeader('演員'),
+          _buildSectionHeader('Cast'),
           SizedBox(
             height: 132,
             child: Stack(
@@ -1194,7 +1194,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
                       border: Border.all(color: isSelected ? Colors.white : Colors.white.withOpacity(0.1)),
                     ),
                     child: Text(
-                      '季 $season',
+                      'Season $season',
                       style: TextStyle(
                         color: isSelected ? Colors.black : Colors.white,
                         fontSize: 15,
@@ -1355,7 +1355,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSectionHeader('更多類似內容'),
+          _buildSectionHeader('More Like This'),
           SizedBox(
             height: cardWidth * 1.5 + 8,
             child: Stack(

@@ -58,7 +58,7 @@ class TorBoxService {
   }) async {
     final apiKey = await getKey();
     if (apiKey == null || apiKey.isEmpty) {
-      throw Exception('TorBox API Key is missing. Please configure it in 設定.');
+      throw Exception('TorBox API Key is missing. Please configure it in Settings.');
     }
 
     final headers = {'Authorization': 'Bearer $apiKey'};
@@ -93,7 +93,7 @@ class TorBoxService {
             break;
           }
           if (info['download_state'] == 'error') {
-            throw Exception('TorBox 下載 failed with error status');
+            throw Exception('TorBox Download failed with error status');
           }
         }
       }

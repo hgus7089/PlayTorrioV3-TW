@@ -8,7 +8,7 @@ import 'tmdb_helper.dart';
 /// Videasy VOD Extractor ported 1:1 from Flyx (videasy.ts).
 class VideasyScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _apiKey = 'b3556f3b206e16f82df4d1f6fd4545e6';
   static const _apiBase = 'https://api.speedracelight.com';
@@ -241,8 +241,8 @@ class VideasyScraper extends StreamScraper {
             if (streamUrl == null || !streamUrl.toString().startsWith('http')) continue;
             final q = s['quality']?.toString() ?? 'Auto';
             sources.add(StreamSource(
-              name: '播放TorrioHTTP',
-              addonName: '播放TorrioHTTP',
+              name: 'PlayTorrioHTTP',
+              addonName: 'PlayTorrioHTTP',
               title: 'Videasy ${p['label']} · $q',
               description: 'Videasy Multi-CDN HLS Stream',
               url: streamUrl.toString(),

@@ -97,7 +97,7 @@ class MegaPlayExtractor {
       if (playerResponse.statusCode != 200) {
         if (kDebugMode) {
           debugPrint(
-              '[Mega播放] Failed player HTML: ${playerResponse.statusCode}');
+              '[MegaPlay] Failed player HTML: ${playerResponse.statusCode}');
         }
         return null;
       }
@@ -149,12 +149,12 @@ class MegaPlayExtractor {
       }
 
       if (dataId == null || dataId.isEmpty) {
-        if (kDebugMode) debugPrint('[Mega播放] Could not extract data-id');
+        if (kDebugMode) debugPrint('[MegaPlay] Could not extract data-id');
         return null;
       }
 
       final sourcesUrl =
-          '$currentDomain/stream/get來源?id=$dataId&id=$dataId';
+          '$currentDomain/stream/getSources?id=$dataId&id=$dataId';
       final sourcesHeaders = {
         ..._commonHeaders,
         'authority': Uri.parse(currentDomain).host,
@@ -174,7 +174,7 @@ class MegaPlayExtractor {
       if (sourcesRes.statusCode != 200) {
         if (kDebugMode) {
           debugPrint(
-              '[Mega播放] Failed sources response: ${sourcesRes.statusCode}');
+              '[MegaPlay] Failed sources response: ${sourcesRes.statusCode}');
         }
         return null;
       }
@@ -183,7 +183,7 @@ class MegaPlayExtractor {
       if (sourcesJson is! Map ||
           sourcesJson['sources'] is! Map ||
           sourcesJson['sources']['file'] == null) {
-        if (kDebugMode) debugPrint('[Mega播放] No file in sources JSON');
+        if (kDebugMode) debugPrint('[MegaPlay] No file in sources JSON');
         return null;
       }
 
@@ -223,7 +223,7 @@ class MegaPlayExtractor {
         category: cat,
       );
     } catch (e) {
-      if (kDebugMode) debugPrint('[Mega播放] Scrape error: $e');
+      if (kDebugMode) debugPrint('[MegaPlay] Scrape error: $e');
       return null;
     }
   }

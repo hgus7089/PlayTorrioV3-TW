@@ -63,7 +63,7 @@ class PlayerAspectMenu extends StatelessWidget {
                 size: 28,
                 iconSize: 14,
                 icon: const Icon(Icons.close_rounded),
-                tooltip: '關閉',
+                tooltip: 'Close',
                 onPressed: onClose,
               ),
             ],
@@ -130,7 +130,7 @@ class PlayerAspectMenu extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  '字幕大小 Scale',
+                  'Subtitle Size Scale',
                   style: TextStyle(
                     color: PlayerTheme.inkMuted,
                     fontSize: 12.5,

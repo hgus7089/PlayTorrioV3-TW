@@ -12,14 +12,14 @@ class DownloadPathHelper {
   static Future<String?> pickDownloadsDirectory() async {
     try {
       final selected = await FilePicker.platform.getDirectoryPath(
-        dialogTitle: '選取 下載 Folder',
+        dialogTitle: 'Select Downloads Folder',
       );
       if (selected != null && selected.isNotEmpty) {
         await setCustomDownloadsDirectoryPath(selected);
         return selected;
       }
     } catch (e) {
-      debugPrint('[下載PathHelper] Folder picker error: $e');
+      debugPrint('[DownloadPathHelper] Folder picker error: $e');
     }
     return null;
   }
@@ -53,14 +53,14 @@ class DownloadPathHelper {
   static Future<String> getDefaultDownloadsDirectoryPath() async {
     if (!kIsWeb && Platform.isAndroid) {
       try {
-        final publicDownload = Directory('/storage/emulated/0/下載/播放Torrio');
+        final publicDownload = Directory('/storage/emulated/0/Download/PlayTorrio');
         if (await publicDownload.exists() || await _tryCreate(publicDownload)) {
           return publicDownload.path;
         }
 
         final extDirs = await getExternalStorageDirectories(type: StorageDirectory.downloads);
         if (extDirs != null && extDirs.isNotEmpty) {
-          final target = Directory(p.join(extDirs.first.path, '播放Torrio'));
+          final target = Directory(p.join(extDirs.first.path, 'PlayTorrio'));
           if (await target.exists() || await _tryCreate(target)) {
             return target.path;
           }
@@ -72,7 +72,7 @@ class DownloadPathHelper {
       try {
         final downloadsDir = await getDownloadsDirectory();
         if (downloadsDir != null) {
-          final target = Directory(p.join(downloadsDir.path, '播放Torrio'));
+          final target = Directory(p.join(downloadsDir.path, 'PlayTorrio'));
           if (await target.exists() || await _tryCreate(target)) {
             return target.path;
           }
@@ -81,7 +81,7 @@ class DownloadPathHelper {
     }
 
     final appDocDir = await getApplicationDocumentsDirectory();
-    final fallback = Directory(p.join(appDocDir.path, '下載'));
+    final fallback = Directory(p.join(appDocDir.path, 'Downloads'));
     if (!await fallback.exists()) {
       await fallback.create(recursive: true);
     }

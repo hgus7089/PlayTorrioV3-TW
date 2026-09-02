@@ -172,8 +172,8 @@ class MusicPlayerController extends ChangeNotifier {
 
       if (isOffline && downloadedTrack != null) {
         _currentQualityLabel = downloadedTrack.quality.contains('FLAC')
-            ? 'FLAC Lossless (離線)'
-            : 'HQ 音訊 (離線)';
+            ? 'FLAC Lossless (Offline)'
+            : 'HQ Audio (Offline)';
         _isCurrentTrackLossless = downloadedTrack.format.toLowerCase() == 'flac';
         media = Media(downloadedFile.uri.toString());
       } else {
@@ -230,7 +230,7 @@ class MusicPlayerController extends ChangeNotifier {
           _isLoading = false;
           _isPlaying = false;
           _errorMessage = 'Could not load audio: $err';
-          debugPrint('播放back error for ${track.title}: $err');
+          debugPrint('Playback error for ${track.title}: $err');
           DiscordRpcService.instance.clearToIdle();
           notifyListeners();
         }),
@@ -251,7 +251,7 @@ class MusicPlayerController extends ChangeNotifier {
       _isLoading = false;
       _isPlaying = false;
       _errorMessage = 'Could not load audio: ${e.toString()}';
-      debugPrint('播放back error for ${track.title}: $e');
+      debugPrint('Playback error for ${track.title}: $e');
       notifyListeners();
     }
   }

@@ -57,7 +57,7 @@ class AnimeLibraryService extends ChangeNotifier {
       _isInitialized = true;
       notifyListeners();
     } catch (e) {
-      debugPrint('動漫媒體庫Service init error: $e');
+      debugPrint('AnimeLibraryService init error: $e');
     }
   }
 

@@ -58,7 +58,7 @@ class PlayerTopBar extends StatelessWidget {
             size: 44,
             iconSize: 26,
             icon: const Icon(Icons.chevron_left_rounded),
-            tooltip: '返回',
+            tooltip: 'Back',
             backgroundColor: const Color(0x33080C12),
             borderRadius: 9999,
             onPressed: onBack,
@@ -184,7 +184,7 @@ class PlayerTopBar extends StatelessWidget {
                           ),
                           const SizedBox(width: 7),
                           Text(
-                            '集數',
+                            'Episodes',
                             style: TextStyle(
                               color: isEpisodesActive ? Colors.white : Colors.white.withValues(alpha: 0.9),
                               fontSize: 12.5,
@@ -204,7 +204,7 @@ class PlayerTopBar extends StatelessWidget {
                   size: 40,
                   iconSize: 20,
                   icon: const Icon(Icons.camera_alt_outlined),
-                  tooltip: '截圖',
+                  tooltip: 'Screenshot',
                   backgroundColor: const Color(0x22080C12),
                   onPressed: onScreenshot,
                 ),
@@ -224,7 +224,7 @@ class PlayerTopBar extends StatelessWidget {
                           ),
                         )
                       : const Icon(Icons.file_download_outlined),
-                  tooltip: isDownloading ? '下載中…' : '下載媒體',
+                  tooltip: isDownloading ? 'Downloading...' : 'Download Media',
                   backgroundColor: isDownloading
                       ? const Color(0xFF10B981).withValues(alpha: 0.2)
                       : const Color(0x22080C12),
@@ -237,7 +237,7 @@ class PlayerTopBar extends StatelessWidget {
                   size: 40,
                   iconSize: 20,
                   icon: const Icon(Icons.cast_rounded),
-                  tooltip: '投放',
+                  tooltip: 'Cast',
                   backgroundColor: const Color(0x22080C12),
                   onPressed: onCast,
                 ),

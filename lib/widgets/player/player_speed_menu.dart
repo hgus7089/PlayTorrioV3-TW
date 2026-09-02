@@ -53,7 +53,7 @@ class _PlayerSpeedMenuState extends State<PlayerSpeedMenu> {
                 size: 28,
                 iconSize: 14,
                 icon: const Icon(Icons.close_rounded),
-                tooltip: '關閉',
+                tooltip: 'Close',
                 onPressed: widget.onClose,
               ),
             ],

@@ -20,7 +20,7 @@ class ReaderCustomizationSheet extends StatefulWidget {
       return showGeneralDialog(
         context: context,
         barrierDismissible: true,
-        barrierLabel: '關閉 設定',
+        barrierLabel: 'Close Settings',
         barrierColor: Colors.black.withValues(alpha: 0.4),
         transitionDuration: ReaderTokens.motionSheet,
         pageBuilder: (ctx, anim1, anim2) {
@@ -138,7 +138,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
                         Icon(Icons.tune_rounded, color: settings.accentColor, size: 18),
                         const SizedBox(width: ReaderTokens.space8),
                         Text(
-                          '外觀',
+                          'Appearance',
                           style: TextStyle(
                             fontFamily: ReaderTokens.uiFont,
                             fontSize: 16,
@@ -150,7 +150,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
                     ),
                     IconButton(
                       icon: Icon(Icons.close_rounded, color: settings.secondaryTextColor, size: 18),
-                      tooltip: '關閉 settings',
+                      tooltip: 'Close settings',
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                   ],
@@ -180,7 +180,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
                   labelStyle: ReaderTokens.tabLabel,
                   tabs: const [
                     Tab(text: 'Typography'),
-                    Tab(text: '主題'),
+                    Tab(text: 'Theme'),
                     Tab(text: 'Layout'),
                   ],
                 ),
@@ -216,7 +216,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
                 ),
               ),
 
-              // Bottom Actions: "重設為預設值" button
+              // Bottom Actions: "Reset to Defaults" button
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: ReaderTokens.space24,
@@ -235,7 +235,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
                         color: _showResetSuccess ? const Color(0xFF10B981) : settings.secondaryTextColor,
                       ),
                       label: Text(
-                        _showResetSuccess ? '重設 ✓' : '重設為預設值',
+                        _showResetSuccess ? 'Reset ✓' : 'Reset to Defaults',
                         style: TextStyle(
                           fontFamily: ReaderTokens.uiFont,
                           fontSize: 12.5,
@@ -308,7 +308,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
       {'name': 'Merriweather', 'key': 'Merriweather', 'sub': 'Serif'},
       {'name': 'Inter', 'key': 'Inter', 'sub': 'Sans'},
       {'name': 'Poppins', 'key': 'Poppins', 'sub': 'Sans'},
-      {'name': '開啟Dyslexic', 'key': '開啟Dyslexic', 'sub': 'Dyslexic'},
+      {'name': 'OpenDyslexic', 'key': 'OpenDyslexic', 'sub': 'Dyslexic'},
       {'name': 'Monospace', 'key': 'Courier New', 'sub': 'Mono'},
     ];
 
@@ -460,12 +460,12 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(ReaderTokens.space24),
       children: [
-        _buildSectionTitle('Reading 主題s', settings),
+        _buildSectionTitle('Reading Themes', settings),
         const SizedBox(height: ReaderTokens.space12),
         Row(
           children: [
             _buildThemeSwatchCard(
-              label: '淺色',
+              label: 'Light',
               theme: ReaderTheme.light,
               current: settings.theme,
               bg: const Color(0xFFFAFAFA),
@@ -483,7 +483,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
             ),
             const SizedBox(width: ReaderTokens.space8),
             _buildThemeSwatchCard(
-              label: '深色',
+              label: 'Dark',
               theme: ReaderTheme.dark,
               current: settings.theme,
               bg: const Color(0xFF141419),
@@ -552,7 +552,7 @@ class _ReaderCustomizationSheetState extends State<ReaderCustomizationSheet>
         const SizedBox(height: ReaderTokens.space12),
         Row(
           children: [
-            _buildMarginChip('精簡', MarginPreset.compact, settings),
+            _buildMarginChip('Compact', MarginPreset.compact, settings),
             const SizedBox(width: ReaderTokens.space8),
             _buildMarginChip('Balanced', MarginPreset.balanced, settings),
             const SizedBox(width: ReaderTokens.space8),

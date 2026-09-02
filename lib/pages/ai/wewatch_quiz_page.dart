@@ -274,7 +274,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
         MaterialPageRoute(builder: (_) => DetailsPage(movie: matchedMovie!)),
       );
     } catch (e) {
-      debugPrint('[We觀看QuizPage] open詳細資訊 error: $e');
+      debugPrint('[WeWatchQuizPage] openDetails error: $e');
     }
   }
 
@@ -446,7 +446,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'Rate 3 or more movies or TV shows. 選擇 what you liked or disliked, and select key elements to generate pinpoint AI recommendations.',
+                    'Rate 3 or more movies or TV shows. Choose what you liked or disliked, and select key elements to generate pinpoint AI recommendations.',
                     style: TextStyle(
                       color: Colors.white.withValues(alpha: 0.65),
                       fontSize: 13,
@@ -507,7 +507,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
               icon: const Icon(Icons.add_rounded, size: 18),
-              label: const Text('新增 Another Title', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+              label: const Text('Add Another Title', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
               onPressed: _addAnotherTitle,
             ),
           ),
@@ -635,7 +635,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                       style: const TextStyle(color: Colors.white, fontSize: 14),
                       onChanged: (q) => _onSearchChanged(index, q),
                       decoration: InputDecoration(
-                        hintText: '搜尋 movie or TV series...',
+                        hintText: 'Search movie or TV series...',
                         hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.35), fontSize: 13),
                         prefixIcon: Icon(Icons.search_rounded, color: palette.primaryColor, size: 18),
                         suffixIcon: (_isSearching[index] ?? false)
@@ -893,7 +893,7 @@ class _WeWatchQuizPageState extends State<WeWatchQuizPage> {
                       maxLines: 2,
                       onChanged: (val) => pick.reason = val,
                       decoration: InputDecoration(
-                        hintText: '新增itional notes or specifics (optional)...',
+                        hintText: 'Additional notes or specifics (optional)...',
                         hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.3), fontSize: 12),
                         filled: true,
                         fillColor: const Color(0xFF0D1017).withValues(alpha: 0.6),

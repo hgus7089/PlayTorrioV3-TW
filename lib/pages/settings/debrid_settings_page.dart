@@ -103,7 +103,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
         username = res?['username'] as String?;
       } else if (provider == 'Premiumize') {
         final res = await _debrid.premiumize.verifyKey(cleaned);
-        username = res != null ? '已連線' : null;
+        username = res != null ? 'Connected' : null;
       } else if (provider == 'Debrid-Link') {
         final res = await _debrid.debridLink.verifyKey(cleaned);
         username = res?['username'] as String?;
@@ -155,7 +155,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
         verifiedUser = user?['username'] as String?;
       } else if (provider == 'Premiumize') {
         final user = await _debrid.premiumize.verifyKey(key);
-        verifiedUser = user != null ? '已連線' : null;
+        verifiedUser = user != null ? 'Connected' : null;
       } else if (provider == 'Debrid-Link') {
         final user = await _debrid.debridLink.verifyKey(key);
         verifiedUser = user?['username'] as String?;
@@ -165,14 +165,14 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
       setState(() {
         _useDebrid = true;
         _selectedService = provider;
-        _statusMap[provider] = verifiedUser ?? '儲存d';
+        _statusMap[provider] = verifiedUser ?? 'Saved';
         _loadingMap[provider] = false;
       });
 
       if (verifiedUser != null) {
         _showSnack('$provider key verified ($verifiedUser) & set as active provider!');
       } else {
-        _showSnack('$provider Key 已儲存並設為目前提供者！');
+        _showSnack('$provider key saved & set as active provider!');
       }
     } else {
       // Clear key
@@ -199,7 +199,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
         _loadingMap[provider] = false;
       });
 
-      _showSnack('已清除 $provider Key。');
+      _showSnack('$provider key cleared.');
     }
   }
 
@@ -259,7 +259,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Debrid 與雲端串流',
+          'Debrid & Cloud Streaming',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -318,7 +318,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '使用 Debrid 串流',
+                                'Use Debrid for Streams',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w800,
@@ -346,7 +346,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                               final service = _selectedService;
                               if (service == 'None') {
                                 _showSnack(
-                                  '選擇目前使用的 Debrid 提供者，並在下方儲存 API Key。',
+                                  'Select an active Debrid provider and save your API key below.',
                                   isError: true,
                                 );
                               } else {
@@ -357,11 +357,11 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                                     isError: true,
                                   );
                                 } else {
-                                  _showSnack('已透過 $service 啟用 Debrid 串流');
+                                  _showSnack('Debrid streaming activated via $service');
                                 }
                               }
                             } else {
-                              _showSnack('Debrid 串流已停用，使用本機引擎。');
+                              _showSnack('Debrid streaming disabled. Using local engine.');
                             }
                           },
                         ),
@@ -369,7 +369,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                     ),
                     const SizedBox(height: 14),
                     Text(
-                      'When enabled, all torrents from 播放Torrio and Stremio addons are resolved exclusively through your active Debrid provider without touching the local torrent engine.',
+                      'When enabled, all torrents from PlayTorrio and Stremio addons are resolved exclusively through your active Debrid provider without touching the local torrent engine.',
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.45),
                         fontSize: 12,
@@ -384,7 +384,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
 
               // Active Provider Selector
               Text(
-                '目前提供者',
+                'ACTIVE PROVIDER',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -407,7 +407,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      '選擇預設 Debrid 提供者',
+                      'Select Default Debrid Provider',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -416,7 +416,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '播放Torrio will send requests to this provider when streaming.',
+                      'PlayTorrio will send requests to this provider when streaming.',
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.45),
                         fontSize: 12,
@@ -473,7 +473,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                               return;
                             }
                           }
-                          _showSnack('目前 Debrid 服務已設為 $val');
+                          _showSnack('Active Debrid service set to $val');
                         }
                       },
                     ),
@@ -485,7 +485,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
 
               // Provider API Keys
               Text(
-                '提供者憑證',
+                'PROVIDER CREDENTIALS',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -544,7 +544,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
               _buildProviderCard(
                 name: 'Premiumize',
                 subtitle: _statusMap['Premiumize'] != null
-                    ? 'Account: 已連線'
+                    ? 'Account: Connected'
                     : 'Get key from premiumize.me/account',
                 statusBadge: _statusMap['Premiumize'],
                 badgeColor: const Color(0xFF10B981),
@@ -670,7 +670,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                   obscureText: isObscured,
                   style: const TextStyle(color: Colors.white, fontSize: 13),
                   decoration: InputDecoration(
-                    hintText: '貼上 API Key／Token',
+                    hintText: 'Paste API Key / Token',
                     hintStyle: TextStyle(
                       color: Colors.white.withValues(alpha: 0.25),
                       fontSize: 12,
@@ -699,7 +699,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                             icon: const Icon(Icons.clear_rounded, color: Colors.white38, size: 16),
                             padding: const EdgeInsets.all(4),
                             constraints: const BoxConstraints(),
-                            tooltip: '清除',
+                            tooltip: 'Clear',
                             onPressed: () {
                               controller.clear();
                               setState(() {});
@@ -724,7 +724,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                           icon: const Icon(Icons.content_paste_rounded, color: Color(0xFF00E5FF), size: 16),
                           padding: const EdgeInsets.all(4),
                           constraints: const BoxConstraints(),
-                          tooltip: '從剪貼簿貼上',
+                          tooltip: 'Paste from Clipboard',
                           onPressed: () => _pasteToController(controller),
                         ),
                         const SizedBox(width: 4),
@@ -750,7 +750,7 @@ class _DebridSettingsPageState extends State<DebridSettingsPage> {
                         child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black),
                       )
                     : const Text(
-                        '儲存',
+                        'Save',
                         style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w800),
                       ),
               ),

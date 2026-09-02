@@ -72,37 +72,37 @@ abstract final class CustomBackgroundService {
   static const List<CustomBackgroundPreset> presets = [
     CustomBackgroundPreset(
       id: 'cyber_city',
-      title: '賽博霓虹城市',
+      title: 'Cyber Neon City',
       previewUrl: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400&q=80',
       fullUrl: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=90',
     ),
     CustomBackgroundPreset(
       id: 'cosmos_nebula',
-      title: '宇宙星雲',
+      title: 'Cosmic Nebula',
       previewUrl: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=400&q=80',
       fullUrl: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1920&q=90',
     ),
     CustomBackgroundPreset(
       id: 'dark_silk',
-      title: '暗色液態絲綢',
+      title: 'Dark Liquid Silk',
       previewUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&q=80',
       fullUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&q=90',
     ),
     CustomBackgroundPreset(
       id: 'synthwave',
-      title: '合成波地平線',
+      title: 'Synthwave Horizon',
       previewUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&q=80',
       fullUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1920&q=90',
     ),
     CustomBackgroundPreset(
       id: 'moody_forest',
-      title: '幽暗森林薄霧',
+      title: 'Moody Forest Mist',
       previewUrl: 'https://images.unsplash.com/photo-1506452305024-9d3f02d1c9b5?w=400&q=80&auto=format&fit=crop',
       fullUrl: 'https://images.unsplash.com/photo-1506452305024-9d3f02d1c9b5?w=1920&q=90&auto=format&fit=crop',
     ),
     CustomBackgroundPreset(
       id: 'abstract_geometry',
-      title: '抽象暗色霓虹',
+      title: 'Abstract Dark Neon',
       previewUrl: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&q=80',
       fullUrl: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1920&q=90',
     ),
@@ -168,7 +168,7 @@ abstract final class CustomBackgroundService {
         }
       }
     } catch (e) {
-      debugPrint('[Custom背景Service] pickAndSetImage error: $e');
+      debugPrint('[CustomBackgroundService] pickAndSetImage error: $e');
     }
     return false;
   }

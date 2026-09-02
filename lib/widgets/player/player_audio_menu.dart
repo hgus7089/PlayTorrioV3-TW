@@ -136,7 +136,7 @@ class PlayerAudioMenu extends StatelessWidget {
                   size: isCompactH ? 24 : 28,
                   iconSize: isCompactH ? 12 : 14,
                   icon: const Icon(Icons.close_rounded),
-                  tooltip: '關閉',
+                  tooltip: 'Close',
                   onPressed: onClose,
                 ),
               ],
@@ -249,7 +249,7 @@ class PlayerAudioMenu extends StatelessWidget {
                           Icon(Icons.audiotrack_rounded, size: 16, color: Colors.white38),
                           SizedBox(width: 8),
                           Text(
-                            '預設 audio stream playing.',
+                            'Default audio stream playing.',
                             style: TextStyle(color: Colors.white54, fontSize: 13),
                           ),
                         ],
@@ -280,7 +280,7 @@ class PlayerAudioMenu extends StatelessWidget {
                           const Icon(Icons.sync_rounded, size: 14, color: Colors.white70),
                           const SizedBox(width: 5),
                           Text(
-                            '音訊 Sync 關閉set',
+                            'Audio Sync Offset',
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: isCompactH ? 11 : 12,

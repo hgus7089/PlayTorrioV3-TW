@@ -14,9 +14,9 @@ class AnimeStreamService {
       count,
       (i) => AnimeEpisode(
         number: i + 1,
-        title: '集 ${i + 1}',
+        title: 'Episode ${i + 1}',
         thumbnail: anime.backdropUrl,
-        description: '集 ${i + 1} of ${anime.displayTitle}',
+        description: 'Episode ${i + 1} of ${anime.displayTitle}',
       ),
     );
   }

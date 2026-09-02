@@ -62,7 +62,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
     if (res == null) {
       setState(() => _pairing = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('取得 Trakt 配對碼失敗。')),
+        const SnackBar(content: Text('Failed to request Trakt pairing code.')),
       );
       return;
     }
@@ -142,7 +142,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Trakt.tv 同步hronization',
+          'Trakt.tv Synchronization',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -229,7 +229,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
                                       ? 'Checking credentials...'
                                       : _isAuthed
                                           ? 'Logged in as ${_username ?? 'Trakt User'}'
-                                          : '登入以啟用雙向雲端同步',
+                                          : 'Sign in to activate two-way cloud sync',
                                   style: TextStyle(
                                     fontSize: 13,
                                     color: Colors.white.withValues(alpha: 0.5),
@@ -253,7 +253,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
                             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                           ),
                           onPressed: _logout,
-                          child: const Text('解除連線', style: TextStyle(fontWeight: FontWeight.bold)),
+                          child: const Text('Disconnect', style: TextStyle(fontWeight: FontWeight.bold)),
                         );
                       } else if (!_pairing) {
                         actionWidget = ElevatedButton.icon(
@@ -265,7 +265,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
                           ),
                           onPressed: _startPairing,
                           icon: const Icon(Icons.qr_code_rounded, size: 18),
-                          label: const Text('配對帳號', style: TextStyle(fontWeight: FontWeight.bold)),
+                          label: const Text('Pair Account', style: TextStyle(fontWeight: FontWeight.bold)),
                         );
                       }
 
@@ -305,7 +305,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
                                     onTap: () {
                                       Clipboard.setData(ClipboardData(text: _userCode!));
                                       ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(content: Text('驗證碼已複製到剪貼簿！')),
+                                        const SnackBar(content: Text('Code copied to clipboard!')),
                                       );
                                     },
                                     borderRadius: BorderRadius.circular(12),
@@ -345,7 +345,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
                                     ),
                                     onPressed: () => _openBrowser('https://trakt.tv/activate'),
                                     icon: const Icon(Icons.open_in_browser_rounded, size: 16),
-                                    label: const Text('開啟 trakt.tv/activate', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+                                    label: const Text('Open trakt.tv/activate', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
                                   ),
                                   const SizedBox(height: 14),
                                   Row(
@@ -378,7 +378,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
               // Cloud Sync Actions
               if (_isAuthed) ...[
                 const Text(
-                  '雲端同步控制',
+                  'Cloud Sync Controls',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white70),
                 ),
                 const SizedBox(height: 12),
@@ -389,12 +389,12 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
                     side: BorderSide(color: Colors.white.withValues(alpha: 0.06)),
                   ),
                   leading: const Icon(Icons.sync_rounded, color: Color(0xFF7C5CFF)),
-                  title: const Text('立即同步待看清單與繼續觀看', style: TextStyle(color: Colors.white, fontSize: 14)),
-                  subtitle: const Text('立即從 Trakt 手動同步', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                  title: const Text('Sync Watchlist & Continue Watching Now', style: TextStyle(color: Colors.white, fontSize: 14)),
+                  subtitle: const Text('Manually triggers an immediate pull from Trakt', style: TextStyle(color: Colors.white54, fontSize: 12)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Colors.white38),
                   onTap: () async {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('正在與 Trakt.tv 同步…')),
+                      const SnackBar(content: Text('Syncing with Trakt.tv...')),
                     );
                     await Future.wait([
                       MyListService.syncAll(),
@@ -402,7 +402,7 @@ class _TraktSettingsPageState extends State<TraktSettingsPage> {
                     ]);
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Trakt 同步完成！')),
+                        const SnackBar(content: Text('Trakt sync complete!')),
                       );
                     }
                   },

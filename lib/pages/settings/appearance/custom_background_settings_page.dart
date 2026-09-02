@@ -39,7 +39,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
     setState(() => _isUploading = false);
 
     if (success) {
-      _showSnack('背景圖片已上傳並套用至所有介面！');
+      _showSnack('Background image uploaded and applied across all UI!');
     }
   }
 
@@ -54,7 +54,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
 
     await CustomBackgroundService.setImageUrl(text);
     _urlController.clear();
-    _showSnack('自訂背景 URL 已套用！');
+    _showSnack('Custom background URL applied!');
   }
 
   @override
@@ -77,7 +77,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                   onPressed: () => Navigator.pop(context),
                 ),
                 title: const Text(
-                  '自訂背景與桌布',
+                  'Custom Background & Wallpaper',
                   style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
                 ),
               ),
@@ -91,7 +91,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                       Padding(
                         padding: const EdgeInsets.only(bottom: 16),
                         child: Text(
-                          'Upload your own photo or choose a curated wallpaper. 主題 colors and moving ambient lights softly blend into the background for a unified look.',
+                          'Upload your own photo or choose a curated wallpaper. Theme colors and moving ambient lights softly blend into the background for a unified look.',
                           style: TextStyle(
                             fontSize: 13.5,
                             color: Colors.white.withValues(alpha: 0.5),
@@ -162,7 +162,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           const Text(
-                                            '即時氛圍預覽',
+                                            'Live Atmosphere Preview',
                                             style: TextStyle(
                                               fontSize: 14.5,
                                               fontWeight: FontWeight.w700,
@@ -172,8 +172,8 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                                           const SizedBox(height: 3),
                                           Text(
                                             hasWallpaper
-                                                ? '桌布已啟用 ${palette.name} 環境光'
-                                                : '預設 ${palette.name} 主題背景',
+                                                ? 'Wallpaper active with ${palette.name} ambient lighting'
+                                                : 'Default ${palette.name} theme background',
                                             style: TextStyle(
                                               fontSize: 12,
                                               color: Colors.white.withValues(alpha: 0.6),
@@ -206,7 +206,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                                     )
                                   : const Icon(Icons.add_photo_alternate_rounded, size: 20),
                               label: Text(
-                                _isUploading ? 'Uploading...' : '從裝置上傳照片',
+                                _isUploading ? 'Uploading...' : 'Upload Photo from Device',
                                 style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13.5),
                               ),
                               style: ElevatedButton.styleFrom(
@@ -221,7 +221,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                           if (hasWallpaper) ...[
                             const SizedBox(width: 12),
                             IconButton.filledTonal(
-                              tooltip: '重設為預設背景',
+                              tooltip: 'Reset to Default Background',
                               icon: const Icon(Icons.delete_outline_rounded, color: Colors.redAccent),
                               style: IconButton.styleFrom(
                                 backgroundColor: Colors.red.withValues(alpha: 0.12),
@@ -230,7 +230,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                               ),
                               onPressed: () async {
                                 await CustomBackgroundService.clearBackground();
-                                _showSnack('背景已重設為預設主題。');
+                                _showSnack('Background reset to default theme.');
                               },
                             ),
                           ],
@@ -256,7 +256,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                                 controller: _urlController,
                                 style: const TextStyle(color: Colors.white, fontSize: 13),
                                 decoration: InputDecoration(
-                                  hintText: '或貼上圖片 URL（https://…）',
+                                  hintText: 'Or paste image URL (https://...)',
                                   hintStyle: TextStyle(
                                     color: Colors.white.withValues(alpha: 0.3),
                                     fontSize: 12.5,
@@ -269,7 +269,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                             ),
                             IconButton(
                               icon: const Icon(Icons.content_paste_rounded, color: Colors.white54, size: 18),
-                              tooltip: '從剪貼簿貼上',
+                              tooltip: 'Paste from Clipboard',
                               onPressed: () async {
                                 final data = await Clipboard.getData(Clipboard.kTextPlain);
                                 if (data?.text != null) {
@@ -280,7 +280,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                             TextButton(
                               onPressed: _handleApplyUrl,
                               child: Text(
-                                '套用',
+                                'Apply',
                                 style: TextStyle(
                                   color: palette.primaryColor,
                                   fontWeight: FontWeight.w700,
@@ -295,7 +295,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
 
                       // ── 3. Curated Wallpaper Presets ──
                       Text(
-                        '精選深色桌布',
+                        'CURATED DARK WALLPAPERS',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
@@ -326,7 +326,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                             onTap: () async {
                               HapticFeedback.selectionClick();
                               await CustomBackgroundService.applyPreset(preset);
-                              _showSnack('已套用「${preset.title}」桌布');
+                              _showSnack('Applied "${preset.title}" wallpaper');
                             },
                             borderRadius: BorderRadius.circular(12),
                             child: Container(
@@ -407,7 +407,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
 
                       // ── 4. Atmosphere & Blending Controls ──
                       Text(
-                        '桌布與燈光融合控制',
+                        'WALLPAPER & LIGHT BLENDING CONTROLS',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
@@ -429,7 +429,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                             // Opacity / Visibility Slider
                             _buildSliderTile(
                               icon: Icons.opacity_rounded,
-                              title: '照片可見度／暗度',
+                              title: 'Photo Visibility / Darkness',
                               valueText: '${(customBg.opacity * 100).round()}%',
                               value: customBg.opacity,
                               min: 0.10,
@@ -442,7 +442,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                             // Blur Slider
                             _buildSliderTile(
                               icon: Icons.blur_on_rounded,
-                              title: '照片柔焦',
+                              title: 'Photo Soft Blur',
                               valueText: '${customBg.blur.toStringAsFixed(1)} px',
                               value: customBg.blur,
                               min: 0.0,
@@ -455,7 +455,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                             // Theme Tint Slider
                             _buildSliderTile(
                               icon: Icons.color_lens_outlined,
-                              title: '主題色調覆蓋層',
+                              title: 'Theme Color Tint Overlay',
                               valueText: '${(customBg.themeTintOpacity * 100).round()}%',
                               value: customBg.themeTintOpacity,
                               min: 0.0,
@@ -470,7 +470,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                               contentPadding: EdgeInsets.zero,
                               activeColor: palette.primaryColor,
                               title: const Text(
-                                '融合動態環境光',
+                                'Blend Moving Ambient Lights',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
@@ -478,7 +478,7 @@ class _CustomBackgroundSettingsPageState extends State<CustomBackgroundSettingsP
                                 ),
                               ),
                               subtitle: Text(
-                                '在桌布上柔和地照亮並動態呈現主題燈光',
+                                'Softly illuminates and animates theme lights over your wallpaper',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.white.withValues(alpha: 0.5),

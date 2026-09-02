@@ -42,7 +42,7 @@ class AniDbExtractor {
     'Origin': baseUrl,
     'Accept':
         'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-    'Accept-語言': 'en-US,en;q=0.9',
+    'Accept-Language': 'en-US,en;q=0.9',
   };
 
   final http.Client _client = http.Client();
@@ -170,7 +170,7 @@ class AniDbExtractor {
           }
         }
       } catch (e) {
-        if (kDebugMode) debugPrint('[AniDb] 錯誤 searching for $title: $e');
+        if (kDebugMode) debugPrint('[AniDb] Error searching for $title: $e');
       }
     }
 
@@ -209,7 +209,7 @@ class AniDbExtractor {
         }
       }
     } catch (e) {
-      if (kDebugMode) debugPrint('[AniDb] 錯誤 fetching episodes: $e');
+      if (kDebugMode) debugPrint('[AniDb] Error fetching episodes: $e');
     }
 
     return null;

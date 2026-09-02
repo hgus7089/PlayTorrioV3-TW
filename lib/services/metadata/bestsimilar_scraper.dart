@@ -355,7 +355,7 @@ BSDetails? _parseDetailsHtml(_ParseInput input) {
     int? year;
     if (h1 != null) {
       final raw = h1.text.trim();
-      final m = RegExp(r'^電影?\s+(?:Like|Similar to)\s+(.+)$',
+      final m = RegExp(r'^Movies?\s+(?:Like|Similar to)\s+(.+)$',
               caseSensitive: false)
           .firstMatch(raw);
       title = (m?.group(1) ?? raw).trim();

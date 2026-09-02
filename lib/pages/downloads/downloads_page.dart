@@ -55,7 +55,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
     if (task.season != null && task.episode != null) {
       episodeVideo = Video(
         id: '${task.mediaId}:${task.season}:${task.episode}',
-        title: task.episodeTitle ?? '集 ${task.episode}',
+        title: task.episodeTitle ?? 'Episode ${task.episode}',
         season: task.season ?? 1,
         episode: task.episode ?? 1,
         thumbnail: task.backdropUrl,
@@ -82,7 +82,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
         backgroundColor: const Color(0xFF131622),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text(
-          '刪除 下載',
+          'Delete Download',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         content: Text(
@@ -92,7 +92,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('取消', style: TextStyle(color: Colors.white60)),
+            child: const Text('Cancel', style: TextStyle(color: Colors.white60)),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -104,7 +104,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
               Navigator.pop(ctx);
               DownloadService.instance.deleteDownload(task.id);
             },
-            child: const Text('刪除'),
+            child: const Text('Delete'),
           ),
         ],
       ),
@@ -144,7 +144,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                 ),
                 const SizedBox(width: 10),
                 const Text(
-                  '下載',
+                  'Downloads',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -157,7 +157,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
             actions: [
               IconButton(
                 icon: const Icon(Icons.folder_open_rounded, color: Colors.white, size: 22),
-                tooltip: '開啟 下載 Folder',
+                tooltip: 'Open Downloads Folder',
                 onPressed: () async {
                   final dir = await DownloadPathHelper.getDownloadsDirectoryPath();
                   final opened = await OpenFileLocationHelper.openLocation(dir);
@@ -186,8 +186,8 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                     unselectedLabelColor: Colors.white54,
                     labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     tabs: [
-                      Tab(text: '啟用中 ($activeCount)'),
-                      Tab(text: '已下載 ($completedCount)'),
+                      Tab(text: 'Active ($activeCount)'),
+                      Tab(text: 'Downloaded ($completedCount)'),
                     ],
                   );
                 },
@@ -339,7 +339,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                       isFailed
                           ? 'Failed: ${task.error ?? "Unknown error"}'
                           : isPaused
-                              ? '暫停d (${(progress * 100).toStringAsFixed(1)}%)'
+                              ? 'Paused (${(progress * 100).toStringAsFixed(1)}%)'
                               : '${(progress * 100).toStringAsFixed(1)}% • ${task.speedLabel} • ETA: ${task.etaLabel}',
                       style: TextStyle(
                         fontSize: 11.5,
@@ -360,18 +360,18 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                   if (isDownloading)
                     IconButton(
                       icon: const Icon(Icons.pause_circle_rounded, color: Colors.amber, size: 26),
-                      tooltip: '暫停',
+                      tooltip: 'Pause',
                       onPressed: () => DownloadService.instance.pauseDownload(task.id),
                     )
                   else if (isPaused || isFailed)
                     IconButton(
                       icon: Icon(Icons.play_circle_fill_rounded, color: palette.primaryColor, size: 26),
-                      tooltip: '繼續播放',
+                      tooltip: 'Resume',
                       onPressed: () => DownloadService.instance.resumeDownload(task.id),
                     ),
                   IconButton(
                     icon: Icon(Icons.folder_open_rounded, color: Colors.white.withValues(alpha: 0.6), size: 22),
-                    tooltip: '開啟資料夾 Location',
+                    tooltip: 'Open Folder Location',
                     onPressed: () async {
                       final opened = await OpenFileLocationHelper.openLocation(task.targetFilePath);
                       if (!opened && mounted) {
@@ -383,7 +383,7 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                   ),
                   IconButton(
                     icon: Icon(Icons.close_rounded, color: Colors.white.withValues(alpha: 0.4), size: 22),
-                    tooltip: '取消',
+                    tooltip: 'Cancel',
                     onPressed: () => _confirmDelete(task),
                   ),
                 ],
@@ -633,8 +633,8 @@ class _DownloadsPageState extends State<DownloadsPage> with SingleTickerProvider
                   const SizedBox(height: 2),
                   Text(
                     task.season != null && task.episode != null
-                        ? 'S${task.season}:E${task.episode} • 離線'
-                        : (task.year != null ? '${task.year} • 離線' : '離線 Media'),
+                        ? 'S${task.season}:E${task.episode} • Offline'
+                        : (task.year != null ? '${task.year} • Offline' : 'Offline Media'),
                     style: TextStyle(
                       fontSize: 10.5,
                       color: Colors.white.withValues(alpha: 0.5),

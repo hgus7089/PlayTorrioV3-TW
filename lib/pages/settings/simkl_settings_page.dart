@@ -62,7 +62,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
     if (res == null) {
       setState(() => _pairing = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('取得 Simkl PIN 碼失敗。')),
+        const SnackBar(content: Text('Failed to request Simkl PIN code.')),
       );
       return;
     }
@@ -141,7 +141,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Simkl 同步hronization',
+          'Simkl Synchronization',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -154,7 +154,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  'Connect your Simkl account to synchronize 電影, TV Shows, and 動漫 watchlists, continue watching progress, and custom lists.',
+                  'Connect your Simkl account to synchronize Movies, TV Shows, and Anime watchlists, continue watching progress, and custom lists.',
                   style: TextStyle(
                     fontSize: 13.5,
                     color: Colors.white.withValues(alpha: 0.5),
@@ -228,7 +228,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                                     ? 'Checking credentials...'
                                     : _isAuthed
                                         ? 'Logged in as ${_username ?? 'Simkl User'}'
-                                        : '使用 PIN 登入以啟用 Simkl 雲端同步',
+                                        : 'Sign in with PIN to activate Simkl cloud sync',
                                 style: TextStyle(
                                   fontSize: 13,
                                   color: Colors.white.withValues(alpha: 0.5),
@@ -252,7 +252,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                         ),
                         onPressed: _logout,
-                        child: const Text('解除連線', style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: const Text('Disconnect', style: TextStyle(fontWeight: FontWeight.bold)),
                       );
                     } else if (!_pairing) {
                       actionWidget = ElevatedButton.icon(
@@ -264,7 +264,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                         ),
                         onPressed: _startPairing,
                         icon: const Icon(Icons.pin_rounded, size: 18),
-                        label: const Text('連線 Simkl', style: TextStyle(fontWeight: FontWeight.bold)),
+                        label: const Text('Connect Simkl', style: TextStyle(fontWeight: FontWeight.bold)),
                       );
                     }
 
@@ -304,7 +304,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                                   onTap: () {
                                     Clipboard.setData(ClipboardData(text: _userCode!));
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(content: Text('PIN 已複製到剪貼簿！')),
+                                      const SnackBar(content: Text('PIN copied to clipboard!')),
                                     );
                                   },
                                   borderRadius: BorderRadius.circular(12),
@@ -344,7 +344,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                                   ),
                                   onPressed: () => _openBrowser('https://simkl.com/pin'),
                                   icon: const Icon(Icons.open_in_browser_rounded, size: 16),
-                                  label: const Text('開啟 simkl.com/pin', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+                                  label: const Text('Open simkl.com/pin', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
                                 ),
                                 const SizedBox(height: 14),
                                 Row(
@@ -377,7 +377,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
               // Cloud Sync Actions
               if (_isAuthed) ...[
                 const Text(
-                  '雲端同步控制',
+                  'Cloud Sync Controls',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white70),
                 ),
                 const SizedBox(height: 12),
@@ -388,12 +388,12 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                     side: BorderSide(color: Colors.white.withValues(alpha: 0.06)),
                   ),
                   leading: const Icon(Icons.sync_rounded, color: Color(0xFF00ADFF)),
-                  title: const Text('同步 Simkl 待看清單與繼續觀看', style: TextStyle(color: Colors.white, fontSize: 14)),
-                  subtitle: const Text('立即從 Simkl 手動同步', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                  title: const Text('Sync Simkl Watchlist & Continue Watching', style: TextStyle(color: Colors.white, fontSize: 14)),
+                  subtitle: const Text('Manually triggers an immediate pull from Simkl', style: TextStyle(color: Colors.white54, fontSize: 12)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Colors.white38),
                   onTap: () async {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('正在與 Simkl 同步…')),
+                      const SnackBar(content: Text('Syncing with Simkl...')),
                     );
                     await Future.wait([
                       MyListService.syncAll(),
@@ -401,7 +401,7 @@ class _SimklSettingsPageState extends State<SimklSettingsPage> {
                     ]);
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Simkl 同步完成！')),
+                        const SnackBar(content: Text('Simkl sync complete!')),
                       );
                     }
                   },

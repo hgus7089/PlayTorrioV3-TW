@@ -19,8 +19,8 @@ class _IptvSearchPageState extends State<IptvSearchPage> {
     'All',
     'Combat',
     'Racing',
-    '體育',
-    '電影',
+    'Sports',
+    'Movies',
     'News',
     'Arabic',
     'Discovery',
@@ -83,7 +83,7 @@ class _IptvSearchPageState extends State<IptvSearchPage> {
             autofocus: true,
             style: const TextStyle(color: Colors.white, fontSize: 14),
             decoration: InputDecoration(
-              hintText: '搜尋 60+ live channels, leagues, networks…',
+              hintText: 'Search 60+ live channels, leagues, networks…',
               hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 13.5),
               prefixIcon: const Icon(Icons.search_rounded, color: Color(0xFF7C5CFF), size: 20),
               suffixIcon: _query.isNotEmpty

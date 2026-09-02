@@ -58,7 +58,7 @@ class MusicLibraryService extends ChangeNotifier {
 
       notifyListeners();
     } catch (e) {
-      debugPrint('音樂媒體庫Service init error: $e');
+      debugPrint('MusicLibraryService init error: $e');
     }
   }
 
@@ -90,7 +90,7 @@ class MusicLibraryService extends ChangeNotifier {
   Future<UserPlaylist> createPlaylist(String title) async {
     final pl = UserPlaylist(
       id: 'custom_${DateTime.now().millisecondsSinceEpoch}',
-      title: title.trim().isEmpty ? 'My 播放list' : title.trim(),
+      title: title.trim().isEmpty ? 'My Playlist' : title.trim(),
       createdAt: DateTime.now().toIso8601String(),
       tracks: [],
     );

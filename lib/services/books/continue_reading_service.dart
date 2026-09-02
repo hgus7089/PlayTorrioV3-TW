@@ -58,7 +58,7 @@ class ContinueReadingService {
       final encoded = jsonEncode(current.map((i) => i.toJson()).toList());
       await prefs.setString(_storageKey, encoded);
     } catch (e) {
-      debugPrint('[ContinueReadingService] 儲存 progress error: $e');
+      debugPrint('[ContinueReadingService] Save progress error: $e');
     }
   }
 
@@ -80,7 +80,7 @@ class ContinueReadingService {
       final encoded = jsonEncode(current.map((i) => i.toJson()).toList());
       await prefs.setString(_storageKey, encoded);
     } catch (e) {
-      debugPrint('[ContinueReadingService] 移除 progress error: $e');
+      debugPrint('[ContinueReadingService] Remove progress error: $e');
     }
   }
 }

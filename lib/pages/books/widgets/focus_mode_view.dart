@@ -436,7 +436,7 @@ class _FocusModeViewState extends State<FocusModeView> {
                               Icon(Icons.center_focus_strong_rounded, color: Color(0xFFA78BFA), size: 16),
                               SizedBox(width: ReaderTokens.space8),
                               Text(
-                                'Focus Mode 啟用中',
+                                'Focus Mode Active',
                                 style: TextStyle(
                                   fontFamily: ReaderTokens.uiFont,
                                   fontSize: 12,
@@ -450,7 +450,7 @@ class _FocusModeViewState extends State<FocusModeView> {
 
                         // Exit Pill
                         Semantics(
-                          label: '退出 Focus Mode',
+                          label: 'Exit Focus Mode',
                           button: true,
                           child: InkWell(
                             onTap: widget.onExit,
@@ -472,7 +472,7 @@ class _FocusModeViewState extends State<FocusModeView> {
                                   Icon(Icons.close_rounded, color: Colors.white, size: 16),
                                   SizedBox(width: ReaderTokens.space4),
                                   Text(
-                                    '退出 (Esc)',
+                                    'Exit (Esc)',
                                     style: TextStyle(
                                       fontFamily: ReaderTokens.uiFont,
                                       fontSize: 12.5,

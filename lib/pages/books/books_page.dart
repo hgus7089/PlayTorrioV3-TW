@@ -182,7 +182,7 @@ class _BooksPageState extends State<BooksPage> {
                         Text(
                           _searchController.text.trim().isNotEmpty
                               ? 'Results for "${_searchController.text.trim()}"'
-                              : 'Discover 書籍',
+                              : 'Discover Books',
                           style: const TextStyle(
                             fontFamily: 'Poppins',
                             fontSize: 20,
@@ -194,7 +194,7 @@ class _BooksPageState extends State<BooksPage> {
                         const Spacer(),
                         if (!_loading && _books.isNotEmpty)
                           Text(
-                            '${_books.length} 書籍',
+                            '${_books.length} Books',
                             style: const TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 13,
@@ -227,7 +227,7 @@ class _BooksPageState extends State<BooksPage> {
                           const SizedBox(height: 16),
                           ElevatedButton(
                             onPressed: () => _loadBooks(),
-                            child: const Text('重試'),
+                            child: const Text('Retry'),
                           ),
                         ],
                       ),
@@ -333,7 +333,7 @@ class _BooksPageState extends State<BooksPage> {
           // Back button
           IconButton(
             icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 20),
-            tooltip: '返回 to 首頁',
+            tooltip: 'Back to Home',
             onPressed: () => Navigator.of(context).pop(),
           ),
           const SizedBox(width: 8),
@@ -352,7 +352,7 @@ class _BooksPageState extends State<BooksPage> {
               ),
               const SizedBox(width: 10),
               const Text(
-                '書籍',
+                'Books',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 22,
@@ -379,7 +379,7 @@ class _BooksPageState extends State<BooksPage> {
                 onChanged: _onSearchChanged,
                 style: const TextStyle(color: Colors.white, fontSize: 13.5),
                 decoration: InputDecoration(
-                  hintText: '搜尋 millions of books & authors...',
+                  hintText: 'Search millions of books & authors...',
                   hintStyle: const TextStyle(color: Colors.white38, fontSize: 13),
                   prefixIcon: const Icon(Icons.search_rounded, color: Colors.white54, size: 20),
                   suffixIcon: _searchController.text.isNotEmpty

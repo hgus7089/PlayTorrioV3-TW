@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../home/home_page_settings.dart';
 
 enum MangaCardDensity {
-  compact('精簡 (Dense Grid)', 0.88),
+  compact('Compact (Dense Grid)', 0.88),
   standard('Standard (Balanced)', 1.0),
   spacious('Spacious (Large Posters)', 1.15);
 
@@ -13,9 +13,9 @@ enum MangaCardDensity {
 }
 
 enum MangaReadingMode {
-  webtoon('Vertical Continuous (條漫)'),
-  horizontalLtr('橫向 (Left to Right)'),
-  horizontalRtl('橫向 (Right to Left / 漫畫)');
+  webtoon('Vertical Continuous (Webtoon)'),
+  horizontalLtr('Horizontal (Left to Right)'),
+  horizontalRtl('Horizontal (Right to Left / Manga)');
 
   final String label;
   const MangaReadingMode(this.label);
@@ -23,7 +23,7 @@ enum MangaReadingMode {
 
 enum MangaReaderMaxWidth {
   full('Full Screen (100%)', null),
-  compact('精簡 (720px)', 720.0),
+  compact('Compact (720px)', 720.0),
   standard('Standard (900px)', 900.0),
   wide('Wide (1150px)', 1150.0);
 
@@ -35,8 +35,8 @@ enum MangaReaderMaxWidth {
 enum MangaReaderBackground {
   pitchBlack('Pitch Black', Color(0xFF000000)),
   deepCharcoal('Deep Charcoal', Color(0xFF0B0D13)),
-  darkSlate('深色 Slate', Color(0xFF131722)),
-  sepiaDark('Sepia 深色', Color(0xFF1B1612));
+  darkSlate('Dark Slate', Color(0xFF131722)),
+  sepiaDark('Sepia Dark', Color(0xFF1B1612));
 
   final String label;
   final Color color;

@@ -12,7 +12,7 @@ import 'tmdb_helper.dart';
 /// Moviebox/HakunaMatata, ClicknUpload, and HubCloud).
 class DownloadEverythingScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _slaveUrl = 'https://slave.downloadeverythingfromeverywhere.com/';
   static const _ua =
@@ -47,7 +47,7 @@ class DownloadEverythingScraper extends StreamScraper {
           year: year,
         );
 
-        print('[下載Everything] Starting scrape for "$title" (tmdb: $tmdbId, imdb: $imdbId, year: $year, S:${season}E:$episode)');
+        print('[DownloadEverything] Starting scrape for "$title" (tmdb: $tmdbId, imdb: $imdbId, year: $year, S:${season}E:$episode)');
 
         final payload = <String, dynamic>{
           'mode': isTv ? 'series' : 'movie',
@@ -78,17 +78,17 @@ class DownloadEverythingScraper extends StreamScraper {
           try {
             final parsed = jsonDecode(trimmed);
             if (parsed is Map<String, dynamic> && parsed['t'] == 'hit' && parsed['links'] is List) {
-              final site = parsed['site']?.toString() ?? '下載Everything';
+              final site = parsed['site']?.toString() ?? 'DownloadEverything';
               final links = parsed['links'] as List;
               totalHitsFound += links.length;
-              print('[下載Everything] Hit from site "$site": ${links.length} candidate(s)');
+              print('[DownloadEverything] Hit from site "$site": ${links.length} candidate(s)');
 
               for (final l in links) {
                 if (l is Map<String, dynamic>) {
                   final item = {'site': site, ...l};
                   final fut = _resolveItem(item, title, isTv, season, episode).then((source) {
                     if (source != null && !controller.isClosed) {
-                      print('[下載Everything] [+] 播放able stream extracted: ${source.title}');
+                      print('[DownloadEverything] [+] Playable stream extracted: ${source.title}');
                       controller.add(source);
                     }
                   }).catchError((_) {});
@@ -103,9 +103,9 @@ class DownloadEverythingScraper extends StreamScraper {
           await Future.wait(activeResolutions);
         }
 
-        print('[下載Everything] Completed stream for "$title" (total candidates inspected: $totalHitsFound)');
+        print('[DownloadEverything] Completed stream for "$title" (total candidates inspected: $totalHitsFound)');
       } catch (e) {
-        print('[下載Everything] 錯誤: $e');
+        print('[DownloadEverything] Error: $e');
       } finally {
         if (!controller.isClosed) {
           controller.close();
@@ -158,7 +158,7 @@ class DownloadEverythingScraper extends StreamScraper {
     }
 
     String? directStreamUrl;
-    String provider = item['site']?.toString() ?? '下載Everything';
+    String provider = item['site']?.toString() ?? 'DownloadEverything';
     Map<String, String>? streamHeaders;
 
     try {
@@ -225,8 +225,8 @@ class DownloadEverythingScraper extends StreamScraper {
     final tagsStr = tags.isNotEmpty ? tags.join(' · ') : qualityMatch;
 
     return StreamSource(
-      name: '播放TorrioHTTP',
-      addonName: '播放TorrioHTTP',
+      name: 'PlayTorrioHTTP',
+      addonName: 'PlayTorrioHTTP',
       title: '[$provider] $rawTitle ($qualityMatch)',
       description: '$qualityMatch · $tagsStr · $provider',
       url: directStreamUrl,
@@ -297,7 +297,7 @@ class DownloadEverythingScraper extends StreamScraper {
       for (final m in inputMatches) {
         params1[m.group(1)!] = m.group(2)!;
       }
-      params1['method_free'] = 'Slow 下載';
+      params1['method_free'] = 'Slow Download';
 
       final cookies = res1.headers['set-cookie'] ?? '';
 

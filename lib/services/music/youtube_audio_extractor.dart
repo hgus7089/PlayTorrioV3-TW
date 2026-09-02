@@ -17,7 +17,7 @@ class YoutubeAudioExtractor {
   YoutubeAudioExtractor._();
   static final YoutubeAudioExtractor instance = YoutubeAudioExtractor._();
 
-  static const String _tag = 'Youtube音訊Extractor';
+  static const String _tag = 'YoutubeAudioExtractor';
 
   static const String _fallbackApiKey =
       'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8';
@@ -183,7 +183,7 @@ class YoutubeAudioExtractor {
       }
       return ids;
     } catch (e) {
-      _log('search影片Ids failed: $e');
+      _log('searchVideoIds failed: $e');
       if (!_isForced(config)) {
         _config = null;
         try {
@@ -443,7 +443,7 @@ class YoutubeAudioExtractor {
         headers: {
           'Range': 'bytes=0-0',
           'User-Agent': userAgent,
-          'Accept-語言': 'en-US,en;q=0.9',
+          'Accept-Language': 'en-US,en;q=0.9',
         },
       ).timeout(const Duration(milliseconds: 1500));
       return res.statusCode == 200 || res.statusCode == 206;
@@ -488,7 +488,7 @@ class YoutubeAudioExtractor {
             Uri.parse('https://www.youtube.com/watch?v=dQw4w9WgXcQ&hl=en'),
             headers: {
               'User-Agent': _defaultUserAgent,
-              'Accept-語言': 'en-US,en;q=0.9',
+              'Accept-Language': 'en-US,en;q=0.9',
               'Accept':
                   'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             },
@@ -686,7 +686,7 @@ class YoutubeAudioExtractor {
     final out = <Map<String, dynamic>>[];
     final contents = _dig(data, [
       'contents',
-      'twoColumn搜尋ResultsRenderer',
+      'twoColumnSearchResultsRenderer',
       'primaryContents',
       'sectionListRenderer',
       'contents',
@@ -698,7 +698,7 @@ class YoutubeAudioExtractor {
       if (items is! List) continue;
       for (final item in items) {
         if (item is! Map) continue;
-        final renderer = item['videoRenderer'] ?? item['compact影片Renderer'];
+        final renderer = item['videoRenderer'] ?? item['compactVideoRenderer'];
         if (renderer is Map) {
           out.add(Map<String, dynamic>.from(renderer));
         }
@@ -750,7 +750,7 @@ class YoutubeAudioExtractor {
     return {
       'Content-Type': 'application/json',
       'Accept': '*/*',
-      'Accept-語言': 'en-US,en;q=0.9',
+      'Accept-Language': 'en-US,en;q=0.9',
       'Origin': 'https://www.youtube.com',
       'Referer': 'https://www.youtube.com/',
       'User-Agent': client.userAgent,
@@ -779,7 +779,7 @@ class YoutubeAudioExtractor {
       'racyCheckOk': true,
       'context': context,
       'playbackContext': {
-        'content播放backContext': {'html5Preference': 'HTML5_PREF_WANTS'},
+        'contentPlaybackContext': {'html5Preference': 'HTML5_PREF_WANTS'},
       },
     });
 

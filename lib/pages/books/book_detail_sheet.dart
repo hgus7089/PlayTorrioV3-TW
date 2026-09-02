@@ -364,9 +364,9 @@ class _BookDetailSheetState extends State<BookDetailSheet> {
                                 ),
                           label: Text(
                             _isDownloading
-                                ? '下載中 ${(_downloadProgress * 100).round()}%...'
+                                ? 'Downloading ${(_downloadProgress * 100).round()}%...'
                                 : hasProgress
-                                    ? '繼續播放 Reading'
+                                    ? 'Resume Reading'
                                     : 'Read Now',
                             style: const TextStyle(
                               fontFamily: 'Poppins',
@@ -391,7 +391,7 @@ class _BookDetailSheetState extends State<BookDetailSheet> {
                         const SizedBox(width: 10),
                         IconButton.filledTonal(
                           icon: const Icon(Icons.record_voice_over_rounded, color: Color(0xFFA78BFA)),
-                          tooltip: 'Generate AI 音訊book (TTS)',
+                          tooltip: 'Generate AI Audiobook (TTS)',
                           onPressed: () async {
                             Navigator.pop(context);
                             Navigator.push(
@@ -413,7 +413,7 @@ class _BookDetailSheetState extends State<BookDetailSheet> {
                         const SizedBox(width: 10),
                         IconButton.filledTonal(
                           icon: const Icon(Icons.delete_outline_rounded, color: Colors.redAccent),
-                          tooltip: '刪除 downloaded file',
+                          tooltip: 'Delete downloaded file',
                           onPressed: () async {
                             await BookDownloadService.instance.deleteBook(
                               book.md5,
@@ -437,7 +437,7 @@ class _BookDetailSheetState extends State<BookDetailSheet> {
                   // Metadata Details List
                   if (book.publisher.isNotEmpty || book.isbn.isNotEmpty || book.series.isNotEmpty) ...[
                     const Text(
-                      '資訊',
+                      'Information',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 15,
@@ -458,11 +458,11 @@ class _BookDetailSheetState extends State<BookDetailSheet> {
                           if (book.publisher.isNotEmpty)
                             _buildInfoRow('Publisher', book.publisher),
                           if (book.series.isNotEmpty)
-                            _buildInfoRow('影集', book.series),
+                            _buildInfoRow('Series', book.series),
                           if (book.isbn.isNotEmpty)
                             _buildInfoRow('ISBN', book.isbn),
                           if (book.bookLang.isNotEmpty)
-                            _buildInfoRow('語言', book.bookLang),
+                            _buildInfoRow('Language', book.bookLang),
                           _buildInfoRow('File Format', book.bookFiletype.toUpperCase()),
                           if (book.bookSize.isNotEmpty)
                             _buildInfoRow('Size', book.bookSize),
@@ -475,7 +475,7 @@ class _BookDetailSheetState extends State<BookDetailSheet> {
                   // Description
                   if (book.description.isNotEmpty) ...[
                     const Text(
-                      '簡介',
+                      'Overview',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 15,

@@ -187,7 +187,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
       }
 
       if (streamUrl == null || streamUrl.isEmpty) {
-        throw Exception('音訊 stream URL could not be resolved.');
+        throw Exception('Audio stream URL could not be resolved.');
       }
 
       final isLocal = !streamUrl.startsWith('http://') && !streamUrl.startsWith('https://');
@@ -250,7 +250,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
           if (mounted) {
             setState(() {
               _isLoading = false;
-              _errorMessage = '播放back 錯誤: $err';
+              _errorMessage = 'Playback Error: $err';
             });
           }
         }),
@@ -282,7 +282,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
       if (!mounted) return;
       setState(() {
         _isLoading = false;
-        _errorMessage = '播放back 錯誤: $e';
+        _errorMessage = 'Playback Error: $e';
       });
     }
   }
@@ -342,7 +342,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
                       Icon(Icons.tune_rounded, color: palette.primaryColor, size: 20),
                       const SizedBox(width: 10),
                       const Text(
-                        '音訊 播放器 Style & Studio',
+                        'Audio Player Style & Studio',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -360,7 +360,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
                   Divider(color: Colors.white.withValues(alpha: 0.08)),
                   const SizedBox(height: 12),
 
-                  const Text('選取 播放器 Design Preset', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
+                  const Text('Select Player Design Preset', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
                   const SizedBox(height: 8),
                   ValueListenableBuilder<AudiobookPlayerPreset>(
                     valueListenable: AudiobookSettings.selectedPlayerPreset,
@@ -428,7 +428,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
 
                   const SizedBox(height: 14),
 
-                  const Text('播放 / 暫停 Button Style', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
+                  const Text('Play / Pause Button Style', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
                   const SizedBox(height: 8),
                   ValueListenableBuilder<AudiobookPlayButtonStyle>(
                     valueListenable: AudiobookSettings.customPlayButtonStyle,
@@ -475,7 +475,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       icon: const Icon(Icons.dashboard_customize_rounded, size: 18),
-                      label: const Text('開啟 Drag & Drop 播放器 Studio', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                      label: const Text('Open Drag & Drop Player Studio', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                       onPressed: () {
                         Navigator.pop(ctx);
                         Navigator.push(
@@ -762,7 +762,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
             icon: Icons.tune_rounded,
             size: isMobile ? 20 : 24,
             palette: palette,
-            tooltip: '自訂 音訊 播放器',
+            tooltip: 'Customize Audio Player',
             onTap: () => _showPlayerCustomizer(context),
           ),
           SizedBox(width: isMobile ? 4 : 6),
@@ -822,7 +822,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
               ElevatedButton.icon(
                 onPressed: () => _initChapter(_currentChapterIndex),
                 icon: const Icon(Icons.refresh_rounded, color: Colors.white),
-                label: const Text('重試 Chapter', style: TextStyle(color: Colors.white)),
+                label: const Text('Retry Chapter', style: TextStyle(color: Colors.white)),
                 style: ElevatedButton.styleFrom(backgroundColor: palette.primaryColor),
               ),
             ],
@@ -1150,7 +1150,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
                     child: OutlinedButton.icon(
                       onPressed: () => setState(() => _showChaptersDrawer = true),
                       icon: Icon(Icons.format_list_bulleted_rounded, color: palette.primaryColor, size: 18),
-                      label: const Text('開啟 Chapters Panel', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                      label: const Text('Open Chapters Panel', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: palette.primaryColor.withValues(alpha: 0.5)),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
@@ -1331,7 +1331,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
           icon: Icons.skip_previous_rounded,
           size: isNarrow ? 24 : 28,
           palette: palette,
-          tooltip: '上一章',
+          tooltip: 'Previous Chapter',
           onTap: _currentChapterIndex > 0 ? () => _initChapter(_currentChapterIndex - 1) : null,
         );
 
@@ -1339,7 +1339,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
           icon: Icons.replay_10_rounded,
           size: isNarrow ? 24 : 28,
           palette: palette,
-          tooltip: '倒退 10 秒',
+          tooltip: 'Rewind 10s',
           onTap: () => _seekRelative(-10),
         );
 
@@ -1352,7 +1352,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
           icon: Icons.forward_10_rounded,
           size: isNarrow ? 24 : 28,
           palette: palette,
-          tooltip: '快進 10 秒',
+          tooltip: 'Forward 10s',
           onTap: () => _seekRelative(10),
         );
 
@@ -1360,7 +1360,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
           icon: Icons.skip_next_rounded,
           size: isNarrow ? 24 : 28,
           palette: palette,
-          tooltip: '下一章',
+          tooltip: 'Next Chapter',
           onTap: _currentChapterIndex < widget.chapters.length - 1
               ? () => _initChapter(_currentChapterIndex + 1)
               : null,
@@ -1625,7 +1625,7 @@ class _AudiobookPlayerScreenState extends State<AudiobookPlayerScreen> with Sing
                                 Icon(Icons.format_list_bulleted_rounded, color: palette.primaryColor, size: 20),
                                 const SizedBox(width: 8),
                                 const Text(
-                                  '音訊book Chapters',
+                                  'Audiobook Chapters',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 17,
@@ -1790,7 +1790,7 @@ class _VolumeButtonState extends State<_VolumeButton> {
               : (widget.volume > 0.5 ? Icons.volume_up_rounded : Icons.volume_down_rounded),
           size: 22,
           palette: widget.palette,
-          tooltip: '音量',
+          tooltip: 'Volume',
           onTap: () {
             setState(() => _showSlider = !_showSlider);
           },

@@ -74,7 +74,7 @@ class SkipSegmentsService {
         uri,
         headers: {
           'Accept': 'application/json',
-          'User-Agent': '播放Torrio/3.0.0 (影片播放器 SkipEngine)',
+          'User-Agent': 'PlayTorrio/3.0.0 (VideoPlayer SkipEngine)',
         },
       ).timeout(const Duration(seconds: 6));
 
@@ -93,7 +93,7 @@ class SkipSegmentsService {
         debugPrint('[SkipSegmentsService] IntroDB returned status ${res.statusCode}: ${res.body}');
       }
     } catch (e) {
-      debugPrint('[SkipSegmentsService] 錯誤 fetching skip timestamps: $e');
+      debugPrint('[SkipSegmentsService] Error fetching skip timestamps: $e');
     }
 
     return null;

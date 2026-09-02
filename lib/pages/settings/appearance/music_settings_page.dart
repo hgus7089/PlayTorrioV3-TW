@@ -30,7 +30,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          '音樂介面與播放器氛圍',
+          'Music UI & Player Atmosphere',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
         elevation: 0,
@@ -53,7 +53,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
               const SizedBox(height: 28),
 
               // 3. Ambient Moving Background Lights
-              _buildSectionHeader('環境氛圍與光暈'),
+              _buildSectionHeader('AMBIENT ATMOSPHERE & GLOW'),
               const SizedBox(height: 12),
               _buildAmbientLightsCard(palette),
               const SizedBox(height: 28),
@@ -71,13 +71,13 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
               const SizedBox(height: 28),
 
               // 6. Fullscreen Player Presets
-              _buildSectionHeader('全螢幕播放器預設'),
+              _buildSectionHeader('FULLSCREEN PLAYER PRESETS'),
               const SizedBox(height: 12),
               _buildFullscreenPlayerPresetSelector(palette),
               const SizedBox(height: 28),
 
               // 7. Custom Player Quick Customizer
-              _buildSectionHeader('自訂播放器引擎設計器'),
+              _buildSectionHeader('CUSTOM PLAYER ENGINE DESIGNER'),
               const SizedBox(height: 12),
               _buildCustomPlayerStudioCard(palette),
               const SizedBox(height: 36),
@@ -206,11 +206,11 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
                 title: const Text(
-                  '動態背景環境光',
+                  'Moving Background Ambient Lighting',
                   style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w700),
                 ),
                 subtitle: Text(
-                  '依主題強調色動態變化的發光光球',
+                  'Dynamic moving glowing orbs reacting with your theme accent colors',
                   style: TextStyle(color: Colors.white.withValues(alpha: 0.45), fontSize: 12),
                 ),
                 value: enabled,
@@ -224,7 +224,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
           const SizedBox(height: 12),
 
           Text(
-            '環境光模式',
+            'Ambient Light Pattern',
             style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 8),
@@ -268,7 +268,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('光暈強度／透明度', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+                      Text('Glow Strength / Opacity', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
                       Text('${(intensity * 100).round()}%', style: TextStyle(color: palette.primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -310,8 +310,8 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
             builder: (context, enabled, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示首頁聚光燈展示', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
-                subtitle: const Text('在音樂頁面頂端顯示熱門暢銷專輯與歌曲', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                title: const Text('Show Hero Spotlight Showcase', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+                subtitle: const Text('Featured bestselling album & track showcase at the top of the music page', style: TextStyle(color: Colors.white54, fontSize: 12)),
                 value: enabled,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MusicSettings.setEnableSpotlight(val),
@@ -324,8 +324,8 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
             builder: (context, enabled, _) {
               return SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('顯示無損 Hi-Res 音訊標籤', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
-                subtitle: const Text('在音樂卡片與播放器顯示 FLAC／Hi-Res 無損串流標示', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                title: const Text('Show Lossless Hi-Res Audio Badges', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+                subtitle: const Text('Displays FLAC / Hi-Res lossless stream indicators on music cards and player', style: TextStyle(color: Colors.white54, fontSize: 12)),
                 value: enabled,
                 activeColor: palette.primaryColor,
                 onChanged: (val) => MusicSettings.setShowLosslessBadge(val),
@@ -334,7 +334,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
           ),
           Divider(color: Colors.white.withValues(alpha: 0.08)),
           const SizedBox(height: 8),
-          Text('音樂卡片與網格密度', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
+          Text('Music Card & Grid Density', style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           ValueListenableBuilder<MusicCardDensity>(
             valueListenable: MusicSettings.cardDensity,
@@ -557,7 +557,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
                   Row(
                     children: [
                       const Text(
-                        '自訂音樂播放器工作室',
+                        'Custom Music Player Studio',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -580,7 +580,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    '自訂 BOTH Mini 播放器 Dock and 全螢幕 播放器. Drag & drop blocks, waveform equalizers, vinyl turntable & liquid glass buttons.',
+                    'Customize BOTH Mini Player Dock and Fullscreen Player. Drag & drop blocks, waveform equalizers, vinyl turntable & liquid glass buttons.',
                     style: TextStyle(
                       color: Colors.white.withValues(alpha: 0.7),
                       fontSize: 12,
@@ -596,7 +596,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
                     },
                     icon: const Icon(Icons.tune_rounded, size: 18, color: Colors.white),
                     label: const Text(
-                      '進入自訂播放器工作室',
+                      'Enter Custom Player Studio',
                       style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13, color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -629,7 +629,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('即時波形與控制項預覽', style: TextStyle(color: palette.primaryColor, fontSize: 13, fontWeight: FontWeight.bold)),
+              Text('Live Waveform & Controls Preview', style: TextStyle(color: palette.primaryColor, fontSize: 13, fontWeight: FontWeight.bold)),
               TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -637,7 +637,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
                     MaterialPageRoute(builder: (_) => const MusicPlayerStudioPage()),
                   );
                 },
-                child: const Text('開啟完整工作室 ➔', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                child: const Text('Open Full Studio ➔', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
               ),
             ],
           ),
@@ -661,7 +661,7 @@ class _MusicSettingsPageState extends State<MusicSettingsPage> {
               );
             },
             icon: const Icon(Icons.dashboard_customize_rounded, size: 18, color: Colors.white),
-            label: const Text('開啟完整自訂播放器工作室', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13.5, color: Colors.white)),
+            label: const Text('Launch Full Custom Player Studio', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13.5, color: Colors.white)),
             style: ElevatedButton.styleFrom(
               backgroundColor: palette.primaryColor,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

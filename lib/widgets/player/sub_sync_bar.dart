@@ -100,7 +100,7 @@ class _SubSyncBarState extends State<SubSyncBar> {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          '文字同步',
+                          'Text Sync',
                           style: TextStyle(
                             color: widget.isTextSyncAvailable
                                 ? PlayerTheme.ink
@@ -201,7 +201,7 @@ class _SubSyncBarState extends State<SubSyncBar> {
                 size: 32,
                 iconSize: 15,
                 icon: const Icon(Icons.undo_rounded),
-                tooltip: '捨棄變更',
+                tooltip: 'Discard changes',
                 onPressed: _handleDiscard,
               ),
               const SizedBox(width: 4),
@@ -228,7 +228,7 @@ class _SubSyncBarState extends State<SubSyncBar> {
               size: 32,
               iconSize: 15,
               icon: const Icon(Icons.close_rounded),
-              tooltip: '關閉',
+              tooltip: 'Close',
               onPressed: widget.onClose,
             ),
           ],

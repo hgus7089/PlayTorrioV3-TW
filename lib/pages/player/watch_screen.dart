@@ -423,7 +423,7 @@ class _WatchScreenState extends State<WatchScreen>
                             ),
                             SizedBox(width: _S.xs),
                             Text(
-                              '觀看 來源',
+                              'Watch Sources',
                               style: TextStyle(
                                 color: _C.textPrimary,
                                 fontSize: 18,
@@ -434,7 +434,7 @@ class _WatchScreenState extends State<WatchScreen>
                         ),
                         Text(
                           _isLoadingSources
-                              ? '搜尋ing sources...'
+                              ? 'Searching sources...'
                               : '${filtered.length} source${filtered.length == 1 ? '' : 's'} found',
                           style: const TextStyle(
                             color: _C.textTertiary,
@@ -909,7 +909,7 @@ class _WatchScreenState extends State<WatchScreen>
       );
       links.add(
         Link(
-          name: '搜尋',
+          name: 'Search',
           category: 'web',
           url: 'https://google.com/search?q=$query',
         ),
@@ -1006,7 +1006,7 @@ class _WatchScreenState extends State<WatchScreen>
                 Icon(Icons.stream_rounded, color: _C.accent, size: 20),
                 SizedBox(width: _S.xs),
                 Text(
-                  '觀看 來源',
+                  'Watch Sources',
                   style: TextStyle(
                     color: _C.textPrimary,
                     fontSize: 18,
@@ -1066,7 +1066,7 @@ class _WatchScreenState extends State<WatchScreen>
         // Source count
         Text(
           _isLoadingSources
-              ? '搜尋ing sources...'
+              ? 'Searching sources...'
               : '${filtered.length} source${filtered.length == 1 ? '' : 's'} found',
           style: const TextStyle(color: _C.textTertiary, fontSize: 12),
         ),
@@ -1349,7 +1349,7 @@ class _WatchScreenState extends State<WatchScreen>
   Widget _buildAddonFilterDropdown() {
     final addons = _sources.map((e) => e.addonName).toSet().toList();
     if (addons.isEmpty) return const SizedBox.shrink();
-    final currentText = _selectedAddonFilter ?? 'All 來源';
+    final currentText = _selectedAddonFilter ?? 'All Sources';
 
     return Builder(
       builder: (buttonContext) {
@@ -1475,7 +1475,7 @@ class _WatchScreenState extends State<WatchScreen>
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              _buildDropdownItem('All 來源', null),
+                              _buildDropdownItem('All Sources', null),
                               const SizedBox(height: 4),
                               Container(
                                 height: 1,
@@ -1902,7 +1902,7 @@ class _CopyMagnetButtonState extends State<_CopyMagnetButton> {
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       child: Tooltip(
-        message: _copied ? 'Copied!' : '複製 Magnet Link',
+        message: _copied ? 'Copied!' : 'Copy Magnet Link',
         child: Material(
           color: Colors.transparent,
           child: InkWell(
@@ -2133,7 +2133,7 @@ class _EmptySourcesStateWidgetState extends State<_EmptySourcesStateWidget>
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 280),
             child: const Text(
-              'No streams found. Install more addons from 設定 or try another title.',
+              'No streams found. Install more addons from Settings or try another title.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF9B9BA5),
@@ -2190,7 +2190,7 @@ class _EmptySourcesStateWidgetState extends State<_EmptySourcesStateWidget>
                       ),
                       SizedBox(width: 8),
                       Text(
-                        'Install 附加元件',
+                        'Install Addons',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,

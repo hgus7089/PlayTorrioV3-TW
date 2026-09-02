@@ -21,14 +21,14 @@ class BookDownloadService {
     }
     try {
       final appDocDir = await getApplicationDocumentsDirectory();
-      final dir = Directory(p.join(appDocDir.path, '播放Torrio', '書籍'));
+      final dir = Directory(p.join(appDocDir.path, 'PlayTorrio', 'Books'));
       if (!await dir.exists()) {
         await dir.create(recursive: true);
       }
       _booksDirectory = dir;
       return dir;
     } catch (_) {
-      final temp = Directory(p.join(Directory.systemTemp.path, '播放Torrio', '書籍'));
+      final temp = Directory(p.join(Directory.systemTemp.path, 'PlayTorrio', 'Books'));
       if (!await temp.exists()) {
         await temp.create(recursive: true);
       }
@@ -138,7 +138,7 @@ class BookDownloadService {
         final tempLen = await tempFile.length();
         if (tempLen < 10) {
           await tempFile.delete();
-          lastException = Exception('已下載 file is empty');
+          lastException = Exception('Downloaded file is empty');
           continue;
         }
 
@@ -149,7 +149,7 @@ class BookDownloadService {
             headerStr.contains('<html') ||
             headerStr.contains('{"error":')) {
           await tempFile.delete();
-          lastException = Exception('已下載 file is an error page');
+          lastException = Exception('Downloaded file is an error page');
           continue;
         }
 
@@ -168,7 +168,7 @@ class BookDownloadService {
 
         return targetFile;
       } catch (e) {
-        lastException = Exception('錯誤 downloading from $urlStr: $e');
+        lastException = Exception('Error downloading from $urlStr: $e');
       }
     }
 
@@ -186,7 +186,7 @@ class BookDownloadService {
       }
     } catch (e) {
       if (kDebugMode) {
-        debugPrint('[Book下載Service] 錯誤 deleting book ($md5): $e');
+        debugPrint('[BookDownloadService] Error deleting book ($md5): $e');
       }
     }
     return false;

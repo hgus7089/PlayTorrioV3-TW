@@ -18,7 +18,7 @@ import '../trakt/trakt_service.dart';
 
 enum SimilarSectionPosition {
   top('Top (Below Hero Banner)'),
-  underCinemeta('Under Cinemeta 新增on'),
+  underCinemeta('Under Cinemeta Addon'),
   middle('Middle of Catalog'),
   bottom('Bottom of Page');
 
@@ -28,7 +28,7 @@ enum SimilarSectionPosition {
 
 enum HeroStyle {
   immersive('Immersive Cinematic Carousel'),
-  compact('精簡 Spotlight'),
+  compact('Compact Spotlight'),
   minimalist('Minimalist Header');
 
   final String label;
@@ -46,7 +46,7 @@ enum AmbientLightPattern {
 }
 
 enum CardDensity {
-  compact('精簡 (Dense Grid)'),
+  compact('Compact (Dense Grid)'),
   standard('Standard Balanced'),
   cinematic('Cinematic (Large Posters)');
 
@@ -303,7 +303,7 @@ abstract final class HomePageSettings {
               t.toLowerCase() == 'manga adaptation');
 
       if (!isAnimeSource && isAnimeMatched) {
-        debugPrint('[首頁Page設定] Skipping anime match for live-action: $sourceTitle');
+        debugPrint('[HomePageSettings] Skipping anime match for live-action: $sourceTitle');
         return null;
       }
 
@@ -337,7 +337,7 @@ abstract final class HomePageSettings {
         movies: movies,
       );
     } catch (e) {
-      debugPrint('[首頁Page設定] Failed to build similar section for "$sourceTitle": $e');
+      debugPrint('[HomePageSettings] Failed to build similar section for "$sourceTitle": $e');
       return null;
     }
   }
@@ -353,7 +353,7 @@ abstract final class HomePageSettings {
       return _cachedSimilarSection;
     }
 
-    // Try candidates from 我的清單 (latest added first, with fallback to others)
+    // Try candidates from My List (latest added first, with fallback to others)
     final candidates = List<MyListItem>.from(myList.reversed);
 
     for (final sourceItem in candidates) {
@@ -461,7 +461,7 @@ abstract final class HomePageSettings {
       if (movies.isEmpty) return null;
 
       final section = MovieSection(
-        title: '推薦 for You (Trakt)',
+        title: 'Recommended for You (Trakt)',
         subtitle: 'Personalized based on your Trakt watch history',
         contentType: 'mixed',
         addonBaseUrl: 'https://v3-cinemeta.strem.io',
@@ -479,7 +479,7 @@ abstract final class HomePageSettings {
       _cachedTraktSection = section;
       return section;
     } catch (e) {
-      debugPrint('[首頁Page設定] Trakt recommendations failed: $e');
+      debugPrint('[HomePageSettings] Trakt recommendations failed: $e');
       return null;
     }
   }
@@ -513,7 +513,7 @@ abstract final class HomePageSettings {
       if (movies.isEmpty) return null;
 
       final section = MovieSection(
-        title: '推薦 for You (Simkl)',
+        title: 'Recommended for You (Simkl)',
         subtitle: 'Top-rated & personalized suggestions from Simkl',
         contentType: 'mixed',
         addonBaseUrl: 'https://v3-cinemeta.strem.io',
@@ -531,7 +531,7 @@ abstract final class HomePageSettings {
       _cachedSimklSection = section;
       return section;
     } catch (e) {
-      debugPrint('[首頁Page設定] Simkl recommendations failed: $e');
+      debugPrint('[HomePageSettings] Simkl recommendations failed: $e');
       return null;
     }
   }

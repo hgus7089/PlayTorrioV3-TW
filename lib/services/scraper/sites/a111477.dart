@@ -13,7 +13,7 @@ import 'tmdb_helper.dart';
 /// to avoid overwhelming their server pool and prevent rate-limit "Slow down" issues.
 class A111477Scraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _serviceOrigin = 'https://st.111477.xyz';
   static const _defaultStreamHost = 'https://a.111477.xyz/';
@@ -157,7 +157,7 @@ class A111477Scraper extends StreamScraper {
                     title: rawTitle.isNotEmpty ? rawTitle : '111477 • Direct Stream',
                     description: rawTitle,
                     url: url,
-                    addonName: '播放TorrioHTTP',
+                    addonName: 'PlayTorrioHTTP',
                     headers: _defaultHeaders,
                     behaviorHints: map['behaviorHints'] is Map
                         ? Map<String, dynamic>.from(map['behaviorHints'])
@@ -177,7 +177,7 @@ class A111477Scraper extends StreamScraper {
               }
             }
           } catch (e) {
-            debugPrint('[111477] 錯誤 fetching from $endpoint: $e');
+            debugPrint('[111477] Error fetching from $endpoint: $e');
           }
         }
 

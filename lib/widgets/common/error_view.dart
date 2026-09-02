@@ -44,7 +44,7 @@ class ErrorView extends StatelessWidget {
             FilledButton.icon(
               onPressed: onRetry,
               icon: const Icon(Icons.refresh_rounded),
-              label: const Text('再試一次'),
+              label: const Text('Try again'),
               style: FilledButton.styleFrom(
                 backgroundColor: const Color(0xFF7C5CFF),
               ),

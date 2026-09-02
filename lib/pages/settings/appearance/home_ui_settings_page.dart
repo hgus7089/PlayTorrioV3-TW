@@ -31,7 +31,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          '首頁介面與主題',
+          'Home Page UI & Themes',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -43,7 +43,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
             children: [
               // ── 1. Color Schemes & Themes ──
               Text(
-                '色彩主題與強調色',
+                'COLOR THEMES & ACCENTS',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -58,7 +58,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 2. Ambient Background Lighting & Moving Glows ──
               Text(
-                '環境背景光與動態光暈',
+                'AMBIENT BACKGROUND LIGHTING & MOVING GLOWS',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -73,7 +73,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 2b. Custom Wallpaper & Background Photo ──
               Text(
-                '自訂背景與桌布',
+                'CUSTOM BACKGROUND & WALLPAPER',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -130,7 +130,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
-                                  '自訂桌布與燈光融合',
+                                  'Custom Wallpaper & Lighting Blend',
                                   style: TextStyle(
                                     fontSize: 14.5,
                                     fontWeight: FontWeight.w700,
@@ -140,7 +140,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                                 const SizedBox(height: 3),
                                 Text(
                                   hasWallpaper
-                                      ? '自訂背景已啟用並套用環境光融合'
+                                      ? 'Custom background active with ambient light blending'
                                       : 'Upload photos or choose curated dark wallpapers',
                                   style: TextStyle(
                                     fontSize: 12,
@@ -160,7 +160,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               const SizedBox(height: 28),
 
-              // ── 3. "因為你已加入清單" Section ──
+              // ── 3. "Because you have on your list" Section ──
               Text(
                 'SMART RECOMMENDATIONS ("BECAUSE YOU HAVE ON YOUR LIST")',
                 style: TextStyle(
@@ -177,7 +177,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 4. Hero Carousel & Spotlight ──
               Text(
-                '首頁橫幅與聚光燈',
+                'HERO BANNER & SPOTLIGHT',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -192,7 +192,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
               // ── 5. Card Layout & Poster Density ──
               Text(
-                '海報卡片與密度',
+                'POSTER CARDS & DENSITY',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -297,7 +297,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                               ),
                               const SizedBox(height: 2),
                               Text(
-                                isSelected ? '啟用中 主題' : '點擊套用',
+                                isSelected ? 'Active Theme' : 'Tap to apply',
                                 style: TextStyle(
                                   fontSize: 10.5,
                                   color: isSelected
@@ -369,7 +369,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                               Icon(Icons.auto_awesome_motion_rounded, size: 14, color: palette.primaryColor),
                               const SizedBox(width: 6),
                               Text(
-                                '即時燈光引擎預覽',
+                                'LIVE LIGHTING ENGINE PREVIEW',
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w800,
@@ -410,7 +410,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '動態環境光與光暈',
+                          'Moving Ambient Lights & Glows',
                           style: TextStyle(
                             fontSize: 14.5,
                             fontWeight: FontWeight.w700,
@@ -419,7 +419,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '背景中的淡色漂移光波與浮動光球',
+                          'Drifting faded light waves & floating color orbs in background',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -443,7 +443,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
                 // Lighting Pattern / Position
                 Text(
-                  '燈光模式與位置',
+                  'Lighting Pattern & Position',
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
@@ -502,7 +502,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '光暈強度／亮度',
+                              'Glow Strength / Intensity',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
@@ -553,7 +553,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '動態流動速度',
+                              'Motion Flow Speed',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
@@ -632,7 +632,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '智慧推薦',
+                      'Smart Recommendations',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
@@ -641,7 +641,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                     ),
                     SizedBox(height: 2),
                     Text(
-                      '設定個人化與演算法推薦滑桿',
+                      'Configure personalized & algorithmic recommendation sliders',
                       style: TextStyle(fontSize: 12, color: Colors.white54),
                     ),
                   ],
@@ -656,8 +656,8 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
           // 1. Because You Have... (My List)
           _buildRecommendationToggleRow(
-            title: '"Because You Have..." (我的清單)',
-            subtitle: '根據「我的清單」內容提供 BestSimilar 推薦',
+            title: '"Because You Have..." (My List)',
+            subtitle: 'BestSimilar recommendations based on titles saved in My List',
             listenable: HomePageSettings.enableSimilar,
             onChanged: (val) {
               HomePageSettings.setEnableSimilar(val);
@@ -667,8 +667,8 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
           // 2. Because You're Watching... (Continue Watching)
           _buildRecommendationToggleRow(
-            title: '"Because You\'re 觀看ing..."',
-            subtitle: 'BestSimilar recommendations based on active 繼續觀看 titles',
+            title: '"Because You\'re Watching..."',
+            subtitle: 'BestSimilar recommendations based on active Continue Watching titles',
             listenable: HomePageSettings.enableWatchingSimilar,
             onChanged: (val) {
               HomePageSettings.setEnableWatchingSimilar(val);
@@ -676,7 +676,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
             },
           ),
 
-          // 3. Trakt 推薦
+          // 3. Trakt Recommendations
           FutureBuilder<bool>(
             future: TraktService.instance.isAuthenticated(),
             builder: (context, snapshot) {
@@ -685,7 +685,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                 title: 'Trakt Recommendations',
                 subtitle: isAuthed
                     ? 'Personalized recommendations computed by Trakt'
-                    : 'Requires Trakt login in 設定 -> Trakt',
+                    : 'Requires Trakt login in Settings -> Trakt',
                 listenable: HomePageSettings.enableTraktRecommendations,
                 trailingExtra: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -714,7 +714,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
             },
           ),
 
-          // 4. Simkl 推薦
+          // 4. Simkl Recommendations
           FutureBuilder<bool>(
             future: SimklService.instance.isAuthenticated(),
             builder: (context, snapshot) {
@@ -723,7 +723,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                 title: 'Simkl Recommendations',
                 subtitle: isAuthed
                     ? 'Top-rated & personalized suggestions from Simkl'
-                    : 'Requires Simkl login in 設定 -> Simkl',
+                    : 'Requires Simkl login in Settings -> Simkl',
                 listenable: HomePageSettings.enableSimklRecommendations,
                 trailingExtra: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -758,7 +758,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
 
           // Position Dropdown
           Text(
-            'Recommendation Sliders Position on 首頁 Page',
+            'Recommendation Sliders Position on Home Page',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -1077,7 +1077,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Ambient Backdrop 淺色ing',
+                          'Ambient Backdrop Lighting',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -1183,7 +1183,7 @@ class _HomeUiSettingsPageState extends State<HomeUiSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Show IMDB 評分 Badges',
+                          'Show IMDB Rating Badges',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,

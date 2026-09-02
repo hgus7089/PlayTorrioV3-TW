@@ -313,7 +313,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                     textInputAction: TextInputAction.search,
                                     onSubmitted: _onSearchSubmitted,
                                     decoration: InputDecoration(
-                                      hintText: '搜尋……',
+                                      hintText: 'Search...',
                                       hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.4)),
                                       border: InputBorder.none,
                                       suffixIcon: IconButton(

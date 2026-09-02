@@ -120,7 +120,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          widget.isGenre ? 'Genre: ${widget.query}' : '搜尋: ${widget.query}',
+                          widget.isGenre ? 'Genre: ${widget.query}' : 'Search: ${widget.query}',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: isDesktop ? 22 : 20,

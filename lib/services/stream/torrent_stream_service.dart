@@ -127,7 +127,7 @@ class TorrentStreamService {
     final displayName = _extractDisplayName(formattedMagnet);
 
     try {
-      _log('新增ing torrent to TorrServer...');
+      _log('Adding torrent to TorrServer...');
       final added = await _controller.addTorrent(
         magnet: formattedMagnet,
         title: displayName.isNotEmpty ? displayName : null,
@@ -169,7 +169,7 @@ class TorrentStreamService {
         (f) => f.id == selectedFileId,
         orElse: () => files.first,
       );
-      _log('選取ed file #${selectedFile.id}: "${selectedFile.path}" (${_formatBytes(selectedFile.length)})');
+      _log('Selected file #${selectedFile.id}: "${selectedFile.path}" (${_formatBytes(selectedFile.length)})');
 
       final streamUri = _controller.streamUrl(hash, fileIndex: selectedFile.id);
       _log('HTTP Stream URL generated: $streamUri');
@@ -199,7 +199,7 @@ class TorrentStreamService {
           : magnetLink;
 
       final title = _extractDisplayName(formattedMagnet);
-      _log('新增ing torrent for file list inspection: $hash ($title)');
+      _log('Adding torrent for file list inspection: $hash ($title)');
       await _controller.addTorrent(
         magnet: formattedMagnet,
         title: title.isNotEmpty ? title : null,
@@ -339,9 +339,9 @@ class TorrentStreamService {
     if (_controller.isRunning) {
       try {
         await _controller.removeTorrent(hash);
-        _log('移除d torrent $hash from TorrServer');
+        _log('Removed torrent $hash from TorrServer');
       } catch (e) {
-        _log('錯誤 removing torrent $hash: $e');
+        _log('Error removing torrent $hash: $e');
       }
     }
   }
@@ -439,7 +439,7 @@ class TorrentStreamService {
         await _controller.stop();
         _log('TorrServer stopped.');
       } catch (e) {
-        _log('錯誤 stopping TorrServer: $e');
+        _log('Error stopping TorrServer: $e');
       }
     }
     _activeTorrents.clear();

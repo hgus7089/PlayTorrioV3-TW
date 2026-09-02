@@ -183,7 +183,7 @@ class _MangaCardState extends State<MangaCard> {
                 if (metaText.isNotEmpty || showYear) ...[
                   const SizedBox(height: 3),
                   Text(
-                    metaText.isNotEmpty ? metaText : 'Unknown 年份',
+                    metaText.isNotEmpty ? metaText : 'Unknown Year',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

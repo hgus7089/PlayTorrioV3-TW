@@ -32,7 +32,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('播放Torrio 已是最新版本！'),
+            content: Text('PlayTorrio is up to date!'),
             backgroundColor: Color(0xFF7C5CFF),
             behavior: SnackBarBehavior.floating,
           ),
@@ -42,7 +42,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('檢查更新時發生錯誤：$e'),
+            content: Text('Error checking updates: $e'),
             backgroundColor: Colors.redAccent,
             behavior: SnackBarBehavior.floating,
           ),
@@ -69,7 +69,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'App 更新 & 跟隨系統',
+          'App Updates & System',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -83,7 +83,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  '保持 播放Torrio 更新至最新功能、安全修補與效能改善。',
+                  'Keep PlayTorrio up to date with the latest features, security patches, and performance improvements.',
                   style: TextStyle(
                     fontSize: 13.5,
                     color: Colors.white.withValues(alpha: 0.5),
@@ -98,7 +98,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
                 builder: (context, snapshot) {
                   final version = snapshot.hasData ? snapshot.data!.version : '1.0.9';
                   final buildNumber = snapshot.hasData ? snapshot.data!.buildNumber : '10';
-                  final appName = snapshot.hasData ? snapshot.data!.appName : '播放Torrio';
+                  final appName = snapshot.hasData ? snapshot.data!.appName : 'PlayTorrio';
 
                   return Container(
                     padding: const EdgeInsets.all(18),
@@ -142,7 +142,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    '已安裝版本：v$version（Build $buildNumber）',
+                                    'Installed Version: v$version (Build $buildNumber)',
                                     style: const TextStyle(
                                       color: Colors.white54,
                                       fontSize: 12.5,
@@ -171,7 +171,7 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
                                   )
                                 : const Icon(Icons.refresh_rounded, size: 18),
                             label: Text(
-                              _isCheckingForUpdates ? '正在檢查更新…' : '檢查更新',
+                              _isCheckingForUpdates ? 'Checking for updates...' : 'Check for Updates',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 13.5,
@@ -210,14 +210,14 @@ class _UpdatesSettingsPageState extends State<UpdatesSettingsPage> {
 
               _buildInfoTile(
                 icon: Icons.verified_rounded,
-                title: '官方穩定版頻道',
-                subtitle: '透過 GitHub 直接發佈版本，並自動驗證檔案校驗碼。',
+                title: 'Official Stable Channel',
+                subtitle: 'Direct GitHub release distribution with automated checksum verification.',
               ),
               const SizedBox(height: 10),
               _buildInfoTile(
                 icon: Icons.security_rounded,
-                title: 'App 內無縫更新',
-                subtitle: '直接下載並套用執行檔更新，不需要手動下載檔案。',
+                title: 'Seamless In-App Patching',
+                subtitle: 'Downloads and applies executable updates directly without manual file downloads.',
               ),
             ],
           ),

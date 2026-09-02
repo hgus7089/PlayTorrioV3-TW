@@ -75,7 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '備份與還原',
+                              'Backup & Restore',
                               style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               ),
                             ),
                             Text(
-                              '跨裝置 JSON 設定',
+                              'Cross-device JSON configuration',
                               style: TextStyle(fontSize: 12, color: Colors.white54),
                             ),
                           ],
@@ -97,7 +97,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    '將設定（已安裝附加元件、IPTV 入口、Debrid Key 與主題）匯出為 JSON，或在其他裝置匯入。',
+                    'Export your configuration (installed addons, IPTV portals, Debrid keys & themes) to JSON or import on another device.',
                     style: TextStyle(fontSize: 13, color: Colors.white.withValues(alpha: 0.7), height: 1.4),
                   ),
                   const SizedBox(height: 20),
@@ -112,7 +112,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           ),
                           icon: const Icon(Icons.file_upload_outlined, size: 18),
-                          label: const Text('匯出 JSON', style: TextStyle(fontWeight: FontWeight.bold)),
+                          label: const Text('Export JSON', style: TextStyle(fontWeight: FontWeight.bold)),
                           onPressed: () async {
                             final jsonStr = await BackupRestoreService.exportSettingsJson();
                             await Clipboard.setData(ClipboardData(text: jsonStr));
@@ -121,7 +121,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             if (mounted) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('設定 JSON 已複製到剪貼簿！可儲存或貼到其他裝置。'),
+                                  content: Text('Configuration JSON copied to clipboard! Save or paste it on any device.'),
                                   backgroundColor: Color(0xFF10B981),
                                   duration: Duration(seconds: 4),
                                 ),
@@ -140,7 +140,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           ),
                           icon: const Icon(Icons.file_download_outlined, size: 18),
-                          label: const Text('匯入 JSON', style: TextStyle(fontWeight: FontWeight.bold)),
+                          label: const Text('Import JSON', style: TextStyle(fontWeight: FontWeight.bold)),
                           onPressed: () {
                             Navigator.pop(ctx);
                             _showImportJsonInputDialog();
@@ -182,7 +182,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       const Icon(Icons.file_download_outlined, color: Color(0xFF00E5FF), size: 22),
                       const SizedBox(width: 10),
                       const Text(
-                        '貼上設定 JSON',
+                        'Paste Configuration JSON',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                       const Spacer(),
@@ -198,7 +198,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     maxLines: 8,
                     style: const TextStyle(color: Colors.white, fontSize: 12, fontFamily: 'monospace'),
                     decoration: InputDecoration(
-                      hintText: '在此貼上備份 JSON…',
+                      hintText: 'Paste backup JSON here...',
                       hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.3)),
                       filled: true,
                       fillColor: const Color(0xFF0A0C12),
@@ -211,7 +211,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     children: [
                       TextButton.icon(
                         icon: const Icon(Icons.paste_rounded, size: 16, color: Color(0xFF00E5FF)),
-                        label: const Text('從剪貼簿貼上', style: TextStyle(color: Color(0xFF00E5FF))),
+                        label: const Text('Paste from Clipboard', style: TextStyle(color: Color(0xFF00E5FF))),
                         onPressed: () async {
                           final data = await Clipboard.getData(Clipboard.kTextPlain);
                           if (data?.text != null) {
@@ -227,7 +227,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                         ),
-                        child: const Text('立即還原', style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: const Text('Restore Now', style: TextStyle(fontWeight: FontWeight.bold)),
                         onPressed: () async {
                           final txt = textController.text.trim();
                           if (txt.isEmpty) return;
@@ -249,7 +249,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             if (!ctx.mounted) return;
                             ScaffoldMessenger.of(ctx).showSnackBar(
                               SnackBar(
-                                content: Text('匯入失敗：$e'),
+                                content: Text('Import Failed: $e'),
                                 backgroundColor: Colors.redAccent,
                               ),
                             );
@@ -279,7 +279,7 @@ class _SettingsPageState extends State<SettingsPage> {
     final traktAuth = await TraktService.instance.isAuthenticated();
     final simklAuth = await SimklService.instance.isAuthenticated();
     final pkg = await PackageInfo.fromPlatform().catchError((_) => PackageInfo(
-          appName: '播放Torrio',
+          appName: 'PlayTorrio',
           packageName: 'com.playtorrio',
           version: '1.0.9',
           buildNumber: '10',
@@ -320,7 +320,7 @@ class _SettingsPageState extends State<SettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          '設定',
+          'Settings',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
         ),
       ),
@@ -369,7 +369,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            '偏好設定與配置',
+                            'Preferences & Configuration',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w800,
@@ -378,7 +378,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                           const SizedBox(height: 3),
                           Text(
-                            '管理串流提供者、附加元件、介面效果與帳號同步。',
+                            'Manage streaming providers, addons, UI effects, and account sync.',
                             style: TextStyle(
                               fontSize: 12.5,
                               color: Colors.white.withValues(alpha: 0.5),
@@ -416,8 +416,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       return _SettingsCategoryTile(
                         icon: Icons.palette_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: '外觀與介面',
-                        subtitle: 'Liquid Glass 設定、色彩主題與首頁介面',
+                        title: 'Appearance & Interface',
+                        subtitle: 'Liquid Glass setup, color themes, and Home Page UI',
                         badgeText: glassEnabled ? '${currentPalette.name} · Glass ON' : currentPalette.name,
                         badgeColor: currentPalette.primaryColor,
                         onTap: () => _navigateTo(const AppearanceSettingsPage()),
@@ -436,10 +436,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   return _SettingsCategoryTile(
                     icon: Icons.auto_awesome_rounded,
                     iconColor: const Color(0xFF7C5CFF),
-                    title: '影片與升頻',
-                    subtitle: '動漫4K 神經 GLSL 著色器預設與 GPU 管線',
+                    title: 'Video & Upscaling',
+                    subtitle: 'Anime4K neural GLSL shader presets and GPU pipeline',
                     badgeText: anime4kPreset == Anime4KPreset.off
-                        ? '關閉'
+                        ? 'Off'
                         : anime4kPreset.label.split('(').first.trim(),
                     badgeColor: anime4kPreset == Anime4KPreset.off
                         ? Colors.white38
@@ -455,11 +455,11 @@ class _SettingsPageState extends State<SettingsPage> {
               _SettingsCategoryTile(
                 icon: Icons.cloud_download_rounded,
                 iconColor: const Color(0xFF00E5FF),
-                title: 'Debrid 與雲端串流',
+                title: 'Debrid & Cloud Streaming',
                 subtitle: 'Real-Debrid, TorBox, AllDebrid, Premiumize & Debrid-Link',
                 badgeText: _useDebrid
-                    ? (_debridProvider != 'None' ? _debridProvider : '啟用中')
-                    : '已停用',
+                    ? (_debridProvider != 'None' ? _debridProvider : 'Active')
+                    : 'Disabled',
                 badgeColor: _useDebrid ? const Color(0xFF00E5FF) : Colors.white38,
                 onTap: () => _navigateTo(const DebridSettingsPage()),
               ),
@@ -470,8 +470,8 @@ class _SettingsPageState extends State<SettingsPage> {
               _SettingsCategoryTile(
                 icon: Icons.extension_rounded,
                 iconColor: const Color(0xFF10B981),
-                title: '附加元件',
-                subtitle: 'Stremio 目錄與內容提供者',
+                title: 'Addons',
+                subtitle: 'Stremio catalogs and content providers',
                 badgeText: '$addonCount Installed',
                 badgeColor: const Color(0xFF10B981),
                 onTap: () => _navigateTo(const AddonsSettingsPage()),
@@ -486,11 +486,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   return _SettingsSwitchTile(
                     icon: Icons.hub_rounded,
                     iconColor: isP2p ? const Color(0xFFF59E0B) : Colors.white54,
-                    title: '內建 P2P Torrent 來源',
+                    title: 'Built-in P2P Torrent Source',
                     subtitle: isP2p
-                        ? '播放Torrio torrent swarms (Knaben, TorrentGalaxy) active'
-                        : 'P2P 已停用，僅使用直接 HTTP 串流（播放TorrioHTTP）',
-                    badgeText: isP2p ? 'P2P 已啟用' : '僅 HTTP',
+                        ? 'PlayTorrio torrent swarms (Knaben, TorrentGalaxy) active'
+                        : 'P2P disabled. Using only direct HTTP streaming (PlayTorrioHTTP)',
+                    badgeText: isP2p ? 'P2P Active' : 'HTTP Only',
                     badgeColor: isP2p ? const Color(0xFFF59E0B) : const Color(0xFF10B981),
                     value: isP2p,
                     onChanged: (val) async {
@@ -516,11 +516,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     return _SettingsSwitchTile(
                       icon: Icons.sports_esports_rounded,
                       iconColor: isDiscordEnabled ? const Color(0xFF5865F2) : Colors.white54,
-                      title: 'Discord 豐富狀態',
+                      title: 'Discord Rich Presence',
                       subtitle: isDiscordEnabled
-                          ? '將電影、影集、音樂與直播活動顯示到 Discord'
-                          : '已停用. Activity is hidden from Discord',
-                      badgeText: isDiscordEnabled ? '啟用中' : '已停用',
+                          ? 'Broadcasting movies, shows, music & live activity to Discord'
+                          : 'Disabled. Activity is hidden from Discord',
+                      badgeText: isDiscordEnabled ? 'Active' : 'Disabled',
                       badgeColor: isDiscordEnabled ? const Color(0xFF5865F2) : Colors.white38,
                       value: isDiscordEnabled,
                       onChanged: (val) async {
@@ -536,9 +536,9 @@ class _SettingsPageState extends State<SettingsPage> {
               _SettingsCategoryTile(
                 icon: Icons.movie_filter_rounded,
                 iconColor: const Color(0xFFED1C24),
-                title: 'Trakt.tv 同步',
-                subtitle: '跨裝置待看清單、歷史紀錄與播放同步',
-                badgeText: _traktConnected ? '已連線' : '離線',
+                title: 'Trakt.tv Sync',
+                subtitle: 'Cross-device watchlist, history & playback synchronization',
+                badgeText: _traktConnected ? 'Connected' : 'Offline',
                 badgeColor: _traktConnected ? const Color(0xFFED1C24) : Colors.white38,
                 onTap: () => _navigateTo(const TraktSettingsPage()),
               ),
@@ -549,9 +549,9 @@ class _SettingsPageState extends State<SettingsPage> {
               _SettingsCategoryTile(
                 icon: Icons.tv_rounded,
                 iconColor: const Color(0xFF00ADFF),
-                title: 'Simkl 同步',
-                subtitle: '跨裝置電影、電視與動畫同步',
-                badgeText: _simklConnected ? '已連線' : '離線',
+                title: 'Simkl Sync',
+                subtitle: 'Cross-device Movies, TV & Anime synchronization',
+                badgeText: _simklConnected ? 'Connected' : 'Offline',
                 badgeColor: _simklConnected ? const Color(0xFF00ADFF) : Colors.white38,
                 onTap: () => _navigateTo(const SimklSettingsPage()),
               ),
@@ -562,8 +562,8 @@ class _SettingsPageState extends State<SettingsPage> {
               _SettingsCategoryTile(
                 icon: Icons.backup_rounded,
                 iconColor: const Color(0xFF10B981),
-                title: '備份與還原',
-                subtitle: '匯出或匯入設定、附加元件與 IPTV 入口（JSON）',
+                title: 'Backup & Restore',
+                subtitle: 'Export or import your settings, addons & IPTV portals (JSON)',
                 badgeText: 'JSON',
                 badgeColor: const Color(0xFF10B981),
                 onTap: _showBackupRestoreDialog,
@@ -575,9 +575,9 @@ class _SettingsPageState extends State<SettingsPage> {
               _SettingsCategoryTile(
                 icon: Icons.system_update_rounded,
                 iconColor: const Color(0xFFF59E0B),
-                title: 'App 更新',
-                subtitle: '檢查 for latest software versions and patches',
-                badgeText: _appVersion != null ? 'v$_appVersion' : '檢查',
+                title: 'App Updates',
+                subtitle: 'Check for latest software versions and patches',
+                badgeText: _appVersion != null ? 'v$_appVersion' : 'Check',
                 badgeColor: const Color(0xFFF59E0B),
                 onTap: () => _navigateTo(const UpdatesSettingsPage()),
               ),
@@ -588,8 +588,8 @@ class _SettingsPageState extends State<SettingsPage> {
               _SettingsCategoryTile(
                 icon: Icons.info_outline_rounded,
                 iconColor: Colors.white70,
-                title: '關於 播放Torrio',
-                subtitle: '架構、影片引擎與製作者資訊',
+                title: 'About PlayTorrio',
+                subtitle: 'Architecture, video engine, and credits',
                 onTap: () => _navigateTo(const AboutSettingsPage()),
               ),
             ],
@@ -814,7 +814,7 @@ class _SettingsSwitchTile extends StatelessWidget {
                         icon: const Icon(Icons.info_outline_rounded, size: 16, color: Colors.white54),
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
-                        tooltip: 'P2P 注意事項',
+                        tooltip: 'P2P Advisory Details',
                         onPressed: onInfoTap,
                       ),
                     ],

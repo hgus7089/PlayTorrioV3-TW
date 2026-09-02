@@ -451,7 +451,7 @@ class _IptvHeroSlide extends StatelessWidget {
                             Icon(Icons.play_arrow_rounded, color: Colors.white, size: 22),
                             SizedBox(width: 8),
                             Text(
-                              '觀看 Live',
+                              'Watch Live',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,

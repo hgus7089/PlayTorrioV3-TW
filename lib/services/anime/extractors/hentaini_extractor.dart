@@ -44,7 +44,7 @@ class HentainiExtractor {
   void _setHeaders(HttpClientRequest req, {String? referer, bool json = false}) {
     req.headers.set('User-Agent', _ua);
     req.headers.set('Accept', json ? 'application/json' : '*/*');
-    req.headers.set('Accept-語言', 'en-US,en;q=0.9');
+    req.headers.set('Accept-Language', 'en-US,en;q=0.9');
     if (referer != null) req.headers.set('Referer', referer);
   }
 

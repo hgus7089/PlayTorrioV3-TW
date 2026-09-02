@@ -9,7 +9,7 @@ import '../../../models/stream/stream_model.dart';
 /// + src/source/hd-hub-helper.ts (resolveRedirectUrl)
 class FourKHDHubScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   final String _baseUrl = 'https://4khdhub.one';
 
@@ -104,7 +104,7 @@ class FourKHDHubScraper extends StreamScraper {
 
           dom.Element? downloadItem;
           for (final dl in episodeItem.querySelectorAll('.episode-download-item')) {
-            if (dl.text.contains('集-$episodeStr')) {
+            if (dl.text.contains('Episode-$episodeStr')) {
               downloadItem = dl;
               break;
             }
@@ -139,11 +139,11 @@ class FourKHDHubScraper extends StreamScraper {
     try {
       final baseUrl = await _getBaseUrl();
       final searchUrl = '$baseUrl/?s=${Uri.encodeComponent(name)}';
-      print('[4KHDHub] 搜尋ing $searchUrl');
+      print('[4KHDHub] Searching $searchUrl');
       final html = await _fetchText(searchUrl);
       final doc = html_parser.parse(html);
 
-      final formatFilter = isSeries ? '影集' : '電影';
+      final formatFilter = isSeries ? 'Series' : 'Movies';
 
       for (final card in doc.querySelectorAll('.movie-card')) {
         final formatEls = card.querySelectorAll('.movie-card-format');
@@ -225,10 +225,10 @@ class FourKHDHubScraper extends StreamScraper {
           // Perform quick stream health check to prevent 403 quota / HTML error pages from crashing player
           final isValid = await _validateStreamUrl(safeUrl);
           if (isValid) {
-            print('[4KHDHub SUCCESS] 新增ed valid stream source: $safeUrl');
+            print('[4KHDHub SUCCESS] Added valid stream source: $safeUrl');
             sources.add(StreamSource(
-              name: '播放TorrioHTTP',
-              addonName: '播放TorrioHTTP',
+              name: 'PlayTorrioHTTP',
+              addonName: 'PlayTorrioHTTP',
               title: displayParts.join('\n'),
               url: safeUrl,
             ));

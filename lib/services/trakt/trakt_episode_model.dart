@@ -38,10 +38,10 @@ class TraktEpisode {
   /// Display title like "E01 - Pilot" or "E01" if no meaningful title.
   String get displayTitle {
     final epNum = number.toString().padLeft(2, '0');
-    if (title.isNotEmpty && title != '集 $number') {
+    if (title.isNotEmpty && title != 'Episode $number') {
       return 'E$epNum - $title';
     }
-    return '第 $epNum 集';
+    return 'Episode $epNum';
   }
 
   /// Format air date for display (e.g., "Jan 15, 2023").
@@ -101,7 +101,7 @@ class TraktSeason {
   });
 
   /// Display label: "Season 1" or "Specials" for season 0.
-  String get displayLabel => number == 0 ? 'Specials' : '季 $number';
+  String get displayLabel => number == 0 ? 'Specials' : 'Season $number';
 
   factory TraktSeason.fromJson(Map<String, dynamic> json) {
     final episodesRaw = json['episodes'] as List<dynamic>? ?? [];

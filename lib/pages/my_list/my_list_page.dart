@@ -94,16 +94,16 @@ class _MyListPageState extends State<MyListPage> {
       builder: (ctx) => AlertDialog(
         backgroundColor: const Color(0xFF151822),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('移除 from 我的清單?',
+        title: const Text('Remove from My List?',
             style: TextStyle(fontWeight: FontWeight.w800, color: Colors.white)),
         content: Text(
-          '移除 "${item.title}" from your list?',
+          'Remove "${item.title}" from your list?',
           style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: Text('取消',
+            child: Text('Cancel',
                 style: TextStyle(color: Colors.white.withValues(alpha: 0.6))),
           ),
           ElevatedButton(
@@ -112,7 +112,7 @@ class _MyListPageState extends State<MyListPage> {
               backgroundColor: const Color(0xFFE50914),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             ),
-            child: const Text('移除', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: const Text('Remove', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           ),
         ],
       ),
@@ -255,7 +255,7 @@ class _MyListPageState extends State<MyListPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  '我的清單',
+                  'My List',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
@@ -347,7 +347,7 @@ class _MyListPageState extends State<MyListPage> {
                 // Filter Tabs
                 _buildFilterPill('all', 'All', totalCount),
                 const SizedBox(width: 8),
-                _buildFilterPill('movie', '電影', movieCount),
+                _buildFilterPill('movie', 'Movies', movieCount),
                 const SizedBox(width: 8),
                 _buildFilterPill('series', 'TV Shows', seriesCount),
                 const SizedBox(width: 16),
@@ -367,9 +367,9 @@ class _MyListPageState extends State<MyListPage> {
                       style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
                       icon: const Icon(Icons.sort_rounded, color: Color(0xFF7C5CFF), size: 16),
                       items: const [
-                        DropdownMenuItem(value: 'recent', child: Text('最近新增')),
+                        DropdownMenuItem(value: 'recent', child: Text('Recently Added')),
                         DropdownMenuItem(value: 'title', child: Text('Alphabetical')),
-                        DropdownMenuItem(value: 'year', child: Text('Release 年份')),
+                        DropdownMenuItem(value: 'year', child: Text('Release Year')),
                       ],
                       onChanged: (v) => setState(() => _sortBy = v!),
                     ),
@@ -393,7 +393,7 @@ class _MyListPageState extends State<MyListPage> {
               onChanged: (v) => setState(() => _searchQuery = v),
               style: const TextStyle(color: Colors.white, fontSize: 13),
               decoration: InputDecoration(
-                hintText: '搜尋 saved titles...',
+                hintText: 'Search saved titles...',
                 hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.35), fontSize: 13),
                 prefixIcon: Icon(Icons.search_rounded, color: Colors.white.withValues(alpha: 0.4), size: 18),
                 suffixIcon: _searchQuery.isNotEmpty
@@ -498,7 +498,7 @@ class _MyListPageState extends State<MyListPage> {
           const SizedBox(height: 8),
           Text(
             isListEmpty
-                ? '儲存 your favorite movies and TV shows to watch anytime'
+                ? 'Save your favorite movies and TV shows to watch anytime'
                 : 'Try adjusting your search query or filter settings',
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white.withValues(alpha: 0.45), fontSize: 13),
@@ -514,7 +514,7 @@ class _MyListPageState extends State<MyListPage> {
                 });
               },
               icon: const Icon(Icons.filter_alt_off_rounded, size: 16),
-              label: const Text('重設 Filters'),
+              label: const Text('Reset Filters'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF7C5CFF),
                 foregroundColor: Colors.white,

@@ -320,7 +320,7 @@ class _SearchPageState extends State<SearchPage> {
                           onChanged: _onSearchChanged,
                           onSubmitted: _performSearch,
                           decoration: InputDecoration(
-                            hintText: '搜尋 movies, series, or paste links',
+                            hintText: 'Search movies, series, or paste links',
                             hintStyle: TextStyle(
                               color: Colors.white.withValues(alpha: 0.35),
                               fontSize: 14,
@@ -467,7 +467,7 @@ class _SearchPageState extends State<SearchPage> {
                 GestureDetector(
                   onTap: _clearSearchHistory,
                   child: const Text(
-                    '清除 All',
+                    'Clear All',
                     style: TextStyle(
                       fontSize: 11.5,
                       fontWeight: FontWeight.w600,

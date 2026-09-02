@@ -21,7 +21,7 @@ class ContinueWatchingSlider extends StatefulWidget {
   const ContinueWatchingSlider({
     super.key,
     this.typeFilter,
-    this.title = '繼續觀看',
+    this.title = 'Continue Watching',
   });
 
   @override
@@ -99,13 +99,13 @@ class _ContinueWatchingSliderState extends State<ContinueWatchingSlider> {
           if (widget.typeFilter == 'main') {
             return i.type != 'anime' && !i.id.startsWith('anilist:') && !i.id.startsWith('arabic_anime:');
           } else if (widget.typeFilter == 'anime') {
-            return i.type == 'anime' || i.id.startsWith('anilist:') || i.id.startsWith('arabic_anime:') || i.addonName == 'Arabic動漫';
+            return i.type == 'anime' || i.id.startsWith('anilist:') || i.id.startsWith('arabic_anime:') || i.addonName == 'ArabicAnime';
           } else if (widget.typeFilter == 'arabic_anime') {
-            return i.id.startsWith('arabic_anime:') || i.addonName == 'Arabic動漫';
+            return i.id.startsWith('arabic_anime:') || i.addonName == 'ArabicAnime';
           } else if (widget.typeFilter == 'general_anime') {
             return (i.type == 'anime' || i.id.startsWith('anilist:')) &&
                 !i.id.startsWith('arabic_anime:') &&
-                i.addonName != 'Arabic動漫';
+                i.addonName != 'ArabicAnime';
           }
           return true;
         }).toList();
@@ -274,7 +274,7 @@ class _ContinueWatchingCardState extends State<_ContinueWatchingCard> {
 
   void _openDetails(BuildContext context) {
     final item = widget.item;
-    if (item.id.startsWith('arabic_anime:') || item.addonName == 'Arabic動漫') {
+    if (item.id.startsWith('arabic_anime:') || item.addonName == 'ArabicAnime') {
       final slug = item.id.replaceAll('arabic_anime:', '');
       final card = ArabicAnimeCard(
         slug: slug,
@@ -457,7 +457,7 @@ class _ContinueWatchingCardState extends State<_ContinueWatchingCard> {
                           children: [
                             // Details Button
                             Tooltip(
-                              message: 'View 詳細資訊',
+                              message: 'View Details',
                               child: GestureDetector(
                                 onTap: () => _openDetails(context),
                                 child: Container(
@@ -481,7 +481,7 @@ class _ContinueWatchingCardState extends State<_ContinueWatchingCard> {
                             const SizedBox(width: 6),
                             // Dismiss / Remove Button
                             Tooltip(
-                              message: '移除 from 繼續觀看',
+                              message: 'Remove from Continue Watching',
                               child: GestureDetector(
                                 onTap: widget.onRemove,
                                 child: Container(

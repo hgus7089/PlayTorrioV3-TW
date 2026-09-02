@@ -26,7 +26,7 @@ class MangaService {
         'User-Agent': _userAgent,
         'Accept':
             'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-語言': 'en-US,en;q=0.9',
+        'Accept-Language': 'en-US,en;q=0.9',
       };
 
   Future<String> _fetchHtml(String url) async {
@@ -54,15 +54,15 @@ class MangaService {
       final offset = (page - 1) * _pageSize;
       final adult = allowAdult ? 'Any' : 'False';
       var url =
-          '$_baseUrl/search/data?text=&display_mode=Full+Display&sort=熱門ity&order=Descending&official=Any&adult=$adult&offset=$offset';
+          '$_baseUrl/search/data?text=&display_mode=Full+Display&sort=Popularity&order=Descending&official=Any&adult=$adult&offset=$offset';
       if (tag != null) {
         url += '&included_tag=${Uri.encodeComponent(tag)}';
       }
-      debugPrint('[漫畫Service] Fetching page $page: $url');
+      debugPrint('[MangaService] Fetching page $page: $url');
       final html = await _fetchHtml(url);
       return _parseSearchResults(html);
     } catch (e) {
-      debugPrint('[漫畫Service] 錯誤 fetching manga: $e');
+      debugPrint('[MangaService] Error fetching manga: $e');
       return [];
     }
   }
@@ -74,11 +74,11 @@ class MangaService {
       final encodedQuery = Uri.encodeComponent(query);
       final url =
           '$_baseUrl/search/data?text=$encodedQuery&display_mode=Full+Display&sort=Best+Match&order=Descending&official=Any&adult=$adult&offset=$offset';
-      debugPrint('[漫畫Service] 搜尋ing page $page: $url');
+      debugPrint('[MangaService] Searching page $page: $url');
       final html = await _fetchHtml(url);
       return _parseSearchResults(html);
     } catch (e) {
-      debugPrint('[漫畫Service] 錯誤 searching manga: $e');
+      debugPrint('[MangaService] Error searching manga: $e');
       return [];
     }
   }
@@ -106,7 +106,7 @@ class MangaService {
     'Seinen',
     'Shounen',
     'Slice of Life',
-    '體育',
+    'Sports',
     'Supernatural',
     'Tragedy',
   ];
@@ -149,13 +149,13 @@ class MangaService {
       }
 
       // Strip unwanted badge prefixes like "Official" if attached
-      title = title.replaceAll(RegExp(r'^關閉icial\s+', caseSensitive: false), '').trim();
+      title = title.replaceAll(RegExp(r'^Official\s+', caseSensitive: false), '').trim();
 
       // Type from tooltip data-tip matching known types
       String type = '';
       for (final el in article.querySelectorAll('[data-tip]')) {
         final tip = el.attributes['data-tip'] ?? '';
-        if (['漫畫', 'Manhwa', 'Manhua', 'OEL'].contains(tip)) {
+        if (['Manga', 'Manhwa', 'Manhua', 'OEL'].contains(tip)) {
           type = tip;
           break;
         }
@@ -229,7 +229,7 @@ class MangaService {
     final doc = html_parser.parse(html);
 
     String title = doc.querySelector('h1')?.text.trim() ?? '';
-    title = title.replaceAll(RegExp(r'^關閉icial\s+', caseSensitive: false), '').trim();
+    title = title.replaceAll(RegExp(r'^Official\s+', caseSensitive: false), '').trim();
     if (title.isEmpty) {
       final ogTitle = doc.querySelector('meta[property="og:title"]')?.attributes['content'] ?? '';
       title = ogTitle.replaceAll(RegExp(r'\s*-\s*Weeb\s*Central.*$', caseSensitive: false), '').trim();
@@ -273,7 +273,7 @@ class MangaService {
 
     // Robust year resolution
     String year = '';
-    final possibleYearKeys = ['Released', 'Release 年份', '年份', 'Published', 'Date', 'Release'];
+    final possibleYearKeys = ['Released', 'Release Year', 'Year', 'Published', 'Date', 'Release'];
     for (final key in possibleYearKeys) {
       if (details.containsKey(key) && details[key]!.isNotEmpty) {
         final rawVal = details[key]!.first;
@@ -301,7 +301,7 @@ class MangaService {
       for (final p in doc.querySelectorAll('p')) {
         final text = p.text.trim();
         if (text.length > 30 &&
-            !text.contains('複製right') &&
+            !text.contains('Copyright') &&
             !text.contains('verified') &&
             !text.contains('Last Read') &&
             !text.contains('Chapter') &&
@@ -320,7 +320,7 @@ class MangaService {
       }
     }
     if (tags.isEmpty) {
-      tags = details['Tag'] ?? details['Tags'] ?? details['類型'] ?? [];
+      tags = details['Tag'] ?? details['Tags'] ?? details['Genres'] ?? [];
     }
 
     return Manga(
@@ -370,10 +370,10 @@ class MangaService {
         }
       }
 
-      debugPrint('[漫畫Service] Found ${chapters.length} chapters');
+      debugPrint('[MangaService] Found ${chapters.length} chapters');
       return chapters;
     } catch (e) {
-      debugPrint('[漫畫Service] 錯誤 fetching chapters: $e');
+      debugPrint('[MangaService] Error fetching chapters: $e');
       return [];
     }
   }
@@ -397,10 +397,10 @@ class MangaService {
         }
       }
 
-      debugPrint('[漫畫Service] Found ${images.length} chapter images');
+      debugPrint('[MangaService] Found ${images.length} chapter images');
       return images;
     } catch (e) {
-      debugPrint('[漫畫Service] 錯誤 fetching chapter images: $e');
+      debugPrint('[MangaService] Error fetching chapter images: $e');
       return [];
     }
   }
@@ -493,9 +493,9 @@ class MangaService {
     'Action', 'Adventure', 'Comedy', 'Cooking', 'Doujinshi', 'Drama',
     'Ecchi', 'Fantasy', 'Gender Bender', 'Harem', 'Historical',
     'Horror', 'Isekai', 'Josei', 'Lolicon', 'Martial Arts', 'Mature',
-    'Mecha', 'Medical', '音樂', 'Mystery', '開啟e Shot', 'Psychological',
+    'Mecha', 'Medical', 'Music', 'Mystery', 'One Shot', 'Psychological',
     'Romance', 'School Life', 'Sci-Fi', 'Seinen', 'Shotacon', 'Shoujo',
     'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Smut',
-    '體育', 'Supernatural', 'Tragedy', 'Yaoi', 'Yuri',
+    'Sports', 'Supernatural', 'Tragedy', 'Yaoi', 'Yuri',
   ];
 }

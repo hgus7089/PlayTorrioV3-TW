@@ -5,7 +5,7 @@ import '../home/home_page_settings.dart';
 enum AudiobookPlayerPreset {
   modernGlass('Modern Glass Island', 'Sleek floating glassmorphism player with waveform scrubber & ambient glow'),
   vinylStudio('Vinyl Turntable Studio', 'Rotating vinyl disc, tonearm animation & analog vintage VU styling'),
-  minimalCapsule('Minimalist Focus Capsule', '精簡 distraction-free floating capsule with essential controls'),
+  minimalCapsule('Minimalist Focus Capsule', 'Compact distraction-free floating capsule with essential controls'),
   immersiveCanvas('Immersive Canvas Studio', 'Full-screen cinematic ambient blur canvas with oversized artwork'),
   customStudio('Custom Drag & Drop Studio', 'Your fully customized, arranged and styled audio player');
 
@@ -15,7 +15,7 @@ enum AudiobookPlayerPreset {
 }
 
 enum AudiobookSeekbarStyle {
-  audioWaveformCanvas('Dynamic 音訊 Waveform Canvas', 'Procedural animated waveform bars with live equalizer scrubbing'),
+  audioWaveformCanvas('Dynamic Audio Waveform Canvas', 'Procedural animated waveform bars with live equalizer scrubbing'),
   gradientProgress('Neon Gradient Progress Bar', 'Multi-color vibrant linear gradient scrubber with glowing tip'),
   standardSlider('Precision Glass Slider', 'Tactile interactive glass track with timecode readouts'),
   circularRing('Radial Circular Ring Scrubber', 'Radial circular dial scrubber for compact modern interfaces');
@@ -37,7 +37,7 @@ enum AudiobookPlayButtonStyle {
 
 enum AudiobookHoverEffect {
   scaleBounce('Scale & Spring Bounce'),
-  glowAura('主題 Accent Glow Aura'),
+  glowAura('Theme Accent Glow Aura'),
   glassRipple('Liquid Glass Ripple'),
   tilt3D('3D Subtle Tilt Perspective');
 
@@ -56,7 +56,7 @@ enum AudiobookArtworkStyle {
 }
 
 enum AudiobookCardDensity {
-  compact('精簡 (Dense Grid)', 0.88),
+  compact('Compact (Dense Grid)', 0.88),
   standard('Standard (Balanced)', 1.0),
   spacious('Spacious (Large Covers)', 1.15);
 

@@ -340,7 +340,7 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
                       Icon(Icons.tune_rounded, color: palette.primaryColor, size: 20),
                       const SizedBox(width: 10),
                       const Text(
-                        'Reader 設定 & Layout',
+                        'Reader Settings & Layout',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -391,7 +391,7 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
 
                   const SizedBox(height: 14),
 
-                  const Text('頁面閱讀寬度限制', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
+                  const Text('Page Reading Width Constraint', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
                   const SizedBox(height: 8),
                   ValueListenableBuilder<MangaReaderMaxWidth>(
                     valueListenable: MangaSettings.readerMaxWidth,
@@ -425,7 +425,7 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
 
                   const SizedBox(height: 14),
 
-                  const Text('閱讀器背景氛圍', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
+                  const Text('Reader Background Atmosphere', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
                   const SizedBox(height: 8),
                   ValueListenableBuilder<MangaReaderBackground>(
                     valueListenable: MangaSettings.readerBackground,
@@ -486,7 +486,7 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
                     builder: (context, showNext, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Show 下一章 Deck Card', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('Show Next Chapter Deck Card', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: showNext,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => MangaSettings.setEnableNextChapterDeck(val),
@@ -738,7 +738,7 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
               onPressed: _nextChapter,
               icon: const Icon(Icons.skip_next_rounded, color: Colors.white, size: 20),
               label: const Text(
-                'Read 下一章',
+                'Read Next Chapter',
                 style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
@@ -751,7 +751,7 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
             OutlinedButton.icon(
               onPressed: () => Navigator.of(context).pop(),
               icon: const Icon(Icons.check_circle_outline_rounded, color: Colors.greenAccent),
-              label: const Text('返回 to 漫畫 詳細資訊', style: TextStyle(color: Colors.white)),
+              label: const Text('Back to Manga Details', style: TextStyle(color: Colors.white)),
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.white24),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
@@ -1044,7 +1044,7 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
                   IconButton(
                     icon: const Icon(Icons.skip_previous_rounded, color: Colors.white),
                     onPressed: _currentChapterIndex < widget.chapters.length - 1 ? _prevChapter : null,
-                    tooltip: '上一章',
+                    tooltip: 'Previous Chapter',
                     splashRadius: 20,
                   ),
 
@@ -1142,7 +1142,7 @@ class _MangaReaderPageState extends State<MangaReaderPage> {
                       IconButton(
                         icon: const Icon(Icons.skip_next_rounded, color: Colors.white),
                         onPressed: _currentChapterIndex > 0 ? _nextChapter : null,
-                        tooltip: '下一章',
+                        tooltip: 'Next Chapter',
                         splashRadius: 20,
                       ),
                     ],

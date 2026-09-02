@@ -33,7 +33,7 @@ class SubtitleExtractor {
           .timeout(const Duration(seconds: 15));
 
       if (response.statusCode != 200) {
-        print('[SubtitleExtractor] 下載 failed for $url (Status: ${response.statusCode})');
+        print('[SubtitleExtractor] Download failed for $url (Status: ${response.statusCode})');
         return null;
       }
 

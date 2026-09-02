@@ -120,7 +120,7 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
         _bufferedNotifier.value = buf;
       }),
       _player.stream.error.listen((error) {
-        debugPrint('[IPTV 播放器 錯誤] $error');
+        debugPrint('[IPTV Player Error] $error');
       }),
     ]);
 
@@ -207,7 +207,7 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
 
       _startHideControlsTimer();
     } catch (e) {
-      debugPrint('[IPTV 播放器 錯誤] $e');
+      debugPrint('[IPTV Player Error] $e');
       if (!mounted) return;
       setState(() {
         _isLoading = false;
@@ -270,7 +270,7 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
           isPlaying &&
           DateTime.now().difference(_lastPositionChange).inSeconds > 10 &&
           !_isLoading) {
-        debugPrint('[IPTV 觀看dog] Stream frozen > 10s — reconnecting…');
+        debugPrint('[IPTV Watchdog] Stream frozen > 10s — reconnecting…');
         _initPlayer();
       }
     });
@@ -705,7 +705,7 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
                                         Text(
                                           isCategoryList
                                               ? 'Channel ${_activeHitIndex + 1}/${widget.hits.length} · ${currentHit.portal.name}'
-                                              : '來源 ${_activeHitIndex + 1}/${widget.hits.length} · ${currentHit.portal.name}',
+                                              : 'Source ${_activeHitIndex + 1}/${widget.hits.length} · ${currentHit.portal.name}',
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
@@ -741,7 +741,7 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
                                           color: Colors.white,
                                           size: 24,
                                         ),
-                                        tooltip: isFullscreen ? '退出全螢幕 (F11)' : '全螢幕 (F11)',
+                                        tooltip: isFullscreen ? 'Exit Fullscreen (F11)' : 'Fullscreen (F11)',
                                         onPressed: () => WindowService.instance.toggleFullscreen(),
                                       );
                                     },
@@ -802,13 +802,13 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
                                       // Replay -10s
                                       IconButton(
                                         icon: const Icon(Icons.replay_10_rounded, color: Colors.white, size: 24),
-                                        tooltip: '倒退 10 秒',
+                                        tooltip: 'Seek -10s',
                                         onPressed: () => _seekRelative(-10),
                                       ),
                                       // Forward +10s
                                       IconButton(
                                         icon: const Icon(Icons.forward_10_rounded, color: Colors.white, size: 24),
-                                        tooltip: '快轉 10 秒',
+                                        tooltip: 'Seek +10s',
                                         onPressed: () => _seekRelative(10),
                                       ),
                                       const SizedBox(width: 8),
@@ -843,7 +843,7 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
                                             color: _isMuted ? Colors.redAccent : Colors.white,
                                             size: 22,
                                           ),
-                                          tooltip: _isMuted ? '取消靜音 (M)' : '靜音 (M)',
+                                          tooltip: _isMuted ? 'Unmute (M)' : 'Mute (M)',
                                           onPressed: _toggleMute,
                                         ),
                                         SizedBox(
@@ -956,7 +956,7 @@ class _IptvPlayerPageState extends State<IptvPlayerPage>
                                               color: Colors.white,
                                               size: 24,
                                             ),
-                                            tooltip: isFullscreen ? '退出全螢幕 (F11)' : '全螢幕 (F11)',
+                                            tooltip: isFullscreen ? 'Exit Fullscreen (F11)' : 'Fullscreen (F11)',
                                             onPressed: () => WindowService.instance.toggleFullscreen(),
                                           );
                                         },

@@ -7,7 +7,7 @@ import 'tmdb_helper.dart';
 /// VidSrc / VSEmbed VOD Extractor ported 1:1 from Flyx (vidsrc.ts).
 class VidSrcScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _apiBase = 'https://data.vidsrcme.ru';
   static const _embedBase = 'https://vidsrc.me';
@@ -62,10 +62,10 @@ class VidSrcScraper extends StreamScraper {
               final isHls = url.contains('.m3u8');
 
               sources.add(StreamSource(
-                name: '播放TorrioHTTP',
-                addonName: '播放TorrioHTTP',
+                name: 'PlayTorrioHTTP',
+                addonName: 'PlayTorrioHTTP',
                 title: rawStreamUrls.length > 1 ? 'VidSrc ${i + 1}' : 'VidSrc',
-                description: isHls ? 'VidSrc Direct HLS Stream' : 'VidSrc Direct 串流來源',
+                description: isHls ? 'VidSrc Direct HLS Stream' : 'VidSrc Direct Stream Source',
                 url: url,
                 headers: {
                   'User-Agent': _ua,
@@ -95,8 +95,8 @@ class VidSrcScraper extends StreamScraper {
             final url = m.group(0);
             if (url != null && url.startsWith('http')) {
               sources.add(StreamSource(
-                name: '播放TorrioHTTP',
-                addonName: '播放TorrioHTTP',
+                name: 'PlayTorrioHTTP',
+                addonName: 'PlayTorrioHTTP',
                 title: 'VidSrc Direct',
                 description: 'VidSrc Direct HLS Stream',
                 url: url,

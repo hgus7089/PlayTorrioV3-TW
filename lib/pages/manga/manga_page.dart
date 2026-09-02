@@ -232,7 +232,7 @@ class _MangaPageState extends State<MangaPage> {
                       Icon(Icons.tune_rounded, color: palette.primaryColor, size: 20),
                       const SizedBox(width: 10),
                       const Text(
-                        '自訂 漫畫 Section',
+                        'Customize Manga Section',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -294,7 +294,7 @@ class _MangaPageState extends State<MangaPage> {
                     builder: (context, enabled, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Moving Ambient 背景 Glow', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('Moving Ambient Background Glow', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: enabled,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => MangaSettings.setEnableAmbientLights(val),
@@ -343,7 +343,7 @@ class _MangaPageState extends State<MangaPage> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       icon: const Icon(Icons.settings_rounded, size: 18),
-                      label: const Text('More 外觀 & Reader 設定', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                      label: const Text('More Appearance & Reader Settings', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                       onPressed: () {
                         Navigator.pop(ctx);
                         Navigator.push(
@@ -387,7 +387,7 @@ class _MangaPageState extends State<MangaPage> {
             backgroundWidget: _buildScrollableContent(),
             child: Stack(
               children: [
-                // Top App Bar / 搜尋 / Customize
+                // Top App Bar / Search / Customize
                 _buildAppBar(),
                 
                 // Custom Scroll Track (Desktop only)
@@ -398,7 +398,7 @@ class _MangaPageState extends State<MangaPage> {
                     child: CustomScrollTrack(controller: _scrollController),
                   ),
 
-                // ── 底部 Liquid Dock Navbar ──
+                // ── Bottom Liquid Dock Navbar ──
                 Positioned(
                   bottom: 12.0 + MediaQuery.paddingOf(context).bottom,
                   left: 0,
@@ -464,7 +464,7 @@ class _MangaPageState extends State<MangaPage> {
           ),
         ],
 
-        // ── Discovery / 搜尋 Results ──
+        // ── Discovery / Search Results ──
         SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -473,8 +473,8 @@ class _MangaPageState extends State<MangaPage> {
             ),
             child: Text(
               _searchQuery.isNotEmpty
-                  ? '搜尋 Results'
-                  : (_selectedGenre == 'All' ? 'Discover 漫畫' : '$_selectedGenre 漫畫'),
+                  ? 'Search Results'
+                  : (_selectedGenre == 'All' ? 'Discover Manga' : '$_selectedGenre Manga'),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: isMobile ? 22 : 28,
@@ -485,7 +485,7 @@ class _MangaPageState extends State<MangaPage> {
           ),
         ),
 
-        // ── Genre Filter Bar (橫向 scrollable pills) ──
+        // ── Genre Filter Bar (Horizontal scrollable pills) ──
         if (_searchQuery.isEmpty)
           SliverToBoxAdapter(
             child: Padding(
@@ -612,7 +612,7 @@ class _MangaPageState extends State<MangaPage> {
       right: isMobile ? 12 : 24,
       child: Row(
         children: [
-          // 返回 Button
+          // Back Button
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
             child: BackdropFilter(
@@ -636,7 +636,7 @@ class _MangaPageState extends State<MangaPage> {
           ),
           const SizedBox(width: 12),
           
-          // 搜尋 Bar
+          // Search Bar
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(24),
@@ -657,7 +657,7 @@ class _MangaPageState extends State<MangaPage> {
                     onSubmitted: _onSearchChanged,
                     style: const TextStyle(color: Colors.white, fontSize: 16),
                     decoration: InputDecoration(
-                      hintText: '搜尋 漫畫, Manhwa, Manhua...',
+                      hintText: 'Search Manga, Manhwa, Manhua...',
                       hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.4)),
                       prefixIcon: Icon(Icons.search_rounded, color: palette.primaryColor),
                       border: InputBorder.none,
@@ -696,7 +696,7 @@ class _MangaPageState extends State<MangaPage> {
                 ),
                 child: IconButton(
                   icon: const Icon(Icons.tune_rounded, color: Colors.white70),
-                  tooltip: '自訂 漫畫 Section',
+                  tooltip: 'Customize Manga Section',
                   onPressed: () => _showMangaCustomizer(context),
                   splashRadius: 20,
                 ),
@@ -853,7 +853,7 @@ class _ContinueReadingSliderState extends State<_ContinueReadingSlider> {
     final chaptersList = entry['chapters'] as List;
     final chapterTitle = chaptersList.isNotEmpty && chapterIndex < chaptersList.length
         ? chaptersList[chapterIndex]['name'] ?? 'Chapter ${chaptersList[chapterIndex]['number']}'
-        : '繼續播放';
+        : 'Resume';
 
     return GestureDetector(
       onTap: () => widget.onResume(entry),

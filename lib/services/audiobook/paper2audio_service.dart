@@ -18,7 +18,7 @@ class Paper2AudioVoice {
 
 const List<Paper2AudioVoice> kPaper2AudioVoices = [
   // US Female
-  Paper2AudioVoice('af_heart',    'Narrator (Heart)',    'US Female', 'Bright, engaging, natural rhythm (推薦)'),
+  Paper2AudioVoice('af_heart',    'Narrator (Heart)',    'US Female', 'Bright, engaging, natural rhythm (Recommended)'),
   Paper2AudioVoice('af_bella',    'Librarian (Bella)',   'US Female', 'Calm, warm, soothing storytelling'),
   Paper2AudioVoice('af_sarah',    'Reporter (Sarah)',    'US Female', 'Crisp, articulate, dynamic pacing'),
   Paper2AudioVoice('af_alloy',    'Professor (Alloy)',   'US Female', 'Polished, controlled, educational'),
@@ -74,7 +74,7 @@ class GeneratedAudiobookJob {
         'downloadUrl': downloadUrl,
         'error': error,
         'coverPath': coverPath,
-        'local音訊Path': localAudioPath,
+        'localAudioPath': localAudioPath,
         'durationSec': durationSec,
       };
 
@@ -89,7 +89,7 @@ class GeneratedAudiobookJob {
         downloadUrl: j['downloadUrl'] as String?,
         error: j['error'] as String?,
         coverPath: j['coverPath'] as String?,
-        localAudioPath: j['local音訊Path'] as String?,
+        localAudioPath: j['localAudioPath'] as String?,
         durationSec: j['durationSec'] as int?,
       );
 
@@ -266,7 +266,7 @@ class Paper2AudioService {
       if (pv != null) {
         job.progress = pv > 1 ? pv / 100.0 : pv;
       }
-      final url = entry['full音訊FileUrl'] as String?;
+      final url = entry['fullAudioFileUrl'] as String?;
       if (url != null && url.isNotEmpty) {
         job.downloadUrl = url;
       }
@@ -298,10 +298,10 @@ class Paper2AudioService {
       Directory? targetDir;
       try {
         final appDocDir = await getApplicationDocumentsDirectory();
-        targetDir = Directory(p.join(appDocDir.path, '播放Torrio', 'Generated有聲書'));
+        targetDir = Directory(p.join(appDocDir.path, 'PlayTorrio', 'GeneratedAudiobooks'));
       } catch (_) {
         final temp = await getTemporaryDirectory();
-        targetDir = Directory(p.join(temp.path, '播放Torrio', 'Generated有聲書'));
+        targetDir = Directory(p.join(temp.path, 'PlayTorrio', 'GeneratedAudiobooks'));
       }
       if (!await targetDir.exists()) {
         await targetDir.create(recursive: true);
@@ -341,7 +341,7 @@ class Paper2AudioService {
       await _persist();
       return targetFile;
     } catch (e) {
-      debugPrint('[Paper2音訊Service] download error: $e');
+      debugPrint('[Paper2AudioService] download error: $e');
       return null;
     }
   }

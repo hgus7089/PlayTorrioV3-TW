@@ -7,7 +7,7 @@ import '../subtitle_extractor.dart';
 
 class OpenSubtitlesProvider extends SubtitleProvider {
   @override
-  String get name => '開啟字幕';
+  String get name => 'OpenSubtitles';
 
   static const List<String> _endpoints = [
     'https://opensubtitles.stremio.homes',
@@ -135,7 +135,7 @@ class OpenSubtitlesProvider extends SubtitleProvider {
               SubtitleVariant(
                 providerName: name,
                 language: language,
-                title: '開啟字幕 #$idx',
+                title: 'OpenSubtitles #$idx',
                 downloadUrl: subUrl,
                 format: format,
                 extraData: {

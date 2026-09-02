@@ -61,12 +61,12 @@ class DownloadedEpubDetector {
               coverPath: coverPath,
             ));
           } catch (e) {
-            debugPrint('[已下載EpubDetector] 錯誤 processing ${entity.path}: $e');
+            debugPrint('[DownloadedEpubDetector] Error processing ${entity.path}: $e');
           }
         }
       }
     } catch (e) {
-      debugPrint('[已下載EpubDetector] scan error: $e');
+      debugPrint('[DownloadedEpubDetector] scan error: $e');
     }
 
     return results;

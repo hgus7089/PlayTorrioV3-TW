@@ -35,7 +35,7 @@ class QobuzTrack {
       album: json['album']?.toString() ?? 'Single',
       durationSeconds: int.tryParse(json['duration']?.toString() ?? '') ?? 0,
       isrc: json['isrc']?.toString(),
-      audioQuality: json['audio畫質']?.toString() ?? json['quality']?.toString(),
+      audioQuality: json['audioQuality']?.toString() ?? json['quality']?.toString(),
       artworkUrl: json['artworkURL']?.toString() ?? json['artworkUrl']?.toString(),
       format: json['format']?.toString() ?? 'flac',
     );
@@ -89,7 +89,7 @@ class QobuzMusicService {
   /// Performs POST https://qobuz-tidal-eclipse.cyrusna29.workers.dev/generate
   Future<bool> refreshEndpoint() async {
     try {
-      debugPrint('[Qobuz音樂Service] Generating fresh FLAC Eclipse session on app launch...');
+      debugPrint('[QobuzMusicService] Generating fresh FLAC Eclipse session on app launch...');
       final uri = Uri.parse(generateUrl);
       final headers = {
         'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ class QobuzMusicService {
           _quality = quality;
           _activeEndpoint = manifestUrl.replaceAll('/manifest.json', '');
 
-          debugPrint('[Qobuz音樂Service] Successfully generated fresh FLAC endpoint: $_activeEndpoint (Token: $_token, 畫質: $_quality)');
+          debugPrint('[QobuzMusicService] Successfully generated fresh FLAC endpoint: $_activeEndpoint (Token: $_token, Quality: $_quality)');
 
           // Cache in local preferences
           try {
@@ -139,10 +139,10 @@ class QobuzMusicService {
           return true;
         }
       } else {
-        debugPrint('[Qobuz音樂Service] Generate request returned status code ${response.statusCode}');
+        debugPrint('[QobuzMusicService] Generate request returned status code ${response.statusCode}');
       }
     } catch (e) {
-      debugPrint('[Qobuz音樂Service] Failed to generate fresh FLAC endpoint: $e');
+      debugPrint('[QobuzMusicService] Failed to generate fresh FLAC endpoint: $e');
     }
     return false;
   }
@@ -241,7 +241,7 @@ class QobuzMusicService {
         final cleanTitle = _cleanTitle(title);
         if (cleanTitle != title) {
           final fallbackQuery = '$cleanTitle $artist'.trim();
-          debugPrint('重試ing Qobuz search with cleaned query "$fallbackQuery"...');
+          debugPrint('Retrying Qobuz search with cleaned query "$fallbackQuery"...');
           results = await searchTracks(fallbackQuery, endpoint: endpoint);
         }
       }
@@ -285,7 +285,7 @@ class QobuzMusicService {
         .replaceAll(RegExp(r'\(ft\.[^)]+\)', caseSensitive: false), '')
         .replaceAll(RegExp(r'\[feat\.[^\]]+\]', caseSensitive: false), '')
         .replaceAll(RegExp(r'\[ft\.[^\]]+\]', caseSensitive: false), '')
-        .replaceAll(RegExp(r'\(Radio 編輯\)', caseSensitive: false), '')
+        .replaceAll(RegExp(r'\(Radio Edit\)', caseSensitive: false), '')
         .replaceAll(RegExp(r'\(Remastered[^)]*\)', caseSensitive: false), '')
         .replaceAll(RegExp(r'\[Remastered[^\]]*\]', caseSensitive: false), '')
         .replaceAll(RegExp(r'\s{2,}'), ' ')

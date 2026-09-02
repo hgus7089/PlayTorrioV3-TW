@@ -90,7 +90,7 @@ class DownloadService {
       tasksNotifier.value = tasks;
       _updateWakelockState();
     } catch (e) {
-      debugPrint('[下載Service] Failed to load persisted tasks: $e');
+      debugPrint('[DownloadService] Failed to load persisted tasks: $e');
     }
   }
 
@@ -100,7 +100,7 @@ class DownloadService {
       final jsonList = tasksNotifier.value.map((t) => t.toJson()).toList();
       await file.writeAsString(jsonEncode(jsonList));
     } catch (e) {
-      debugPrint('[下載Service] Failed to persist tasks: $e');
+      debugPrint('[DownloadService] Failed to persist tasks: $e');
     }
   }
 

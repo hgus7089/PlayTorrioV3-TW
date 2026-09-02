@@ -115,7 +115,7 @@ class SimklContinueWatchingService {
         shows: _sortedNewestFirst([...paused, ...upNext]),
       );
     } catch (e) {
-      debugPrint('SimklContinue觀看ingService: fetch failed: $e');
+      debugPrint('SimklContinueWatchingService: fetch failed: $e');
       return null;
     }
   }

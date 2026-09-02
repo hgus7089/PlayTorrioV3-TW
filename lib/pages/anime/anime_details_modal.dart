@@ -321,7 +321,7 @@ class _AnimeDetailsModalState extends State<AnimeDetailsModal> {
                                             borderRadius: BorderRadius.circular(8),
                                           ),
                                           child: Text(
-                                            '${_anime.season年份}',
+                                            '${_anime.seasonYear}',
                                             style: const TextStyle(
                                               color: Colors.white70,
                                               fontSize: 10,
@@ -398,8 +398,8 @@ class _AnimeDetailsModalState extends State<AnimeDetailsModal> {
                                           const SizedBox(width: 6),
                                           Text(
                                             watchItem != null && watchItem.lastWatchedEpisode > 0
-                                                ? '繼續播放 Ep ${watchItem.last觀看ed集}'
-                                                : '播放 Ep 1',
+                                                ? 'Resume Ep ${watchItem.lastWatchedEpisode}'
+                                                : 'Play Ep 1',
                                             style: const TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w800,
@@ -426,11 +426,11 @@ class _AnimeDetailsModalState extends State<AnimeDetailsModal> {
                                     itemBuilder: (context) => [
                                       const PopupMenuItem(
                                         value: AnimeWatchStatus.watching,
-                                        child: Text('觀看ing', style: TextStyle(color: Colors.white)),
+                                        child: Text('Watching', style: TextStyle(color: Colors.white)),
                                       ),
                                       const PopupMenuItem(
                                         value: AnimeWatchStatus.planToWatch,
-                                        child: Text('Plan to 觀看', style: TextStyle(color: Colors.white)),
+                                        child: Text('Plan to Watch', style: TextStyle(color: Colors.white)),
                                       ),
                                       const PopupMenuItem(
                                         value: AnimeWatchStatus.completed,
@@ -599,7 +599,7 @@ class _AnimeDetailsModalState extends State<AnimeDetailsModal> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       const Text(
-                                        '集數',
+                                        'Episodes',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,
@@ -722,7 +722,7 @@ class _AnimeDetailsModalState extends State<AnimeDetailsModal> {
                               if (_anime.characters.isNotEmpty) ...[
                                 const SizedBox(height: 32),
                                 const Text(
-                                  'Characters & Voice 投放',
+                                  'Characters & Voice Cast',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,

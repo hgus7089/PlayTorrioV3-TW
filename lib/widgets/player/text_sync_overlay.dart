@@ -286,7 +286,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('錯誤 saving sync: $e')),
+          SnackBar(content: Text('Error saving sync: $e')),
         );
       }
     } finally {
@@ -386,7 +386,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                               ),
                             ),
                             Text(
-                              _sectionMode ? '選取 Range & Sync' : 'Speech Dialogue Sync',
+                              _sectionMode ? 'Select Range & Sync' : 'Speech Dialogue Sync',
                               style: TextStyle(
                                 color: PlayerTheme.ink,
                                 fontSize: isLandscapeMobile ? 14 : 16,
@@ -402,14 +402,14 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                         size: 30,
                         iconSize: 15,
                         icon: const Icon(Icons.close_rounded),
-                        tooltip: '關閉',
+                        tooltip: 'Close',
                         onPressed: widget.onClose,
                       ),
                     ],
                   ),
                 ),
 
-                // Hint Banner (精簡 on mobile)
+                // Hint Banner (Compact on mobile)
                 if (!isLandscapeMobile)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
@@ -425,7 +425,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
 
                 SizedBox(height: isLandscapeMobile ? 4 : 8),
 
-                // 搜尋 Bar with 搜尋 Navigation Controls
+                // Search Bar with Search Navigation Controls
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 14),
                   child: Container(
@@ -456,7 +456,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                             style: TextStyle(color: PlayerTheme.ink, fontSize: isLandscapeMobile ? 12 : 12.5),
                             onSubmitted: (_) => _goToNextMatch(),
                             decoration: const InputDecoration(
-                              hintText: '搜尋 dialogue...',
+                              hintText: 'Search dialogue...',
                               hintStyle: TextStyle(color: PlayerTheme.inkSubtle, fontSize: 12),
                               border: InputBorder.none,
                               isDense: true,
@@ -785,7 +785,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                   ),
                 ),
 
-                // 精簡 Bottom Control Dock
+                // Compact Bottom Control Dock
                 _buildBottomControlDock(isLandscapeMobile, currentDelta),
               ],
             ),
@@ -847,7 +847,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 icon: const Icon(Icons.content_cut_rounded, size: 12),
-                label: Text(_sectionMode ? '選取ing' : 'Fix section', style: const TextStyle(fontSize: 11)),
+                label: Text(_sectionMode ? 'Selecting' : 'Fix section', style: const TextStyle(fontSize: 11)),
                 onPressed: () {
                   setState(() {
                     _sectionMode = !_sectionMode;
@@ -860,7 +860,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                 const SizedBox(width: 4),
                 IconButton(
                   icon: const Icon(Icons.replay_rounded, size: 15, color: PlayerTheme.inkSubtle),
-                  tooltip: '重設 timing',
+                  tooltip: 'Reset timing',
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(minWidth: 26, minHeight: 26),
                   onPressed: _handleReset,
@@ -890,7 +890,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                     size: 15,
                   ),
                   label: Text(
-                    _isPlaying ? '暫停' : '播放',
+                    _isPlaying ? 'Pause' : 'Play',
                     style: TextStyle(fontSize: isLandscapeMobile ? 11 : 12),
                   ),
                   onPressed: () {
@@ -926,7 +926,7 @@ class _TextSyncOverlayState extends State<TextSyncOverlay> {
                         )
                       : const Icon(Icons.check_rounded, size: 15),
                   label: Text(
-                    _isSaving ? 'Saving...' : '儲存 Timing',
+                    _isSaving ? 'Saving...' : 'Save Timing',
                     style: TextStyle(
                       fontSize: isLandscapeMobile ? 11 : 12,
                       fontWeight: FontWeight.bold,

@@ -19,7 +19,7 @@ class P2pSettingsService {
       final prefs = await SharedPreferences.getInstance();
       isP2pEnabled.value = prefs.getBool(_kP2pEnabledKey) ?? true;
     } catch (e) {
-      debugPrint('[P2p設定Service] 錯誤 initializing: $e');
+      debugPrint('[P2pSettingsService] Error initializing: $e');
     }
   }
 
@@ -30,7 +30,7 @@ class P2pSettingsService {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool(_kP2pEnabledKey, enabled);
     } catch (e) {
-      debugPrint('[P2p設定Service] 錯誤 saving enabled state: $e');
+      debugPrint('[P2pSettingsService] Error saving enabled state: $e');
     }
   }
 
@@ -41,7 +41,7 @@ class P2pSettingsService {
       final neverShow = prefs.getBool(_kNeverShowWarningKey) ?? false;
       return !neverShow;
     } catch (e) {
-      debugPrint('[P2p設定Service] 錯誤 checking warning state: $e');
+      debugPrint('[P2pSettingsService] Error checking warning state: $e');
       return true;
     }
   }
@@ -52,7 +52,7 @@ class P2pSettingsService {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool(_kNeverShowWarningKey, neverShow);
     } catch (e) {
-      debugPrint('[P2p設定Service] 錯誤 saving never show state: $e');
+      debugPrint('[P2pSettingsService] Error saving never show state: $e');
     }
   }
 
@@ -62,7 +62,7 @@ class P2pSettingsService {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove(_kNeverShowWarningKey);
     } catch (e) {
-      debugPrint('[P2p設定Service] 錯誤 resetting warning preference: $e');
+      debugPrint('[P2pSettingsService] Error resetting warning preference: $e');
     }
   }
 }

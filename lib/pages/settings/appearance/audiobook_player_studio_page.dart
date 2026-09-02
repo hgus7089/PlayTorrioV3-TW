@@ -80,7 +80,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
         ),
         title: screenW < 600
             ? const Text(
-                '播放器 Studio',
+                'Player Studio',
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
               )
             : Row(
@@ -102,12 +102,12 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          '自訂有聲書播放器工作室',
+                          'Custom Audiobook Player Studio',
                           style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16, letterSpacing: -0.3),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          '拖曳元件、調整進度條並自訂按鈕物理效果',
+                          'Drag components, transform seekbars, customize button physics',
                           style: TextStyle(color: Colors.white54, fontSize: 11, fontWeight: FontWeight.normal),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -119,12 +119,12 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
         actions: [
           if (screenW < 520)
             IconButton(
-              tooltip: '套用為目前播放器',
+              tooltip: 'Apply As Active Player',
               onPressed: () {
                 AudiobookSettings.setSelectedPlayerPreset(AudiobookPlayerPreset.customStudio);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: const Text('Custom 播放器 Studio layout applied & set as active player!'),
+                    content: const Text('Custom Player Studio layout applied & set as active player!'),
                     backgroundColor: palette.primaryColor,
                     behavior: SnackBarBehavior.floating,
                   ),
@@ -138,14 +138,14 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                 AudiobookSettings.setSelectedPlayerPreset(AudiobookPlayerPreset.customStudio);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: const Text('Custom 播放器 Studio layout applied & set as active player!'),
+                    content: const Text('Custom Player Studio layout applied & set as active player!'),
                     backgroundColor: palette.primaryColor,
                     behavior: SnackBarBehavior.floating,
                   ),
                 );
               },
               icon: const Icon(Icons.check_circle_rounded, color: Colors.white, size: 18),
-              label: const Text('套用為目前播放器', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12.5)),
+              label: const Text('Apply As Active Player', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12.5)),
               style: TextButton.styleFrom(
                 backgroundColor: palette.primaryColor.withValues(alpha: 0.25),
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
@@ -205,7 +205,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  '工作室設計器',
+                                  'Studio Designer',
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: _mobileViewMode == 0 ? FontWeight.bold : FontWeight.w500,
@@ -270,7 +270,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                                 backgroundColor: palette.primaryColor,
                                 icon: const Icon(Icons.touch_app_rounded, color: Colors.white, size: 18),
                                 label: const Text(
-                                  '測試即時畫布',
+                                  'Test Live Canvas',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),
@@ -288,7 +288,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                                 backgroundColor: const Color(0xFF161A28),
                                 icon: Icon(Icons.arrow_back_rounded, color: palette.primaryColor, size: 18),
                                 label: const Text(
-                                  '返回 to 自訂r',
+                                  'Back to Customizer',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),
@@ -375,14 +375,14 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                                 Icon(Icons.touch_app_rounded, color: palette.primaryColor, size: 12),
                                 const SizedBox(width: 4),
                                 Text(
-                                  '即時互動畫布',
+                                  'LIVE INTERACTIVE CANVAS',
                                   style: TextStyle(color: palette.primaryColor, fontSize: 9.5, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
                           ),
                           Text(
-                            '自訂工作室',
+                            'CUSTOM STUDIO',
                             style: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 10, fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -542,7 +542,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
           child: OutlinedButton.icon(
             onPressed: () => setState(() => _showChaptersPreview = true),
             icon: Icon(Icons.format_list_bulleted_rounded, color: palette.primaryColor, size: 16),
-            label: const Text('預製章節面板', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+            label: const Text('Premade Chapters Panel', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
             style: OutlinedButton.styleFrom(
               side: BorderSide(color: palette.primaryColor.withValues(alpha: 0.4)),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -802,7 +802,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('預製章節面板預覽', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13)),
+                        const Text('Premade Chapters Panel Preview', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13)),
                         IconButton(
                           icon: const Icon(Icons.close_rounded, color: Colors.white54, size: 18),
                           onPressed: () => setState(() => _showChaptersPreview = false),
@@ -816,7 +816,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                       children: [
                         _buildSampleChapterTile(1, 'Chapter 1: The Boy Who Lived', false, palette),
                         _buildSampleChapterTile(2, 'Chapter 2: The Vanishing Glass', false, palette),
-                        _buildSampleChapterTile(3, 'Chapter 3: The Letters from No 開啟e', false, palette),
+                        _buildSampleChapterTile(3, 'Chapter 3: The Letters from No One', false, palette),
                         _buildSampleChapterTile(4, 'Chapter 4: The Keeper of the Keys', true, palette),
                         _buildSampleChapterTile(5, 'Chapter 5: Diagon Alley', false, palette),
                       ],
@@ -874,10 +874,10 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                _buildTabChip(0, Icons.drag_indicator_rounded, '拖放版面配置', palette),
-                _buildTabChip(1, Icons.graphic_eq_rounded, '進度條畫布', palette),
-                _buildTabChip(2, Icons.touch_app_rounded, '播放 Button & Physics', palette),
-                _buildTabChip(3, Icons.image_rounded, '封面與相框', palette),
+                _buildTabChip(0, Icons.drag_indicator_rounded, 'Drag & Drop Layout', palette),
+                _buildTabChip(1, Icons.graphic_eq_rounded, 'Seek Bar Canvas', palette),
+                _buildTabChip(2, Icons.touch_app_rounded, 'Play Button & Physics', palette),
+                _buildTabChip(3, Icons.image_rounded, 'Artwork & Frame', palette),
               ],
             ),
           ),
@@ -927,12 +927,12 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
   // ── Tab 0: Drag & Drop Reorderable Components ──
   Widget _buildDragAndDropLayoutSection(AppThemePalette palette) {
     final componentNames = {
-      'artwork': '封面與黑膠相框',
-      'title': '章節與書名',
-      'seekbar': '進度條拖曳畫布',
-      'mainControls': '主要控制項（播放、暫停、跳轉 ±10 秒）',
-      'secondaryControls': '次要控制項（速度標籤與音量）',
-      'chaptersButton': '預製章節面板 Button',
+      'artwork': 'Artwork & Vinyl Frame',
+      'title': 'Chapter & Book Titles',
+      'seekbar': 'Seek Bar Scrubber Canvas',
+      'mainControls': 'Primary Controls (Play, Pause, Skip ±10s)',
+      'secondaryControls': 'Secondary Controls (Speed Pill & Volume)',
+      'chaptersButton': 'Premade Chapters Panel Button',
     };
 
     final componentIcons = {
@@ -955,14 +955,14 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                 Icon(Icons.drag_indicator_rounded, color: palette.primaryColor, size: 18),
                 const SizedBox(width: 8),
                 const Text(
-                  '拖放元件排列器',
+                  'Drag & Drop Component Arranger',
                   style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
                 ),
               ],
             ),
             const SizedBox(height: 6),
             Text(
-              '按住並拖曳區塊，即時重新排列有聲書播放器的垂直版面。',
+              'Hold and drag any block to reorder the vertical layout of your audio player in real-time.',
               style: TextStyle(color: Colors.white.withValues(alpha: 0.55), fontSize: 12),
             ),
             const SizedBox(height: 16),
@@ -1046,14 +1046,14 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                 Icon(Icons.graphic_eq_rounded, color: palette.primaryColor, size: 18),
                 const SizedBox(width: 8),
                 const Text(
-                  '進度條畫布與拖曳器樣式',
+                  'Seek Bar Canvas & Scrubber Styles',
                   style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
                 ),
               ],
             ),
             const SizedBox(height: 6),
             Text(
-              '選擇自訂播放器畫布中的進度條與拖曳器顯示方式。',
+              'Select how your progress bar and scrubber render inside your custom player canvas.',
               style: TextStyle(color: Colors.white.withValues(alpha: 0.55), fontSize: 12),
             ),
             const SizedBox(height: 16),
@@ -1138,7 +1138,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
             Icon(Icons.touch_app_rounded, color: palette.primaryColor, size: 18),
             const SizedBox(width: 8),
             const Text(
-              '播放 / 暫停 Button Style',
+              'Play / Pause Button Style',
               style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
             ),
           ],
@@ -1195,7 +1195,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
             Icon(Icons.animation_rounded, color: palette.primaryColor, size: 18),
             const SizedBox(width: 8),
             const Text(
-              '懸停與觸控物理效果',
+              'Hover & Touch Physics',
               style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
             ),
           ],
@@ -1266,7 +1266,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                       Icon(Icons.touch_app_rounded, color: palette.primaryColor, size: 18),
                       const SizedBox(width: 8),
                       const Text(
-                        'Live Touch & Hover Physics 播放ground',
+                        'Live Touch & Hover Physics Playground',
                         style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 13.5),
                       ),
                     ],
@@ -1341,7 +1341,7 @@ class _AudiobookPlayerStudioPageState extends State<AudiobookPlayerStudioPage> w
                 Icon(Icons.image_rounded, color: palette.primaryColor, size: 18),
                 const SizedBox(width: 8),
                 const Text(
-                  '封面顯示模式',
+                  'Artwork Display Mode',
                   style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
                 ),
               ],

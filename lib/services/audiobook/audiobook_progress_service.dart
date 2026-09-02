@@ -78,7 +78,7 @@ class AudiobookProgressService {
       final rawList = all.map((p) => jsonEncode(p.toJson())).toList();
       await prefs.setStringList(_storageKey, rawList);
     } catch (e) {
-      print('[音訊bookProgressService] 錯誤 saving progress: $e');
+      print('[AudiobookProgressService] Error saving progress: $e');
     }
   }
 
@@ -98,7 +98,7 @@ class AudiobookProgressService {
       result.sort((a, b) => b.lastListenedTimestamp.compareTo(a.lastListenedTimestamp));
       return result;
     } catch (e) {
-      print('[音訊bookProgressService] 錯誤 loading progress: $e');
+      print('[AudiobookProgressService] Error loading progress: $e');
       return [];
     }
   }
@@ -111,7 +111,7 @@ class AudiobookProgressService {
       final rawList = all.map((p) => jsonEncode(p.toJson())).toList();
       await prefs.setStringList(_storageKey, rawList);
     } catch (e) {
-      print('[音訊bookProgressService] 錯誤 removing progress: $e');
+      print('[AudiobookProgressService] Error removing progress: $e');
     }
   }
 }

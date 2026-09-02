@@ -147,7 +147,7 @@ class _AudiobookDetailPageState extends State<AudiobookDetailPage> {
                       ),
                       const SizedBox(width: 16),
                       const Text(
-                        '音訊book 詳細資訊',
+                        'Audiobook Details',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -195,7 +195,7 @@ class _AudiobookDetailPageState extends State<AudiobookDetailPage> {
                       Icon(Icons.format_list_bulleted_rounded, color: palette.primaryColor, size: 20),
                       const SizedBox(width: 8),
                       const Text(
-                        'Chapters & 音訊 Files',
+                        'Chapters & Audio Files',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -410,7 +410,7 @@ class _PlayFirstChapterButtonState extends State<_PlayFirstChapterButton> {
                 Icon(Icons.play_arrow_rounded, color: Colors.white, size: 24),
                 SizedBox(width: 8),
                 Text(
-                  '播放 First Chapter',
+                  'Play First Chapter',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14,

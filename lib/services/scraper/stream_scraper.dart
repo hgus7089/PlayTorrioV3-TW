@@ -56,7 +56,7 @@ class ScraperManager {
   }
 
   void unregisterTorrentScrapers() {
-    _scrapers.removeWhere((s) => s.name == '播放Torrio');
+    _scrapers.removeWhere((s) => s.name == 'PlayTorrio');
   }
 
   Stream<StreamSource> scrapeAll({
@@ -71,7 +71,7 @@ class ScraperManager {
 
     final p2pAllowed = P2pSettingsService.isP2pEnabled.value;
     final activeScrapers = _scrapers.where((s) {
-      if (!p2pAllowed && s.name == '播放Torrio') {
+      if (!p2pAllowed && s.name == 'PlayTorrio') {
         return false;
       }
       return true;
@@ -82,7 +82,7 @@ class ScraperManager {
       return controller.stream;
     }
 
-    debugPrint('[Scraper管理r] Scraping across ${activeScrapers.length} active scrapers (${activeScrapers.map((s) => s.runtimeType).join(", ")}) for "$title" (P2P enabled: $p2pAllowed)...');
+    debugPrint('[ScraperManager] Scraping across ${activeScrapers.length} active scrapers (${activeScrapers.map((s) => s.runtimeType).join(", ")}) for "$title" (P2P enabled: $p2pAllowed)...');
 
     int pendingScrapers = activeScrapers.length;
     int inFlightChecks = 0;
@@ -111,7 +111,7 @@ class ScraperManager {
 
           // If P2P is disabled, strictly discard any torrent source
           if (!p2pAllowed &&
-              (source.addonName == '播放Torrio' ||
+              (source.addonName == 'PlayTorrio' ||
                   (source.infoHash != null && source.infoHash!.isNotEmpty))) {
             return;
           }
@@ -136,7 +136,7 @@ class ScraperManager {
               if (alive && !controller.isClosed) {
                 controller.add(source);
               } else if (!alive) {
-                debugPrint('[播放TorrioHTTP] Omitted dead stream: ${source.title} ($rawUrl)');
+                debugPrint('[PlayTorrioHTTP] Omitted dead stream: ${source.title} ($rawUrl)');
               }
             }).catchError((_) {
               // Silently drop on error

@@ -90,7 +90,7 @@ class TraktContinueWatchingService {
           ? _buildMovieItems(rawItems)
           : _buildShowItems(rawItems);
     } catch (e) {
-      debugPrint('TraktContinue觀看ingService: fetchItems failed: $e');
+      debugPrint('TraktContinueWatchingService: fetchItems failed: $e');
       return [];
     }
   }

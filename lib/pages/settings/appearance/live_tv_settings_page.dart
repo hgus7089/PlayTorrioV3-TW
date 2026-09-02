@@ -25,7 +25,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Live TV 與體育介面',
+          'Live TV & Sports UI',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -37,7 +37,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
             children: [
               // ── 1. Hero Spotlight Carousel ──
               Text(
-                '即時聚光燈與首頁橫幅',
+                'LIVE SPOTLIGHT & HERO BANNER',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -52,7 +52,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
 
               // ── 2. Card Layout & Poster Density ──
               Text(
-                '頻道卡片與海報密度',
+                'CHANNEL CARDS & POSTER DENSITY',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -82,7 +82,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
 
               // ── 4. Portals Modal Customization ──
               Text(
-                '入口與播放清單視窗',
+                'PORTALS & PLAYLISTS MODAL',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -97,7 +97,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
 
               // ── 5. Portal Browser Customization ──
               Text(
-                '入口瀏覽器與頻道指南',
+                'PORTAL BROWSER & CHANNEL GUIDE',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -156,7 +156,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '顯示直播聚光燈橫幅',
+                          'Show Live Spotlight Banner',
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w800,
@@ -165,7 +165,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '在頂端顯示精選冠軍賽事與熱門直播頻道',
+                          'Featured championship matches and top broadcast channels at the top',
                           style: TextStyle(fontSize: 12, color: Colors.white54),
                         ),
                       ],
@@ -189,7 +189,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
 
                 // Style Selection
                 Text(
-                  '首頁橫幅樣式',
+                  'Hero Banner Style',
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
@@ -247,7 +247,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '自動輪播頻道',
+                                'Auto-Rotate Channels',
                                 style: TextStyle(
                                   fontSize: 13.5,
                                   fontWeight: FontWeight.w700,
@@ -256,7 +256,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                               ),
                               SizedBox(height: 2),
                               Text(
-                                '自動輪播精選直播活動',
+                                'Automatically cycle through featured live events',
                                 style: TextStyle(fontSize: 11.5, color: Colors.white54),
                               ),
                             ],
@@ -347,7 +347,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
         children: [
           // Density Choice
           Text(
-            '頻道卡片大小',
+            'Channel Card Size',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -406,7 +406,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '卡片懸停縮放',
+                        'Card Hover Scale Zoom',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
@@ -459,7 +459,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '顯示 LIVE／HD 串流標籤',
+                          'Show LIVE / HD Stream Badge',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -468,7 +468,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '在頻道角落顯示直播標籤',
+                          'Display radiant live broadcast badge on channel corners',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -499,7 +499,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '顯示頻道分類標籤',
+                          'Show Channel Category Tag',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -508,7 +508,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '在頻道名稱下方顯示分類標籤',
+                          'Show category label below channel name',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -549,7 +549,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '頻道分類與區段',
+                        'Channel Categories & Sections',
                         style: TextStyle(
                           fontSize: 14.5,
                           fontWeight: FontWeight.w800,
@@ -558,7 +558,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        '切換 Live TV 列的顯示／隱藏',
+                        'Toggle visibility of Live TV rows',
                         style: TextStyle(fontSize: 11.5, color: Colors.white54),
                       ),
                     ],
@@ -566,7 +566,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                   TextButton.icon(
                     onPressed: () => IptvSettings.resetCategories(),
                     icon: const Icon(Icons.refresh_rounded, size: 16),
-                    label: const Text('全部重設', style: TextStyle(fontSize: 12)),
+                    label: const Text('Reset All', style: TextStyle(fontSize: 12)),
                     style: TextButton.styleFrom(
                       foregroundColor: palette.primaryColor,
                     ),
@@ -616,7 +616,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '入口卡片顯示樣式',
+            'Portal Card Display Style',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -673,7 +673,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '顯示入口到期日',
+                          'Show Portal Expiry Date',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -682,7 +682,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '在入口卡片顯示訂閱到期標籤',
+                          'Display subscription expiration tag on portal cards',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -712,7 +712,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Show Max 啟用中 Connections Tag',
+                          'Show Max Active Connections Tag',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -721,7 +721,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '顯示目前與最大同時串流連線數',
+                          'Display current and max concurrent streaming connections',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -742,7 +742,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
           const SizedBox(height: 12),
 
           Text(
-            '預設起始分頁',
+            'Default Starting Tab',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -756,7 +756,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
               return Row(
                 children: [
                   ChoiceChip(
-                    label: const Text('Xtream 面板'),
+                    label: const Text('Xtream Panels'),
                     selected: tabIdx == 0,
                     selectedColor: palette.primaryColor.withValues(alpha: 0.25),
                     backgroundColor: const Color(0xFF0D1017),
@@ -776,7 +776,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                   ),
                   const SizedBox(width: 8),
                   ChoiceChip(
-                    label: const Text('M3U 播放清單'),
+                    label: const Text('M3U Playlists'),
                     selected: tabIdx == 1,
                     selectedColor: palette.primaryColor.withValues(alpha: 0.25),
                     backgroundColor: const Color(0xFF0D1017),
@@ -815,7 +815,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '頻道串流版面模式',
+            'Channel Stream Layout Mode',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -876,7 +876,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '串流網格欄數',
+                            'Grid Stream Columns',
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w700,
@@ -929,7 +929,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '分類側邊欄寬度',
+                        'Category Sidebar Width',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
@@ -981,7 +981,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '顯示頻道串流 Logo',
+                          'Show Channel Stream Logos',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -990,7 +990,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '在串流列顯示頻道海報與 Logo',
+                          'Display channel poster and logos in stream rows',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -1020,7 +1020,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Show EPG "正在播放" Snippet',
+                          'Show EPG "Now Playing" Snippet',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -1029,7 +1029,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '在頻道下方顯示目前電視節目表標題',
+                          'Display current television guide title below channel',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],
@@ -1059,7 +1059,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '顯示分類串流數量',
+                          'Show Category Stream Counts',
                           style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w700,
@@ -1068,7 +1068,7 @@ class _LiveTvSettingsPageState extends State<LiveTvSettingsPage> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          '在分類名稱旁顯示可用串流數量',
+                          'Show number of available streams next to category names',
                           style: TextStyle(fontSize: 11.5, color: Colors.white54),
                         ),
                       ],

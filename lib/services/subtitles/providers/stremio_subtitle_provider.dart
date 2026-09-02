@@ -8,7 +8,7 @@ import '../subtitle_extractor.dart';
 
 class StremioSubtitleProvider extends SubtitleProvider {
   @override
-  String get name => 'Stremio 新增on';
+  String get name => 'Stremio Addon';
 
   static const Map<String, String> _headers = {
     'User-Agent':
@@ -217,7 +217,7 @@ class StremioSubtitleProvider extends SubtitleProvider {
           print('[StremioSubtitleProvider] ${addon.manifest.name} returned $idx subtitles');
         }
       } catch (e) {
-        print('[StremioSubtitleProvider] 錯誤 querying ${addon.manifest.name}: $e');
+        print('[StremioSubtitleProvider] Error querying ${addon.manifest.name}: $e');
       }
     }
 

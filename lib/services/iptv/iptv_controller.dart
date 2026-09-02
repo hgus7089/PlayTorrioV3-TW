@@ -237,7 +237,7 @@ class IptvController extends ChangeNotifier {
   Future<void> getMore() async {
     if (isScraping) return;
     isScraping = true;
-    statusText = '搜尋ing for more…';
+    statusText = 'Searching for more…';
     notifyListeners();
     await _scrapeAndVerify();
   }
@@ -552,7 +552,7 @@ class IptvController extends ChangeNotifier {
     }
 
     isImporting = true;
-    statusText = '匯入ing 0 / ${candidates.length}…';
+    statusText = 'Importing 0 / ${candidates.length}…';
     notifyListeners();
 
     int added = 0, skipped = 0, failed = 0, done = 0;
@@ -591,7 +591,7 @@ class IptvController extends ChangeNotifier {
           }
         }
         done++;
-        statusText = '匯入ing $done / ${candidates.length}…';
+        statusText = 'Importing $done / ${candidates.length}…';
         notifyListeners();
       }
     }
@@ -604,7 +604,7 @@ class IptvController extends ChangeNotifier {
     }
 
     isImporting = false;
-    statusText = '匯入ed $added · skipped $skipped · failed $failed';
+    statusText = 'Imported $added · skipped $skipped · failed $failed';
     notifyListeners();
     return (added: added, skipped: skipped, failed: failed, error: null);
   }
@@ -619,7 +619,7 @@ class IptvController extends ChangeNotifier {
       final channels = await M3uFetcher.fetchAndParse(url);
       final pl = M3uPlaylist(
         id: M3uStore.newId(),
-        name: name.trim().isEmpty ? '播放list' : name.trim(),
+        name: name.trim().isEmpty ? 'Playlist' : name.trim(),
         sourceUrl: url,
         addedAt: DateTime.now().millisecondsSinceEpoch,
         updatedAt: DateTime.now().millisecondsSinceEpoch,
@@ -640,7 +640,7 @@ class IptvController extends ChangeNotifier {
       final channels = M3uParser.parse(content);
       final pl = M3uPlaylist(
         id: M3uStore.newId(),
-        name: name.trim().isEmpty ? 'Uploaded 播放list' : name.trim(),
+        name: name.trim().isEmpty ? 'Uploaded Playlist' : name.trim(),
         sourceUrl: null,
         addedAt: DateTime.now().millisecondsSinceEpoch,
         updatedAt: DateTime.now().millisecondsSinceEpoch,
@@ -708,7 +708,7 @@ class IptvController extends ChangeNotifier {
                     url: h.portalUrl,
                     username: h.portalUser,
                     password: h.portalPass,
-                    source: '儲存d',
+                    source: 'Saved',
                   ),
                   name: h.portalName,
                   expiry: '',

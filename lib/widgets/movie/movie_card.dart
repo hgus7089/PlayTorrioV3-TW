@@ -197,7 +197,7 @@ class _MovieCardState extends State<MovieCard> {
                         ),
                       ),
                     Text(
-                      movie.type == 'series' ? '影集' : (movie.type == 'anime' ? '動漫' : 'Movie'),
+                      movie.type == 'series' ? 'Series' : (movie.type == 'anime' ? 'Anime' : 'Movie'),
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.white.withOpacity(0.42),

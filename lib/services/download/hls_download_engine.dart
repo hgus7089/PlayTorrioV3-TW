@@ -241,7 +241,7 @@ class HlsDownloadEngine {
             try {
               currentKeyBytes = await _fetchBytes(keyUri, headers);
             } catch (e) {
-              debugPrint('[Hls下載Engine] Failed fetching AES-128 key: $e');
+              debugPrint('[HlsDownloadEngine] Failed fetching AES-128 key: $e');
             }
           }
 
@@ -351,7 +351,7 @@ class HlsDownloadEngine {
         }
         return out;
       } catch (e) {
-        debugPrint('[Hls下載Engine] AES-128 decryption error: $e');
+        debugPrint('[HlsDownloadEngine] AES-128 decryption error: $e');
         return encrypted;
       }
     }

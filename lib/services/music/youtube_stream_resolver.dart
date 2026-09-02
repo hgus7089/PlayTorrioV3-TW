@@ -60,7 +60,7 @@ class YoutubeStreamResolver {
         return (url: res.audioUrl, userAgent: res.userAgent);
       }
     } catch (e) {
-      debugPrint('Youtube音訊Extractor error for ${track.title}: $e');
+      debugPrint('YoutubeAudioExtractor error for ${track.title}: $e');
     }
 
     // 4. Convertytmp3 fallback

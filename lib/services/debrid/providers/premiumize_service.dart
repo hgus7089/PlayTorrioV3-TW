@@ -90,7 +90,7 @@ class PremiumizeService {
   }) async {
     final apiKey = await getKey();
     if (apiKey == null || apiKey.isEmpty) {
-      throw Exception('Premiumize API key is missing. Please configure it in 設定.');
+      throw Exception('Premiumize API key is missing. Please configure it in Settings.');
     }
 
     List<Map<String, dynamic>> files = [];

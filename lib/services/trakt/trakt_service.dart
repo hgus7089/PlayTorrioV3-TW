@@ -288,12 +288,12 @@ class TraktService {
     return items;
   }
 
-  /// 檢查 if the user is authenticated (has a non-expired access token).
+  /// Check if the user is authenticated (has a non-expired access token).
   Future<bool> isAuthenticated() async {
     final token = await StorageService.getTraktAccessToken();
     if (token == null || token.isEmpty) return false;
 
-    // 檢查 if token is expired
+    // Check if token is expired
     final expiryMs = await StorageService.getTraktTokenExpiry();
     if (expiryMs != null && DateTime.now().millisecondsSinceEpoch >= expiryMs) {
       // Try to refresh
@@ -803,7 +803,7 @@ class TraktService {
     if (response == null) return false;
     final ok = response.statusCode >= 200 && response.statusCode < 300;
     if (!ok) {
-      debugPrint('Trakt: 集 sync failed (${response.statusCode})');
+      debugPrint('Trakt: Episode sync failed (${response.statusCode})');
     } else if (path == '/sync/history' || path == '/sync/history/remove') {
       _invalidateLibraryCache();
       EpisodeTrackerSnapshotRevision.invalidateTitle('trakt', showImdbId);
@@ -927,7 +927,7 @@ class TraktService {
   Future<bool> removePlaybackItem(int playbackId) async {
     final response = await _authenticatedDelete('/sync/playback/$playbackId');
     if (response == null || response.statusCode != 204) {
-      debugPrint('Trakt: remove播放backItem failed (${response?.statusCode})');
+      debugPrint('Trakt: removePlaybackItem failed (${response?.statusCode})');
       return false;
     }
     return true;
@@ -1194,7 +1194,7 @@ class TraktService {
     return _fetchListItemsOrderedOrNull(base, 'likedList $base');
   }
 
-  /// 搜尋 Trakt for movies or shows by query.
+  /// Search Trakt for movies or shows by query.
   /// [query] is the search text, [type] is 'movie' or 'show'.
   /// Returns raw API results. Public endpoint — no auth required.
   Future<List<dynamic>> searchItems(String query, String type) async {
@@ -1232,7 +1232,7 @@ class TraktService {
 
       if (response.statusCode != 200) {
         debugPrint(
-          'Trakt: fetchShow季 failed for $showId (${response.statusCode})',
+          'Trakt: fetchShowSeasons failed for $showId (${response.statusCode})',
         );
         return [];
       }
@@ -1240,7 +1240,7 @@ class TraktService {
       final list = jsonDecode(response.body) as List<dynamic>;
       return list.cast<Map<String, dynamic>>();
     } catch (error) {
-      debugPrint('Trakt: fetchShow季 error (${error.runtimeType})');
+      debugPrint('Trakt: fetchShowSeasons error (${error.runtimeType})');
       return [];
     }
   }
@@ -1281,13 +1281,13 @@ class TraktService {
     if (response == null) return null;
     if (response.statusCode == 204) return null;
     if (response.statusCode != 200) {
-      debugPrint('Trakt: fetchNow觀看ing failed (${response.statusCode})');
+      debugPrint('Trakt: fetchNowWatching failed (${response.statusCode})');
       return null;
     }
     try {
       return jsonDecode(response.body) as Map<String, dynamic>;
     } catch (error) {
-      debugPrint('Trakt: fetchNow觀看ing parse error (${error.runtimeType})');
+      debugPrint('Trakt: fetchNowWatching parse error (${error.runtimeType})');
       return null;
     }
   }
@@ -1300,7 +1300,7 @@ class TraktService {
       '/sync/playback/$contentType?extended=full',
     );
     if (response == null || response.statusCode != 200) {
-      debugPrint('Trakt: fetch播放backItems failed (${response?.statusCode})');
+      debugPrint('Trakt: fetchPlaybackItems failed (${response?.statusCode})');
       return [];
     }
 
@@ -1308,7 +1308,7 @@ class TraktService {
       return jsonDecode(response.body) as List<dynamic>;
     } catch (error) {
       debugPrint(
-        'Trakt: fetch播放backItems parse error (${error.runtimeType})',
+        'Trakt: fetchPlaybackItems parse error (${error.runtimeType})',
       );
       return [];
     }
@@ -1364,7 +1364,7 @@ class TraktService {
       '/users/me/history/episodes?limit=$historyLimit&extended=full',
     );
     if (response == null || response.statusCode != 200) {
-      debugPrint('Trakt: fetchRecent觀看紀錄 failed (${response?.statusCode})');
+      debugPrint('Trakt: fetchRecentHistory failed (${response?.statusCode})');
       return [];
     }
 
@@ -1373,7 +1373,7 @@ class TraktService {
       history = jsonDecode(response.body) as List<dynamic>;
     } catch (error) {
       debugPrint(
-        'Trakt: fetchRecent觀看紀錄 parse error (${error.runtimeType})',
+        'Trakt: fetchRecentHistory parse error (${error.runtimeType})',
       );
       return [];
     }
@@ -1434,7 +1434,7 @@ class TraktService {
                 }
               : null;
         } catch (error) {
-          debugPrint('Trakt: fetchNext集 error (${error.runtimeType})');
+          debugPrint('Trakt: fetchNextEpisode error (${error.runtimeType})');
           return null;
         }
       }),
@@ -1455,7 +1455,7 @@ class TraktService {
     final response = await _authenticatedGet('/sync/playback/movies');
     if (response == null || response.statusCode != 200) {
       debugPrint(
-        'Trakt: fetch播放backProgress failed (${response?.statusCode})',
+        'Trakt: fetchPlaybackProgress failed (${response?.statusCode})',
       );
       return {};
     }
@@ -1476,7 +1476,7 @@ class TraktService {
       return result;
     } catch (error) {
       debugPrint(
-        'Trakt: fetch播放backProgress parse error (${error.runtimeType})',
+        'Trakt: fetchPlaybackProgress parse error (${error.runtimeType})',
       );
       return {};
     }
@@ -1495,7 +1495,7 @@ class TraktService {
       return debugParseWatchedMovies(list);
     } catch (error) {
       debugPrint(
-        'Trakt: fetch觀看ed電影 parse error (${error.runtimeType})',
+        'Trakt: fetchWatchedMovies parse error (${error.runtimeType})',
       );
       return null;
     }
@@ -1641,7 +1641,7 @@ class TraktService {
     final response = await _authenticatedGet('/shows/$showId/progress/watched');
     if (response == null || response.statusCode != 200) {
       debugPrint(
-        'Trakt: fetch觀看edShow集 failed (${response?.statusCode})',
+        'Trakt: fetchWatchedShowEpisodes failed (${response?.statusCode})',
       );
       return null;
     }
@@ -1650,12 +1650,12 @@ class TraktService {
       final decoded = jsonDecode(response.body);
       final result = debugParseWatchedShowEpisodes(decoded);
       if (result == null) {
-        debugPrint('Trakt: fetch觀看edShow集 incomplete payload');
+        debugPrint('Trakt: fetchWatchedShowEpisodes incomplete payload');
       }
       return result;
     } catch (error) {
       debugPrint(
-        'Trakt: fetch觀看edShow集 parse error '
+        'Trakt: fetchWatchedShowEpisodes parse error '
         '(${error.runtimeType})',
       );
       return null;
@@ -1752,7 +1752,7 @@ class TraktService {
       );
       if (response == null || response.statusCode != 200) {
         debugPrint(
-          'Trakt: fetch集播放backProgress failed '
+          'Trakt: fetchEpisodePlaybackProgress failed '
           'page=$page (${response?.statusCode})',
         );
         return null;

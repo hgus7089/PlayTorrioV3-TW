@@ -28,7 +28,7 @@ class AudiobookScraperService {
       (scraper) => scraper(query)
           .timeout(const Duration(seconds: 5), onTimeout: () => <Audiobook>[])
           .catchError((e) {
-            debugPrint('音訊book scraper failed: $e');
+            debugPrint('Audiobook scraper failed: $e');
             return <Audiobook>[];
           }),
     );
@@ -111,7 +111,7 @@ class AudiobookScraperService {
 
     // 2. Remove [Listen], [Download], [Audiobook], etc. prefixes/tags
     title = title.replaceAll(
-      RegExp(r'\[\s*(?:Listen|下載|音訊book|Stream|MP3|Free)\s*\]', caseSensitive: false),
+      RegExp(r'\[\s*(?:Listen|Download|Audiobook|Stream|MP3|Free)\s*\]', caseSensitive: false),
       '',
     );
 
@@ -124,7 +124,7 @@ class AudiobookScraperService {
     // 4. Remove leftover quote characters, Audiobook suffix, trailing commas/hyphens
     title = title
         .replaceAll(RegExp('["“„”\'\']'), '')
-        .replaceAll(RegExp(r'\s*音訊book\s*', caseSensitive: false), ' ')
+        .replaceAll(RegExp(r'\s*Audiobook\s*', caseSensitive: false), ' ')
         .replaceAll(RegExp(r'[,:\-–—\s]+$'), '')
         .replaceAll(RegExp(r'^[,:\-–—\s]+'), '')
         .trim();
@@ -300,7 +300,7 @@ class AudiobookScraperService {
         return _audionestIdToken;
       }
     } catch (e) {
-      debugPrint('音訊nest auth error: $e');
+      debugPrint('Audionest auth error: $e');
     }
     return null;
   }
@@ -333,7 +333,7 @@ class AudiobookScraperService {
         );
       }).toList();
     } catch (e) {
-      debugPrint('音訊nest search error: $e');
+      debugPrint('Audionest search error: $e');
       return [];
     }
   }
@@ -391,7 +391,7 @@ class AudiobookScraperService {
     return List.generate(
       streams.length,
       (i) => AudiobookChapter(
-        title: streams.length == 1 ? 'Full 音訊book' : 'Part ${i + 1}',
+        title: streams.length == 1 ? 'Full Audiobook' : 'Part ${i + 1}',
         url: streams[i],
         httpHeaders: {
           'Referer': 'https://audioaz.com/',
@@ -494,14 +494,14 @@ class AudiobookScraperService {
           return List.generate(
             urls.length,
             (i) => AudiobookChapter(
-              title: urls.length == 1 ? 'Full 音訊book' : 'Chapter ${i + 1}',
+              title: urls.length == 1 ? 'Full Audiobook' : 'Chapter ${i + 1}',
               url: urls[i],
             ),
           );
         }
       }
     } catch (e) {
-      debugPrint('音訊nest firestore error: $e');
+      debugPrint('Audionest firestore error: $e');
     }
     return [];
   }

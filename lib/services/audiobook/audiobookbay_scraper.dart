@@ -52,7 +52,7 @@ class AudiobookBayScraper {
       }
       return books;
     } catch (e) {
-      debugPrint('音訊bookBay search error: $e');
+      debugPrint('AudiobookBay search error: $e');
       return [];
     }
   }
@@ -176,14 +176,14 @@ class AudiobookBayScraper {
             }
           }
         } catch (e) {
-          debugPrint('音訊bookBay chapter auto-expansion error: $e');
+          debugPrint('AudiobookBay chapter auto-expansion error: $e');
         }
       }
 
       if (chapters.isEmpty) {
         chapters.add(
           AudiobookChapter(
-            title: 'Full 音訊book Torrent',
+            title: 'Full Audiobook Torrent',
             url: magnetString,
             isTorrent: true,
             torrentFileIndex: 0,
@@ -193,7 +193,7 @@ class AudiobookBayScraper {
 
       return chapters;
     } catch (e) {
-      debugPrint('音訊bookBay getChapters error: $e');
+      debugPrint('AudiobookBay getChapters error: $e');
       return [];
     }
   }

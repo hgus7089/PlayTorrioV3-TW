@@ -139,7 +139,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx, false),
-                child: const Text('取消', style: TextStyle(color: Colors.white54)),
+                child: const Text('Cancel', style: TextStyle(color: Colors.white54)),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -172,7 +172,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(parts.length == 1
-              ? 'Upload complete — AI 音訊book generation started!'
+              ? 'Upload complete — AI Audiobook generation started!'
               : 'Uploaded ${parts.length} parts — generation started in background!'),
           backgroundColor: const Color(0xFF10B981),
           behavior: SnackBarBehavior.floating,
@@ -208,7 +208,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
       title: title,
       author: 'AI Generated • Kokoro TTS',
       coverImage: job.coverPath ?? '',
-      source: 'Paper2音訊 AI',
+      source: 'Paper2Audio AI',
       pageUrl: streamOrLocalPath,
     );
 
@@ -244,13 +244,13 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
       builder: (ctx) => AlertDialog(
         backgroundColor: const Color(0xFF13151F),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('移除 Generation Job?'),
-        content: Text('移除 "${job.fileName}" from the generation list?'),
+        title: const Text('Remove Generation Job?'),
+        content: Text('Remove "${job.fileName}" from the generation list?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('取消')),
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('移除', style: TextStyle(color: Colors.redAccent)),
+            child: const Text('Remove', style: TextStyle(color: Colors.redAccent)),
           ),
         ],
       ),
@@ -299,7 +299,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
               children: [
                 Icon(Icons.upload_file_rounded, color: Color(0xFF7C5CFF)),
                 SizedBox(width: 10),
-                Text('新增 Personal 音訊book', style: TextStyle(color: Colors.white, fontSize: 16.5, fontWeight: FontWeight.w800)),
+                Text('Add Personal Audiobook', style: TextStyle(color: Colors.white, fontSize: 16.5, fontWeight: FontWeight.w800)),
               ],
             ),
             content: SizedBox(
@@ -310,7 +310,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '選取ed ${pickedFiles.length} audio file(s):',
+                      'Selected ${pickedFiles.length} audio file(s):',
                       style: const TextStyle(color: Colors.white70, fontSize: 12.5, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: 6),
@@ -335,7 +335,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                       controller: titleController,
                       style: const TextStyle(color: Colors.white, fontSize: 14),
                       decoration: InputDecoration(
-                        labelText: '音訊book Title',
+                        labelText: 'Audiobook Title',
                         labelStyle: const TextStyle(color: Colors.white54, fontSize: 12),
                         filled: true,
                         fillColor: Colors.white.withValues(alpha: 0.05),
@@ -376,7 +376,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                         const SizedBox(width: 12),
                         TextButton.icon(
                           icon: const Icon(Icons.photo_library_rounded, size: 16),
-                          label: Text(pickedCoverFile == null ? '選取 Cover Art' : 'Change Cover'),
+                          label: Text(pickedCoverFile == null ? 'Select Cover Art' : 'Change Cover'),
                           style: TextButton.styleFrom(foregroundColor: const Color(0xFF7C5CFF)),
                           onPressed: () async {
                             final imgResult = await FilePicker.platform.pickFiles(
@@ -399,7 +399,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx),
-                child: const Text('取消', style: TextStyle(color: Colors.white54)),
+                child: const Text('Cancel', style: TextStyle(color: Colors.white54)),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -416,7 +416,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                   );
                   if (mounted) setState(() {});
                 },
-                child: const Text('匯入 to 媒體庫', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                child: const Text('Import to Library', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
               ),
             ],
           );
@@ -461,7 +461,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
           children: [
             Icon(Icons.auto_stories_rounded, color: Color(0xFF7C5CFF), size: 22),
             SizedBox(width: 10),
-            Text('音訊book Studio & Generator', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18)),
+            Text('Audiobook Studio & Generator', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18)),
           ],
         ),
         bottom: TabBar(
@@ -473,7 +473,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
           labelStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
           tabs: const [
             Tab(text: 'AI EPUB Generator (TTS)', icon: Icon(Icons.record_voice_over_rounded, size: 18)),
-            Tab(text: 'My Uploaded 有聲書', icon: Icon(Icons.library_music_rounded, size: 18)),
+            Tab(text: 'My Uploaded Audiobooks', icon: Icon(Icons.library_music_rounded, size: 18)),
           ],
         ),
       ),
@@ -534,7 +534,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                     ),
                     IconButton(
                       icon: const Icon(Icons.refresh_rounded, size: 18, color: Colors.white54),
-                      tooltip: '重新整理狀態',
+                      tooltip: 'Refresh Status',
                       onPressed: () => _paperService.refreshAll(),
                     ),
                   ],
@@ -697,7 +697,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
             ),
             TextButton.icon(
               icon: const Icon(Icons.refresh_rounded, size: 14),
-              label: const Text('Rescan 書籍', style: TextStyle(fontSize: 11)),
+              label: const Text('Rescan Books', style: TextStyle(fontSize: 11)),
               style: TextButton.styleFrom(foregroundColor: palette.primaryColor),
               onPressed: _loadDownloadedEpubs,
             ),
@@ -818,7 +818,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    _isUploading ? 'Analyzing & Uploading Book...' : '選取 External EPUB File',
+                    _isUploading ? 'Analyzing & Uploading Book...' : 'Select External EPUB File',
                     style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
                   ),
                   const SizedBox(height: 3),
@@ -944,7 +944,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                 Expanded(
                   child: ElevatedButton.icon(
                     icon: const Icon(Icons.play_arrow_rounded, size: 18),
-                    label: const Text('播放 in App', style: TextStyle(fontWeight: FontWeight.bold)),
+                    label: const Text('Play in App', style: TextStyle(fontWeight: FontWeight.bold)),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: palette.primaryColor,
                       foregroundColor: Colors.white,
@@ -958,7 +958,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                 if (job.downloadUrl != null)
                   OutlinedButton.icon(
                     icon: const Icon(Icons.link_rounded, size: 16),
-                    label: const Text('複製 Stream URL'),
+                    label: const Text('Copy Stream URL'),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.white70,
                       side: const BorderSide(color: Colors.white24),
@@ -1025,12 +1025,12 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Upload Personal 音訊book Files',
+                                'Upload Personal Audiobook Files',
                                 style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
                               ),
                               SizedBox(height: 3),
                               Text(
-                                '匯入 your own .mp3, .m4b, .m4a, or .flac audiobooks to listen offline.',
+                                'Import your own .mp3, .m4b, .m4a, or .flac audiobooks to listen offline.',
                                 style: TextStyle(color: Colors.white54, fontSize: 12),
                               ),
                             ],
@@ -1137,7 +1137,7 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
           ),
           ElevatedButton.icon(
             icon: const Icon(Icons.play_arrow_rounded, size: 16),
-            label: const Text('播放'),
+            label: const Text('Play'),
             style: ElevatedButton.styleFrom(
               backgroundColor: palette.primaryColor,
               foregroundColor: Colors.white,
@@ -1155,11 +1155,11 @@ class _GenerateAudiobookScreenState extends State<GenerateAudiobookScreen>
                 builder: (ctx) => AlertDialog(
                   backgroundColor: const Color(0xFF13151F),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                  title: const Text('刪除 音訊book?'),
-                  content: Text('刪除 "${book.title}" from your library?'),
+                  title: const Text('Delete Audiobook?'),
+                  content: Text('Delete "${book.title}" from your library?'),
                   actions: [
-                    TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('取消')),
-                    TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('刪除', style: TextStyle(color: Colors.redAccent))),
+                    TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
+                    TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Delete', style: TextStyle(color: Colors.redAccent))),
                   ],
                 ),
               );

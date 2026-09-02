@@ -94,7 +94,7 @@ Future<int?> showSimklRatingDialog(BuildContext context) {
               TextButton(
                 onPressed: () => Navigator.of(dialogContext).pop(),
                 child: const Text(
-                  '取消',
+                  'Cancel',
                   style: TextStyle(color: Colors.white54),
                 ),
               ),
@@ -124,13 +124,13 @@ Future<void> handleSimklMenuAction(
 
   switch (action) {
     case SimklItemMenuAction.moveToPlanToWatch:
-      actionLabel = 'Moved to Plan to 觀看 on Simkl';
+      actionLabel = 'Moved to Plan to Watch on Simkl';
       success = await simklService.addToList(imdbId, type, 'plantowatch');
     case SimklItemMenuAction.moveToWatching:
-      actionLabel = 'Moved to 觀看ing on Simkl';
+      actionLabel = 'Moved to Watching on Simkl';
       success = await simklService.addToList(imdbId, type, 'watching');
     case SimklItemMenuAction.moveToOnHold:
-      actionLabel = 'Moved to 開啟 Hold on Simkl';
+      actionLabel = 'Moved to On Hold on Simkl';
       success = await simklService.addToList(imdbId, type, 'hold');
     case SimklItemMenuAction.moveToCompleted:
       actionLabel = 'Marked Completed on Simkl';
@@ -153,14 +153,14 @@ Future<void> handleSimklMenuAction(
         // fetches only 'watching'). Best-effort clear the paused session too
         // (definitive — drops the resume position; a failure here doesn't leave
         // it in the row, so it must not flip the action to "failed").
-        actionLabel = '移除d — moved to 開啟 Hold on Simkl';
+        actionLabel = 'Removed — moved to On Hold on Simkl';
         success = await simklService.addToList(imdbId, type, 'hold');
         if (success) await simklService.deletePlaybackForImdb(imdbId);
       } else {
         // Movie: no watching/up-next status to change (a paused movie is
         // plantowatch/none, which the row still shows), so clearing the paused
         // session is what removes it — its result IS the success.
-        actionLabel = '移除d from 繼續觀看';
+        actionLabel = 'Removed from Continue Watching';
         success = await simklService.deletePlaybackForImdb(imdbId);
       }
     case SimklItemMenuAction.rate:
@@ -170,7 +170,7 @@ Future<void> handleSimklMenuAction(
       actionLabel = 'Rated $rating/10 on Simkl';
       success = await simklService.rateItem(imdbId, type, rating);
     case SimklItemMenuAction.removeRating:
-      actionLabel = 'Simkl 評分 移除d';
+      actionLabel = 'Simkl Rating Removed';
       success = await simklService.removeRating(imdbId, type);
   }
 
@@ -257,21 +257,21 @@ List<SimklMenuOption> buildSimklMenuOptions({
     if (current != 'plantowatch')
       moveOption(
         'plantowatch',
-        'Plan to 觀看',
+        'Plan to Watch',
         Icons.bookmark_add_rounded,
         const Color(0xFFFBBF24),
       ),
     if (isSeries && current != 'watching')
       moveOption(
         'watching',
-        '觀看ing',
+        'Watching',
         Icons.visibility_rounded,
         const Color(0xFF60A5FA),
       ),
     if (isSeries && current != 'hold')
       moveOption(
         'hold',
-        '開啟 Hold',
+        'On Hold',
         Icons.pause_circle_rounded,
         const Color(0xFFF59E0B),
       ),
@@ -297,24 +297,24 @@ List<SimklMenuOption> buildSimklMenuOptions({
         action: SimklItemMenuAction.removeFromContinueWatching,
         icon: Icons.playlist_remove_rounded,
         color: Color(0xFFF87171),
-        label: '移除 from 繼續觀看',
-        caption: '移除',
+        label: 'Remove from Continue Watching',
+        caption: 'Remove',
       ),
     SimklMenuOption(
       action: SimklItemMenuAction.rate,
       icon: Icons.star_rounded,
       color: const Color(0xFF22D3EE),
       label: currentRating != null
-          ? 'Change Simkl 評分 ($current評分/10)'
+          ? 'Change Simkl Rating ($currentRating/10)'
           : 'Rate on Simkl',
-      caption: currentRating != null ? 'Rated $current評分' : 'Rate',
+      caption: currentRating != null ? 'Rated $currentRating' : 'Rate',
     ),
     if (currentRating != null)
       const SimklMenuOption(
         action: SimklItemMenuAction.removeRating,
         icon: Icons.star_outline_rounded,
         color: Color(0xFF22D3EE),
-        label: '移除 Simkl 評分',
+        label: 'Remove Simkl Rating',
         caption: 'Unrate',
       ),
   ];

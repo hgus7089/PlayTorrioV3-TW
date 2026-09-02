@@ -36,7 +36,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          '外觀與介面',
+          'Appearance & Interface',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
       ),
@@ -50,7 +50,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  '微調視覺氛圍、自訂桌布背景、色彩配置與介面版面。',
+                  'Fine-tune the visual atmosphere, custom wallpaper background, color palettes, and interface layouts.',
                   style: TextStyle(
                     fontSize: 13.5,
                     color: Colors.white.withValues(alpha: 0.5),
@@ -69,9 +69,9 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.wallpaper_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: '自訂背景與桌布',
+                        title: 'Custom Background & Wallpaper',
                         subtitle: 'Upload custom photos, choose curated dark wallpapers, and blend theme ambient lighting',
-                        badgeText: customBg.hasCustomBackground ? '自訂已啟用' : '預設主題',
+                        badgeText: customBg.hasCustomBackground ? 'Custom Active' : 'Default Theme',
                         badgeColor: customBg.hasCustomBackground ? currentPalette.primaryColor : Colors.white38,
                         onTap: () async {
                           await Navigator.push(
@@ -100,9 +100,9 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.blur_on_rounded,
                         iconColor: const Color(0xFF7C5CFF),
-                        title: 'Liquid Glass 設定',
-                        subtitle: '調整懸停效果、彈簧晃動、鏡片折射與色差',
-                        badgeText: glassEnabled ? preset.label : '已停用',
+                        title: 'Liquid Glass Setup',
+                        subtitle: 'Adjust hover impact, wobble spring physics, lens refraction, and chromatic aberration',
+                        badgeText: glassEnabled ? preset.label : 'Disabled',
                         badgeColor: glassEnabled ? const Color(0xFF7C5CFF) : Colors.white38,
                         onTap: () async {
                           await Navigator.push(
@@ -129,8 +129,8 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                   return _buildSectionButton(
                     icon: Icons.dock_rounded,
                     iconColor: const Color(0xFF7C5CFF),
-                    title: 'Liquid Dock／底部導覽列',
-                    subtitle: '選擇底部 Liquid Glass Dock 在所有畫面顯示的導覽捷徑',
+                    title: 'Liquid Dock / Deck Navbar',
+                    subtitle: 'Choose which navigation shortcuts appear in the bottom liquid glass dock across all screens',
                     badgeText: '$activeCount / ${DockItemKey.values.length} Items',
                     badgeColor: const Color(0xFF7C5CFF),
                     onTap: () async {
@@ -155,8 +155,8 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                   return _buildSectionButton(
                     icon: Icons.palette_rounded,
                     iconColor: currentPalette.primaryColor,
-                    title: '首頁介面與主題',
-                    subtitle: 'Color schemes, "因為你已加入清單" smart slider, hero spotlight, and card density',
+                    title: 'Home Page UI & Themes',
+                    subtitle: 'Color schemes, "Because you have on your list" smart slider, hero spotlight, and card density',
                     badgeText: currentPalette.name,
                     badgeColor: currentPalette.primaryColor,
                     onTap: () async {
@@ -184,9 +184,9 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.live_tv_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: 'Live TV 與體育介面',
-                        subtitle: '直播首頁聚光燈、頻道卡片密度、分類排序與直播標籤樣式',
-                        badgeText: spotlightEnabled ? '聚光燈已開啟' : '精簡',
+                        title: 'Live TV & Sports UI',
+                        subtitle: 'Broadcast hero spotlight, channel card density, category ordering, and live badge styling',
+                        badgeText: spotlightEnabled ? 'Spotlight ON' : 'Compact',
                         badgeColor: currentPalette.primaryColor,
                         onTap: () async {
                           await Navigator.push(
@@ -215,9 +215,9 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.menu_book_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: '漫畫介面與閱讀氛圍',
-                        subtitle: '動態環境光、卡片密度、閱讀寬度、條漫／橫向模式與頁面縮圖預覽',
-                        badgeText: readingMode == MangaReadingMode.webtoon ? '條漫' : '橫向',
+                        title: 'Manga UI & Reader Atmosphere',
+                        subtitle: 'Ambient moving lighting, card density, reading layout widths, webtoon/horizontal modes, and page deck preview',
+                        badgeText: readingMode == MangaReadingMode.webtoon ? 'Webtoon' : 'Horizontal',
                         badgeColor: currentPalette.primaryColor,
                         onTap: () async {
                           await Navigator.push(
@@ -246,8 +246,8 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.headphones_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: '有聲書介面與播放器工作室',
-                        subtitle: '首頁聚光燈、5 種播放器設計、拖放模組化工作室、波形進度條與自訂控制項',
+                        title: 'Audiobook UI & Player Studio',
+                        subtitle: 'Hero spotlight, 5 distinct player designs, drag & drop modular studio, waveform canvas scrubber, and custom controls',
                         badgeText: playerPreset.label.split(' ').first,
                         badgeColor: currentPalette.primaryColor,
                         onTap: () async {
@@ -277,8 +277,8 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
                       return _buildSectionButton(
                         icon: Icons.music_note_rounded,
                         iconColor: currentPalette.primaryColor,
-                        title: '音樂介面與播放器工作室',
-                        subtitle: '首頁聚光燈、無損標籤，以及迷你 Dock 與全螢幕唱盤／等化器的雙引擎自訂器',
+                        title: 'Music UI & Player Studio',
+                        subtitle: 'Hero spotlight, lossless badges, dual-engine customizer for both mini dock bar and fullscreen turntable/equalizer',
                         badgeText: fullPreset.label.split(' ').first,
                         badgeColor: currentPalette.primaryColor,
                         onTap: () async {
@@ -300,7 +300,7 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
 
               // Visual Overview Notes
               Text(
-                '即時自訂範圍',
+                'LIVE CUSTOMIZATION SCOPE',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -312,20 +312,20 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
 
               _buildScopeTile(
                 icon: Icons.dock_rounded,
-                title: '底部 Liquid Dock',
-                description: 'Dock 項目會依自訂懸停放大、鄰近波紋與彈簧晃動效果動態反應。',
+                title: 'Bottom Liquid Dock',
+                description: 'Dock items react dynamically with your custom hover magnification, proximity ripples, and wobble springs.',
               ),
               const SizedBox(height: 10),
               _buildScopeTile(
                 icon: Icons.play_circle_outline_rounded,
-                title: '影片播放器與觀看畫面',
-                description: '覆蓋層、玻璃面板與媒體控制項會套用自訂光學模糊、折射率與邊框閃爍。',
+                title: 'Video Player & Watch Screens',
+                description: 'Overlays, glass sheets, and media controls render with your custom optical blur, refraction index, and border shimmer.',
               ),
               const SizedBox(height: 10),
               _buildScopeTile(
                 icon: Icons.home_rounded,
-                title: '首頁與探索',
-                description: '依照你選擇的主題強調色、BestSimilar 智慧推薦滑桿與海報密度調整。',
+                title: 'Home Page & Discovery',
+                description: 'Adapts to your chosen theme accent colors, smart BestSimilar recommendation slider, and chosen poster density.',
               ),
             ],
           ),

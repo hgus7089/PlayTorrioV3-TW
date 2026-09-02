@@ -23,7 +23,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Liquid Glass 設定',
+          'Liquid Glass Setup',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
         ),
         actions: [
@@ -34,7 +34,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
               if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Liquid Glass 設定已重設為預設值。'),
+                  content: Text('Liquid Glass settings reset to defaults.'),
                   behavior: SnackBarBehavior.floating,
                   backgroundColor: Color(0xFF7C5CFF),
                 ),
@@ -42,7 +42,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
             },
             icon: const Icon(Icons.restore_rounded, size: 18, color: Colors.white70),
             label: const Text(
-              '重設',
+              'Reset',
               style: TextStyle(color: Colors.white70, fontWeight: FontWeight.w700),
             ),
           ),
@@ -87,7 +87,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '啟用 Liquid Glass',
+                                'Enable Liquid Glass',
                                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Colors.white),
                               ),
                               SizedBox(height: 3),
@@ -137,7 +137,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
 
               // Detailed Sliders
               Text(
-                '物理與光學參數',
+                'PHYSICS & OPTICAL PARAMETERS',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -152,8 +152,8 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.hoverScale,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '懸停縮放效果',
-                    subtitle: '懸停或觸碰 Dock 項目時的放大倍率',
+                    title: 'Hover Scale Impact',
+                    subtitle: 'Magnification amount when hovering or touching dock items',
                     valueDisplay: '${val.toStringAsFixed(2)}x',
                     value: val,
                     min: 0.95,
@@ -170,8 +170,8 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.hoverProximity,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '鄰近半徑',
-                    subtitle: '游標移動產生鄰近項目波紋效果的距離閾值',
+                    title: 'Proximity Radius',
+                    subtitle: 'Distance threshold where cursor motion ripples to adjacent items',
                     valueDisplay: '${val.toStringAsFixed(1)}x',
                     value: val,
                     min: 1.2,
@@ -188,8 +188,8 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.wobbleIntensity,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '晃動與流體彈性',
-                    subtitle: '彈簧回彈強度與變形反應度',
+                    title: 'Wobble & Fluid Elasticity',
+                    subtitle: 'Spring bounce intensity and deformation responsiveness',
                     valueDisplay: '${val.toStringAsFixed(1)}x',
                     value: val,
                     min: 0.5,
@@ -206,8 +206,8 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.refractionIndex,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '光學折射率',
-                    subtitle: '玻璃鏡片中的光線彎曲與背景扭曲指數',
+                    title: 'Optical Refraction Index',
+                    subtitle: 'Light bending and background warp index inside glass lenses',
                     valueDisplay: val.toStringAsFixed(2),
                     value: val,
                     min: 1.0,
@@ -224,7 +224,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.magnification,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '鏡片放大倍率',
+                    title: 'Lens Magnification',
                     subtitle: 'Underlying zoom factor seen through the glass volume',
                     valueDisplay: '${val.toStringAsFixed(3)}x',
                     value: val,
@@ -242,8 +242,8 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.chromaticAberration,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '色差（棱鏡分離）',
-                    subtitle: '沿光學玻璃斜角分離 RGB 光譜色彩',
+                    title: 'Chromatic Aberration (Prism Split)',
+                    subtitle: 'Separates RGB spectrum colors along optical glass bevels',
                     valueDisplay: val.toStringAsFixed(4),
                     value: val,
                     min: 0.000,
@@ -260,8 +260,8 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.blurSigma,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '磨砂玻璃模糊',
-                    subtitle: '在玻璃元件後套用高斯模糊擴散',
+                    title: 'Frosted Glass Blur',
+                    subtitle: 'Gaussian blur diffusion applied behind glass components',
                     valueDisplay: '${val.toStringAsFixed(1)} px',
                     value: val,
                     min: 0.0,
@@ -278,8 +278,8 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.lightIntensity,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '鏡面光與閃爍',
-                    subtitle: '鏡面反射與邊框照明強度',
+                    title: 'Specular Light & Shimmer',
+                    subtitle: 'Glossy specular reflection and border illumination intensity',
                     valueDisplay: val.toStringAsFixed(2),
                     value: val,
                     min: 0.5,
@@ -296,8 +296,8 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 valueListenable: GlassSettings.borderWidth,
                 builder: (context, val, _) {
                   return _buildSliderTile(
-                    title: '邊框寬度',
-                    subtitle: '折射外邊界的厚度',
+                    title: 'Border Width',
+                    subtitle: 'Thickness of the refractive outer boundary edge',
                     valueDisplay: '${val.toStringAsFixed(1)} px',
                     value: val,
                     min: 0.5,
@@ -395,7 +395,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                           ),
                           const SizedBox(width: 6),
                           Text(
-                            enabled ? '即時互動預覽' : '預覽（啟用上方玻璃效果）',
+                            enabled ? 'LIVE INTERACTIVE PREVIEW' : 'PREVIEW (ENABLE GLASS ABOVE)',
                             style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: Colors.white70),
                           ),
                         ],
@@ -480,7 +480,7 @@ class _LiquidGlassSettingsPageState extends State<LiquidGlassSettingsPage> {
                 right: 0,
                 child: Center(
                   child: Text(
-                    '懸停或點擊圖示預覽彈簧晃動與縮放效果',
+                    'Hover or tap the icons to preview spring wobble & scale',
                     style: TextStyle(fontSize: 11, color: Colors.white.withValues(alpha: 0.5)),
                   ),
                 ),

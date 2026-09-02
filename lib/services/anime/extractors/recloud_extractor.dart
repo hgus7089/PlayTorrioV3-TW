@@ -105,7 +105,7 @@ class ReCloudExtractor {
 
       if (sourcesRes.statusCode != 200) {
         if (kDebugMode) {
-          debugPrint('[ReCloud] 來源 request failed: ${sourcesRes.statusCode}');
+          debugPrint('[ReCloud] Sources request failed: ${sourcesRes.statusCode}');
         }
         return null;
       }
@@ -136,7 +136,7 @@ class ReCloudExtractor {
             if (fullTrackFile.isNotEmpty) {
               tracks.add(ReCloudTrack(
                 file: fullTrackFile,
-                label: item['label']?.toString() ?? '字幕',
+                label: item['label']?.toString() ?? 'Subtitles',
                 kind: item['kind']?.toString() ?? 'subtitles',
                 isDefault: item['default'] == true,
               ));

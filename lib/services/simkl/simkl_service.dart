@@ -253,7 +253,7 @@ class SimklService {
     if (accessToken != null) 'Authorization': 'Bearer $accessToken',
   };
 
-  /// 檢查 if the user is authenticated (has a stored access token).
+  /// Check if the user is authenticated (has a stored access token).
   /// Simkl tokens don't expire, so unlike Trakt there's no refresh check.
   Future<bool> isAuthenticated() async {
     final token = await StorageService.getSimklAccessToken();
@@ -502,7 +502,7 @@ class SimklService {
     final data = await _getOrNull(
       uri,
       headers: _apiHeaders(accessToken: token),
-      label: 'fetch評分s $type',
+      label: 'fetchRatings $type',
     );
     return data is Map<String, dynamic> ? data : null;
   }
@@ -650,7 +650,7 @@ class SimklService {
         ],
       },
       token: token,
-      label: 'remove評分 $typeKey',
+      label: 'removeRating $typeKey',
     );
     if (!_wasMatched(result, typeKey)) return false;
     _invalidateLibraryCache();
@@ -673,7 +673,7 @@ class SimklService {
         ],
       },
       token: token,
-      label: 'mark觀看ed $typeKey',
+      label: 'markWatched $typeKey',
     );
     if (!_wasMatched(result, typeKey)) return false;
     _invalidateLibraryCache();
@@ -725,7 +725,7 @@ class SimklService {
         'shows': [_episodeRef(showImdbId, season, episode)],
       },
       token: token,
-      label: 'mark集觀看ed',
+      label: 'markEpisodeWatched',
     );
     if (!_wasMatched(result, 'shows')) return false;
     _invalidateLibraryCache();
@@ -747,7 +747,7 @@ class SimklService {
         'shows': [_episodeRef(showImdbId, season, episode)],
       },
       token: token,
-      label: 'mark集Unwatched',
+      label: 'markEpisodeUnwatched',
     );
     if (!_wasMatched(result, 'shows')) return false;
     _invalidateLibraryCache();
@@ -784,7 +784,7 @@ class SimklService {
         ],
       },
       token: token,
-      label: 'rate集',
+      label: 'rateEpisode',
     );
     if (!_wasMatched(result, 'shows')) return false;
     _invalidateLibraryCache();
@@ -1190,7 +1190,7 @@ class SimklService {
       final ok = await _deleteOk(
         '/sync/playback/$id',
         token: token,
-        label: 'delete播放back $id',
+        label: 'deletePlayback $id',
       );
       if (!ok) allOk = false;
     }
@@ -1236,7 +1236,7 @@ class SimklService {
       final ok = await _deleteOk(
         '/sync/playback/$id',
         token: token,
-        label: 'delete播放backEp $id',
+        label: 'deletePlaybackEp $id',
       );
       if (!ok) allOk = false;
     }
@@ -1287,7 +1287,7 @@ class SimklService {
         },
       ],
       token: token,
-      label: 'fetch觀看edShow集',
+      label: 'fetchWatchedShowEpisodes',
       query: {'extended': 'episodes'},
     );
     if (result is! List || result.isEmpty) return {};

@@ -27,7 +27,7 @@ class YoutubeStreamHttp {
       '(KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36';
 
   static const String tvEmbeddedUserAgent =
-      'Mozilla/5.0 (播放Station; 播放Station 4/12.00) AppleWebKit/537.36 '
+      'Mozilla/5.0 (PlayStation; PlayStation 4/12.00) AppleWebKit/537.36 '
       '(KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36';
 
   static bool isYoutubeCdnUrl(String url) {
@@ -73,7 +73,7 @@ class YoutubeStreamHttp {
     final headers = <String, String>{
       'User-Agent': resolvedUserAgent,
       'Accept': '*/*',
-      'Accept-語言': 'en-US,en;q=0.9',
+      'Accept-Language': 'en-US,en;q=0.9',
     };
     if (range != null) {
       headers['Range'] = range;

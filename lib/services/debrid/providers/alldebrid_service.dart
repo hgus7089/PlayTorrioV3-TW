@@ -36,7 +36,7 @@ class AllDebridService {
     if (trimmed.isEmpty) return null;
     try {
       final res = await http.get(
-        Uri.parse('https://api.alldebrid.com/v4/user?agent=播放Torrio&apikey=$trimmed'),
+        Uri.parse('https://api.alldebrid.com/v4/user?agent=PlayTorrio&apikey=$trimmed'),
       );
       if (res.statusCode == 200) {
         final data = json.decode(res.body);
@@ -93,7 +93,7 @@ class AllDebridService {
   }) async {
     final apiKey = await getKey();
     if (apiKey == null || apiKey.isEmpty) {
-      throw Exception('AllDebrid API key is missing. Please configure it in 設定.');
+      throw Exception('AllDebrid API key is missing. Please configure it in Settings.');
     }
     final headers = {'Authorization': 'Bearer $apiKey'};
 

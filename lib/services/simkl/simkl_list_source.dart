@@ -31,21 +31,21 @@ extension SimklSeeAllListX on SimklSeeAllList {
   String get label {
     switch (this) {
       case SimklSeeAllList.continueWatching:
-        return '繼續觀看';
+        return 'Continue Watching';
       case SimklSeeAllList.planToWatch:
-        return 'Plan to 觀看';
+        return 'Plan to Watch';
       case SimklSeeAllList.watching:
-        return '觀看ing';
+        return 'Watching';
       case SimklSeeAllList.onHold:
-        return '開啟 Hold';
+        return 'On Hold';
       case SimklSeeAllList.completed:
         return 'Completed';
       case SimklSeeAllList.dropped:
         return 'Dropped';
       case SimklSeeAllList.ratings:
-        return '評分s';
+        return 'Ratings';
       case SimklSeeAllList.trending:
-        return '熱門';
+        return 'Trending';
       case SimklSeeAllList.topRated:
         return 'Top Rated';
       case SimklSeeAllList.newAndUpcoming:

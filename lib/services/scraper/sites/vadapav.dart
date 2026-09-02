@@ -12,7 +12,7 @@ import 'tmdb_helper.dart';
 /// https://stremio.vadapav.mov/manifest.json
 class VadapavScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const _addonBase = 'https://stremio.vadapav.mov';
 
@@ -107,7 +107,7 @@ class VadapavScraper extends StreamScraper {
                     title: rawTitle.isNotEmpty ? rawTitle : 'vadapav.mov • Direct Stream',
                     description: rawTitle,
                     url: url,
-                    addonName: '播放TorrioHTTP',
+                    addonName: 'PlayTorrioHTTP',
                     headers: _defaultHeaders,
                     behaviorHints: map['behaviorHints'] is Map
                         ? Map<String, dynamic>.from(map['behaviorHints'])
@@ -125,7 +125,7 @@ class VadapavScraper extends StreamScraper {
               }
             }
           } catch (e) {
-            debugPrint('[Vadapav] 錯誤 fetching from $endpoint: $e');
+            debugPrint('[Vadapav] Error fetching from $endpoint: $e');
           }
         }
       } catch (e) {

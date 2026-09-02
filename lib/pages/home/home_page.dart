@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
         );
       }
     } catch (e) {
-      debugPrint('[首頁Page] Auto update check failed: $e');
+      debugPrint('[HomePage] Auto update check failed: $e');
     }
   }
 
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
         );
       }
     } catch (e) {
-      debugPrint('[首頁Page] P2P warning check failed: $e');
+      debugPrint('[HomePage] P2P warning check failed: $e');
     }
   }
 
@@ -477,7 +477,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 32),
                 Text(
-                  '播放Torrio',
+                  'PlayTorrio',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: titleSize,
@@ -552,7 +552,7 @@ class _GlassAppBar extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             const Text(
-              '播放Torrio',
+              'PlayTorrio',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w900,
@@ -1134,7 +1134,7 @@ class _HeroSlide extends StatelessWidget {
                     isCompact: isCompact || heroStyle == HeroStyle.minimalist,
                   ),
 
-                  // Description (Hidden in Minimalist, 1-line in 精簡, 3-line in Immersive)
+                  // Description (Hidden in Minimalist, 1-line in Compact, 3-line in Immersive)
                   if (heroStyle != HeroStyle.minimalist &&
                       description != null &&
                       description.isNotEmpty) ...[
@@ -1198,7 +1198,7 @@ class _HeroSlide extends StatelessWidget {
                             onPressed: () => _openDetails(context),
                             icon: const Icon(Icons.play_arrow_rounded, size: 22),
                             label: const Text(
-                              '立即觀看',
+                              'Watch Now',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 15,
@@ -1232,7 +1232,7 @@ class _HeroSlide extends StatelessWidget {
                                 color: Colors.white.withValues(alpha: 0.80),
                               ),
                               label: Text(
-                                '詳細資訊',
+                                'Details',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: isCompact ? 13.5 : 15,

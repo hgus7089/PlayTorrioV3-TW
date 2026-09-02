@@ -187,7 +187,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                       Icon(Icons.tune_rounded, color: palette.primaryColor, size: 20),
                       const SizedBox(width: 10),
                       const Text(
-                        '自訂 音訊book Section',
+                        'Customize Audiobook Section',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.5,
@@ -262,7 +262,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                     builder: (context, enabled, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('Moving Ambient 背景 Glow', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('Moving Ambient Background Glow', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: enabled,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => AudiobookSettings.setEnableAmbientLights(val),
@@ -275,7 +275,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                     builder: (context, show, _) {
                       return SwitchListTile.adaptive(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('顯示「繼續收聽」輪播', style: TextStyle(color: Colors.white, fontSize: 13.5)),
+                        title: const Text('Show "Continue Listening" Carousel', style: TextStyle(color: Colors.white, fontSize: 13.5)),
                         value: show,
                         activeColor: palette.primaryColor,
                         onChanged: (val) => AudiobookSettings.setShowContinueListening(val),
@@ -298,7 +298,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       icon: const Icon(Icons.palette_rounded, size: 18),
-                      label: const Text('開啟 播放器 Studio & 主題s', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                      label: const Text('Open Player Studio & Themes', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                       onPressed: () {
                         Navigator.pop(ctx);
                         Navigator.push(
@@ -407,7 +407,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              '音訊book Hub',
+                              'Audiobook Hub',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 22,
@@ -446,7 +446,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                             ),
                             child: IconButton(
                               icon: const Icon(Icons.auto_awesome_rounded, color: Colors.white, size: 20),
-                              tooltip: '音訊book Generator & Studio',
+                              tooltip: 'Audiobook Generator & Studio',
                               onPressed: () async {
                                 await Navigator.push(
                                   context,
@@ -473,7 +473,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                             ),
                             child: IconButton(
                               icon: const Icon(Icons.tune_rounded, color: Colors.white70, size: 20),
-                              tooltip: '音訊book 自訂r',
+                              tooltip: 'Audiobook Customizer',
                               onPressed: () => _showAudiobookCustomizer(context),
                             ),
                           ),
@@ -508,7 +508,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                           onChanged: _onSearchChanged,
                           onSubmitted: _performSearch,
                           decoration: InputDecoration(
-                            hintText: '搜尋 audiobooks by title, author, or genre...',
+                            hintText: 'Search audiobooks by title, author, or genre...',
                             hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 14),
                             prefixIcon: Icon(Icons.search_rounded, color: palette.primaryColor),
                             suffixIcon: _searchController.text.isNotEmpty
@@ -599,7 +599,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                   child: Row(
                     children: [
                       Text(
-                        _searchController.text.isNotEmpty ? '搜尋 Results' : 'Featured 有聲書',
+                        _searchController.text.isNotEmpty ? 'Search Results' : 'Featured Audiobooks',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -1005,7 +1005,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'AI 音訊book Studio & EPUB Generator',
+                        'AI Audiobook Studio & EPUB Generator',
                         style: TextStyle(color: Colors.white, fontSize: 13.5, fontWeight: FontWeight.w800),
                       ),
                       Text(
@@ -1029,7 +1029,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                     );
                     _loadContinueListening();
                   },
-                  child: const Text('開啟工作室', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                  child: const Text('Open Studio', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
@@ -1056,7 +1056,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                   Icon(Icons.record_voice_over_rounded, color: palette.primaryColor, size: 20),
                   const SizedBox(width: 8),
                   const Text(
-                    'My Generated & Uploaded 有聲書',
+                    'My Generated & Uploaded Audiobooks',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -1141,7 +1141,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                               if (isDone)
                                 ElevatedButton.icon(
                                   icon: const Icon(Icons.play_arrow_rounded, size: 14),
-                                  label: const Text('播放', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                                  label: const Text('Play', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: palette.primaryColor,
                                     foregroundColor: Colors.white,
@@ -1157,7 +1157,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                                       title: cleanTitle,
                                       author: 'AI Generated',
                                       coverImage: job.coverPath ?? '',
-                                      source: 'Paper2音訊 AI',
+                                      source: 'Paper2Audio AI',
                                       pageUrl: streamOrLocalPath,
                                     );
                                     Navigator.push(
@@ -1236,7 +1236,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
                               const SizedBox(height: 8),
                               ElevatedButton.icon(
                                 icon: const Icon(Icons.play_arrow_rounded, size: 14),
-                                label: const Text('播放', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                                label: const Text('Play', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: palette.primaryColor,
                                   foregroundColor: Colors.white,

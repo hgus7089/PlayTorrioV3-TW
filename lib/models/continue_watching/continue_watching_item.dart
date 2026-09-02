@@ -88,7 +88,7 @@ class ContinueWatchingItem {
       url: isTorrent ? (magnetUrl ?? rawUrl) : rawUrl,
       infoHash: infoHash,
       fileIdx: fileIdx,
-      addonName: addonName ?? '播放Torrio',
+      addonName: addonName ?? 'PlayTorrio',
       headers: headers,
     );
   }
@@ -107,7 +107,7 @@ class ContinueWatchingItem {
       'episodeId': episodeId,
       'positionSeconds': positionSeconds,
       'totalDurationSeconds': totalDurationSeconds,
-      'last觀看edAt': lastWatchedAt.toIso8601String(),
+      'lastWatchedAt': lastWatchedAt.toIso8601String(),
       'addonName': addonName,
       'isTorrent': isTorrent,
       'magnetUrl': magnetUrl,
@@ -135,8 +135,8 @@ class ContinueWatchingItem {
       episodeId: json['episodeId']?.toString(),
       positionSeconds: json['positionSeconds'] is int ? json['positionSeconds'] : int.tryParse(json['positionSeconds']?.toString() ?? '') ?? 0,
       totalDurationSeconds: json['totalDurationSeconds'] is int ? json['totalDurationSeconds'] : int.tryParse(json['totalDurationSeconds']?.toString() ?? '') ?? 0,
-      lastWatchedAt: json['last觀看edAt'] != null ? (DateTime.tryParse(json['last觀看edAt'].toString()) ?? DateTime.now()) : DateTime.now(),
-      addonName: json['addonName']?.toString() ?? '播放Torrio',
+      lastWatchedAt: json['lastWatchedAt'] != null ? (DateTime.tryParse(json['lastWatchedAt'].toString()) ?? DateTime.now()) : DateTime.now(),
+      addonName: json['addonName']?.toString() ?? 'PlayTorrio',
       isTorrent: json['isTorrent'] == true,
       magnetUrl: json['magnetUrl']?.toString(),
       infoHash: json['infoHash']?.toString(),

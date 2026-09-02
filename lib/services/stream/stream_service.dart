@@ -321,7 +321,7 @@ class StreamService {
           .where((s) => s.url != null || s.infoHash != null || s.externalUrl != null)
           .toList();
     } catch (e, st) {
-      debugPrint('新增on ${addon.manifest.name} failed: $e\n$st');
+      debugPrint('Addon ${addon.manifest.name} failed: $e\n$st');
       return [];
     }
   }

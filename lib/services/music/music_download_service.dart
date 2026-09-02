@@ -77,7 +77,7 @@ class MusicDownloadService extends ChangeNotifier {
 
     try {
       final appDocDir = await getApplicationDocumentsDirectory();
-      _musicDir = Directory(p.join(appDocDir.path, '播放Torrio', '音樂'));
+      _musicDir = Directory(p.join(appDocDir.path, 'PlayTorrio', 'Music'));
       _tracksDir = Directory(p.join(_musicDir!.path, 'Tracks'));
       _coversDir = Directory(p.join(_musicDir!.path, 'Covers'));
 
@@ -102,7 +102,7 @@ class MusicDownloadService extends ChangeNotifier {
       }
       notifyListeners();
     } catch (e) {
-      debugPrint('[音樂下載Service] init error: $e');
+      debugPrint('[MusicDownloadService] init error: $e');
     }
   }
 
@@ -211,7 +211,7 @@ class MusicDownloadService extends ChangeNotifier {
           }
         }
       } catch (e) {
-        debugPrint('[音樂下載Service] delete error: $e');
+        debugPrint('[MusicDownloadService] delete error: $e');
       }
 
       _downloadedTracks.removeWhere((t) => t.id == trackId);
@@ -270,7 +270,7 @@ class MusicDownloadService extends ChangeNotifier {
     String? streamUrl;
     Map<String, String> headers = {};
     String format = 'm4a';
-    String quality = 'HQ 音訊';
+    String quality = 'HQ Audio';
 
     // 1. Audio Stream Extraction with FLAC -> YouTube fallback
     try {
@@ -286,7 +286,7 @@ class MusicDownloadService extends ChangeNotifier {
             }
           }
         } catch (e) {
-          debugPrint('[音樂下載Service] Qobuz FLAC failed for ${track.title}, falling back to YouTube: $e');
+          debugPrint('[MusicDownloadService] Qobuz FLAC failed for ${track.title}, falling back to YouTube: $e');
         }
       }
 
@@ -304,7 +304,7 @@ class MusicDownloadService extends ChangeNotifier {
         }
       }
     } catch (e) {
-      debugPrint('[音樂下載Service] Stream resolution failed for ${track.title}: $e');
+      debugPrint('[MusicDownloadService] Stream resolution failed for ${track.title}: $e');
     }
 
     if (streamUrl == null || streamUrl.isEmpty) {
@@ -341,7 +341,7 @@ class MusicDownloadService extends ChangeNotifier {
           }
         }
       } catch (e) {
-        debugPrint('[音樂下載Service] Cover download warning: $e');
+        debugPrint('[MusicDownloadService] Cover download warning: $e');
       }
     }
 
@@ -427,14 +427,14 @@ class MusicDownloadService extends ChangeNotifier {
       task.progress = 1.0;
       notifyListeners();
     } catch (e) {
-      debugPrint('[音樂下載Service] 下載 failed for ${track.title}: $e');
+      debugPrint('[MusicDownloadService] Download failed for ${track.title}: $e');
       if (await tempFile.exists()) {
         try {
           await tempFile.delete();
         } catch (_) {}
       }
       task.status = MusicDownloadStatus.failed;
-      task.errorMessage = '下載 error: ${e.toString()}';
+      task.errorMessage = 'Download error: ${e.toString()}';
       notifyListeners();
     }
   }
@@ -449,7 +449,7 @@ class MusicDownloadService extends ChangeNotifier {
       final raw = jsonEncode(_downloadedTracks.map((t) => t.toJson()).toList());
       await prefs.setString(_storageKey, raw);
     } catch (e) {
-      debugPrint('[音樂下載Service] 儲存 error: $e');
+      debugPrint('[MusicDownloadService] Save error: $e');
     }
   }
 }

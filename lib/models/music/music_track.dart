@@ -330,7 +330,7 @@ class MusicPlaylist {
 
     return MusicPlaylist(
       id: json['id']?.toString() ?? '',
-      title: json['title']?.toString() ?? '播放list',
+      title: json['title']?.toString() ?? 'Playlist',
       description: json['description']?.toString() ?? '',
       coverUrl: cover,
       trackCount: int.tryParse(
@@ -516,7 +516,7 @@ class UserPlaylist {
   factory UserPlaylist.fromJson(Map<String, dynamic> json) {
     return UserPlaylist(
       id: json['id']?.toString() ?? '',
-      title: json['title']?.toString() ?? 'My 播放list',
+      title: json['title']?.toString() ?? 'My Playlist',
       createdAt: json['createdAt']?.toString() ?? '',
       tracks: (json['tracks'] as List<dynamic>?)
               ?.whereType<Map<String, dynamic>>()

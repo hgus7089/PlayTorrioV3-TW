@@ -37,7 +37,7 @@ class OpenFileLocationHelper {
         }
       }
     } catch (e) {
-      debugPrint('[開啟FileLocationHelper] 錯誤 opening file location: $e');
+      debugPrint('[OpenFileLocationHelper] Error opening file location: $e');
     }
     return false;
   }

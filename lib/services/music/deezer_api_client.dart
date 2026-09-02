@@ -257,7 +257,7 @@ class DeezerApiClient {
         relatedArtists: related,
       );
     } catch (e) {
-      debugPrint('getArtist詳細資訊 error: $e');
+      debugPrint('getArtistDetails error: $e');
       return null;
     }
   }
@@ -303,7 +303,7 @@ class DeezerApiClient {
 
       return MusicAlbumDetails(album: album, tracks: tracks);
     } catch (e) {
-      debugPrint('getAlbum詳細資訊 error: $e');
+      debugPrint('getAlbumDetails error: $e');
       return null;
     }
   }
@@ -337,7 +337,7 @@ class DeezerApiClient {
 
       return MusicPlaylistDetails(playlist: playlist, tracks: tracks);
     } catch (e) {
-      debugPrint('get播放list詳細資訊 error: $e');
+      debugPrint('getPlaylistDetails error: $e');
       return null;
     }
   }

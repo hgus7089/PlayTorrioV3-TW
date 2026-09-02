@@ -6,13 +6,13 @@ import '../../../models/stream/stream_model.dart';
 /// Scraper for All Movies Downloader (Films365) producing direct MP4 stream sources.
 class XDownloaderScraper extends StreamScraper {
   @override
-  String get name => '播放TorrioHTTP';
+  String get name => 'PlayTorrioHTTP';
 
   static const String _baseUrl = 'https://www.films365.org';
   static const Map<String, String> _headers = {
     'Authorization': 'Bearer 79a02956be35835728a044b11e2ae793149d45fb2c89cb6d029ec01aac19bfdb',
     'Content-Type': 'application/json',
-    'User-Agent': 'Movie下載er/1.0',
+    'User-Agent': 'MovieDownloader/1.0',
   };
 
   @override
@@ -94,10 +94,10 @@ class XDownloaderScraper extends StreamScraper {
         if (streamUrl != null && streamUrl.isNotEmpty) {
           final safeUrl = Uri.parse(streamUrl).toString();
           sources.add(StreamSource(
-            name: '播放TorrioHTTP',
-            addonName: '播放TorrioHTTP',
-            title: 'X-下載er',
-            description: 'X-下載er Direct MP4 Stream',
+            name: 'PlayTorrioHTTP',
+            addonName: 'PlayTorrioHTTP',
+            title: 'X-Downloader',
+            description: 'X-Downloader Direct MP4 Stream',
             url: safeUrl,
           ));
         }
@@ -129,10 +129,10 @@ class XDownloaderScraper extends StreamScraper {
                 if (streamUrl != null && streamUrl.isNotEmpty) {
                   final safeUrl = Uri.parse(streamUrl).toString();
                   sources.add(StreamSource(
-                    name: '播放TorrioHTTP',
-                    addonName: '播放TorrioHTTP',
-                    title: 'X-下載er',
-                    description: 'X-下載er Direct MP4 Stream (S${season}E$episode)',
+                    name: 'PlayTorrioHTTP',
+                    addonName: 'PlayTorrioHTTP',
+                    title: 'X-Downloader',
+                    description: 'X-Downloader Direct MP4 Stream (S${season}E$episode)',
                     url: safeUrl,
                   ));
                 }
@@ -142,7 +142,7 @@ class XDownloaderScraper extends StreamScraper {
         }
       }
     } catch (e) {
-      print('X下載erScraper error: $e');
+      print('XDownloaderScraper error: $e');
     }
 
     return sources;

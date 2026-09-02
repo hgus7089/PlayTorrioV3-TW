@@ -19,8 +19,8 @@ class Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json, String addonBaseUrl) {
     String? ratingStr;
-    if (json['imdb評分'] != null) {
-      ratingStr = json['imdb評分'].toString();
+    if (json['imdbRating'] != null) {
+      ratingStr = json['imdbRating'].toString();
     } else if (json['rating'] != null) {
       ratingStr = json['rating'].toString();
     } else if (json['imdb_rating'] != null) {

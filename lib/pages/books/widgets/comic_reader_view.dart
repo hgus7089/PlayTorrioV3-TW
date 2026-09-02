@@ -262,7 +262,7 @@ class _ComicReaderViewState extends State<ComicReaderView> with SingleTickerProv
                       // Reset / Fit
                       _buildToolbarButton(
                         icon: Icons.fit_screen_rounded,
-                        tooltip: '重設 Zoom (100%)',
+                        tooltip: 'Reset Zoom (100%)',
                         onPressed: () => _resetZoom(),
                       ),
                     ],

@@ -48,7 +48,7 @@ class MovieDetail {
       logo: json['logo']?.toString(),
       description: json['description']?.toString(),
       year: json['releaseInfo']?.toString() ?? json['year']?.toString(),
-      imdbRating: json['imdb評分']?.toString(),
+      imdbRating: json['imdbRating']?.toString(),
       genres: _parseStringList(json['genres']),
       cast: _parseStringList(json['cast']),
       director: _parseStringList(json['director']),

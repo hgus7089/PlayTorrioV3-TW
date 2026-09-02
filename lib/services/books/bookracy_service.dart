@@ -94,7 +94,7 @@ class BookracyService {
       return books;
     } catch (e) {
       if (kDebugMode) {
-        debugPrint('[BookracyService] 錯誤 searching books ($effectiveQuery): $e');
+        debugPrint('[BookracyService] Error searching books ($effectiveQuery): $e');
       }
       return [];
     }
@@ -105,10 +105,10 @@ class BookracyService {
     String lang = 'en',
   }) async {
     final categories = <String, String>{
-      '熱門 Fiction': 'fiction',
+      'Popular Fiction': 'fiction',
       'Sci-Fi & Fantasy': 'fantasy',
       'Mystery & Thriller': 'thriller',
-      'Science & 觀看紀錄': 'history',
+      'Science & History': 'history',
       'Bestsellers': 'novel',
     };
 

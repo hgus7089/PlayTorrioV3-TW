@@ -110,7 +110,7 @@ class _IptvPageState extends State<IptvPage> {
     _soccer = HardcodedChannels.byCategory('Soccer');
     _combat = HardcodedChannels.byCategory('Combat');
     _racing = HardcodedChannels.byCategory('Racing');
-    _movies = HardcodedChannels.byCategory('電影');
+    _movies = HardcodedChannels.byCategory('Movies');
     _news = HardcodedChannels.byCategory('News');
     _arabic = HardcodedChannels.byCategory('Arabic');
     _discovery = HardcodedChannels.byCategory('Discovery');
@@ -170,12 +170,12 @@ class _IptvPageState extends State<IptvPage> {
         'ESPN+, ESPN, ESPN2, ESPNU, NCAA Men\'s & Women\'s CBB, SEC & ACC',
         _espnAndCollege,
       ),
-      'US Major Leagues & 體育': (
-        'NBA TV, NFL 網路, RedZone, MLB, NHL, Fox 體育 & CBS 體育',
+      'US Major Leagues & Sports': (
+        'NBA TV, NFL Network, RedZone, MLB, NHL, Fox Sports & CBS Sports',
         _usSports,
       ),
       'Global Football & Soccer': (
-        'UEFA Champions League, Premier League, beIN 體育, La Liga & Serie A',
+        'UEFA Champions League, Premier League, beIN Sports, La Liga & Serie A',
         _soccer,
       ),
       'Combat & Martial Arts': (
@@ -186,11 +186,11 @@ class _IptvPageState extends State<IptvPage> {
         'Formula 1, MotoGP, NASCAR Cup, IndyCar & Rally WRC',
         _racing,
       ),
-      '電影 & Premium 網路s': (
+      'Movies & Premium Networks': (
         'HBO, Showtime, Starz, Cinemax, Paramount & AMC',
         _movies,
       ),
-      '24/7 Global News 網路s': (
+      '24/7 Global News Networks': (
         'CNN, BBC World, Fox News, Sky News, Al Jazeera & Bloomberg',
         _news,
       ),
@@ -199,11 +199,11 @@ class _IptvPageState extends State<IptvPage> {
         _arabic,
       ),
       'Discovery & Documentaries': (
-        'National Geographic, Discovery Channel, 觀看紀錄 & Animal Planet',
+        'National Geographic, Discovery Channel, History & Animal Planet',
         _discovery,
       ),
       'Kids & Family': (
-        'Cartoon 網路, Disney Channel, Nickelodeon & Spacetoon',
+        'Cartoon Network, Disney Channel, Nickelodeon & Spacetoon',
         _kids,
       ),
     };
@@ -417,7 +417,7 @@ class _IptvGlassAppBar extends StatelessWidget {
           // Sources / Xtream Panels button
           _GlassActionButton(
             icon: Icons.settings_input_antenna_rounded,
-            tooltip: '管理入口與播放清單',
+            tooltip: 'Manage Portals & Playlists',
             onTap: onSourcesTap,
           ),
 
@@ -426,7 +426,7 @@ class _IptvGlassAppBar extends StatelessWidget {
           // Search button
           _GlassActionButton(
             icon: Icons.search_rounded,
-            tooltip: '搜尋 Channels',
+            tooltip: 'Search Channels',
             onTapWithPosition: onSearchTap,
           ),
 
@@ -435,7 +435,7 @@ class _IptvGlassAppBar extends StatelessWidget {
           // Settings button
           _GlassActionButton(
             icon: Icons.settings_rounded,
-            tooltip: '設定',
+            tooltip: 'Settings',
             onTapWithPosition: onSettingsTap,
           ),
         ],

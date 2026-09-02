@@ -4,10 +4,10 @@ import '../home/home_page_settings.dart';
 
 enum MusicMiniPlayerPreset {
   floatingGlassIsland('Floating Glass Island', 'Sleek floating glassmorphic dock with ambient glow and lossless badge'),
-  compactPill('精簡 Neon Capsule', 'Streamlined compact rounded pill with essential playback controls'),
+  compactPill('Compact Neon Capsule', 'Streamlined compact rounded pill with essential playback controls'),
   gradientWave('Gradient Wave Dock', 'Dynamic audio frequency gradient wave background with glowing controls'),
   minimalistLine('Minimalist Edge Rail', 'Ultra-thin edge-to-edge floating sleek rail'),
-  customStudio('Custom Drag & Drop Mini 播放器', 'Your fully customized, arranged and styled mini player');
+  customStudio('Custom Drag & Drop Mini Player', 'Your fully customized, arranged and styled mini player');
 
   final String label;
   final String description;
@@ -19,7 +19,7 @@ enum MusicFullscreenPreset {
   cyberWaveform('Cyberpunk Wave Visualizer', 'Real-time animated audio visualizer canvas with neon glow'),
   liquidGlassNeo('Liquid Glass Sanctuary', 'Deep optical refraction glass sheets powered by liquid_glass_easy'),
   cinematicArtwork('Cinematic Poster Focus', 'Massive edge-to-edge immersive album art with blurred atmosphere'),
-  customStudio('Custom Drag & Drop Full 播放器', 'Your fully customized, arranged and styled fullscreen player');
+  customStudio('Custom Drag & Drop Full Player', 'Your fully customized, arranged and styled fullscreen player');
 
   final String label;
   final String description;
@@ -27,7 +27,7 @@ enum MusicFullscreenPreset {
 }
 
 enum MusicSeekbarStyle {
-  waveformEqualizer('Dynamic 音訊 Waveform Canvas', 'Procedural animated waveform bars with live equalizer scrubbing'),
+  waveformEqualizer('Dynamic Audio Waveform Canvas', 'Procedural animated waveform bars with live equalizer scrubbing'),
   neonGradient('Neon Gradient Progress Bar', 'Multi-color vibrant linear gradient scrubber with glowing tip'),
   liquidGlassSlider('Liquid Glass Track Slider', 'Refractive frosted glass slider track with smooth thumb'),
   standardSlider('Precision Tactile Slider', 'Tactile interactive glass track with timecode readouts'),
@@ -50,7 +50,7 @@ enum MusicPlayButtonStyle {
 
 enum MusicHoverEffect {
   scaleBounce('Scale & Spring Bounce'),
-  glowAura('主題 Accent Glow Aura'),
+  glowAura('Theme Accent Glow Aura'),
   glassRipple('Liquid Glass Ripple'),
   tilt3D('3D Subtle Tilt Perspective');
 
@@ -69,7 +69,7 @@ enum MusicArtworkStyle {
 }
 
 enum MusicCardDensity {
-  compact('精簡 (Dense Grid)', 0.88),
+  compact('Compact (Dense Grid)', 0.88),
   standard('Standard (Balanced)', 1.0),
   spacious('Spacious (Large Covers)', 1.15);
 

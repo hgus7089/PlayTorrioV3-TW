@@ -83,7 +83,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
         ),
         title: screenW < 600
             ? const Text(
-                '音樂播放器工作室',
+                'Music Player Studio',
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
               )
             : Row(
@@ -105,12 +105,12 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          '自訂音樂播放器工作室',
+                          'Custom Music Player Studio',
                           style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16, letterSpacing: -0.3),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          '設計迷你與全螢幕播放器、拖曳元件並自訂物理與 Liquid Glass 效果',
+                          'Design mini & fullscreen players, drag components, customize physics & liquid glass',
                           style: TextStyle(color: Colors.white54, fontSize: 11, fontWeight: FontWeight.normal),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -146,7 +146,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                         Icon(Icons.fullscreen_rounded, size: 14, color: _studioPlayerTarget == 0 ? Colors.white : Colors.white60),
                         if (screenW >= 480) ...[
                           const SizedBox(width: 4),
-                          Text('全螢幕', style: TextStyle(color: _studioPlayerTarget == 0 ? Colors.white : Colors.white60, fontSize: 11, fontWeight: FontWeight.bold)),
+                          Text('Fullscreen', style: TextStyle(color: _studioPlayerTarget == 0 ? Colors.white : Colors.white60, fontSize: 11, fontWeight: FontWeight.bold)),
                         ],
                       ],
                     ),
@@ -167,7 +167,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                         Icon(Icons.dock_rounded, size: 14, color: _studioPlayerTarget == 1 ? Colors.white : Colors.white60),
                         if (screenW >= 480) ...[
                           const SizedBox(width: 4),
-                          Text('迷你列', style: TextStyle(color: _studioPlayerTarget == 1 ? Colors.white : Colors.white60, fontSize: 11, fontWeight: FontWeight.bold)),
+                          Text('Mini Bar', style: TextStyle(color: _studioPlayerTarget == 1 ? Colors.white : Colors.white60, fontSize: 11, fontWeight: FontWeight.bold)),
                         ],
                       ],
                     ),
@@ -180,7 +180,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
 
           if (screenW < 520)
             IconButton(
-              tooltip: '套用為目前播放器',
+              tooltip: 'Apply As Active Player',
               onPressed: _applyAsActivePlayer,
               icon: Icon(Icons.check_circle_rounded, color: palette.primaryColor, size: 24),
             )
@@ -188,7 +188,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
             TextButton.icon(
               onPressed: _applyAsActivePlayer,
               icon: const Icon(Icons.check_circle_rounded, color: Colors.white, size: 18),
-              label: const Text('套用目前設定', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
+              label: const Text('Apply Active', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
               style: TextButton.styleFrom(
                 backgroundColor: palette.primaryColor.withValues(alpha: 0.25),
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -248,7 +248,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  '工作室設計器',
+                                  'Studio Designer',
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: _mobileViewMode == 0 ? FontWeight.bold : FontWeight.w500,
@@ -313,7 +313,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                                 backgroundColor: palette.primaryColor,
                                 icon: const Icon(Icons.touch_app_rounded, color: Colors.white, size: 18),
                                 label: const Text(
-                                  '測試即時畫布',
+                                  'Test Live Canvas',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),
@@ -331,7 +331,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                                 backgroundColor: const Color(0xFF161A28),
                                 icon: Icon(Icons.arrow_back_rounded, color: palette.primaryColor, size: 18),
                                 label: const Text(
-                                  '返回 to 自訂r',
+                                  'Back to Customizer',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),
@@ -350,7 +350,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
       MusicSettings.setSelectedFullscreenPreset(MusicFullscreenPreset.customStudio);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: const Text('自訂全螢幕播放器工作室配置已設為目前播放器！'),
+          content: const Text('Custom Fullscreen Player Studio layout set as active player!'),
           backgroundColor: palette.primaryColor,
           behavior: SnackBarBehavior.floating,
         ),
@@ -359,7 +359,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
       MusicSettings.setSelectedMiniPreset(MusicMiniPlayerPreset.customStudio);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: const Text('自訂迷你播放器配置已設為目前底部列！'),
+          content: const Text('Custom Mini Player Studio layout set as active bottom bar!'),
           backgroundColor: palette.primaryColor,
           behavior: SnackBarBehavior.floating,
         ),
@@ -465,7 +465,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                     Icon(Icons.music_note_rounded, color: palette.primaryColor, size: 12),
                     const SizedBox(width: 4),
                     Text(
-                      '全螢幕直播工作室',
+                      'FULLSCREEN LIVE STUDIO',
                       style: TextStyle(color: palette.primaryColor, fontSize: 9.5, fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -556,7 +556,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                 Icon(Icons.diamond_rounded, size: 12, color: Color(0xFF00D2EF)),
                 SizedBox(width: 4),
                 Text(
-                  'FLAC 24-BIT／96KHZ 無損',
+                  'FLAC 24-BIT / 96KHZ LOSSLESS',
                   style: TextStyle(color: Color(0xFF00D2EF), fontSize: 9.5, fontWeight: FontWeight.w800, letterSpacing: 0.5),
                 ),
               ],
@@ -628,7 +628,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
               OutlinedButton.icon(
                 onPressed: () => setState(() => _showLyricsPreview = true),
                 icon: Icon(Icons.format_quote_rounded, color: palette.primaryColor, size: 15),
-                label: const Text('同步歌詞', style: TextStyle(color: Colors.white, fontSize: 11.5, fontWeight: FontWeight.bold)),
+                label: const Text('Synced Lyrics', style: TextStyle(color: Colors.white, fontSize: 11.5, fontWeight: FontWeight.bold)),
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: palette.primaryColor.withValues(alpha: 0.4)),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -639,7 +639,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
               OutlinedButton.icon(
                 onPressed: () => setState(() => _showQueuePreview = true),
                 icon: Icon(Icons.queue_music_rounded, color: palette.primaryColor, size: 15),
-                label: const Text('播放佇列', style: TextStyle(color: Colors.white, fontSize: 11.5, fontWeight: FontWeight.bold)),
+                label: const Text('Playing Queue', style: TextStyle(color: Colors.white, fontSize: 11.5, fontWeight: FontWeight.bold)),
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: palette.primaryColor.withValues(alpha: 0.4)),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -1055,7 +1055,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('同步歌詞測試區', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 14)),
+                  const Text('Synced Lyrics Sandbox', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 14)),
                   IconButton(
                     icon: const Icon(Icons.close_rounded, color: Colors.white70, size: 18),
                     onPressed: () => setState(() => _showLyricsPreview = false),
@@ -1103,7 +1103,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('播放佇列測試區（4 首）', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 14)),
+                  const Text('Playing Queue Sandbox (4 Tracks)', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 14)),
                   IconButton(
                     icon: const Icon(Icons.close_rounded, color: Colors.white70, size: 18),
                     onPressed: () => setState(() => _showQueuePreview = false),
@@ -1168,10 +1168,10 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                _buildTabChip(0, Icons.drag_indicator_rounded, '拖放版面配置', palette),
-                _buildTabChip(1, Icons.graphic_eq_rounded, '進度條畫布', palette),
-                _buildTabChip(2, Icons.touch_app_rounded, '播放 Button & Physics', palette),
-                _buildTabChip(3, Icons.album_rounded, '封面與唱盤', palette),
+                _buildTabChip(0, Icons.drag_indicator_rounded, 'Drag & Drop Layout', palette),
+                _buildTabChip(1, Icons.graphic_eq_rounded, 'Seek Bar Canvas', palette),
+                _buildTabChip(2, Icons.touch_app_rounded, 'Play Button & Physics', palette),
+                _buildTabChip(3, Icons.album_rounded, 'Artwork & Turntable', palette),
               ],
             ),
           ),
@@ -1223,14 +1223,14 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
     final isMini = _studioPlayerTarget == 1;
 
     final componentNames = {
-      'artwork': isMini ? 'Mini Cover Art' : '專輯封面與黑膠唱盤',
-      'title': '歌曲、藝人與專輯名稱',
-      'trackInfo': '歌曲標題與音質標籤',
-      'qualityBadge': 'Lossless Hi-Res 音訊 畫質 Badge',
-      'seekbar': '進度條拖曳畫布',
-      'mainControls': 'Primary Controls (播放, 暫停, Skip, Shuffle, Repeat)',
-      'secondaryControls': '次要控制項（音量滑桿）',
-      'extraActions': isMini ? '喜歡歌曲操作' : '同步歌詞 & Queue Quick Buttons',
+      'artwork': isMini ? 'Mini Cover Art' : 'Album Art & Vinyl Turntable',
+      'title': 'Track, Artist & Album Titles',
+      'trackInfo': 'Track Title & Quality Badge',
+      'qualityBadge': 'Lossless Hi-Res Audio Quality Badge',
+      'seekbar': 'Seek Bar Scrubber Canvas',
+      'mainControls': 'Primary Controls (Play, Pause, Skip, Shuffle, Repeat)',
+      'secondaryControls': 'Secondary Controls (Volume Slider)',
+      'extraActions': isMini ? 'Like Track Action' : 'Synced Lyrics & Queue Quick Buttons',
     };
 
     final componentIcons = {
@@ -1255,7 +1255,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                 Icon(Icons.drag_indicator_rounded, color: palette.primaryColor, size: 18),
                 const SizedBox(width: 8),
                 Text(
-                  isMini ? 'Mini 播放器 Drag & Drop Arranger' : '全螢幕 播放器 Drag & Drop Arranger',
+                  isMini ? 'Mini Player Drag & Drop Arranger' : 'Fullscreen Player Drag & Drop Arranger',
                   style: const TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
                 ),
               ],
@@ -1341,14 +1341,14 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                 Icon(Icons.graphic_eq_rounded, color: palette.primaryColor, size: 18),
                 const SizedBox(width: 8),
                 const Text(
-                  '進度條畫布拖曳引擎',
+                  'Seek Bar Canvas Scrubber Engine',
                   style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
                 ),
               ],
             ),
             const SizedBox(height: 6),
             Text(
-              '選擇音樂播放器中的音訊波形與拖曳進度條顯示方式。',
+              'Select how audio waveforms and scrubbing tracks render across your music player.',
               style: TextStyle(color: Colors.white.withValues(alpha: 0.55), fontSize: 12),
             ),
             const SizedBox(height: 16),
@@ -1434,7 +1434,7 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
             Icon(Icons.play_circle_filled_rounded, color: palette.primaryColor, size: 18),
             const SizedBox(width: 8),
             const Text(
-              '播放 Button Aesthetic & Style',
+              'Play Button Aesthetic & Style',
               style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
             ),
           ],
@@ -1477,14 +1477,14 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
             Icon(Icons.touch_app_rounded, color: palette.primaryColor, size: 18),
             const SizedBox(width: 8),
             const Text(
-              '懸停與觸控物理引擎',
+              'Hover & Touch Physics Engine',
               style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
             ),
           ],
         ),
         const SizedBox(height: 6),
         Text(
-          '選擇懸停或按下控制項時套用的互動物理回饋。',
+          'Select the interactive physics feedback applied when hovering or pressing controls.',
           style: TextStyle(color: Colors.white.withValues(alpha: 0.55), fontSize: 12),
         ),
         const SizedBox(height: 12),
@@ -1563,14 +1563,14 @@ class _MusicPlayerStudioPageState extends State<MusicPlayerStudioPage> with Sing
                 Icon(Icons.album_rounded, color: palette.primaryColor, size: 18),
                 const SizedBox(width: 8),
                 const Text(
-                  '封面與唱盤呈現',
+                  'Artwork & Turntable Presentation',
                   style: TextStyle(color: Colors.white, fontSize: 14.5, fontWeight: FontWeight.w800),
                 ),
               ],
             ),
             const SizedBox(height: 6),
             Text(
-              '選擇播放器中的專輯封面、黑膠唱盤動畫與卡片顯示方式。',
+              'Select how album covers, vinyl turntable animations, and cards display in the player.',
               style: TextStyle(color: Colors.white.withValues(alpha: 0.55), fontSize: 12),
             ),
             const SizedBox(height: 16),

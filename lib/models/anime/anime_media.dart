@@ -90,7 +90,7 @@ class AnimeMedia {
   String get formattedFormat {
     switch (format.toUpperCase()) {
       case 'TV':
-        return 'TV 影集';
+        return 'TV Series';
       case 'TV_SHORT':
         return 'TV Short';
       case 'MOVIE':
@@ -115,9 +115,9 @@ class AnimeMedia {
       case 'NOT_YET_RELEASED':
         return 'Upcoming';
       case 'CANCELLED':
-        return '取消led';
+        return 'Cancelled';
       case 'HIATUS':
-        return '開啟 Hiatus';
+        return 'On Hiatus';
       default:
         return status;
     }
@@ -129,7 +129,7 @@ class AnimeMedia {
         ? '${season[0].toUpperCase()}${season.substring(1).toLowerCase()}'
         : '';
     if (seasonYear > 0) {
-      return s.isNotEmpty ? '$s $season年份' : '$season年份';
+      return s.isNotEmpty ? '$s $seasonYear' : '$seasonYear';
     }
     return s;
   }
@@ -154,8 +154,8 @@ class AnimeMedia {
         ? json['trailer'] as Map<String, dynamic>
         : null;
 
-    final nextAiringData = json['nextAiring集'] is Map<String, dynamic>
-        ? json['nextAiring集'] as Map<String, dynamic>
+    final nextAiringData = json['nextAiringEpisode'] is Map<String, dynamic>
+        ? json['nextAiringEpisode'] as Map<String, dynamic>
         : null;
 
     final characterList = <AnimeCharacter>[];
@@ -219,7 +219,7 @@ class AnimeMedia {
       popularity: json['popularity'] as int? ?? 0,
       favourites: json['favourites'] as int? ?? 0,
       season: json['season']?.toString() ?? '',
-      seasonYear: json['season年份'] as int? ?? 0,
+      seasonYear: json['seasonYear'] as int? ?? 0,
       description: rawDesc,
       studioName: studio,
       trailerUrl: trailerData != null && trailerData['site'] == 'youtube'
@@ -249,7 +249,7 @@ class AnimeMedia {
         'bannerImage': bannerImage,
         'format': format,
         'status': status,
-        'total集': totalEpisodes,
+        'totalEpisodes': totalEpisodes,
         'durationMinutes': durationMinutes,
         'genres': genres,
         'averageScore': averageScore,
@@ -257,7 +257,7 @@ class AnimeMedia {
         'popularity': popularity,
         'favourites': favourites,
         'season': season,
-        'season年份': seasonYear,
+        'seasonYear': seasonYear,
         'description': description,
         'studioName': studioName,
       };
@@ -276,7 +276,7 @@ class AnimeMedia {
         bannerImage: json['bannerImage']?.toString() ?? '',
         format: json['format']?.toString() ?? 'TV',
         status: json['status']?.toString() ?? 'FINISHED',
-        totalEpisodes: json['total集'] as int? ?? 0,
+        totalEpisodes: json['totalEpisodes'] as int? ?? 0,
         durationMinutes: json['durationMinutes'] as int? ?? 24,
         genres: json['genres'] is List
             ? (json['genres'] as List).map((e) => e.toString()).toList()
@@ -286,7 +286,7 @@ class AnimeMedia {
         popularity: json['popularity'] as int? ?? 0,
         favourites: json['favourites'] as int? ?? 0,
         season: json['season']?.toString() ?? '',
-        seasonYear: json['season年份'] as int? ?? 0,
+        seasonYear: json['seasonYear'] as int? ?? 0,
         description: json['description']?.toString() ?? '',
         studioName: json['studioName']?.toString() ?? '',
       );
@@ -413,10 +413,10 @@ class AnimeEpisode {
   });
 
   String get displayTitle {
-    if (title.isNotEmpty && title != '集 $number') {
+    if (title.isNotEmpty && title != 'Episode $number') {
       return 'EP $number: $title';
     }
-    return '集 $number';
+    return 'Episode $number';
   }
 }
 
@@ -504,8 +504,8 @@ class AnimeWatchlistItem {
   Map<String, dynamic> toJson() => {
         'anime': anime.toJson(),
         'status': status.name,
-        'last觀看ed集': lastWatchedEpisode,
-        'last觀看edPositionSeconds': lastWatchedPositionSeconds,
+        'lastWatchedEpisode': lastWatchedEpisode,
+        'lastWatchedPositionSeconds': lastWatchedPositionSeconds,
         'totalDurationSeconds': totalDurationSeconds,
         'updatedAt': updatedAt.toIso8601String(),
       };
@@ -517,9 +517,9 @@ class AnimeWatchlistItem {
           (s) => s.name == json['status'],
           orElse: () => AnimeWatchStatus.watching,
         ),
-        lastWatchedEpisode: json['last觀看ed集'] as int? ?? 0,
+        lastWatchedEpisode: json['lastWatchedEpisode'] as int? ?? 0,
         lastWatchedPositionSeconds:
-            json['last觀看edPositionSeconds'] as int? ?? 0,
+            json['lastWatchedPositionSeconds'] as int? ?? 0,
         totalDurationSeconds: json['totalDurationSeconds'] as int? ?? 0,
         updatedAt: DateTime.tryParse(json['updatedAt']?.toString() ?? '') ??
             DateTime.now(),
